@@ -1,17 +1,50 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Home</ion-title>
+    <ion-buttons right>
+      <button class="bar-button-default-salonist-user" ion-button icon-only (click)="list($event)"><ion-icon name="list"></ion-icon></button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content>
+    <ion-row>
+    	<img src="assets/img/image-store.png" width="100%">
+    </ion-row>
+    <ion-grid padding>
+      <ion-row id="title">PRODDOTTI PROFESSIONALI PER PARRUCCHIERI & NAILS WORLDS</ion-row>
+      <ion-row>
+        <p>
+        Rivendiamo al dettaglio prodotti profesionali per capelli ed estetica, in particolare tutto cio che riguarda il trattamento delle unghie. Forniamo inoltre servizio di applicazione smalto semipermanente 
+      </p>
+      </ion-row>
+      <ion-row>
+        <button text-center ion-button color="danger" class="red-bg" style="width: 100%" (click)="goToSalon(salon)">NUOVA PRENOTAZIONE</button>
+      </ion-row>
+      <ion-row center>
+        <img src="assets/img/yndaco.png" class="icon-image-bottom">
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-4 style="text-align: right;">
+          <img src="assets/icon/Facebook_Color.png">
+        </ion-col>
+        <ion-col col-4 style="text-align: center;">
+          <img src="assets/icon/Instagram_Color.png">
+        </ion-col>
+        <ion-col col-4  style="text-align: left;">
+          <img src="assets/icon/Twitter_Color.png">
+        </ion-col>
+      </ion-row>
+
+      <ion-item>
+        <div id="title-city">
+          PICABIA SRL
+        </div>
+        <div id="content-address"><p>
+          via Monte San Michele 20/B, 21049 Tradate (VA)<br>
+          RIVA/C.F.:049110609623
+        </p></div>
+      </ion-item>
+	  </ion-grid>
 </ion-content>

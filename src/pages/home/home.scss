@@ -1,3 +1,30 @@
 page-home {
+  #container {
+    width: 300px;
+    margin-top: 25px;
+    margin-left:auto; 
+    margin-right: auto; 
+  }
+ion-modal {
+height: 90%;
+}
 
+.icon-image-bottom {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 20%;
+    margin-right: 20%;
+    height: 30px;
+}
+#title {
+	font-size: 14px;
+}
+#title-city {
+	text-align: center;
+	font-size: 14px;
+}
+
+#content-address {
+	text-align: center;
+}
 }

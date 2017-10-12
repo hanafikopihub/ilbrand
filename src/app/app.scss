@@ -14,3 +14,91 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+/* open-sans-regular - latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fontsopen-sans-v14-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-regular.svg#OpenSans') format('svg'); /* Legacy iOS */
+}
+/* open-sans-600 - latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../assets/fontsopen-sans-v14-latin-600.eot'); /* IE9 Compat Modes */
+  src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'),
+       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-600.woff') format('woff'), /* Modern Browsers */
+       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-600.svg#OpenSans') format('svg'); /* Legacy iOS */
+}
+/* open-sans-700 - latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fontsopen-sans-v14-latin-700.eot'); /* IE9 Compat Modes */
+  src: local('Open Sans Bold'), local('OpenSans-Bold'),
+       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-700.svg#OpenSans') format('svg'); /* Legacy iOS */
+}
+
+/* playfair-display-regular - latin */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/playfair-display-v11-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Playfair Display'), local('PlayfairDisplay-Regular'),
+       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-regular.svg#PlayfairDisplay') format('svg'); /* Legacy iOS */
+}
+/* playfair-display-700 - latin */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/playfair-display-v11-latin-700.eot'); /* IE9 Compat Modes */
+  src: local('Playfair Display Bold'), local('PlayfairDisplay-Bold'),
+       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-700.svg#PlayfairDisplay') format('svg'); /* Legacy iOS */
+}
+/* playfair-display-900 - latin */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 900;
+  src: url('../assets/fonts/playfair-display-v11-latin-900.eot'); /* IE9 Compat Modes */
+  src: local('Playfair Display Black'), local('PlayfairDisplay-Black'),
+       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-900.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-900.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-900.woff') format('woff'), /* Modern Browsers */
+       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-900.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-900.svg#PlayfairDisplay') format('svg'); /* Legacy iOS */
+}
+
+.bluesky-bg{
+  background-color: #76CAE2;
+}
+
+.playfair{
+  font-family: 'Playfair Display'
+}

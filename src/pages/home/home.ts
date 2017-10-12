@@ -1,14 +1,22 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { ListPage } from '../list/list';
+import { NavController, ModalController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+  constructor(
+  	public _navCtrl: NavController,
+  	public _modalCtrl: ModalController) {
 
-  constructor(public navCtrl: NavController) {
+  }ent
 
+  list(ev) {
+    let listModal = this._modalCtrl.create(ListPage)
+    listModal.present();
   }
+
 
 }

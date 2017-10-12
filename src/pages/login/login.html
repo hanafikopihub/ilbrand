@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Login
+    </ion-title>
+    <ion-buttons right>
+      <button class="bar-button-default-salonist-user" ion-button icon-only (click)="closeModal()"><ion-icon name="ios-close-outline"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<ion-list>
+	  <ion-item>
+    <ion-label color="primary" stacked>La tua e-mail</ion-label>
+    <ion-input type="email" placeholder="Email Input"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" stacked>La tua password</ion-label>
+    <ion-input type="password" placeholder="Password Input"></ion-input>
+  </ion-item>
+          <ion-row>
+          <ion-col class="signup-col">
+            <button ion-button class="bluesky-button" full type="submit">Accedi</button>
+            <p style="margin-bottom:35px; font-size: 12px; color:grey;">Hai dimenticato la password? <a >Clicca qui</a></p>
+            <p>Non sei ancora registrato? <a >Clicca qui</a></p>
+          </ion-col>
+        </ion-row>
+</ion-list>
+</ion-content>
