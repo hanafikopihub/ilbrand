@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>il tuo profilo</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div padding>
+    <ion-row class="title">Giuditta</ion-row>
+    <ion-row class="title-text">4 Prenotazioni effettuate</ion-row>
+
+    <div name="form">
+      <div class="email-content">
+        <div class="label">LA TUA MAIL</div>
+        <hr>
+        <div>Francesco.ambrosiano@gmail.com</div>
+      </div>
+      <div class="phone-content">
+        <div class="label">IL TUA NUMERO</div>
+        <hr>
+        <div>+39 347 7366654</div>
+      </div>
+      </div>
+  </div>
+
+  <div class="form" *ngIf="showPasswordForm">
+    <div text-right class="close">
+      <div icon-only (click)="showPasswordForm=false">
+        <ion-icon name="close" class="close-icon"></ion-icon>
+      </div>
+    </div>
+
+    <ion-row class="form-change-password">
+      <ion-item class="password-input">
+        <ion-input type="password" [(ngModel)]="passwordData.password" placeholder="Scrivi qui la password attuale"></ion-input>
+      </ion-item>
+      <ion-item class="password-input">
+        <ion-input type="password" [(ngModel)]="passwordData.passwordConfirmation" placeholder="Scrivi qui la nouva password"></ion-input>
+      </ion-item>
+    </ion-row>
+
+    <ion-row padding>
+      <button text-center ion-button color="danger" (click)="updatePassword()" class="red-bg trova-button-home">Modifica password</button>
+    </ion-row>
+  </div>
+
+  <ion-row padding>
+    <button text-center ion-button color="danger" *ngIf="!showPasswordForm" (click)="showPasswordForm=true" class="red-bg trova-button-home">Modifica password</button>
+    <button text-center ion-button class="btn-modif-telephone">Modifica numero di telefono</button>
+  </ion-row>
+
+  <div class="delete-account">Elimina il tuo account Salonist</div>
+
+</ion-content>

@@ -1,3 +1,56 @@
-page-contact {
+
+.ios, .md {
+ 
+    page-contact {
+ 
+      .scroll {
+        height: 100%
+      }
+ 
+      #map {
+        width: 100%;
+        height: 50%;
+        margin-top: 30px;
+        margin-bottom: 20px;
+      }
+
+#title-city {
+	text-align: center;
+	font-size: 14px;
+}
+
+#content-address {
+	text-align: center;
+  color: grey;
+}
+
+.icon-image-bottom {
+	margin-top: 20px;
+	margin-bottom: 20px;
+    height: 30px;
+}
+
+h2 {
+	margin-bottom: 4px !important;
+ }
+
+#privacy-help {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#privacy {
+  font-size: 14px;
+  color: grey;
+  text-align: right;
+}
+
+#help {
+  font-size: 14px;
+  color: grey;
+  text-align: left;
+}
+}
+
 
 }

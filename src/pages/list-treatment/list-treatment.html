@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title style="text-align: center">Ydanco Seregno</ion-title>
+    <div style="text-align: center; color:grey; font-size: 12px; ">Listino</div>
+    <ion-buttons right>
+      <button class="bar-button-default-salonist-user" ion-button icon-only (click)="list($event)"><ion-icon name="list"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-grid *ngFor="let treatment of treatments" class="treatment-list">
+        <ion-row class="row-cast">
+          <ion-col col-9>
+            <h4>{{treatment.des_treatment}}</h4>
+            <div class="treatment-detail-label">
+              <span class="gray-text">Durata:</span> {{treatment.duration_in_minute}} min.
+            </div>
+            <div class="treatment-detail-label">
+              <span class="gray-text">Prezzo:</span> &#8364; {{treatment.price}}
+            </div>
+          </ion-col>
+          <ion-col col-3 class="treatment-action">
+            <button ion-fab color="danger" (click)="addTreatment(treatment)">
+              <ion-icon name="add"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+        </ion-row>
+      </ion-grid>
+        <ion-fab bottom center color="danger">
+    <button ion-fab color="danger" (click)="addToCart()">
+      <ion-icon name="cart"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

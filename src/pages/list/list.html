@@ -1,6 +1,7 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>List</ion-title>
+    <ion-title style="text-align: center">Ydanco Seregno</ion-title>
+    <div style="text-align: center; color:grey; font-size: 12px; ">Benvenuto!</div>
     <ion-buttons right>
       <button class="bar-button-default-salonist-user" ion-button icon-only (click)="closeModal()"><ion-icon name="ios-close-outline"></ion-icon></button>
     </ion-buttons>
@@ -8,10 +9,21 @@
 </ion-header>
 
 <ion-content padding>
-        <ion-list>
-        	<ion-item><div (click)="goLogin($event)">ACCEDI o REGISTRATI</div></ion-item>
-        	<ion-item><div>Prenota</div></ion-item>
-        	<ion-item><div>Lo staff</div></ion-item>
-          <ion-item><div>Contatti & Orari</div></ion-item>
-        </ion-list>
+  <ion-list>
+    <ion-item *ngIf="!isSignedIn">
+      <div (click)="goLogin($event)" style="color:#03d9e0">ACCEDI o REGISTRATI</div>
+    </ion-item>
+    <ion-item *ngIf="isSignedIn">
+      <div (click)="goMybook($event)">Prenota</div>
+    </ion-item>
+    <ion-item [navPush]="StaffPage">
+      <div>Lo staff</div>
+    </ion-item>
+    <ion-item [navPush]="ContactPage">
+      <div>Contatti & Orari</div>
+    </ion-item>
+    <ion-item *ngIf="isSignedIn" (click)="doLogout()">
+      <div>Logout</div>
+    </ion-item>
+  </ion-list>
 </ion-content>

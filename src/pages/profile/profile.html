@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <div text-center class="regular-text header-main-title">Area personale</div>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="closeModal()">
+        <ion-icon item-right name="ios-close-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+
+  <ion-row class="title">
+    Giuditta
+  </ion-row>
+  <ion-row class="title-text">4 Prenotazioni effettuate</ion-row>
+  <ion-list>
+    <button ion-item [navPush]="ProfileSettingPage">Il tuo profilo</button>
+    <button ion-item (click)="doLogout()">Esci</button>
+  </ion-list>
+</ion-content>

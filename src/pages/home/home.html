@@ -1,6 +1,7 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title style="text-align: center">Ydanco Seregno</ion-title>
+    <div style="text-align: center; color:grey; font-size: 12px; ">Benvenuto!</div>
     <ion-buttons right>
       <button class="bar-button-default-salonist-user" ion-button icon-only (click)="list($event)"><ion-icon name="list"></ion-icon></button>
     </ion-buttons>
@@ -8,43 +9,61 @@
 </ion-header>
 
 <ion-content>
-    <ion-row>
-    	<img src="assets/img/image-store.png" width="100%">
-    </ion-row>
-    <ion-grid padding>
-      <ion-row id="title">PRODDOTTI PROFESSIONALI PER PARRUCCHIERI & NAILS WORLDS</ion-row>
-      <ion-row>
-        <p>
-        Rivendiamo al dettaglio prodotti profesionali per capelli ed estetica, in particolare tutto cio che riguarda il trattamento delle unghie. Forniamo inoltre servizio di applicazione smalto semipermanente 
+  <ion-row>
+    <img src="assets/img/image-store.png" width="100%">
+  </ion-row>
+  <ion-grid padding>
+    <ion-row id="title">PRODDOTTI PROFESSIONALI PER PARRUCCHIERI & NAILS WORLDS</ion-row>
+    <ion-row id="content">
+      <p>
+        Rivendiamo al dettaglio prodotti profesionali per capelli ed estetica, in particolare tutto cio che riguarda il trattamento
+        delle unghie. Forniamo inoltre servizio di applicazione smalto semipermanente
       </p>
-      </ion-row>
-      <ion-row>
-        <button text-center ion-button color="danger" class="red-bg" style="width: 100%" (click)="goToSalon(salon)">NUOVA PRENOTAZIONE</button>
-      </ion-row>
-      <ion-row center>
-        <img src="assets/img/yndaco.png" class="icon-image-bottom">
-      </ion-row>
+    </ion-row>
+    <ion-row>
+      <button text-center ion-button color="danger" class="red-bg" style="width: 100%" [navPush]="ListTreatmentPage">NUOVA PRENOTAZIONE</button>
+    </ion-row>
 
-      <ion-row>
-        <ion-col col-4 style="text-align: right;">
-          <img src="assets/icon/Facebook_Color.png">
-        </ion-col>
-        <ion-col col-4 style="text-align: center;">
-          <img src="assets/icon/Instagram_Color.png">
-        </ion-col>
-        <ion-col col-4  style="text-align: left;">
-          <img src="assets/icon/Twitter_Color.png">
-        </ion-col>
-      </ion-row>
+    <div style="text-align: center;">
+      <img src="assets/img/yndaco.png" class="icon-image-bottom">
+    </div>
 
-      <ion-item>
-        <div id="title-city">
-          PICABIA SRL
+    <ion-row>
+      <ion-col col-4 style="text-align: right;">
+        <img src="assets/icon/Facebook_Color.png">
+      </ion-col>
+      <ion-col col-4 style="text-align: center;">
+        <img src="assets/icon/Instagram_Color.png">
+      </ion-col>
+      <ion-col col-4 style="text-align: left;">
+        <img src="assets/icon/Twitter_Color.png">
+      </ion-col>
+    </ion-row>
+
+    <div style="margin-top: 30px;">
+      <div id="title-city">
+        <b>PICABIA SRL</b>
+      </div>
+      <div id="content-address">
+        <p>
+          via Monte San Michele 20/B, 21049 Tradate (VA)<br> RIVA/C.F.:049110609623
+        </p>
+      </div>
+    </div>
+
+    <ion-row id="privacy-help">
+      <ion-col col-5 style="text-align: right;">
+        <div id="privacy">
+          Privacy
         </div>
-        <div id="content-address"><p>
-          via Monte San Michele 20/B, 21049 Tradate (VA)<br>
-          RIVA/C.F.:049110609623
-        </p></div>
-      </ion-item>
-	  </ion-grid>
+      </ion-col>
+      <ion-col col-2></ion-col>
+      <ion-col col-5 style="text-align: left;">
+        <div id="help">
+          Aiuto
+        </div>
+      </ion-col>
+    </ion-row>
+    <hr>
+  </ion-grid>
 </ion-content>

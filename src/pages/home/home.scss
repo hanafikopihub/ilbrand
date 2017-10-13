@@ -16,15 +16,40 @@ height: 90%;
     margin-right: 20%;
     height: 30px;
 }
+
 #title {
 	font-size: 14px;
 }
+
 #title-city {
 	text-align: center;
 	font-size: 14px;
+  color: #4c5b69;
+}
+
+#content {
+  color: #535b61;
+}
+
+#privacy-help {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#privacy {
+  font-size: 14px;
+  color: grey;
+  text-align: right;
+}
+
+#help {
+  font-size: 14px;
+  color: grey;
+  text-align: left;
 }
 
 #content-address {
 	text-align: center;
+  color: grey;
 }
 }

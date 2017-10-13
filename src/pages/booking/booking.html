@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Scegli una data</ion-title>
+    <ion-buttons right>
+      <button class="bar-button-default-salonist-user" ion-button icon-only><ion-icon name="contact"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="">
+    <ion-slides #sliderMonth (ionSlideDidChange)="slideChanged()">
+      <ion-slide *ngFor="let month of months" [class.changebutton]="setColorMonth === month.value">
+        <button class="btn-slide-month" ion-button [class.active]="changeColorMonth === month.value" ion-button (click)="onClickMonth(month)">
+        <div  [class.active-text]="changeColorMonth === month.value"><b>{{month.name}}</b></div>
+        </button>
+      </ion-slide>
+    </ion-slides>
+
+    <ion-slides #sliderDate>
+      <ion-slide *ngFor="let date of dates" [class.changebutton]="setColorDate === date.id">
+        <button class="btn-slide-date" ion-button [class.active]="changeColorDate === date.id" (click)="onClickDate(date)">
+          <ion-row>
+            <ion-col>
+                <div class="text-day" [class.active-text]="changeColorDate === date.id"><b>{{date.shortDay}}</b></div>
+            </ion-col>
+            <ion-col>
+                <div class="text-date" [class.active-text]="changeColorDate === date.id">{{date.date}}</div>
+            </ion-col>
+          </ion-row>
+        </button>
+      </ion-slide>
+    </ion-slides>
+
+    <ion-label>OPERATORI DISPONIBILI</ion-label>
+    <hr>
+    <ion-row>
+      <div>
+        <ion-label><b>GIULIANA</b></ion-label>
+        <div class="massager-record">TOP STYLIST</div>
+      </div>
+      <div>
+        <img src="assets/icon/discount50.png" width="45px;">
+      </div>
+    </ion-row>
+    
+    <ion-slides #sliderTime>
+      <ion-slide *ngFor="let time of times">
+        <button class="btn-slide-time" ion-button [class.active]="changeColorTime === time.value" (click)="onClickTime(time)">
+        <div [class.active-text]="changeColorTime === time.value"><b>{{time.value}}</b></div>  
+        </button>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <ion-row padding>
+    <button text-center ion-button color="danger" (click)=onSumbit() class="btn-next">Ulteriormente</button>
+  </ion-row>
+</ion-content>
