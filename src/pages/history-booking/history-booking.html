@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title style="text-align: center">Ydanco Seregno</ion-title>
+    <div style="text-align: center; color:grey; font-size: 12px; ">Listino</div>
+    <ion-buttons right>
+      <button class="bar-button-default-salonist-user" ion-button icon-only (click)="list($event)"><ion-icon name="list"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-label class="header-label"><b>DATA SCELTA</b></ion-label>
+  <hr>
+
+  <div><b class="customer-value">Martedi 23 Agosto</b> ore <b class="customer-value">14:00</b></div>
+  <div>con operator <span class="operator-value">MARTINA</span></div>
+  <ion-label class="header-label"><b>SALONE</b></ion-label>
+  <hr>
+  
+  <ion-grid>
+    <ion-row>
+      <b class="salon-name">Yndaco Seregno</b>
+    </ion-row>
+    <ion-row>
+      <div class="salon-address">Via Garibaldi 75, Seregno</div>
+    </ion-row>
+  </ion-grid>
+
+  <ion-label class="header-label"><b>TRATTAMENTI</b></ion-label>
+  <hr>
+
+  <ion-grid *ngFor="let cart of carts">
+    <ion-row class="row-cast">
+      <ion-col>
+        <h6><b>{{cart.product}}</b></h6>
+        <div class="treatment-detail-label">
+          <span class="gray-text">Durata:</span> <b>{{cart.durata}}.</b>
+        </div>
+        <div class="treatment-detail-label">
+          <span class="gray-text">Prezzo:</span> &#8364; <b>{{cart.prezzo}}</b>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <div class="total-style">
+      <ion-row>
+        <ion-col>
+          <div class="gray-text">totale <b class="total-value">&#8364; 30,00</b></div>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <ion-list radio-group [(ngModel)]="payoption">
+      <ion-item *ngFor="let payoption of payOption;">
+        <ion-radio item-left value="{{payoption.id}}"></ion-radio>
+        <ion-label>{{payoption.option}}</ion-label>
+      </ion-item>
+    </ion-list>
+
+  </ion-grid>
+  <ion-row padding>
+    <button text-center ion-button color="danger" class="trova-button-home" [navPush]="MyBookingPage">CONFERMA PRENOTAZIONE</button>
+    <button text-center ion-button class="cambia-orario">CAMBIA ORARIO</button>
+  </ion-row>
+
+</ion-content>

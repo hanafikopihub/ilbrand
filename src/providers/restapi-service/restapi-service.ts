@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { NativeStorage } from '@ionic-native/native-storage';
 import 'rxjs/add/operator/map';
 
 /*
@@ -12,11 +11,10 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class RestapiServiceProvider {
   apiUrl = 'https://www.salonist.it/api/v1/';
-  apiUrl2 = 'http://bc90e996.ngrok.io/api/v1/bookings/create';
   salons: any;
   salon: any;
   items: any;
-  constructor(public http: Http, public _nativeStorage: NativeStorage) {
+  constructor(public http: Http) {
   }
 
   getSalon(id) {
@@ -31,7 +29,6 @@ export class RestapiServiceProvider {
         .subscribe(salon => {
           this.salon = salon;
           resolve(this.salon);
-          console.log(this.salon);
         });
     });
   }
@@ -41,9 +38,36 @@ export class RestapiServiceProvider {
       .map(res => res.json())
   }
 
-  postBooking(data) {
-    return this.http.post(this.apiUrl2,data)
-      .map(res => res.json());
-
+  searchSalons(treatment, location, page){
+    return new Promise(resolve => {
+      this.http.post(this.apiUrl + 'finds/salons', {treatment: treatment, where: location, page: page})
+        .map(res => res.json())
+        .subscribe(salons => {
+          this.salons = salons;
+          resolve(this.salons);
+        });
+    });
   }
+
+  get_treatment() {
+    return this.http.get(this.apiUrl + 'treatments/popular')
+      .map(res => res.json())
+  }
+  
+  get_address(value) {
+    const addresss = { "address": value }
+    return this.http.post(this.apiUrl + 'finds/address', addresss)
+      .map(res => res.json())
+  }
+
+  getMyBooking(user_id){
+    return this.http.post(this.apiUrl + 'bookings/my', {user_id: user_id})
+      .map(res => res.json())
+  }
+  
+  getOperator(data) {
+    return this.http.post(this.apiUrl + 'operators/available_for_treatments', data)
+      .map(res => res.json())
+  }
+
 }

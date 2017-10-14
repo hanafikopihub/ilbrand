@@ -1,0 +1,41 @@
+page-my-booking {
+  .total-value {
+    color: red;
+    font-size: 16px;
+  }
+  .salon-address {
+    color: #AEAEAE;
+  }
+
+  .salon-name {
+    font-size: 18px;
+    color: #4a4646;
+  }
+
+  .salon-name-content {
+    font-size: 16px;
+    color: #4a4646;
+  }
+
+  .btn-create-reminder {
+  	width: 100%;
+  	background-color: #00cdd4;
+  }
+
+  .btn-new-reservation {
+  	width: 100%;
+  	background-color: #FF4653;
+  }
+  .box-card {
+  	background-color: #F9F5F6; width: 100%;
+  }
+  .row-box{
+  	margin: 0 15px 0 7px; 
+  }
+  .box-grid {
+  	padding: 5px 10px 15px 10px;
+  }
+  .content-customer {
+  	margin-bottom: 10px;
+  }
+}

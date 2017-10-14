@@ -4,6 +4,7 @@ import { ListPage } from '../list/list';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { CartPage } from '../cart/cart';
+import { BookingPage } from '../booking/booking';
 
 @Component({
   selector: 'page-list-treatment',
@@ -34,6 +35,8 @@ export class ListTreatmentPage {
 
   addTreatment(treatment) {
     this.addTreatments = this.addTreatments.concat(treatment)
+
+    this._navCtrl.push(BookingPage, { treatment: treatment});
   }
 
   addToCart() {
@@ -47,7 +50,7 @@ export class ListTreatmentPage {
     debugger
     this.addTreatments = [];
     //this._navCtrl.setRoot
-    this._navCtrl.push(CartPage);
+    this._navCtrl.push(BookingPage);
   }
 }
 

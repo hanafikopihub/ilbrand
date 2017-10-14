@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ContactPage } from '../contact/contact';
 import { LoginPage } from '../login/login';
 import { HomePage } from '../home/home';
-import { MybookPage } from '../mybook/mybook';
 import { StaffPage } from '../staff/staff';
 import { ViewController, NavController, ModalController, LoadingController, ToastController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
@@ -17,7 +16,6 @@ export class ListPage {
   loading: any;
   ContactPage = ContactPage;
   LoginPage = LoginPage;
-  MybookPage = MybookPage;
   StaffPage = StaffPage;
   public isSignedIn: boolean;
 
@@ -35,11 +33,6 @@ export class ListPage {
   goLogin(ev) {
     let loginModal = this._modalController.create(LoginPage)
     loginModal.present();
-  }
-
-  goMybook(ev) {
-    let mybookModal = this._modalController.create(MybookPage)
-    mybookModal.present();
   }
 
   doLogout() {

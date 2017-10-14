@@ -8,14 +8,15 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
-import { MybookPage } from '../pages/mybook/mybook';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StaffPage } from '../pages/staff/staff';
 import { ProfilePage } from '../pages/profile/profile';
 import { CartPage } from '../pages/cart/cart';
 import { BookingPage } from '../pages/booking/booking';
-
+import { HistoryBookingPage } from '../pages/history-booking/history-booking';
+import { ListCustomerTreatment } from '../pages/list-customer-treatment/list-customer-treatment';
+import { MyBookingPage } from '../pages/my-booking/my-booking';
 import { HttpModule } from '@angular/http';
 import { Angular2TokenService } from 'angular2-token';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -33,11 +34,13 @@ import { NativeStorage } from '@ionic-native/native-storage';
     HomePage,
     ListPage,
     LoginPage,
-    MybookPage,
     StaffPage,
     ProfilePage,
     CartPage,
-    BookingPage
+    BookingPage,
+    HistoryBookingPage,
+    MyBookingPage,
+    ListCustomerTreatment
   ],
   imports: [
     BrowserModule,
@@ -52,11 +55,13 @@ import { NativeStorage } from '@ionic-native/native-storage';
     HomePage,
     ListPage,
     LoginPage,
-    MybookPage,
     StaffPage,
     ProfilePage,
     CartPage,
-    BookingPage
+    BookingPage,
+    HistoryBookingPage,
+    MyBookingPage,
+    ListCustomerTreatment
   ],
   providers: [
     Angular2TokenService,

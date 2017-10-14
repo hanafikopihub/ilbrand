@@ -1,15 +1,16 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Scegli una data</ion-title>
+    <ion-title style="text-align: center">Ydanco Seregno</ion-title>
+    <div style="text-align: center; color:grey; font-size: 12px; ">Listino</div>
     <ion-buttons right>
-      <button class="bar-button-default-salonist-user" ion-button icon-only><ion-icon name="contact"></ion-icon></button>
+      <button class="bar-button-default-salonist-user" ion-button icon-only (click)="list($event)"><ion-icon name="list"></ion-icon></button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <div class="">
-    <ion-slides #sliderMonth (ionSlideDidChange)="slideChanged()">
+    <ion-slides #sliderMonth >
       <ion-slide *ngFor="let month of months" [class.changebutton]="setColorMonth === month.value">
         <button class="btn-slide-month" ion-button [class.active]="changeColorMonth === month.value" ion-button (click)="onClickMonth(month)">
         <div  [class.active-text]="changeColorMonth === month.value"><b>{{month.name}}</b></div>
@@ -32,18 +33,30 @@
       </ion-slide>
     </ion-slides>
 
-    <ion-label>OPERATORI DISPONIBILI</ion-label>
+    <ion-label>OPERATORI DISPONIBILI</ion-label><div style="tex-align:right"><button (click)="setOperator()">Search</button></div>
     <hr>
-    <ion-row>
-      <div>
-        <ion-label><b>GIULIANA</b></ion-label>
+
+
+
+
+
+
+    <ion-row *ngFor="let operator of operators">
+      
+      <div *ngFor="let operator of operator.operators">
+        <ion-label><b>{{operator.operator_name}}</b></ion-label>
+        <ion-slides>
+      <ion-slide *ngFor="let time of operator.hours">
+        <h1>{{time}} timestamp</h1>
+      </ion-slide>
+    </ion-slides>
         <div class="massager-record">TOP STYLIST</div>
       </div>
       <div>
-        <img src="assets/icon/discount50.png" width="45px;">
+        <!-- <img src="assets/icon/discount50.png" width="45px;"> -->
       </div>
     </ion-row>
-    
+
     <ion-slides #sliderTime>
       <ion-slide *ngFor="let time of times">
         <button class="btn-slide-time" ion-button [class.active]="changeColorTime === time.value" (click)="onClickTime(time)">
@@ -51,8 +64,9 @@
         </button>
       </ion-slide>
     </ion-slides>
-  </div>
 
+  </div>
+  {{date}} / {{monthDisplay}} / {{year}}
   <ion-row padding>
     <button text-center ion-button color="danger" (click)=onSumbit() class="btn-next">Ulteriormente</button>
   </ion-row>

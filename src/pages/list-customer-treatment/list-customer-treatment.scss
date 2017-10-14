@@ -1,0 +1,38 @@
+page-list-customer-treatment {
+    hr {
+height: 2px !important;
+}
+  .title {
+    font-size: 25px;
+  }
+  .title-text {
+    margin-bottom: 25px;
+    color: #ea1515;
+    font-size: 16px;
+  }
+  .text-date {
+    font-size: 14px;
+    color: grey;
+  }
+  .label-reveration {
+    font-size: 1.5rem;
+    color: grey;
+  }
+  .btn-modif-telephone {
+      width: 100%;
+      background-color: white;
+      border: 1px solid #9A9A9A;
+      color: #9A9A9A;
+  }
+  .row-cast {
+    border-bottom: 1px solid #ccd3d9;
+    margin:0;
+    padding:0;
+  }
+  .delete-account {
+    text-align: center;
+    color: grey;
+    margin-top: 30px
+  }
+}
+  

@@ -1,0 +1,64 @@
+<!--
+  Generated template for the MyBookingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Grazie!</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="row-cast" padding>
+    <div class="salon-name" style="color:red">Grazie per aver prenotato!</div>
+  </ion-row>
+
+  <div class="box-card">
+    <ion-grid class="box-grid">
+      <div class="content-customer">
+        <ion-row class="row-box">
+          <b class="salon-name">Yndaco Seregno</b>
+        </ion-row>
+        <ion-row class="row-box">
+          <div class="salon-address">Via Garibaldi 75, Seregno</div>
+        </ion-row>
+      </div>
+
+      <div class="content-customer">
+        <ion-row class="row-box">
+          <b class="salon-name">Martedi 23 Agosto 2017</b>
+        </ion-row>
+
+        <ion-row class="row-box">
+          <div class="salon-address">ore <b class="salon-name"> 15:00</b></div>
+        </ion-row>
+
+        <ion-row class="row-box">
+          <div class="salon-address">con operatore <b class="salon-name">MARTINA</b></div>
+        </ion-row>
+      </div>
+
+      <ion-row class="row-box">
+        <div class="salon-address">totale <b class="total-value"> &#8364; 30,00</b></div>
+      </ion-row>
+      <ion-row class="row-box">
+        <b class="salon-name-content">Pagherai in salone</b>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-grid padding>
+    <i>
+      <p>Riceverai una conferma via email all'indirizzo con cui ti sei registrato (francesco.ambrosiano@gmail.com).</p>
+      <p>Si prega di prenotare in modo responsabile. E molto grave per i saloni quando  non ti presenti ad un appuntamento. Certo, possono capitare degli imprevisti urgenti, quindi se sei impossibilitato andare all'appuntamento sii cortese e annullalo dalla sezione 'prenotazioni' del tuo profilo.</p>
+	</i>
+  </ion-grid>
+
+  <ion-row padding>
+    <button text-center ion-button color="danger" class="btn-create-reminder" [navPush]="customerTreatment">CREA PROMEMORIA</button>
+    <button text-center ion-button class="btn-new-reservation">NUOVA PRENOTAZIONE</button>
+  </ion-row>
+  
+</ion-content>

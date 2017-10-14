@@ -23,4 +23,8 @@ export class AuthServiceProvider {
     return this._tokenService.userSignedIn();
   }
 
+  get currentUserData(): any{
+    return this._tokenService.currentUserData;
+  }
+
 }

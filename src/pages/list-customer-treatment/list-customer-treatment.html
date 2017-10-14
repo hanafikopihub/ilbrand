@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>il tuo profilo</ion-title>
+    <ion-buttons right>
+      <button class="bar-button-default-salonist-user" ion-button icon-only><ion-icon name="contact"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-row class="title">
+    Giuditta
+  </ion-row>
+  <ion-row class="title-text">{{treatment_count}} Prenotazioni effettuate</ion-row>
+
+  <ion-row class="label-reveration">LE TUE PRENOTAZIONI</ion-row>
+  <hr>
+  <ion-grid *ngFor="let treatment of treatments">
+    <ion-row class="row-cast">
+      <ion-col col-8>
+        <h6>{{treatment.title}}</h6>
+        <div class="treatment-detail-label">
+          <span><b>{{treatment.salon_name}}</b></span>
+        </div>
+      </ion-col>
+      <ion-col col-4>
+        <ion-icon class="text-date" float-right>
+          <i>{{treatment.reservation_date}}</i>
+        </ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
