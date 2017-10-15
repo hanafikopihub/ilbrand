@@ -27,4 +27,8 @@ export class AuthServiceProvider {
     return this._tokenService.currentUserData;
   }
 
+  get currentAuthData(): any{
+    return this._tokenService.currentAuthData;
+  }
+
 }

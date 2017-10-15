@@ -48,7 +48,6 @@ export class LoginPage {
       body:   this.loginData
     }).subscribe(
       res =>  {
-        console.log(res);
         this.loading.dismiss();
         this.navCtrl.setRoot(HomePage);
       },
