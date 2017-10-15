@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class RestapiServiceProvider {
   apiUrl = 'https://www.salonist.it/api/v1/';
-  apifake = 'https://74bc7841.ngrok.io/api/v1/';
+  apifake = 'https://023411ad.ngrok.io/api/v1/';
   salons: any;
   salon: any;
   items: any;
@@ -78,7 +78,7 @@ export class RestapiServiceProvider {
   }
 
   postBooking(data) {
-    return this.http.post(this.apiUrl + 'bookings/create', data)
+    return this.http.post(this.apifake + 'bookings/create', data)
       .map(res => res.json())
   }
   

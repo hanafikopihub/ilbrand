@@ -11,6 +11,7 @@
 </ion-header>
 
 <ion-content>
+<ion-content>
   <ion-row class="row-cast" padding>
     <div class="salon-name" style="color:red">Grazie per aver prenotato!</div>
   </ion-row>
@@ -28,20 +29,20 @@
 
       <div class="content-customer">
         <ion-row class="row-box">
-          <b class="salon-name">Martedi 23 Agosto 2017</b>
+          <b class="salon-name">{{dataOther.dayName}} {{dataOther.date}} {{dataOther.monthDisplay}} {{dataOther.year}}</b>
         </ion-row>
 
         <ion-row class="row-box">
-          <div class="salon-address">ore <b class="salon-name"> 15:00</b></div>
+          <div class="salon-address">ore <b class="salon-name"> {{dataOther.time}}</b></div>
         </ion-row>
 
         <ion-row class="row-box">
-          <div class="salon-address">con operatore <b class="salon-name">MARTINA</b></div>
+          <div class="salon-address">con operatore <b class="salon-name">{{operatorParam.operator_name | uppercase}}</b></div>
         </ion-row>
       </div>
 
       <ion-row class="row-box">
-        <div class="salon-address">totale <b class="total-value"> &#8364; 30,00</b></div>
+        <div class="salon-address">totale <b class="total-value"> &#8364; {{treatmentParam.price}}</b></div>
       </ion-row>
       <ion-row class="row-box">
         <b class="salon-name-content">Pagherai in salone</b>

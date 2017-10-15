@@ -17,8 +17,20 @@ import { HomePage } from '../home/home';
 })
 export class MyBookingPage {
   HomePage = HomePage;
+
+  treatmentParam:any;
+  operatorParam:any;
+  dataBooking:any;
+  dataOther:any;
+
   customerTreatment = ListCustomerTreatment;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+        
+    this.treatmentParam = this.navParams.get('treatment');
+    this.operatorParam = this.navParams.get('operators');
+    this.dataBooking = this.navParams.get('dataBooking');
+    this.dataOther = this.navParams.get('dataOther');
+    debugger;
   }
 
   ionViewDidLoad() {

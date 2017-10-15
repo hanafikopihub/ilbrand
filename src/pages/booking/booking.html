@@ -32,22 +32,25 @@
         </button>
       </ion-slide>
     </ion-slides>
-<!-- 
+
     <ion-label>OPERATORI DISPONIBILI</ion-label>
     <hr>
-    
-    <ion-list *ngFor="let operator of operators">
-      <div *ngFor="let operator of operator.operators">
-        <div style="margin-bottom:10px;">{{operator.operator_name}}</div>
-        <select [class.active-select]="changeColorSelect === true" [(ngModel)]="timeSet" style="margin-bottom:5px;" >
-          <option *ngFor="let time of operator.hours" (click)="onChangeSelect()">{{time}}</option>
-        </select>
+    <ion-row>
+      <div>
+        <ion-label><b style="font-size:16px;">{{nameOperator}}</b></ion-label>
         <div class="massager-record">TOP STYLIST</div>
       </div>
-    </ion-list>
- -->
+    </ion-row>
+    <ion-slides #sliderTime>
+      <ion-slide *ngFor="let time of hoursBooking">
+        <button class="btn-slide-time" ion-button [class.active]="changeColorTime === time" (click)="onClickTime(time)">
+        <div [class.active-text]="changeColorTime === time"><b>{{time}}</b></div>  
+        </button>
+      </ion-slide>
+    </ion-slides>
+
   </div>
   <ion-row padding>
-    <button text-center ion-button color="danger" (click)=onBooking() class="btn-next">Ulteriormente</button>
+    <button text-center ion-button color="danger" (click)=onSumbit() class="btn-next">Ulteriormente</button>
   </ion-row>
 </ion-content>

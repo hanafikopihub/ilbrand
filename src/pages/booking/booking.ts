@@ -12,7 +12,8 @@ import { ListPage } from '../list/list';
 
 export class BookingPage {
   treatmentParam: any;
-
+  hoursBooking:Array<any>;
+  nameOperator:string;
   changeColorTime: string;
   changeColorDate: string;
   changeColorMonth: string;
@@ -21,6 +22,8 @@ export class BookingPage {
   timeSet: string;
   time: any;
   date: any;
+  dayName:any;
+  monthName:any;
   month: any;
   year: any;
   dateFull: string;
@@ -31,7 +34,7 @@ export class BookingPage {
   months: Array<any>;
   dates: Array<any>;
 
-  operators: Array<any>;
+  operators: any;
 
   setColorMonth: any;
   setColorDate: any;
@@ -39,6 +42,7 @@ export class BookingPage {
   @ViewChild('sliderMonth') sliderMonth: Slides;
   @ViewChild('sliderMonth') test: Slides;
   @ViewChild('sliderDate') sliderDate: Slides;
+  @ViewChild('sliderTime') sliderTime: Slides;
 
   constructor(
     public navParams: NavParams,
@@ -48,7 +52,6 @@ export class BookingPage {
     public _restapiServiceProvider: RestapiServiceProvider) {
 
     this.treatmentParam = this.navParams.get('treatment');
-    debugger;
     // Get Month Api
     this.getMonth();
 
@@ -57,10 +60,8 @@ export class BookingPage {
 
     // Starting Date now
     this.formatDate();
-    debugger
     this._restapiServiceProvider.getMonth(this.month, this.year)
       .subscribe(response => {
-        debugger;
       })
     this.dates = [
       { "id": "1", "date": "01", "day": "Mercoledì", "shortDay": "Mer" },
@@ -96,7 +97,7 @@ export class BookingPage {
       { "id": "31", "date": "29", "day": "Dominica", "shortDay": "Dom" }
     ]
 
-    // this.setOperator();
+    this.setOperator();
   }
 
 
@@ -116,6 +117,8 @@ export class BookingPage {
     this.sliderMonth.slidesPerView = 3
     this.sliderDate.centeredSlides = true
     this.sliderDate.slidesPerView = 3
+    this.sliderTime.centeredSlides = true
+    this.sliderTime.slidesPerView = 3
 
   }
 
@@ -151,12 +154,18 @@ export class BookingPage {
 
   formatDate() {
     const d = new Date();
+    
+    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    
     let month = '' + (d.getMonth() + 1);
     let day = '' + d.getDate();
     this.year = '' + d.getFullYear();
 
     this.date = day;
     this.month = month;
+    this.dayName = days[d.getDay()];
+    this.monthName = monthNames[d.getMonth()];
 
     // if (this.date.length < 2) { this.dateDisplay = '0' + this.date; }
 
@@ -173,43 +182,45 @@ export class BookingPage {
     this.month = month.value;
     this.dates = month.date;
     this.changeColorMonth = month.value;
-    // this.setOperator();
+    this.setOperator();
   }
 
   onClickDate(date) {
     this.setColorDate = 'false';
     this.date = date.date;
+    this.dayName = date.day;
     this.changeColorDate = date.id;
-    // this.setOperator();
+    this.setOperator();
   }
 
   onClickTime(time) {
-    this.changeColorTime = time.value;
-    this.time = time.value;
+    this.changeColorTime = time;
+    this.timeSet = time
   }
 
   setOperator() {
 
     this.dateFull = this.date + '/' + this.month + '/' + this.year
 
-    // const arr:Array<any> = [];
-
-    // const treatmentArr = arr.push[this.salonParam];
-
-    // const treatments = treatmentArr.map(o => {
-    //   return {
-    //     treatment_id: 36227,
-    //     duration: o.duration_in_minute,
-    //   };
-    // });
-    const treatmentGetOperator = [{ "treatment_id": this.treatmentParam.s_treatment_id, "duration": this.treatmentParam.duration_in_minute }]
+    const treatmentGetOperator = [{ "treatment_id": this.treatmentParam.s_treatment_id, "duration": this.treatmentParam.duration }]
+    
     let data = { "when": this.dateFull, "treatments": treatmentGetOperator }
+
     this._restapiServiceProvider.getOperator(data).subscribe(response => {
-      this.operators = response.operators
+      if(response.operators[0].operators.length == 0) {
+        this.nameOperator = null;
+        this.hoursBooking = null;
+        this.operators =null;
+        return this.presentToast('Nessuna disponibilita per il giorno selezionato');
+      }
+      this.operators = response.operators[0].operators[0]
+      this.hoursBooking = response.operators[0].operators[0].hours
+      this.nameOperator = response.operators[0].operators[0].operator_name
+      
     }, (error) => {
-      debugger
     })
   }
+
   list(ev) {
     let listModal = this._modalCtrl.create(ListPage)
     listModal.present();
@@ -219,51 +230,16 @@ export class BookingPage {
     this.changeColorSelect = true;
   }
 
-
-  getOperatorSingle() {
-
-    this.dateFull = this.date + '/' + this.month + '/' + this.year
-  const treatmentGetOperator = [{ "treatment_id": this.treatmentParam.s_treatment_id, "duration": this.treatmentParam.duration_in_minute }]
-    let data = { "when": this.dateFull, "treatments": treatmentGetOperator }
-    this._restapiServiceProvider.getOperator(data).subscribe(response => {
-      this.operators = response.operators[0];
-      debugger;
-    }, (error) => {
-      debugger
-    })
-  }
-
-
-  onBooking() {
-    
-    this.dateFull = this.date + '/' + this.month + '/' + this.year
-
-    const treatmentGetOperator = [{ "treatment_id": this.treatmentParam.s_treatment_id, "duration": this.treatmentParam.duration_in_minute }]
-    
-    let data = { "when": this.dateFull, "treatments": treatmentGetOperator }
-    
-    this._restapiServiceProvider.getOperator(data).subscribe(response => {
-      this.onSave(response);
-    },
-    (error) => {
-      debugger
-    })
-
-  
-  }
-
-  onSave(response) {
-
-    if(response.operators[0].operators.length == 0) {
-        this.presentToast('Nessuna disponibilita per il giorno selezionato');
+  onSumbit() {
+    debugger
+    if (this.operators == null) {
+      return this.presentToast('Nessuna disponibilita per il giorno selezionato');
     }
     else {
-      debugger
       const treatments = JSON.parse(localStorage.getItem("treatments"));
-      const durationDate = treatments[0].duration_in_minute
-      const operator_id = response.operators[0].operators[0].operator_id
-      this.timeSet = response.operators[0].operators[0].hours[0]
-      const s_treatment_id = treatments[0].s_treatment_id
+      const durationDate = this.treatmentParam.duration
+      const operator_id = this.operators.operator_id
+      const s_treatment_id = this.treatmentParam.s_treatment_id
 
 
       const startDate = this.year + '.' + this.month + '.' + this.date + ' ' + this.timeSet;
@@ -271,16 +247,20 @@ export class BookingPage {
       const startDateTime = new Date(startDate).getTime() / 1000
       const endDateTime = startDateTime + durationDate
 
-      const data = { booking: { "salon_id": 604, length: durationDate, "start": startDateTime, "end": endDateTime, "from_where": "android", "user_id": "967444", "operator_id": operator_id, "s_treatment_id": s_treatment_id } }
+      const dataBooking = { booking: { "salon_id": 321, length: durationDate, "start": startDateTime, "end": endDateTime, "from_where": "android", "user_id": 96647, "operator_id": operator_id, "s_treatment_id": s_treatment_id } }
 
-      this._restapiServiceProvider.postBooking(data).subscribe(response => {
-        this._navController.push(HistoryBookingPage)
-      }, (error) => {
-        alert('failed submit')
-      })
+      const dataOther = { "dayName": this.dayName,"monthName": this.monthName, "date": this.date, "time": this.timeSet }
+      
+      if ( this.timeSet == null) {
+        return this.presentToast('Nessuna disponibilita per il giorno selezionato');
+      }
+      this._navController.push(HistoryBookingPage, {dataBooking: dataBooking, treatment:this.treatmentParam, operators: this.operators, dataOther: dataOther})
+
+
+    }
   }
-  }
-    presentToast(msg) {
+
+  presentToast(msg) {
     let toast = this.toastCtrl.create({
       message: msg,
       duration: 3000,

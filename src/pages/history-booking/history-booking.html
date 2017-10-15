@@ -13,8 +13,8 @@
   <ion-label class="header-label"><b>DATA SCELTA</b></ion-label>
   <hr>
 
-  <div><b class="customer-value">Martedi 23 Agosto</b> ore <b class="customer-value">14:00</b></div>
-  <div>con operator <span class="operator-value">MARTINA</span></div>
+  <div><b class="customer-value">{{dataOther.dayName}} {{dataOther.date}} {{dataOther.monthName}}</b> ore <b class="customer-value">{{dataOther.time}}</b></div>
+  <div>con operator <span class="operator-value">{{operatorParam.operator_name | uppercase}}</span></div>
   <ion-label class="header-label"><b>SALONE</b></ion-label>
   <hr>
   
@@ -30,15 +30,15 @@
   <ion-label class="header-label"><b>TRATTAMENTI</b></ion-label>
   <hr>
 
-  <ion-grid *ngFor="let cart of carts">
+  <ion-grid>
     <ion-row class="row-cast">
       <ion-col>
-        <h6><b>{{cart.product}}</b></h6>
+        <h6><b>{{treatmentParam.des_treatment}}</b></h6>
         <div class="treatment-detail-label">
-          <span class="gray-text">Durata:</span> <b>{{cart.durata}}.</b>
+          <span class="gray-text">Durata:</span> <b>{{treatmentParam.duration_in_minute}}.</b>
         </div>
         <div class="treatment-detail-label">
-          <span class="gray-text">Prezzo:</span> &#8364; <b>{{cart.prezzo}}</b>
+          <span class="gray-text">Prezzo:</span> &#8364; <b>{{treatmentParam.price}}</b>
         </div>
       </ion-col>
     </ion-row>
@@ -62,7 +62,7 @@
 
   </ion-grid>
   <ion-row padding>
-    <button text-center ion-button color="danger" class="trova-button-home" [navPush]="MyBookingPage">CONFERMA PRENOTAZIONE</button>
+    <button text-center ion-button color="danger" class="trova-button-home" (click)="onSubmit()">CONFERMA PRENOTAZIONE</button>
     <button text-center ion-button class="cambia-orario">CAMBIA ORARIO</button>
   </ion-row>
 
