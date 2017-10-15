@@ -41,13 +41,11 @@ export class ListTreatmentPage {
 
   addToCart() {
     const treatmentls = JSON.parse(localStorage.getItem("treatments"));
-    debugger;
     if(treatmentls != null){
 
     this.addTreatments = this.addTreatments.concat(treatmentls);
     }
     localStorage.setItem("treatments", JSON.stringify(this.addTreatments))
-    debugger
     this.addTreatments = [];
     //this._navCtrl.setRoot
     this._navCtrl.push(BookingPage);

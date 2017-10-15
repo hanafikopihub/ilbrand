@@ -30,7 +30,6 @@ export class MyBookingPage {
     this.operatorParam = this.navParams.get('operators');
     this.dataBooking = this.navParams.get('dataBooking');
     this.dataOther = this.navParams.get('dataOther');
-    debugger;
   }
 
   ionViewDidLoad() {

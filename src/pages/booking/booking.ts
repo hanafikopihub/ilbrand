@@ -231,7 +231,6 @@ export class BookingPage {
   }
 
   onSumbit() {
-    debugger
     if (this.operators == null) {
       return this.presentToast('Nessuna disponibilita per il giorno selezionato');
     }

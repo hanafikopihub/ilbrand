@@ -21,7 +21,6 @@ export class CartPage {
     public _restapiServiceProvider: RestapiServiceProvider) {
 
     this.treatments = JSON.parse(localStorage.getItem("treatments"));
-    debugger;
    }
   
     list(ev) {
@@ -30,7 +29,6 @@ export class CartPage {
   }
 
   remove(treatment) {
-    debugger;
     this.treatments = this.treatments.filter(function( obj ) {
       return obj.s_treatment_id !== treatment.s_treatment_id;
     });
@@ -38,7 +36,6 @@ export class CartPage {
     localStorage.removeItem("treatments")
     localStorage.setItem("treatments", JSON.stringify(this.treatments))
 
-    debugger;
 
   }
 
