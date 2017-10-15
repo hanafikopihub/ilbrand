@@ -11,11 +11,12 @@ import { ListPage } from '../list/list';
 })
 
 export class BookingPage {
-  salonParam: any;
+  treatmentParam: any;
 
   changeColorTime: string;
   changeColorDate: string;
   changeColorMonth: string;
+  changeColorSelect: boolean;
 
   timeSet: string;
   time: any;
@@ -45,7 +46,7 @@ export class BookingPage {
     public _modalCtrl: ModalController,
     public _restapiServiceProvider: RestapiServiceProvider) {
 
-    this.salonParam = this.navParams.get('treatment');
+    this.treatmentParam = this.navParams.get('treatment');
     debugger;
     // Get Month Api
     this.getMonth();
@@ -200,7 +201,7 @@ export class BookingPage {
     //     duration: o.duration_in_minute,
     //   };
     // });
-    const treatmentGetOperator = [{ "treatment_id": this.salonParam.s_treatment_id, "duration": this.salonParam.duration_in_minute }]
+    const treatmentGetOperator = [{ "treatment_id": this.treatmentParam.s_treatment_id, "duration": this.treatmentParam.duration_in_minute }]
     let data = { "when": this.dateFull, "treatments": treatmentGetOperator }
     this._restapiServiceProvider.getOperator(data).subscribe(response => {
       this.operators = response.operators
@@ -213,6 +214,9 @@ export class BookingPage {
     listModal.present();
   }
 
+  onChangeSelect() {
+    this.changeColorSelect = true;
+  }
   onSumbit() {
     debugger
     if (this.operators[0].operators.length == 0) {

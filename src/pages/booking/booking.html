@@ -39,8 +39,8 @@
     <ion-list *ngFor="let operator of operators">
       <div *ngFor="let operator of operator.operators">
         <div style="margin-bottom:10px;">{{operator.operator_name}}</div>
-        <select [(ngModel)]="timeSet" style="margin-bottom:5px;">
-          <option *ngFor="let time of operator.hours" value="{{time}}">{{time}}</option>
+        <select [class.active-select]="changeColorSelect === true" [(ngModel)]="timeSet" style="margin-bottom:5px;" >
+          <option *ngFor="let time of operator.hours" (click)="onChangeSelect()">{{time}}</option>
         </select>
         <!-- <div class="massager-record">TOP STYLIST</div> -->
       </div>
