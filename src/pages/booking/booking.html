@@ -10,7 +10,7 @@
 
 <ion-content padding>
   <div class="">
-    <ion-slides #sliderMonth >
+    <ion-slides #sliderMonth>
       <ion-slide *ngFor="let month of months" [class.changebutton]="setColorMonth === month.value">
         <button class="btn-slide-month" ion-button [class.active]="changeColorMonth === month.value" ion-button (click)="onClickMonth(month)">
         <div  [class.active-text]="changeColorMonth === month.value"><b>{{month.name}}</b></div>
@@ -33,40 +33,20 @@
       </ion-slide>
     </ion-slides>
 
-    <ion-label>OPERATORI DISPONIBILI</ion-label><div style="tex-align:right"><button (click)="setOperator()">Search</button></div>
+    <ion-label>OPERATORI DISPONIBILI</ion-label>
     <hr>
-
-
-
-
-
-
-    <ion-row *ngFor="let operator of operators">
-      
+    
+    <ion-list *ngFor="let operator of operators">
       <div *ngFor="let operator of operator.operators">
-        <ion-label><b>{{operator.operator_name}}</b></ion-label>
-        <ion-slides>
-      <ion-slide *ngFor="let time of operator.hours">
-        <h1>{{time}} timestamp</h1>
-      </ion-slide>
-    </ion-slides>
-        <div class="massager-record">TOP STYLIST</div>
+        <div style="margin-bottom:10px;">{{operator.operator_name}}</div>
+        <select [(ngModel)]="timeSet" style="margin-bottom:5px;">
+          <option *ngFor="let time of operator.hours" value="{{time}}">{{time}}</option>
+        </select>
+        <!-- <div class="massager-record">TOP STYLIST</div> -->
       </div>
-      <div>
-        <!-- <img src="assets/icon/discount50.png" width="45px;"> -->
-      </div>
-    </ion-row>
-
-    <ion-slides #sliderTime>
-      <ion-slide *ngFor="let time of times">
-        <button class="btn-slide-time" ion-button [class.active]="changeColorTime === time.value" (click)="onClickTime(time)">
-        <div [class.active-text]="changeColorTime === time.value"><b>{{time.value}}</b></div>  
-        </button>
-      </ion-slide>
-    </ion-slides>
+    </ion-list>
 
   </div>
-  {{date}} / {{monthDisplay}} / {{year}}
   <ion-row padding>
     <button text-center ion-button color="danger" (click)=onSumbit() class="btn-next">Ulteriormente</button>
   </ion-row>

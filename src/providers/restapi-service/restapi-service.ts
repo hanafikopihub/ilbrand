@@ -11,6 +11,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class RestapiServiceProvider {
   apiUrl = 'https://www.salonist.it/api/v1/';
+  apifake = 'https://74bc7841.ngrok.io/api/v1/';
   salons: any;
   salon: any;
   items: any;
@@ -38,6 +39,12 @@ export class RestapiServiceProvider {
       .map(res => res.json())
   }
 
+  getMonth(month, year) {
+    const data = {year:year, month:month}
+    return this.http.post(this.apiUrl +'finds/month_calendar',data)
+    .map(res => res.json())
+  }
+  
   searchSalons(treatment, location, page){
     return new Promise(resolve => {
       this.http.post(this.apiUrl + 'finds/salons', {treatment: treatment, where: location, page: page})
@@ -70,4 +77,9 @@ export class RestapiServiceProvider {
       .map(res => res.json())
   }
 
+  postBooking(data) {
+    return this.http.post(this.apiUrl + 'bookings/create', data)
+      .map(res => res.json())
+  }
+  
 }

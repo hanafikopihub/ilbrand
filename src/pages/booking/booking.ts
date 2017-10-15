@@ -11,16 +11,18 @@ import { ListPage } from '../list/list';
 })
 
 export class BookingPage {
+  salonParam: any;
 
   changeColorTime: string;
   changeColorDate: string;
   changeColorMonth: string;
 
+  timeSet: string;
   time: any;
   date: any;
   month: any;
-  year:any;
-  dateFull:string;
+  year: any;
+  dateFull: string;
 
   monthDisplay: any;
 
@@ -43,7 +45,7 @@ export class BookingPage {
     public _modalCtrl: ModalController,
     public _restapiServiceProvider: RestapiServiceProvider) {
 
-    let salonParam = this.navParams.get('treatment');
+    this.salonParam = this.navParams.get('treatment');
     debugger;
     // Get Month Api
     this.getMonth();
@@ -53,7 +55,11 @@ export class BookingPage {
 
     // Starting Date now
     this.formatDate();
-
+    debugger
+    this._restapiServiceProvider.getMonth(this.month, this.year)
+      .subscribe(response => {
+        debugger;
+      })
     this.dates = [
       { "id": "1", "date": "01", "day": "Mercoledì", "shortDay": "Mer" },
       { "id": "2", "date": "02", "day": "Giovedi", "shortDay": "Gio" },
@@ -162,15 +168,17 @@ export class BookingPage {
 
   onClickMonth(month) {
     this.setColorMonth = 'false';
-    this.monthDisplay = month.value;
+    this.month = month.value;
     this.dates = month.date;
     this.changeColorMonth = month.value;
+    this.setOperator();
   }
 
   onClickDate(date) {
     this.setColorDate = 'false';
     this.date = date.date;
     this.changeColorDate = date.id;
+    this.setOperator();
   }
 
   onClickTime(time) {
@@ -179,44 +187,57 @@ export class BookingPage {
   }
 
   setOperator() {
-    
-    this.dateFull = this.date + '/' + this.monthDisplay + '/' + this.year
 
-    const treatmentStorage = JSON.parse(localStorage.getItem("treatments"));
+    this.dateFull = this.date + '/' + this.month + '/' + this.year
 
-    const treatments = treatmentStorage.map(o => {
-      return {
-        treatment_id: 36227,
-        duration: o.duration_in_minute,
-      };
-    });
+    // const arr:Array<any> = [];
 
-    console.log(treatments)
-    let data = {"when":this.dateFull, "treatments" : treatments}
-    this._restapiServiceProvider.getOperator(data).subscribe(response=>{
+    // const treatmentArr = arr.push[this.salonParam];
+
+    // const treatments = treatmentArr.map(o => {
+    //   return {
+    //     treatment_id: 36227,
+    //     duration: o.duration_in_minute,
+    //   };
+    // });
+    const treatmentGetOperator = [{ "treatment_id": this.salonParam.s_treatment_id, "duration": this.salonParam.duration_in_minute }]
+    let data = { "when": this.dateFull, "treatments": treatmentGetOperator }
+    this._restapiServiceProvider.getOperator(data).subscribe(response => {
       this.operators = response.operators
-    },(error)=>{
+    }, (error) => {
       debugger
     })
   }
-    list(ev) {
+  list(ev) {
     let listModal = this._modalCtrl.create(ListPage)
     listModal.present();
   }
-   
+
   onSumbit() {
+    debugger
+    if (this.operators[0].operators.length == 0) {
+      alert('Operator required')
+    }
+    else {
+      const treatments = JSON.parse(localStorage.getItem("treatments"));
+      const durationDate = treatments[0].duration_in_minute
+      const operator_id = this.operators[0].operators[0].operator_id
+      const s_treatment_id = treatments[0].s_treatment_id
 
-    const treatments = JSON.parse(localStorage.getItem("treatments"));
 
-    const data = {booking: {"salon_id":"604", "start":"1508297400", "end":"1508301000", "from_where":"android", "user_id":"96647", "operator_id":"694", "s_treatment_id":"13043"}, "treatments":treatments}
-    
-    console.log(data);
-    this._navController.push(HistoryBookingPage)
-    // this._restapiServiceProvider.postBooking(data).subscribe(response=>{
-    //   debugger
-    // },(error)=>{
-    //   debugger
-    // })
+      const startDate = this.year + '.' + this.month + '.' + this.date + ' ' + this.timeSet;
+
+      const startDateTime = new Date(startDate).getTime() / 1000
+      const endDateTime = startDateTime + durationDate
+
+      const data = { booking: { "salon_id": 604, length: durationDate, "start": startDateTime, "end": endDateTime, "from_where": "android", "user_id": "967444", "operator_id": operator_id, "s_treatment_id": s_treatment_id } }
+
+      this._restapiServiceProvider.postBooking(data).subscribe(response => {
+        this._navController.push(HistoryBookingPage)
+      }, (error) => {
+        alert('failed submit')
+      })
+    }
   }
 }
 

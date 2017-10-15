@@ -1,5 +1,15 @@
 
 page-booking {
+
+  form, input, optgroup, select {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    width: 100%  !important;
+    height: 34px !important;
+    background-color: white !important;
+}
+
 .hr {
   height: 2px !important;
 }
