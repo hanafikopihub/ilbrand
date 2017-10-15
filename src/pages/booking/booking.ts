@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
 import { HistoryBookingPage } from '../history-booking/history-booking';
 import { ListPage } from '../list/list';
 
@@ -44,6 +44,7 @@ export class BookingPage {
     public navParams: NavParams,
     public _navController: NavController,
     public _modalCtrl: ModalController,
+    private toastCtrl: ToastController,
     public _restapiServiceProvider: RestapiServiceProvider) {
 
     this.treatmentParam = this.navParams.get('treatment');
@@ -95,7 +96,7 @@ export class BookingPage {
       { "id": "31", "date": "29", "day": "Dominica", "shortDay": "Dom" }
     ]
 
-    this.setOperator();
+    // this.setOperator();
   }
 
 
@@ -172,14 +173,14 @@ export class BookingPage {
     this.month = month.value;
     this.dates = month.date;
     this.changeColorMonth = month.value;
-    this.setOperator();
+    // this.setOperator();
   }
 
   onClickDate(date) {
     this.setColorDate = 'false';
     this.date = date.date;
     this.changeColorDate = date.id;
-    this.setOperator();
+    // this.setOperator();
   }
 
   onClickTime(time) {
@@ -217,15 +218,51 @@ export class BookingPage {
   onChangeSelect() {
     this.changeColorSelect = true;
   }
-  onSumbit() {
-    debugger
-    if (this.operators[0].operators.length == 0) {
-      alert('Operator required')
+
+
+  getOperatorSingle() {
+
+    this.dateFull = this.date + '/' + this.month + '/' + this.year
+  const treatmentGetOperator = [{ "treatment_id": this.treatmentParam.s_treatment_id, "duration": this.treatmentParam.duration_in_minute }]
+    let data = { "when": this.dateFull, "treatments": treatmentGetOperator }
+    this._restapiServiceProvider.getOperator(data).subscribe(response => {
+      this.operators = response.operators[0];
+      debugger;
+    }, (error) => {
+      debugger
+    })
+  }
+
+
+  onBooking() {
+    
+    this.dateFull = this.date + '/' + this.month + '/' + this.year
+
+    const treatmentGetOperator = [{ "treatment_id": this.treatmentParam.s_treatment_id, "duration": this.treatmentParam.duration_in_minute }]
+    
+    let data = { "when": this.dateFull, "treatments": treatmentGetOperator }
+    
+    this._restapiServiceProvider.getOperator(data).subscribe(response => {
+      this.onSave(response);
+    },
+    (error) => {
+      debugger
+    })
+
+  
+  }
+
+  onSave(response) {
+
+    if(response.operators[0].operators.length == 0) {
+        this.presentToast('Nessuna disponibilita per il giorno selezionato');
     }
     else {
+      debugger
       const treatments = JSON.parse(localStorage.getItem("treatments"));
       const durationDate = treatments[0].duration_in_minute
-      const operator_id = this.operators[0].operators[0].operator_id
+      const operator_id = response.operators[0].operators[0].operator_id
+      this.timeSet = response.operators[0].operators[0].hours[0]
       const s_treatment_id = treatments[0].s_treatment_id
 
 
@@ -241,7 +278,21 @@ export class BookingPage {
       }, (error) => {
         alert('failed submit')
       })
-    }
+  }
+  }
+    presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      position: 'bottom',
+      dismissOnPageChange: true
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
   }
 }
 
