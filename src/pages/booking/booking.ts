@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
 import { HistoryBookingPage } from '../history-booking/history-booking';
 import { ListPage } from '../list/list';
@@ -45,6 +46,7 @@ export class BookingPage {
   @ViewChild('sliderTime') sliderTime: Slides;
 
   constructor(
+    public _authServiceProvider: AuthServiceProvider,
     public navParams: NavParams,
     public _navController: NavController,
     public _modalCtrl: ModalController,
@@ -178,6 +180,7 @@ export class BookingPage {
   }
 
   onClickMonth(month) {
+    this.monthName = month.name;
     this.setColorMonth = 'false';
     this.month = month.value;
     this.dates = month.date;
@@ -246,9 +249,9 @@ export class BookingPage {
       const startDateTime = new Date(startDate).getTime() / 1000
       const endDateTime = startDateTime + durationDate
 
-      const dataBooking = { booking: { "salon_id": 321, length: durationDate, "start": startDateTime, "end": endDateTime, "from_where": "android", "user_id": 96647, "operator_id": operator_id, "s_treatment_id": s_treatment_id } }
+      const dataBooking = { booking: { "salon_id": 604, length: durationDate, "start": startDateTime, "end": endDateTime, "from_where": "android", "user_id": this._authServiceProvider.currentUserData.uid, "operator_id": operator_id, "s_treatment_id": s_treatment_id } }
 
-      const dataOther = { "dayName": this.dayName,"monthName": this.monthName, "date": this.date, "time": this.timeSet }
+      const dataOther = { "dayName": this.dayName,"monthName": this.monthName, "date": this.date, "time": this.timeSet, "year": this.year }
       
       if ( this.timeSet == null) {
         return this.presentToast('Nessuna disponibilita per il giorno selezionato');
