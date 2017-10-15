@@ -3,6 +3,7 @@ import { ContactPage } from '../contact/contact';
 import { LoginPage } from '../login/login';
 import { HomePage } from '../home/home';
 import { StaffPage } from '../staff/staff';
+import { ListCustomerTreatment } from '../list-customer-treatment/list-customer-treatment'
 import { ViewController, NavController, ModalController, LoadingController, ToastController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { Angular2TokenService } from 'angular2-token';
@@ -17,6 +18,7 @@ export class ListPage {
   ContactPage = ContactPage;
   LoginPage = LoginPage;
   StaffPage = StaffPage;
+  ListCustomerTreatment = ListCustomerTreatment;
   public isSignedIn: boolean;
 
   constructor(
@@ -33,6 +35,10 @@ export class ListPage {
   goLogin(ev) {
     let loginModal = this._modalController.create(LoginPage)
     loginModal.present();
+  }
+
+  goMybook(ev){
+    this._navCtrl.push(ListCustomerTreatment)
   }
 
   doLogout() {
