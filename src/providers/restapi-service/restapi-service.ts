@@ -78,7 +78,7 @@ export class RestapiServiceProvider {
   }
 
   postBooking(data) {
-    return this.http.post(this.apifake + 'bookings/create', data)
+    return this.http.post(this.apiUrl + 'bookings/create', data)
       .map(res => res.json())
   }
   
