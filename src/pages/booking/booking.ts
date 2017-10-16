@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-import { NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, ToastController, AlertController, LoadingController } from 'ionic-angular';
 import { HistoryBookingPage } from '../history-booking/history-booking';
 import { ListPage } from '../list/list';
 
@@ -13,24 +13,26 @@ import { ListPage } from '../list/list';
 
 export class BookingPage {
   treatmentParam: any;
-  hoursBooking:Array<any>;
-  nameOperator:string;
+  hoursBooking: Array<any>;
+  nameOperator: string;
   changeColorTime: string;
   changeColorDate: string;
   changeColorMonth: string;
   changeColorSelect: boolean;
 
+  loading: any;
   timeSet: string;
   time: any;
   date: any;
-  dayName:any;
-  monthName:any;
+  dayName: any;
+  monthName: any;
   month: any;
   year: any;
   dateFull: string;
 
   monthDisplay: any;
 
+  salon: any;
   times: Array<any>;
   months: Array<any>;
   dates: Array<any>;
@@ -48,9 +50,11 @@ export class BookingPage {
   constructor(
     public _authServiceProvider: AuthServiceProvider,
     public navParams: NavParams,
+    public _alertCtrl: AlertController,
     public _navController: NavController,
     public _modalCtrl: ModalController,
     private toastCtrl: ToastController,
+    public _loadingController: LoadingController,
     public _restapiServiceProvider: RestapiServiceProvider) {
 
     this.treatmentParam = this.navParams.get('treatment');
@@ -156,10 +160,10 @@ export class BookingPage {
 
   formatDate() {
     const d = new Date();
-    
+
     var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    
+
     let month = '' + (d.getMonth() + 1);
     let day = '' + d.getDate();
     this.year = '' + d.getFullYear();
@@ -180,6 +184,10 @@ export class BookingPage {
   }
 
   onClickMonth(month) {
+    // clear time input
+    this.changeColorTime = "false"
+    this.timeSet = undefined
+
     this.monthName = month.name;
     this.setColorMonth = 'false';
     this.month = month.value;
@@ -189,6 +197,10 @@ export class BookingPage {
   }
 
   onClickDate(date) {
+    // clear time input
+    this.changeColorTime = "false"
+    this.timeSet = undefined
+
     this.setColorDate = 'false';
     this.date = date.date;
     this.dayName = date.day;
@@ -203,24 +215,27 @@ export class BookingPage {
 
   setOperator() {
 
+    this.showLoader();
     this.dateFull = this.date + '/' + this.month + '/' + this.year
 
     const treatmentGetOperator = [{ "treatment_id": this.treatmentParam.s_treatment_id, "duration": this.treatmentParam.duration }]
-    
+
     let data = { "when": this.dateFull, "treatments": treatmentGetOperator }
 
     this._restapiServiceProvider.getOperator(data).subscribe(response => {
-      if(response.operators[0].operators.length == 0) {
+      this.loading.dismiss();
+      if (response.operators[0].operators.length == 0) {
         this.nameOperator = null;
         this.hoursBooking = null;
-        this.operators =null;
+        this.operators = null;
         return this.presentToast('Nessuna disponibilita per il giorno selezionato');
       }
       this.operators = response.operators[0].operators[0]
       this.hoursBooking = response.operators[0].operators[0].hours
       this.nameOperator = response.operators[0].operators[0].operator_name
-      
+
     }, (error) => {
+      this.loading.dismiss();
     })
   }
 
@@ -234,32 +249,49 @@ export class BookingPage {
   }
 
   onSumbit() {
-    if (this.operators == null) {
-      return this.presentToast('Nessuna disponibilita per il giorno selezionato');
-    }
-    else {
-      const treatments = JSON.parse(localStorage.getItem("treatments"));
-      const durationDate = this.treatmentParam.duration
-      const operator_id = this.operators.operator_id
-      const s_treatment_id = this.treatmentParam.s_treatment_id
 
+    if (this._authServiceProvider.userSignedIn) {
 
-      const startDate = this.year + '.' + this.month + '.' + this.date + ' ' + this.timeSet;
-
-      const startDateTime = new Date(startDate).getTime() / 1000
-      const endDateTime = startDateTime + durationDate
-
-      const dataBooking = { booking: { "salon_id": 604, length: durationDate, "start": startDateTime, "end": endDateTime, "from_where": "android", "user_id": this._authServiceProvider.currentUserData.uid, "operator_id": operator_id, "s_treatment_id": s_treatment_id } }
-
-      const dataOther = { "dayName": this.dayName,"monthName": this.monthName, "date": this.date, "time": this.timeSet, "year": this.year }
-      
-      if ( this.timeSet == null) {
+      if (this.operators == null || this.timeSet == undefined) {
         return this.presentToast('Nessuna disponibilita per il giorno selezionato');
       }
-      this._navController.push(HistoryBookingPage, {dataBooking: dataBooking, treatment:this.treatmentParam, operators: this.operators, dataOther: dataOther})
+      else {
 
+        const datetime = this.year + '.' + this.month + '.' + this.date;
+        const datetimeTp = new Date(datetime).getTime() / 1000
+        const start = datetime + ' ' + this.timeSet;
+        const startDateTp = new Date(start).getTime() / 1000
+        const endDateTime = datetimeTp + this.treatmentParam.duration
 
+        const dataBooking = {
+          booking: {
+            "start": startDateTp,
+            "length": this.treatmentParam.duration,
+            "end": endDateTime,
+            "from_where": "android",
+            "salon_id": 604,
+            "operator_id": this.operators.operator_id,
+            "s_treatment_id": this.treatmentParam.s_treatment_id,
+            "user_id": this._authServiceProvider.currentAuthData.uid
+          }
+        }
+
+        const dataOther = {
+          "dayName": this.dayName,
+          "monthName": this.monthName,
+          "date": this.date,
+          "time": this.timeSet,
+          "year": this.year
+        }
+
+        this._navController.push(HistoryBookingPage, { salon: this.salon, dataBooking: dataBooking, treatment: this.treatmentParam, operators: this.operators, dataOther: dataOther })
+
+      }
     }
+    else {
+      this.showAlert();
+    }
+
   }
 
   presentToast(msg) {
@@ -275,6 +307,22 @@ export class BookingPage {
     });
 
     toast.present();
+  }
+
+  showLoader() {
+    this.loading = this._loadingController.create({
+      content: 'loading...'
+    });
+    this.loading.present();
+  }
+
+  showAlert() {
+    let alert = this._alertCtrl.create({
+      title: 'Scusa',
+      subTitle: 'Devi effettuare il login per effettuare una prenotazione',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 }
 
