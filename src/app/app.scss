@@ -109,3 +109,8 @@
 .gray-text{
   color: #9D9D9D;
 }
+
+.toolbar-ios {
+  height: 40px + $cordova-ios-statusbar-padding;
+  padding-top: $cordova-ios-statusbar-padding;
+}
