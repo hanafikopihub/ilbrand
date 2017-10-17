@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class RestapiServiceProvider {
-  apiUrl = 'https://105df72d.ngrok.io/api/v1/';
+  apiUrl = 'https://www.salonist.it/api/v1/';
   salons: any;
   salon: any;
   items: any;
