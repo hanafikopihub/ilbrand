@@ -1,118 +1,148 @@
 
 page-booking {
-
-  form, input, optgroup, select {
-    margin: 0;
-    font: inherit;
-    color: inherit;
-    width: 100%  !important;
-    height: 34px !important;
-    background-color: white !important;
-}
-
-.hr {
-  height: 2px !important;
-}
-
-.button-default {
-    border-radius: 8px;
-    border: 2px solid #D7D7D7;
-    color: #D7D7D7 ;
-    background-color: #FFFFFF;
-    height: 4.6rem;
-    box-shadow: none;
-
-}
-.slider-pager .slider-pager-page {
-  color: red;
-}
-.btn-slide-month {
-    font-size: 1.1rem;
-    width: 78px;
-}
-
-.btn-slide-date {
-    width: 78px;
-    height: 90px !important;
-    border: none;
-}
-
-.btn-slide-date .text-day {
-    font-size: 10px;
-    text-align: left;
-    margin-bottom: -20px;
-}
-
-.btn-slide-date .text-date {
-    font-size: 40px;
-}
-
-.btn-slide-time {
-    width: 78px;
-    height:50px;
-    margin-top: 5px;
-}
-
-.massager-record {
-    color: #D7D7D7;
-    font-size: 12px;
-    margin-top: -10px;
-}
-
-.swiper-slide-active  {
-  .button-default {
-       // border-radius: 8px;
-       // background-color: #00CED4;
-       // border: none;
+    
+        form, input, optgroup, select {
+        margin: 0;
+        font: inherit;
+        color: inherit;
+        width: 100%  !important;
+        height: 34px !important;
+        background-color: white !important;
     }
-
-}
-.button-default.activated {
-    // background-color: #00CED4;
-    // background-color: red;
-}
-
-.active {
+    
+    .hr {
+      height: 2px !important;
+    }
+    
+    .button-default {
+        border-radius: 8px;
+        border: 2px solid #D7D7D7;
+        color: #D7D7D7 ;
+        background-color: #FFFFFF;
+        height: 4.6rem;
+        box-shadow: none;
+    
+    }
+    
+    .slider-pager .slider-pager-page {
+      color: red;
+    }
+    
+    .btn-slide-month {
+        font-size: 1.1rem;
+        width: 78px;
+    }
+    
+    .btn-slide-date {
+        width: 78px;
+        height: 90px !important;
+        border: none;
+    }
+    
+    .btn-slide-date .text-day {
+        font-size: 50%;
+        text-align: left;
+    }
+    
+    .btn-slide-date .text-date {
+        font-size: 280%;
+        text-align: left;
+    }
+    
+    .btn-slide-time {
+        width: 78px;
+        height:50px;
+        margin-top: 5px;
+    }
+    
+    .massager-record {
+        color: #D7D7D7;
+        font-size: 12px;
+        margin-top: -10px;
+    }
+    
+    .swiper-slide-active  {
+      .button-default {
+           // border-radius: 8px;
+           // background-color: #00CED4;
+           // border: none;
+        }
+    
+    }
+    
+    .button-default.activated {
+        // background-color: #00CED4;
+        // background-color: red;
+    }
+    
+    .active {
+            background-color: #00CED4;
+            border: none;
+            border-radius: 8px;
+        }
+    
+    .active-text {
+            color: #FFFFFF;
+        }
+    
+    .slide-edit {
+           border-radius: 8px;
+           background-color: #00CED4 !important;
+           border: none;
+    }
+    
+    .changebutton .button-default {
+           border-radius: 8px;
+           background-color: #00CED4;
+           border: none;
+           .active-text {
+            color: #FFFFFF;
+        }
+    }
+    
+    .changebutton .button-default {
+           border-radius: 8px;
+           background-color: #00CED4;
+           border: none;
+           .active-text {
+            color: #FFFFFF !important;
+        }
+    }
+    
+    .btn-next {
+          width: 100%;
+          border: none;
+          background-color: #FF4653;
+          color: #FFFFFF;
+      }
+    
+      
+    .bar-buttons-md[right] {
+        text-align: right;
+        -webkit-box-ordinal-group: 7;
+        -webkit-order: 6;
+        -ms-flex-order: 6;
+        order: 6;
+        padding-left: 5px;
+        padding-right: 5px;
+        margin-left: 6px;
+        margin-right: 6px;
+    }
+    
+    .active {
         background-color: #00CED4;
         border: none;
         border-radius: 8px;
     }
-
-.active-text {
+    
+    .active-text {
         color: #FFFFFF;
     }
-.active-select {
-  width: 10px;
-}
-.slide-edit {
-       border-radius: 8px;
-       background-color: #00CED4 !important;
-       border: none;
-}
-
-.changebutton .button-default {
-       border-radius: 8px;
-       background-color: #00CED4;
-       border: none;
-       .active-text {
-        color: #FFFFFF;
+    
+    .active-select {
+    width: 10px;
     }
-}
-
-.changebutton .button-default {
-       border-radius: 8px;
-       background-color: #00CED4;
-       border: none;
-       .active-text {
-        color: #FFFFFF !important;
+    
     }
-}
-
-  .btn-next {
-      width: 100%;
-      border: none;
-      background-color: #FF4653;
-      color: #FFFFFF;
-  }
-}
-
+    
+    

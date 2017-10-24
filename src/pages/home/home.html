@@ -1,7 +1,6 @@
 <ion-header>
   <ion-navbar>
     <ion-title style="text-align: center">Ydanco Seregno</ion-title>
-    <div style="text-align: center; color:grey; font-size: 12px; ">Benvenuto!</div>
     <ion-buttons right>
       <button class="bar-button-default-salonist-user" ion-button icon-only (click)="list($event)"><ion-icon name="list"></ion-icon></button>
     </ion-buttons>
@@ -24,6 +23,8 @@
       <button text-center ion-button color="danger" class="red-bg" style="width: 100%" [navPush]="ListTreatmentPage">NUOVA PRENOTAZIONE</button>
     </ion-row>
 
+    <hr style="height:1px; margin: 10px;">
+    
     <div style="text-align: center;">
       <img src="assets/img/yndaco.png" class="icon-image-bottom">
     </div>
@@ -64,6 +65,5 @@
         </div>
       </ion-col>
     </ion-row>
-    <hr>
   </ion-grid>
 </ion-content>

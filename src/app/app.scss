@@ -95,22 +95,114 @@
        url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-900.svg#PlayfairDisplay') format('svg'); /* Legacy iOS */
 }
 
-.bluesky-bg{
-  background-color: #76CAE2;
+* {
+  font-family: 'Open Sans';
 }
 
 .playfair{
   font-family: 'Playfair Display'
 }
+
+.toolbar-title{
+  font-weight: 100;
+}
+
 .header-main-title{
   font-weight: 600;
+}
+
+.bluesky-bg{
+  background-color: #76CAE2;
+}
+
+.bluesky-button{
+  background-color: #00CBD0;
+}
+
+.bar-button-default-salonist-user{
+  color: #93E3DA !important;
+}
+
+.red-bg{
+  background: #f65c5c;
+  width: 100%;
 }
 
 .gray-text{
   color: #9D9D9D;
 }
 
+.regular-text{
+  color: #4A4A4A;
+}
+
+.bar-button-default-ios{
+ color: #4A4A4A; 
+}
+
+.bolder{
+  font-weight: 700;
+}
+
+ul {
+  padding: 0px;
+
+  &.rating li {
+    padding: 5px 0px !important;
+    background: none;
+    color: #ffb400;
+
+    ion-icon {
+      font-size: 25px;
+      color: #FDD06F;
+    }
+  }
+}
+
+.salon-detail-title{
+  font-size: 20px;
+}
+
+.prenotare-content{
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+
+.telephone{
+  padding: 10px 40px;
+  border: 3px solid #f65c5c;
+  font-weight: bolder;
+  a{
+    color: #f65c5c;
+    font-size: 22px;
+    text-decoration: none;  
+  }
+}
+
+.lunedi-content{
+  margin-top:25px;
+  margin-bottom:5px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.btn-cancel {
+  width: 100%;
+  background-color: white;
+  border: 1px solid #9A9A9A;
+  color: #9A9A9A;
+}
+
+// ion-modal {
+// height: 90%;
+// }
+
+.range-ios-danger .range-bar-active, .range-ios-danger .range-tick-active{
+  background: #93E3DA;
+}
+
 .toolbar-ios {
-  height: 40px + $cordova-ios-statusbar-padding;
+  height: 50px + $cordova-ios-statusbar-padding;
   padding-top: $cordova-ios-statusbar-padding;
 }
+

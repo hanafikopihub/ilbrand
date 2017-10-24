@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { ToastController } from 'ionic-angular';
+import { AppApi } from '../../app.api';
+import { CacheService } from 'ionic-cache';
+
 import 'rxjs/add/operator/map';
 
 /*
@@ -8,69 +12,81 @@ import 'rxjs/add/operator/map';
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
   for more info on providers and Angular DI.
 */
+
 @Injectable()
 export class RestapiServiceProvider {
-  apiUrl = 'https://www.salonist.it/api/v1/';
+  apiUrl = AppApi.BASE_API_URL + '/api/v1/'
   salons: any;
   salon: any;
   items: any;
-  constructor(public http: Http) {
+  constructor(
+    public http: Http,
+    private _toastCtrl: ToastController,
+    private cache: CacheService) {
+  }
+
+  presentToast(msg) {
+    const toast = this._toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      position: 'bottom',
+      dismissOnPageChange: true
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
   }
 
   getSalon(id) {
-    this.salon = null;
-    if (this.salon) {
-      return Promise.resolve(this.salon);
-    }
-
-    return new Promise(resolve => {
-      this.http.get(this.apiUrl + 'salons/' + id)
-        .map(res => res.json())
-        .subscribe(salon => {
-          this.salon = salon;
-          resolve(this.salon);
-        });
-    });
+    return this.http.get(this.apiUrl + 'salons/' + id)
+        .map(res => res.json());
   }
 
+  searchSalons(treatment, location, price, page) {
+    return this.http.post(this.apiUrl + 'finds/salons', { treatment: treatment, where: location, price: price, page: page })
+      .map(res => res.json())
+  }
+
+
   getMonths() {
-    return this.http.get('assets/json-dummy/month.json')
+    const data = { year: '', 'month': '' }
+    return this.http.post(this.apiUrl + 'finds/month_calendar', data)
       .map(res => res.json())
   }
 
   getMonth(month, year) {
-    const data = {year:year, month:month}
-    return this.http.post(this.apiUrl +'finds/month_calendar',data)
-    .map(res => res.json())
-  }
-  
-  searchSalons(treatment, location, page){
-    return new Promise(resolve => {
-      this.http.post(this.apiUrl + 'finds/salons', {treatment: treatment, where: location, page: page})
-        .map(res => res.json())
-        .subscribe(salons => {
-          this.salons = salons;
-          resolve(this.salons);
-        });
-    });
+    const data = { year: year, 'month': month }
+    return this.http.post(this.apiUrl + 'finds/month_calendar', data)
+      .map(res => res.json())
   }
 
-  get_treatment() {
+  getTreatment() {
     return this.http.get(this.apiUrl + 'treatments/popular')
       .map(res => res.json())
   }
-  
-  get_address(value) {
-    const addresss = { "address": value }
+
+  getProfile(email) {
+    const url = this.apiUrl + 'finds/profile';
+    const cacheKey = url;
+    const request =  this.http.post(url, { email: email }).map(res => res.json())
+
+    return this.cache.loadFromObservable(cacheKey, request);
+  }
+
+  getAddress(value) {
+    const addresss = { 'address': value }
     return this.http.post(this.apiUrl + 'finds/address', addresss)
       .map(res => res.json())
   }
 
-  getMyBooking(user_id){
-    return this.http.post(this.apiUrl + 'bookings/my', {user_id: user_id})
+  getMyBooking(user_id) {
+    return this.http.post(this.apiUrl + 'bookings/my', { user_id: user_id })
       .map(res => res.json())
   }
-  
+
   getOperator(data) {
     return this.http.post(this.apiUrl + 'operators/available_for_treatments', data)
       .map(res => res.json())
@@ -80,5 +96,9 @@ export class RestapiServiceProvider {
     return this.http.post(this.apiUrl + 'bookings/create', data)
       .map(res => res.json())
   }
-  
+
+  postPayPal(data) {
+    return this.http.post(this.apiUrl + 'bookings/paypal_confirm', data)
+      .map(res => res.json())
+  }
 }

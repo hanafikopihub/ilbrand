@@ -9,7 +9,8 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <div padding>
   <ion-label class="header-label"><b>DATA SCELTA</b></ion-label>
   <hr>
 
@@ -17,13 +18,15 @@
   <div>con operator <span class="operator-value">{{operatorParam.operator_name | uppercase}}</span></div>
   <ion-label class="header-label"><b>SALONE</b></ion-label>
   <hr>
-  
+
   <ion-grid>
     <ion-row>
-      <b class="salon-name">Yndaco Seregno</b>
+      <b class="salon-name">Ydanco Seregno</b>
     </ion-row>
     <ion-row>
-      <div class="salon-address">Via Garibaldi 75, Seregno</div>
+      <div class="salon-address"><p>
+        via Monte San Michele 20/B, 21049 Tradate (VA)<br> RIVA/C.F.:049110609623
+      </p></div>
     </ion-row>
   </ion-grid>
 
@@ -53,17 +56,46 @@
       </ion-row>
     </div>
 
-<!--     <ion-list radio-group [(ngModel)]="payoption">
-      <ion-item *ngFor="let payoption of payOption;">
+        <ion-list radio-group [(ngModel)]="payoptionModel">
+      <ion-item *ngFor="let payoption of payOptions;">
         <ion-radio item-left value="{{payoption.id}}"></ion-radio>
         <ion-label>{{payoption.option}}</ion-label>
       </ion-item>
-    </ion-list> -->
-
+    </ion-list>
   </ion-grid>
   <ion-row padding>
     <button text-center ion-button color="danger" class="trova-button-home" (click)="onSubmit()">CONFERMA PRENOTAZIONE</button>
     <button text-center ion-button class="cambia-orario">CAMBIA ORARIO</button>
   </ion-row>
+</div>
 
+<div>
+    <hr style="height:1px; margin-left: 20px; margin-right: 20px; margin-bottom: 25px;">
+    <div text-center>
+      <img src="assets/images/logo.png" style="width: 35%" />
+    </div>
+    <div text-center style="margin-left:20px; margin-right:20px; color:#818181; font-size:12px;">
+      SEDE LEGALE: Piazza Risorgimento 8, 22069
+      <div>Rovellasca (CO)</div>
+      SEDE OPERATIVIA: via Monte San Michele 20/B,
+      <div>21049 Tradate (VA)</div>
+      P.IVA/C.F.:03553980131 - R.E.A. CO - 321001
+      <div>Capitale sociale: € 31.994,01 i.v.</div>
+    </div>
+  
+  
+    <ion-grid text-center style="margin:25px 0px;">
+        <ion-row>
+          <ion-col>
+              <img src="assets/images/facebook_icon.png" style="float:right;"/>
+          </ion-col>
+          <ion-col col-3>
+              <img src="assets/images/instagram_icon.png"/>
+          </ion-col>
+          <ion-col>
+              <img src="assets/images/twitter_icon.png" style="float:left;"/>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+</div>
 </ion-content>

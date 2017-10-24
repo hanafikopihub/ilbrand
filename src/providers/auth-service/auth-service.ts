@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Angular2TokenService } from 'angular2-token';
+import { AppApi } from '../../app.api';
 import 'rxjs/add/operator/map';
 
 /*
@@ -14,7 +15,7 @@ export class AuthServiceProvider {
 
   constructor(private _tokenService: Angular2TokenService) {
     this._tokenService.init({
-      apiBase: 'https://www.salonist.it',
+      apiBase: AppApi.BASE_API_URL,
       apiPath: 'api/v1'
     });
   }

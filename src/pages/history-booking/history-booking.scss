@@ -1,90 +1,102 @@
 page-history-booking {
-
-  hr {
-  height: 2px !important;
-}
-
-.total-value {
-  color:red !important;
-}
-  .trova-button-home{
-      width: 100%;
-      background-color: #FF4653;
-  }
-
-  .header-label {
-    color: #9A9A9A;
-    margin-bottom: -5px;
-  }
-
-  .row-cast {
-    border-bottom: 1px solid #ccd3d9;
-    margin:0;
-    padding:0;
-  }
-  
-  .salon-address {
-    color: #AEAEAE;
-  }
-
-  .salon-name {
-    font-size: 18px;
-  }
-
-  .customer-value {
-    font-size: 18px;
-    color: #08d9f5;
-  }
-
-  .operator-value {
-    font-size: 16px;
-    color: #08d9f5;
-  }
-  .total-style {
-    background-color: #F9F5F6;
-    height: 50px;
-  }
-  .gray-text {
-    margin-top: 10px;
-  }
-
-  .size-radio-btn {
-    width: 1.5em;
-    height: 1.5em;
-}
-
-.list-md .item-block .item-inner {
-  margin-left: -30px;
-}
-.item-md [item-left], .item-md [item-right], .item-md [item-start], .item-md [item-end] {
     
-    padding-top: 5px;
-}
-
-.item-radio-checked.item-md ion-label {
-    color: #252627;
-}
-
-.radio-md .radio-icon .radio-inner {
-  background-color: #252627;
-}
-
-.radio-md .radio-checked {
-    border-color: #252627;
+      hr {
+      height: 2px !important;
     }
-.cambia-orario {
-      width: 100%;
-      background-color: white;
-      border: 1px solid #9A9A9A;
-      color: #9A9A9A;
-}
-.item-md {
-  padding-left: 0;
-}
-
-.item-radio.item-md ion-label {
-    margin-left: 0;
-    padding-top: 5px;
-}
-}
-  
+    
+    .total-value {
+      color:red !important;
+    }
+      .trova-button-home{
+          width: 100%;
+          background-color: #FF4653;
+      }
+    
+      .header-label {
+        color: #9A9A9A;
+        margin-bottom: -5px;
+      }
+    
+      .row-cast {
+        border-bottom: 1px solid #ccd3d9;
+        margin:0;
+        padding:0;
+      }
+      
+      .salon-address {
+        color: #AEAEAE;
+      }
+    
+      .salon-name {
+        font-size: 18px;
+      }
+    
+      .customer-value {
+        font-size: 18px;
+        color: #08d9f5;
+      }
+    
+      .operator-value {
+        font-size: 16px;
+        color: #08d9f5;
+      }
+      .total-style {
+        background-color: #F9F5F6;
+        height: 50px;
+      }
+      .gray-text {
+        margin-top: 10px;
+      }
+    
+      .size-radio-btn {
+        width: 1.5em;
+        height: 1.5em;
+    }
+    
+    .list-md .item-block .item-inner {
+      margin-left: -30px;
+    }
+    .item-md [item-left], .item-md [item-right], .item-md [item-start], .item-md [item-end] {
+        
+        padding-top: 5px;
+    }
+    
+    .item-radio-checked.item-md ion-label {
+        color: #252627;
+    }
+    
+    .radio-md .radio-icon .radio-inner {
+      background-color: #252627;
+    }
+    
+    .radio-md .radio-checked {
+        border-color: #252627;
+        }
+    .cambia-orario {
+          width: 100%;
+          background-color: white;
+          border: 1px solid #9A9A9A;
+          color: #9A9A9A;
+    }
+    .item-md {
+      padding-left: 0;
+    }
+    
+    .item-radio.item-md ion-label {
+        margin-left: 0;
+        padding-top: 5px;
+    }
+    
+    .bar-buttons-md[right] {
+        text-align: right;
+        -webkit-box-ordinal-group: 7;
+        -webkit-order: 6;
+        -ms-flex-order: 6;
+        order: 6;
+        padding-left: 5px;
+        padding-right: 5px;
+        margin-left: 6px;
+        margin-right: 6px;
+    }
+    }
+      

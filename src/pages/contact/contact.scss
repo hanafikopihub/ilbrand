@@ -3,6 +3,15 @@
  
     page-contact {
  
+      .toolbar-title-ios {
+        text-align: center;
+        margin-top: 15px !important;
+        font-size: 2rem !important;
+        font-weight: 550;
+        color: #000;
+        pointer-events: auto;
+    }
+    
       .scroll {
         height: 100%
       }

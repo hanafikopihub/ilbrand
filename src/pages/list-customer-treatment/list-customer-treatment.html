@@ -1,15 +1,16 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>il tuo profilo</ion-title>
+    <ion-title style="text-align: center; margin-top:3%">il tuo profilo</ion-title>
     <ion-buttons right>
-      <button class="bar-button-default-salonist-user" ion-button icon-only><ion-icon name="contact"></ion-icon></button>
+      <button class="bar-button-default-salonist-user" style="margin: 0 6px;" ion-button icon-only (click)="list($event)"><ion-icon name="list"></ion-icon></button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
+
 <ion-content padding>
   <ion-row class="title">
-    Giuditta
+    {{this.name}}
   </ion-row>
   <ion-row class="title-text">{{treatment_count}} Prenotazioni effettuate</ion-row>
 

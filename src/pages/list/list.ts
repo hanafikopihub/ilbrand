@@ -55,6 +55,7 @@ export class ListPage {
       error => {
         this.loading.dismiss();
         this.presentToast(error);
+        this._navCtrl.setRoot(HomePage);
       }
     )
   }
@@ -76,6 +77,5 @@ export class ListPage {
 
   closeModal() {
     this._viewController.dismiss();
-
   }
 }

@@ -26,6 +26,14 @@ import { RestapiServiceProvider } from '../providers/restapi-service/restapi-ser
 
 import { NativeStorage } from '@ionic-native/native-storage';
 
+import { AlertService } from '../providers/shared-service/alert-service';
+import { ToastService } from '../providers/shared-service/toast-service';
+import { LoaderService } from '../providers/shared-service/loader-service';
+
+import { CacheModule } from 'ionic-cache';
+
+import { PayPal } from '@ionic-native/paypal';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -45,7 +53,8 @@ import { NativeStorage } from '@ionic-native/native-storage';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    CacheModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -67,11 +76,15 @@ import { NativeStorage } from '@ionic-native/native-storage';
     Angular2TokenService,
     StatusBar,
     SplashScreen,
+    PayPal,
     Geolocation,
     AuthServiceProvider,
     RestapiServiceProvider,
     NativeStorage,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AlertService,
+    ToastService,
+    LoaderService
   ]
 })
 export class AppModule {}
