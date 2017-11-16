@@ -220,22 +220,10 @@ ul {
 
 .toolbar .toolbar-title-ios {
     font-weight: 100;
-    padding-top: 15px;
 }
 
 .toolbar .toolbar-title-md {
     font-weight: 100;
-    padding-bottom: 15px;
-}
-
-.toolbar-ios {
-    height: 60px + $cordova-ios-statusbar-padding;
-    padding-top: $cordova-ios-statusbar-padding;
-}
-
-.toolbar-md {
-    height: 40px + $cordova-ios-statusbar-padding;
-    padding-top: $cordova-ios-statusbar-padding;
 }
 
 .bar-button-default-md,
