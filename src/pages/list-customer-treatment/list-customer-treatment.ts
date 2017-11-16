@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, ToastController, ModalController } from 'ionic-angular';
+import { NavController, LoadingController, ModalController } from 'ionic-angular';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { ToastService } from '../../providers/shared-service/toast-service';
 import { LoaderService } from '../../providers/shared-service/loader-service';
-import { Angular2TokenService } from 'angular2-token';
 import { ListPage } from '../list/list';
-import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-list-customer-treatment',
@@ -20,7 +18,6 @@ export class ListCustomerTreatment {
   treatment_count: number;
   constructor(
     private _toastCtrl: ToastService,
-    private _tokenService: Angular2TokenService,
     private _loaderCtrl: LoaderService,
     public _modalCtrl: ModalController,
     public navCtrl: NavController,
@@ -34,7 +31,6 @@ export class ListCustomerTreatment {
 
     this._loaderCtrl.showLoader();
     console.log(this._authServiceProvider.currentAuthData);
-    const user_id = this._authServiceProvider.currentAuthData.uid;
 
     this._restapiServiceProvider.getMyBooking()
       .subscribe(response => {

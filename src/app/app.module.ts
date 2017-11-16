@@ -12,7 +12,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StaffPage } from '../pages/staff/staff';
 import { ProfilePage } from '../pages/profile/profile';
-import { CartPage } from '../pages/cart/cart';
 import { BookingPage } from '../pages/booking/booking';
 import { HistoryBookingPage } from '../pages/history-booking/history-booking';
 import { ListCustomerTreatment } from '../pages/list-customer-treatment/list-customer-treatment';
@@ -44,7 +43,6 @@ import { PayPal } from '@ionic-native/paypal';
     LoginPage,
     StaffPage,
     ProfilePage,
-    CartPage,
     BookingPage,
     HistoryBookingPage,
     MyBookingPage,
@@ -72,7 +70,6 @@ import { PayPal } from '@ionic-native/paypal';
     LoginPage,
     StaffPage,
     ProfilePage,
-    CartPage,
     BookingPage,
     HistoryBookingPage,
     MyBookingPage,

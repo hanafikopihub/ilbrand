@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ListPage } from '../list/list';
 import { NavController, ModalController } from 'ionic-angular';
-import { ProfilePage } from '../profile/profile';
 import { ListTreatmentPage } from '../list-treatment/list-treatment';
 
 import { AppApi } from '../../app.api';
