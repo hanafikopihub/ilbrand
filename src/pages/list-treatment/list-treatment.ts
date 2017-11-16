@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { ModalController, NavController } from 'ionic-angular';
 import { ListPage } from '../list/list';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
-import { NativeStorage } from '@ionic-native/native-storage';
-import { CartPage } from '../cart/cart';
 import { BookingPage } from '../booking/booking';
 import { LoaderService } from '../../providers/shared-service/loader-service';
 import { AlertService } from '../../providers/shared-service/alert-service';

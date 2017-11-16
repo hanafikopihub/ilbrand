@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ContactPage } from '../contact/contact';
 import { LoginPage } from '../login/login';
-import { HomePage } from '../home/home';
 import { StaffPage } from '../staff/staff';
 import { ProfilePage } from '../profile/profile';
 import { ListCustomerTreatment } from '../list-customer-treatment/list-customer-treatment'

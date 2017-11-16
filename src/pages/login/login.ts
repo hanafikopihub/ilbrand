@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ViewController, NavParams, NavController, ToastController, LoadingController, ModalController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-import { HomePage } from '../home/home';
 
 import { Angular2TokenService } from 'angular2-token';
 import { RequestMethod } from '@angular/http';

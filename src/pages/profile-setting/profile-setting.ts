@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ViewController, NavController, ToastController, LoadingController } from 'ionic-angular';
 import { Angular2TokenService } from 'angular2-token';
-import { RequestMethod } from '@angular/http';
 import { AppApi } from '../../app.api';
 
 @Component({
