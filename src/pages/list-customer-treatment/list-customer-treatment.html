@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title style="text-align: center">
+  <ion-navbar class="custome-navbar">
+    <ion-title class="custome-title">
       Il BRAND
       <div style="color:grey; font-size: 12px; ">Prenotazioni</div>
     </ion-title>
@@ -14,6 +14,10 @@
 
 
 <ion-content padding>
+  
+  <!-- <div *ngIf="response === 0" style="text-align:center;">
+    <h5><b>elenco di trattamenti vuoto</b></h5>
+  </div> -->
   <ion-grid *ngFor="let treatment of treatments">
     <ion-row class="row-cast">
       <ion-col col-8>

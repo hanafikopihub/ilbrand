@@ -14,6 +14,7 @@ export class ListCustomerTreatment {
   loading: any;
   name: string;
   prenoCount: any;
+  response: any;
   treatments: Array<any>;
   treatment_count: number;
   constructor(
@@ -34,6 +35,7 @@ export class ListCustomerTreatment {
 
     this._restapiServiceProvider.getMyBooking()
       .subscribe(response => {
+        this.response = response.total_booking
         this.treatments = response.bookings;
         this.treatment_count = response.total_booking;
         this._loaderCtrl.hideLoader();

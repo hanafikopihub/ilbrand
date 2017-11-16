@@ -12,7 +12,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="list-content-style main-view">
+<ion-content class="main-view">
   <div class="overlay" (click)="closeModal()"></div>
   <ion-list class="modal_content">
     <ion-item *ngIf="!isSignedIn">
@@ -24,7 +24,7 @@
       <div class="list-content" (click)="goMyProfile($event)">Il tuo profilo</div>
     </ion-item>
     <ion-item>
-      <div class="list-content" [navPush]="ListTreatmentPage">Prenota</div>
+      <div class="list-content" (click)="goListTreatment($event)">Prenota</div>
     </ion-item>
     <ion-item *ngIf="isSignedIn">
       <div class="list-content" (click)="goMybook($event)">Prenotazioni</div>

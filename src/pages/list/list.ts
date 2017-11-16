@@ -55,6 +55,11 @@ export class ListPage {
   goMyProfile(ev) {
     this._navCtrl.push(ProfilePage)
   }
+
+  goListTreatment() {
+    this._navCtrl.push(ListTreatmentPage, {'status' : true})
+  }
+
   doLogout() {
     this.loading = this._loadingCtrl.create({
       content: 'Please Wait, logout still processing..'

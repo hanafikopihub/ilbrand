@@ -1,22 +1,31 @@
 page-profile {
-  .title {
-    font-size: 20px;
-    font-family: 'Open Sans Semibold';
-  }
-  .title-text {
-    margin-bottom: 25px;
-    color: #ea1515;
-    font-size: 16px;
-  }
-  .email-content {
-  	width: 100%;
-  	margin-top: 15px;
-  }
-  .phone-content {
-  	margin-top: 15px;
-  }
-  .label {
-    color: #9A9A9A;
-    margin-bottom: -5px;
-  }
+    .custome-navbar {
+        padding-top: calc(20px + 4px);
+        min-height: calc(68px + 20px);
+    }
+    .custome-title {
+        text-align: center;
+        padding-top: 20px;
+        height: calc(68px + 20px);
+    }
+    .title {
+        font-size: 20px;
+        font-family: 'Open Sans Semibold';
+    }
+    .title-text {
+        margin-bottom: 25px;
+        color: #ea1515;
+        font-size: 16px;
+    }
+    .email-content {
+        width: 100%;
+        margin-top: 15px;
+    }
+    .phone-content {
+        margin-top: 15px;
+    }
+    .label {
+        color: #9A9A9A;
+        margin-bottom: -5px;
+    }
 }

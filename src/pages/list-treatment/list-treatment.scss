@@ -1,5 +1,13 @@
 page-list-treatment {
- 
+ .custome-navbar {
+    padding-top: calc(20px + 4px);
+    min-height: calc(68px + 20px);
+ }
+ .custome-title {
+     text-align: center;
+     padding-top: 20px;
+     height: calc(68px + 20px);
+ }
 .fab ion-icon {
     font-size: 2.4rem !important;
     font-weight: 600;

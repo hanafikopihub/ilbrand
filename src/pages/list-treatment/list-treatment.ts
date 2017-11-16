@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController, NavController } from 'ionic-angular';
+import { ModalController, NavController, NavParams } from 'ionic-angular';
 import { ListPage } from '../list/list';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { BookingPage } from '../booking/booking';
@@ -12,17 +12,20 @@ import { AlertService } from '../../providers/shared-service/alert-service';
 })
 export class ListTreatmentPage {
   salon_id: string;
+  fromModal: boolean = false;
   treatments: Array<any>
   addTreatments: Array<any> = [];
   constructor(
     public _alertCtrl: AlertService,
     public _loaderCtrl: LoaderService,
     public _navCtrl: NavController,
+    public _navParams: NavParams,
     public _modalCtrl: ModalController,
     public _restapiServiceProvider: RestapiServiceProvider) {
 
     this.salon_id = JSON.parse(localStorage.getItem('salon_id'));
 
+    this.fromModal = this._navParams.get('status');
     this.loadData();
   }
 
