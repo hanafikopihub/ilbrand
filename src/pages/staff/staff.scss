@@ -1,43 +1,29 @@
 page-staff {
-
-  .toolbar-title-ios {
-    text-align: center;
-    margin-top: 15px !important;
-    font-size: 2rem !important;
-    font-weight: 600;
-    color: #000;
-    pointer-events: auto;
-}
-
-#privacy-help {
-  margin-top: 15px;
-  margin-bottom: 15px;
-}
-#privacy {
-  font-size: 14px;
-  color: grey;
-  text-align: right;
-}
-
-#help {
-  font-size: 14px;
-  color: grey;
-  text-align: left;
-}
-
-#title-city {
-	text-align: center;
-	font-size: 14px;
-}
-
-#content-address {
-  color: grey;
-	text-align: center;
-}
-
-.icon-image-bottom {
-	margin-top: 20px;
-	margin-bottom: 20px;
-    height: 30px;
-}
+    #privacy-help {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    #privacy {
+        font-size: 14px;
+        color: grey;
+        text-align: right;
+    }
+    #help {
+        font-size: 14px;
+        color: grey;
+        text-align: left;
+    }
+    #title-city {
+        text-align: center;
+        font-size: 14px;
+    }
+    #content-address {
+        color: grey;
+        text-align: center;
+    }
+    .icon-image-bottom {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        height: 60px;
+    }
 }

@@ -9,9 +9,8 @@ import {
 // libary local
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { HistoryBookingPage } from '../history-booking/history-booking';
-import { LoginPage } from '../login/login';
-import { ListPage } from '../list/list';
 import { ProfilePage } from '../profile/profile';
+import { ListPage } from '../list/list';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { AlertService } from '../../providers/shared-service/alert-service';
 import { ToastService } from '../../providers/shared-service/toast-service';
@@ -35,6 +34,7 @@ export class BookingPage {
   treatmentParam: any;
   operators: any;
   nameOperator: any;
+  nameOperatorClick: any;
 
   // variable for modification style
   changeColorTime: any;
@@ -44,6 +44,7 @@ export class BookingPage {
   setColorDate: any;
 
   // time variable date
+  operatorArray: Array<any>
   times: Array<any>;
   months: Array<any>;
   dates: Array<any>;
@@ -54,6 +55,7 @@ export class BookingPage {
   dayName: any;
   monthName: any;
 
+  salon_id: any;
   @ViewChild('sliderMonth') sliderMonth: Slides;
   @ViewChild('sliderDate') sliderDate: Slides;
   @ViewChild('sliderTime') sliderTime: Slides;
@@ -69,23 +71,13 @@ export class BookingPage {
     public _restapiServiceProvider: RestapiServiceProvider,
   ) {
 
-    this.months = [
-      { "month": "month" },
-      { "month": "month" },
-      { "month": "month" }
-    ];
-
-    this.dates = [
-      { "date": 1, "day": "Day", "shortDay": "Day" },
-      { "date": 2, "day": "Day", "shortDay": "Day" },
-      { "date": 3, "day": "Day", "shortDay": "Day" }]
-
     // sign login or logout
     this.isSignedIn = this._authServiceProvider.userSignedIn
 
     // get data from paramater
     this.salonParam = this._navParams.get('salon');
     this.treatmentParam = this._navParams.get('treatment');
+    this.salon_id = JSON.parse(localStorage.getItem('salon_id'));
 
   }
 
@@ -110,27 +102,35 @@ export class BookingPage {
     this.sliderMonth.speed = 600;
     this.sliderMonth.centeredSlides = false;
     this.sliderDate.centeredSlides = false;
-    this.sliderTime.centeredSlides = false;
-
+    if (this.sliderTime !== undefined) {
+      this.sliderTime.centeredSlides = false;
+    }
     this.getMonths();
   }
 
   ionViewDidLoad() {
     this.sliderMonth.slidesPerView = 3;
     this.sliderDate.slidesPerView = 3;
-    this.sliderTime.slidesPerView = 3;
+    if (this.sliderTime !== undefined) {
+      this.sliderTime.slidesPerView = 3;
+    }
+  }
+
+  list(ev) {
+    const listModal = this._modalCtrl.create(ListPage)
+    listModal.present();
   }
 
   // get month during 1 year
   getMonths() {
-    debugger
+    this._loaderCtrl.showLoader();
     this._restapiServiceProvider.getMonths()
       .subscribe(response => {
-
+        this._loaderCtrl.hideLoader();
         this.dates = response.days;
         this.months = response.months;
+        this.dayName = response.days[0].day
         this.monthName = response.months[0].month; // month date display
-
         this.dateId = response.days[0].date;
         this.monthId = response.months[0].month_id;
         this.yearId = response.months[0].year;
@@ -139,20 +139,22 @@ export class BookingPage {
       },
       (error) => {
         // handle error
+        this._loaderCtrl.hideLoader();
         return this._toastCtrl.presentToast('non è riuscito a ottenere dati');
       })
   }
 
   onClickMonth(month) {
-    this._loaderCtrl.showLoader();
     this.monthId = month.month_id
     this.sliderDate.centeredSlides = false
     this._restapiServiceProvider.getMonth(month.month_id, month.year)
       .subscribe(response => {
-        this._loaderCtrl.hideLoader();
         this.dates = response.days; // get data array from api
+
         this.monthName = month.month; // month date display
+        this.yearId = month.year;
         this.changeColorMonth = month.id;
+        // this.operatorArray = response.operators[0].operators
 
         this.setColorMonth = 'false';
         this.setColorDate = 'false';
@@ -166,7 +168,6 @@ export class BookingPage {
         this.times = null;
         this.operators = null;
       }, (error) => {
-        this._loaderCtrl.hideLoader();
         return this._toastCtrl.presentToast('non è possibile ottenere mese da api');
       })
 
@@ -183,8 +184,8 @@ export class BookingPage {
   }
 
   onClickTime(time) {
-    this.changeColorTime = time;
-    this.timeId = time
+    this.changeColorTime = time.id;
+    this.timeId = time.hour
   }
 
   // set object data for passing to get treatment
@@ -209,16 +210,16 @@ export class BookingPage {
     this._restapiServiceProvider.getOperator(data).subscribe(response => {
 
       this._loaderCtrl.hideLoader();
-
+      this.operatorArray = response.operators[0].operators;
       if (response.operators[0].operators.length === 0) {
         this.operators = null;
         this.times = null;
         this.nameOperator = null;
         return this._toastCtrl.presentToast('Nessuna disponibilita per il giorno selezionato')
       } else {
-        this.operators = response.operators[0].operators[0]
-        this.times = response.operators[0].operators[0].hours
-        this.nameOperator = response.operators[0].operators[0].operator_name
+        // this.operators = response.operators[0].operators[0]
+        // this.times = response.operators[0].operators[0].hours
+        // this.nameOperator = response.operators[0].operators[0].operator_name
       }
 
     }, (error) => {
@@ -227,10 +228,10 @@ export class BookingPage {
     })
   }
 
-  presentLogin(event) {
-    const loginModal = this._modalCtrl.create(LoginPage)
-    loginModal.present();
+  postOperator(operator) {
+    this.operators = operator;
   }
+
 
   presentProfile(event) {
     const profileModal = this._modalCtrl.create(ProfilePage)
@@ -243,20 +244,15 @@ export class BookingPage {
       if (this.operators == null || this.timeId === undefined || this.dateId === undefined) {
         return this._toastCtrl.presentToast('Nessuna disponibilita per il giorno selezionato')
       } else {
-
-        const datetime = this.yearId + '.' + this.monthId + '.' + this.dateId;
-        const datetimeTp = new Date(datetime).getTime() / 1000
-        const start = datetime + ' ' + this.timeId;
-        const startDateTp = new Date(start).getTime() / 1000
-        const endDateTime = datetimeTp + this.treatmentParam.duration;
-
         const dataBooking = {
           booking: {
-            'start': startDateTp,
+            'time_id': this.timeId,
+            'date_id': this.dateId,
+            'month_id': this.monthId,
+            'year_id': this.yearId,
             'length': this.treatmentParam.duration,
-            'end': endDateTime,
             'from_where': 'android',
-            'salon_id': 604,
+            'salon_id': this.salon_id,
             'price': this.treatmentParam.price,
             'discount_price': this.treatmentParam.price,
             'operator_id': this.operators.operator_id,
@@ -284,12 +280,9 @@ export class BookingPage {
       }
     } else {
       this._alertService.mustLoginAlert();
+
     }
   }
 
-  list(ev) {
-    let listModal = this._modalCtrl.create(ListPage)
-    listModal.present();
-  }
 
 }

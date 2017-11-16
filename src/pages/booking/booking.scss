@@ -1,122 +1,135 @@
-
 page-booking {
-    
-        form, input, optgroup, select {
+    .back-button.show-back-button {
+        display: inline-block;
+        position: absolute;
+    }
+    form,
+    input,
+    optgroup,
+    select {
         margin: 0;
         font: inherit;
         color: inherit;
-        width: 100%  !important;
+        width: 100% !important;
         height: 34px !important;
         background-color: white !important;
     }
-    
     .hr {
-      height: 2px !important;
+        height: 2px !important;
     }
-    
     .button-default {
         border-radius: 8px;
         border: 2px solid #D7D7D7;
-        color: #D7D7D7 ;
+        color: #D7D7D7;
         background-color: #FFFFFF;
         height: 4.6rem;
         box-shadow: none;
-    
     }
-    
     .slider-pager .slider-pager-page {
-      color: red;
+        color: red;
     }
-    
     .btn-slide-month {
         font-size: 1.1rem;
         width: 78px;
     }
-    
     .btn-slide-date {
         width: 78px;
         height: 90px !important;
         border: none;
     }
-    
     .btn-slide-date .text-day {
-        font-size: 50%;
+        font-size: 100%;
         text-align: left;
+        color: #9B9B9B;
+        font-family: 'Merriweather Regular', Arial, Helvetica, sans-serif;
     }
-    
     .btn-slide-date .text-date {
-        font-size: 280%;
+        font-size: 53px;
         text-align: left;
+        color: #9B9B9B;
+        font-family: 'Open Sans Light', Arial, Helvetica, sans-serif;
     }
-    
+    .active-text-month {
+        font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif !important;
+        color: white !important;
+    }
+    .active-text {
+        color: #FFFFFF !important;
+        font-family: 'Open Sans Light', Arial, Helvetica, sans-serif !important;
+    }
+    .active-text-day {
+        color: #FFFFFF !important;
+        font-size: 100%;
+        font-family: 'Merriweather Bold', Arial, Helvetica, sans-serif !important;
+    }
+    .active-text-time {
+        color: #FFFFFF;
+        font-family: 'Open Sans Bold', Arial, Helvetica, sans-serif;
+    }
+    .text-title-operator {
+        font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
+        color: #9B9B9B;
+    }
+    .text-title-operator-name {
+        font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
+        font-size: 16px;
+    }
     .btn-slide-time {
         width: 78px;
-        height:50px;
+        height: 50px;
         margin-top: 5px;
     }
-    
     .massager-record {
         color: #D7D7D7;
         font-size: 12px;
         margin-top: -10px;
     }
-    
-    .swiper-slide-active  {
-      .button-default {
-           // border-radius: 8px;
-           // background-color: #00CED4;
-           // border: none;
+    .swiper-slide-active {
+        .button-default {
+            // border-radius: 8px;
+            // background-color: #00CED4;
+            // border: none;
         }
-    
     }
-    
     .button-default.activated {
         // background-color: #00CED4;
         // background-color: red;
     }
-    
     .active {
-            background-color: #00CED4;
-            border: none;
-            border-radius: 8px;
-        }
-    
+        background-color: #00CED4;
+        border: none;
+        border-radius: 8px;
+    }
     .active-text {
-            color: #FFFFFF;
-        }
-    
+        color: #FFFFFF;
+    }
     .slide-edit {
-           border-radius: 8px;
-           background-color: #00CED4 !important;
-           border: none;
+        border-radius: 8px;
+        background-color: #00CED4 !important;
+        border: none;
     }
-    
     .changebutton .button-default {
-           border-radius: 8px;
-           background-color: #00CED4;
-           border: none;
-           .active-text {
+        border-radius: 8px;
+        background-color: #00CED4;
+        border: none;
+        .active-text {
             color: #FFFFFF;
         }
     }
-    
     .changebutton .button-default {
-           border-radius: 8px;
-           background-color: #00CED4;
-           border: none;
-           .active-text {
+        border-radius: 8px;
+        background-color: #00CED4;
+        border: none;
+        .active-text {
             color: #FFFFFF !important;
         }
     }
-    
     .btn-next {
-          width: 100%;
-          border: none;
-          background-color: #FF4653;
-          color: #FFFFFF;
-      }
-    
-      
+        width: 100%;
+        border: none;
+        background-color: #f65c5c;
+        color: #FFFFFF;
+    }
     .bar-buttons-md[right] {
         text-align: right;
         -webkit-box-ordinal-group: 7;
@@ -128,21 +141,12 @@ page-booking {
         margin-left: 6px;
         margin-right: 6px;
     }
-    
     .active {
         background-color: #00CED4;
         border: none;
         border-radius: 8px;
     }
-    
-    .active-text {
-        color: #FFFFFF;
-    }
-    
     .active-select {
-    width: 10px;
+        width: 10px;
     }
-    
-    }
-    
-    
+}

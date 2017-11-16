@@ -1,41 +1,110 @@
 page-my-booking {
+  .grazie {
+      color: #F65C5C;
+      font-family: 'Merriweather Regular';
+      font-size: 21px;
+      line-height: 27px;
+  }
+  hr {
+      height: 1px !important;
+      margin: 0 20px;
+  }
   .total-value {
-    color: red;
-    font-size: 16px;
+      font-size: 17px;
+      text-align: right;
+      float: right;
+      color: #FF4653 !important;
+      font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
+  }
+  .text-pay {
+      font-family: 'Open Sans Regular', Arial, Helvetica, sans-serif;
+  }
+  .trova-button-home {
+      width: 100%;
+      background-color: #FF4653;
+      font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
+  }
+  .header-label {
+      font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
+      color: #9A9A9A;
+      margin-bottom: -5px;
+  }
+  .treatment-name {
+      font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
+      font-size: 18px;
+      color: #4A4A4A;
+  }
+  .row-cast {
+      border-bottom: 1px solid #ccd3d9;
+      margin: 0;
+      padding: 0;
   }
   .salon-address {
-    color: #AEAEAE;
+      color: #9B9B9B;
+      font-family: 'Open Sans, Open Sans Regular', Arial, Helvetica, sans-serif;
   }
-
-  .salon-name {
-    font-size: 18px;
-    color: #4a4646;
+  .con-operatore {
+      color: #4A4A4A;
+      font-family: "Open Sans";
+      font-size: 15px;
+      line-height: 19px;
   }
-
-  .salon-name-content {
-    font-size: 16px;
-    color: #4a4646;
+  .option-pay {
+      color: #4A4A4A;
+      font-family: "Open Sans";
+      font-size: 15px;
+      line-height: 19px;
+      text-align: right !important;
+      float: right !important;
   }
-
+  .payoption-name {
+      color: #4A4A4A;
+      font-family: "Open Sans";
+      font-size: 15px;
+      line-height: 20px;
+      height: 45px;
+  }
+  .customer-value {
+      font-weight: 600;
+      font-size: 16px;
+      color: #08d9f5;
+      font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  }
+  .operator-value {
+      font-size: 16px;
+      color: #08d9f5;
+      font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  }
+  .total-style {
+      background-color: #F9F6F6;
+  }
+  .gray-text {
+      font-size: 16px;
+      text-align: left;
+      font-family: 'Open Sans Regular', Arial, Helvetica, sans-serif;
+  }
+  .content-page {
+      color: #4A4A4A;
+      font-family: "Open Sans";
+      font-size: 15px;
+      font-style: italic;
+      line-height: 20px;
+  }
   .btn-create-reminder {
-  	width: 100%;
-  	background-color: #00cdd4;
+      width: 100%;
   }
-
   .btn-new-reservation {
-  	width: 100%;
-  	background-color: #FF4653;
+      width: 100%;
   }
-  .box-card {
-  	background-color: #F9F5F6; width: 100%;
-  }
-  .row-box{
-  	margin: 0 15px 0 7px; 
-  }
-  .box-grid {
-  	padding: 5px 10px 15px 10px;
-  }
-  .content-customer {
-  	margin-bottom: 10px;
+  .bar-buttons-md[right] {
+      text-align: right;
+      -webkit-box-ordinal-group: 7;
+      -webkit-order: 6;
+      -ms-flex-order: 6;
+      order: 6;
+      padding-left: 5px;
+      padding-right: 5px;
+      margin-left: 6px;
+      margin-right: 6px;
   }
 }

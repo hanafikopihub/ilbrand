@@ -1,8 +1,13 @@
 <ion-header>
   <ion-navbar>
-    <ion-title style="text-align: center">Ydanco Seregno</ion-title>
+    <ion-title style="text-align: center">
+      Il BRAND
+      <div style="color:grey; font-size: 12px; ">Conatatti & Orari</div>
+    </ion-title>
     <ion-buttons right>
-      <button class="bar-button-default-salonist-user" ion-button icon-only (click)="list($event)"><ion-icon name="list"></ion-icon></button>
+      <button ion-button icon-only (click)="list($event)">
+        <ion-icon name="menu"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -12,86 +17,39 @@
     <ion-slides #sliderMonth>
       <ion-slide *ngFor="let month of months" [class.changebutton]="setColorMonth === month.id">
         <button class="btn-slide-month" ion-button [class.active]="changeColorMonth === month.id" ion-button (click)="onClickMonth(month)">
-        <span  [class.active-text]="changeColorMonth === month.id"><b style="font-size:90%">{{month.month}}</b></span>
+        <span  [class.active-text-month]="changeColorMonth === month.id" style="font-size:13px;">{{month.month}}</span>
         </button>
       </ion-slide>
     </ion-slides>
-
-    <ion-slides #sliderDate>
-      <ion-slide *ngFor="let date of dates" [class.changebutton]="setColorDate === date.id">
-        <button class="btn-slide-date" ion-button [class.active]="changeColorDate === date.id" (click)="onClickDate(date)">
+    <ion-slides  #sliderDate>
+    <ion-slide *ngFor="let date of dates" [class.changebutton]="setColorDate === date.id">
+     
+      <button class="btn-slide-date" ion-button [class.active]="changeColorDate === date.id" (click)="onClickDate(date)">
           <ion-row>
-                <div class="text-day" [class.active-text]="changeColorDate === date.id"><b>{{date.day}}</b></div>
+                <div class="text-day" [class.active-text-day]="changeColorDate === date.id">{{date.shortDay}}</div>
             
                 <div class="text-date" [class.active-text]="changeColorDate === date.id">{{date.date}}</div>
           </ion-row>
         </button>
       </ion-slide>
-    </ion-slides>
-    
-    <ion-label>OPERATORI DISPONIBILI</ion-label>
+    </ion-slides> 
+    <ion-label class="text-title-operator">OPERATORI DISPONIBILI</ion-label>
     <hr>
+    <div *ngFor="let operator of operatorArray">
     <div>
-      <ion-label><b style="font-size:16px;">{{nameOperator}}</b></ion-label>
+      <ion-label  class="text-title-operator-name">{{operator.operator_name}}</ion-label>
     </div>
-    <ion-slides #sliderTime>
-      <ion-slide *ngFor="let time of times">
-        <ion-row>
-        </ion-row>
-        <button class="btn-slide-time" ion-button [class.active]="changeColorTime === time" (click)="onClickTime(time)">
-        <div [class.active-text]="changeColorTime === time"><b>{{time}}</b></div>  
+    <ion-slides #sliderTime slidesPerView="3" (click)="postOperator(operator)">
+      <ion-slide *ngFor="let time of operator.hours">
+        <button class="btn-slide-time" ion-button [class.active]="changeColorTime === time.id" (click)="onClickTime(time)">
+        <div [class.active-text-time]="changeColorTime === time.id" style="font-family: 'Open Sans Bold';">{{time.hour}}</div>  
         </button>
       </ion-slide>
     </ion-slides>
+    {{opeartorNameProvider}}
+    </div>
   </div>
   <ion-row padding>
-    <button text-center ion-button color="danger" (click)=onSumbit() class="btn-next">Ulteriormente</button>
+    <button text-center ion-button color="danger" (click)=onSumbit() class="btn-next bold">PROSEGUI</button>
   </ion-row>
-  <div>
-    <div text-center>
-      <hr style="height:1px; margin: 20px;">
-      <div text-center class="prenotare-content playfair" style="margin-left:15px; margin-right:15px">Hai dubbi o vuoi una mano a prenotare</div>
-    </div>
-    <ion-row>
-      <ion-col col-1></ion-col>
-      <ion-col col-10 class="telephone" style="text-align: center;">
-        <a class="text-center" href="tel:0237901285">02 37901285</a>
-      </ion-col>
-      <ion-col col-1></ion-col>
-    </ion-row>
-    <div text-center class="lunedi-content" style="color:#4A4A4A; margin-left:40px;  margin-right:40px;">Dal lunedi al venerdi dalle 9:30 alle 17:30</div>
-  
-    <div text-center style="margin-left:19px;margin-right:19px;color:#4A4A4A;">
-      <p>
-        Un consulente sara a tua disposizione per proporti la migliore soluzione per le tue esigenze di belleza
-      </p>
-    </div>
-    <hr style="height:1px; margin: 20px;">
-    <div text-center>
-      <img src="assets/images/logo.png" style="width: 35%" />
-    </div>
-    <div text-center style="margin-left:20px; margin-right:20px; color:#818181; font-size:12px;">
-      SEDE LEGALE: Piazza Risorgimento 8, 22069
-      <div>Rovellasca (CO)</div>
-      SEDE OPERATIVIA: via Monte San Michele 20/B,
-      <div>21049 Tradate (VA)</div>
-      P.IVA/C.F.:03553980131 - R.E.A. CO - 321001
-      <div>Capitale sociale: € 31.994,01 i.v.</div>
-    </div>
-  
-  
-    <ion-grid text-center style="margin:25px 0px;">
-        <ion-row>
-          <ion-col>
-              <img src="assets/images/facebook_icon.png" style="float:right;"/>
-          </ion-col>
-          <ion-col col-3>
-              <img src="assets/images/instagram_icon.png"/>
-          </ion-col>
-          <ion-col>
-              <img src="assets/images/twitter_icon.png" style="float:left;"/>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-  </div>
 </ion-content>

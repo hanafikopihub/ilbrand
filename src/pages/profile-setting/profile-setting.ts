@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { ViewController, NavController, ToastController, LoadingController} from 'ionic-angular';
+import { ViewController, NavController, ToastController, LoadingController } from 'ionic-angular';
 import { Angular2TokenService } from 'angular2-token';
 import { RequestMethod } from '@angular/http';
+import { AppApi } from '../../app.api';
 
 @Component({
   selector: 'page-profile-setting',
@@ -12,15 +13,15 @@ export class ProfileSettingPage {
   passwordData = { password: '', passwordConfirmation: '' };
   loading: any;
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController,  private toastCtrl: ToastController, 
-     private loadingCtrl: LoadingController,  private _tokenService: Angular2TokenService) {
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController, private toastCtrl: ToastController,
+    private loadingCtrl: LoadingController, private _tokenService: Angular2TokenService) {
     this._tokenService.init({
-      apiBase: 'https://www.salonist.it',
+      apiBase: AppApi.BASE_API_URL,
       apiPath: 'api/v1'
     });
   }
 
-  updatePassword(){
+  updatePassword() {
     this.showLoader();
     this._tokenService.updatePassword(this.passwordData).subscribe(
       res => {
@@ -28,22 +29,22 @@ export class ProfileSettingPage {
         this.loading.dismiss();
       },
       error => {
-        this.loading.dismiss();  
+        this.loading.dismiss();
         this.presentToast(error);
       }
     )
   }
 
-  showLoader(){
+  showLoader() {
     this.loading = this.loadingCtrl.create({
-       content: 'Authenticating...'
+      content: 'Authenticating...'
     });
 
     this.loading.present();
   }
 
   presentToast(msg) {
-    let toast = this.toastCtrl.create({
+    const toast = this.toastCtrl.create({
       message: msg,
       duration: 3000,
       position: 'bottom',

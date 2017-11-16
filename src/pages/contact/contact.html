@@ -1,125 +1,88 @@
 <ion-header>
   <ion-navbar>
-  <ion-title>
-      <div text-center class="regular-text header-main-title">Ydanco Seregno</div>
-      <div text-center class="gray-text" style="font-size: 12px; ">Conatatti & Orari</div>
-  </ion-title>
-    <ion-buttons right style="margin-left: 15px;margin-right: 15px;">
-      <button class="bar-button-default-salonist-user" ion-button icon-only (click)="list($event)"><ion-icon name="list"></ion-icon></button>
+    <ion-title style="text-align: center">
+      Il BRAND
+      <div style="color:grey; font-size: 12px; ">Conatatti & Orari</div>
+    </ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="list($event)">
+        <ion-icon name="menu"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <div style="margin-left: 20px;">
-  <div>
-    <div style="color: #4A4A4A;"><h2>Yndaco Seregno</h2></div>
-    <div style="color: grey">Via Garbaldi 75 - 20831 Seregno</div>
-  </div>
+  <div style="margin-left: 15px;">
+    <div style="color: #4A4A4A;">
+      <h6>{{contact.name | uppercase}}</h6>
+    </div>
+    <div style="color: grey">{{contact.address}}</div>
 
-  <div style="color: #4A4A4A;"><h6>0362 229115</h6></div>
-</div>
+    <div style="color: #4A4A4A;">
+      <h6>
+        <b>0331 844778</b>
+      </h6>
+    </div>
+  </div>
 
   <div #map id="map"></div>
-  <div style="margin-left: 60px;margin-right: 60px;">
-    <ion-item style="font-size: 14px; text-align: center; color: #4A4A4A;"><b>ORARI DI APERTUA</b></ion-item>
-      <ion-row>
-        <ion-col col-6 style="text-align: left;">
-          Lunedi
-        </ion-col>
-        <ion-col col-6 style="text-align: right;">
-          08:30 - 19:00
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-6 style="text-align: left;">
-          Martedi
-        </ion-col>
-        <ion-col col-6 style="text-align: right;">
-          08:30 - 19:00
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-6 style="text-align: left;">
-          Mercoledì
-        </ion-col>
-        <ion-col col-6 style="text-align: right;">
-          08:30 - 19:00
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-6 style="text-align: left;">
-          Giovedi
-        </ion-col>
-        <ion-col col-6 style="text-align: right;">
-          08:30 - 19:00
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-6 style="text-align: left;">
-          Venerdì
-        </ion-col>
-        <ion-col col-6 style="text-align: right;">
-          08:30 - 19:00
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-6 style="text-align: left;">
-          Sabato
-        </ion-col>
-        <ion-col col-6 style="text-align: right;">
-          08:30 - 19:00
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-6 style="text-align: left;">
-          Dominica
-        </ion-col>
-        <ion-col col-6 style="text-align: right;">
-          08:30 - 19:00
-        </ion-col>
-      </ion-row>
+  <div style="margin-left: 50px;margin-right: 50px;">
+    <ion-item style="font-size: 14px; text-align: center; color: #4A4A4A;">
+      <b>ORARI DI APERTUA</b>
+    </ion-item>
+    <div>
+    <ion-row *ngFor="let item of contact.salon_work_day">
+      <ion-col col-6 style="text-align: left;">
+        {{item.day}}
+      </ion-col>
+      <ion-col col-6 style="text-align: right;">
+        {{item.time}}
+      </ion-col>
+    </ion-row>
+    </div>
   </div>
 
-      <div style="text-align: center;">
-        <img src="assets/img/yndaco.png" class="icon-image-bottom">
+  <div style="text-align: center;">
+    <img src="/assets/icon/logo.png" class="icon-image-bottom">
+  </div>
+
+  <ion-row>
+    <ion-col col-4 style="text-align: right;">
+      <img src="assets/icon/Facebook_Color.png">
+    </ion-col>
+    <ion-col col-4 style="text-align: center;">
+      <img src="assets/icon/Instagram_Color.png">
+    </ion-col>
+    <ion-col col-4 style="text-align: left;">
+      <img src="assets/icon/Twitter_Color.png">
+    </ion-col>
+  </ion-row>
+
+
+  <div style="margin-top: 30px;">
+    <div id="title-city">
+      <b>PICABIA SRL</b>
+    </div>
+    <div id="content-address">
+      <p>
+        via Monte San Michele 20/B, 21049 Tradate (VA)
+        <br> RIVA/C.F.:049110609623
+      </p>
+    </div>
+  </div>
+
+  <ion-row id="privacy-help">
+    <ion-col col-5 style="text-align: right;">
+      <div id="privacy">
+        Privacy
       </div>
-
-      <ion-row>
-        <ion-col col-4 style="text-align: right;">
-          <img src="assets/icon/Facebook_Color.png">
-        </ion-col>
-        <ion-col col-4 style="text-align: center;">
-          <img src="assets/icon/Instagram_Color.png">
-        </ion-col>
-        <ion-col col-4  style="text-align: left;">
-          <img src="assets/icon/Twitter_Color.png">
-        </ion-col>
-      </ion-row>
-
-
-      <div style="margin-top: 30px;">
-        <div id="title-city">
-          <b>PICABIA SRL</b>
-        </div>
-        <div id="content-address"><p>
-          via Monte San Michele 20/B, 21049 Tradate (VA)<br>
-          RIVA/C.F.:049110609623
-        </p></div>
+    </ion-col>
+    <ion-col col-2></ion-col>
+    <ion-col col-5 style="text-align: left;">
+      <div id="help">
+        Aiuto
       </div>
-
-      <ion-row id="privacy-help">
-        <ion-col col-5 style="text-align: right;">
-        <div id="privacy">
-          Privacy
-        </div>
-        </ion-col>
-        <ion-col col-2></ion-col>
-        <ion-col col-5  style="text-align: left;">
-        <div id="help">
-          Aiuto
-        </div>
-        </ion-col>
-      </ion-row>
-      <hr>
+    </ion-col>
+  </ion-row>
 </ion-content>

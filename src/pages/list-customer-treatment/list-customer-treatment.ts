@@ -4,35 +4,39 @@ import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { ToastService } from '../../providers/shared-service/toast-service';
 import { LoaderService } from '../../providers/shared-service/loader-service';
+import { Angular2TokenService } from 'angular2-token';
 import { ListPage } from '../list/list';
+import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-list-customer-treatment',
   templateUrl: 'list-customer-treatment.html'
 })
 export class ListCustomerTreatment {
+  loading: any;
   name: string;
   prenoCount: any;
   treatments: Array<any>;
   treatment_count: number;
   constructor(
     private _toastCtrl: ToastService,
+    private _tokenService: Angular2TokenService,
     private _loaderCtrl: LoaderService,
     public _modalCtrl: ModalController,
     public navCtrl: NavController,
-    public AuthServiceProvider: AuthServiceProvider,
-    public RestapiServiceProvider: RestapiServiceProvider,
-    public loading: LoadingController
+    public _authServiceProvider: AuthServiceProvider,
+    public _restapiServiceProvider: RestapiServiceProvider,
+    public loadingCtrl: LoadingController
   ) {
   }
 
   ionViewDidLoad() {
 
     this._loaderCtrl.showLoader();
-    console.log(this.AuthServiceProvider.currentAuthData);
-    let user_id = this.AuthServiceProvider.currentAuthData.uid;
+    console.log(this._authServiceProvider.currentAuthData);
+    const user_id = this._authServiceProvider.currentAuthData.uid;
 
-    this.RestapiServiceProvider.getMyBooking(user_id)
+    this._restapiServiceProvider.getMyBooking()
       .subscribe(response => {
         this.treatments = response.bookings;
         this.treatment_count = response.total_booking;
@@ -42,23 +46,11 @@ export class ListCustomerTreatment {
         this._toastCtrl.presentToast(error);
       })
 
-    const currentEmail = this.AuthServiceProvider.currentAuthData.uid;
-
-    this.RestapiServiceProvider.getProfile(currentEmail)
-      .subscribe(response => {
-        this.name = response.name;
-        this.prenoCount = response.preno_count;
-        this._loaderCtrl.hideLoader();
-      }, (error) => {
-        this._loaderCtrl.hideLoader();
-        this._toastCtrl.presentToast(error);
-      })
     // this.treatments = [{"title":"Piedi Applicazione Semipermanen","salon_name":"Yndaco Seregno","reservation_date":"19/02/2017"}]
   }
 
-
   list(ev) {
-    let listModal = this._modalCtrl.create(ListPage)
+    const listModal = this._modalCtrl.create(ListPage)
     listModal.present();
   }
 }

@@ -1,6 +1,4 @@
 // http://ionicframework.com/docs/theming/
-
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -16,193 +14,248 @@
 // automatically applied to the <body> element in the app.
 
 /* open-sans-regular - latin */
+
 @font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../assets/fontsopen-sans-v14-latin-regular.eot'); /* IE9 Compat Modes */
-  src: local('Open Sans Regular'), local('OpenSans-Regular'),
-       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-regular.woff') format('woff'), /* Modern Browsers */
-       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-regular.svg#OpenSans') format('svg'); /* Legacy iOS */
-}
-/* open-sans-600 - latin */
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 600;
-  src: url('../assets/fontsopen-sans-v14-latin-600.eot'); /* IE9 Compat Modes */
-  src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'),
-       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-600.woff') format('woff'), /* Modern Browsers */
-       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-600.svg#OpenSans') format('svg'); /* Legacy iOS */
-}
-/* open-sans-700 - latin */
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 700;
-  src: url('../assets/fontsopen-sans-v14-latin-700.eot'); /* IE9 Compat Modes */
-  src: local('Open Sans Bold'), local('OpenSans-Bold'),
-       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-700.woff') format('woff'), /* Modern Browsers */
-       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-700.svg#OpenSans') format('svg'); /* Legacy iOS */
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fontsopen-sans-v14-latin-regular.eot');
+    /* IE9 Compat Modes */
+    src: local('Open Sans Regular'), local('OpenSans-Regular'), url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-regular.woff') format('woff'), /* Modern Browsers */
+    url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-regular.svg#OpenSans') format('svg');
+    /* Legacy iOS */
 }
 
+
+/* open-sans-600 - latin */
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../assets/fontsopen-sans-v14-latin-600.eot');
+    /* IE9 Compat Modes */
+    src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-600.woff') format('woff'), /* Modern Browsers */
+    url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-600.svg#OpenSans') format('svg');
+    /* Legacy iOS */
+}
+
+
+/* open-sans-700 - latin */
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../assets/fontsopen-sans-v14-latin-700.eot');
+    /* IE9 Compat Modes */
+    src: local('Open Sans Bold'), local('OpenSans-Bold'), url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-700.woff') format('woff'), /* Modern Browsers */
+    url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../assets/fonts/open-sans-v14-latin/open-sans-v14-latin-700.svg#OpenSans') format('svg');
+    /* Legacy iOS */
+}
+
+
 /* playfair-display-regular - latin */
+
 @font-face {
-  font-family: 'Playfair Display';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../assets/fonts/playfair-display-v11-latin-regular.eot'); /* IE9 Compat Modes */
-  src: local('Playfair Display'), local('PlayfairDisplay-Regular'),
-       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-regular.woff') format('woff'), /* Modern Browsers */
-       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-regular.svg#PlayfairDisplay') format('svg'); /* Legacy iOS */
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fonts/playfair-display-v11-latin-regular.eot');
+    /* IE9 Compat Modes */
+    src: local('Playfair Display'), local('PlayfairDisplay-Regular'), url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-regular.woff') format('woff'), /* Modern Browsers */
+    url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-regular.svg#PlayfairDisplay') format('svg');
+    /* Legacy iOS */
 }
+
+
 /* playfair-display-700 - latin */
+
 @font-face {
-  font-family: 'Playfair Display';
-  font-style: normal;
-  font-weight: 700;
-  src: url('../assets/fonts/playfair-display-v11-latin-700.eot'); /* IE9 Compat Modes */
-  src: local('Playfair Display Bold'), local('PlayfairDisplay-Bold'),
-       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-700.woff') format('woff'), /* Modern Browsers */
-       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-700.svg#PlayfairDisplay') format('svg'); /* Legacy iOS */
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../assets/fonts/playfair-display-v11-latin-700.eot');
+    /* IE9 Compat Modes */
+    src: local('Playfair Display Bold'), local('PlayfairDisplay-Bold'), url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-700.woff') format('woff'), /* Modern Browsers */
+    url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-700.svg#PlayfairDisplay') format('svg');
+    /* Legacy iOS */
 }
+
+
 /* playfair-display-900 - latin */
+
 @font-face {
-  font-family: 'Playfair Display';
-  font-style: normal;
-  font-weight: 900;
-  src: url('../assets/fonts/playfair-display-v11-latin-900.eot'); /* IE9 Compat Modes */
-  src: local('Playfair Display Black'), local('PlayfairDisplay-Black'),
-       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-900.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-900.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-900.woff') format('woff'), /* Modern Browsers */
-       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-900.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-900.svg#PlayfairDisplay') format('svg'); /* Legacy iOS */
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 900;
+    src: url('../assets/fonts/playfair-display-v11-latin-900.eot');
+    /* IE9 Compat Modes */
+    src: local('Playfair Display Black'), local('PlayfairDisplay-Black'), url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-900.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-900.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-900.woff') format('woff'), /* Modern Browsers */
+    url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-900.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../assets/fonts/playfair-display-v11-latin/playfair-display-v11-latin-900.svg#PlayfairDisplay') format('svg');
+    /* Legacy iOS */
 }
 
 * {
-  font-family: 'Open Sans';
+    font-family: 'Open Sans';
 }
 
-.playfair{
-  font-family: 'Playfair Display'
+.playfair {
+    font-family: 'Playfair Display'
 }
 
-.toolbar-title{
-  font-weight: 100;
+.toolbar-title {
+    font-weight: 100;
 }
 
-.header-main-title{
-  font-weight: 600;
+.header-main-title {
+    font-weight: 600;
 }
 
-.bluesky-bg{
-  background-color: #76CAE2;
+.bluesky-bg {
+    background-color: #76CAE2;
 }
 
-.bluesky-button{
-  background-color: #00CBD0;
+.bluesky-button {
+    background-color: #00CBD0;
 }
 
-.bar-button-default-salonist-user{
-  color: #93E3DA !important;
+.bar-button-default-salonist-user {
+    color: #93E3DA !important;
 }
 
-.red-bg{
-  background: #f65c5c;
-  width: 100%;
+.red-bg {
+    background: #f65c5c;
+    width: 100%;
 }
 
-.gray-text{
-  color: #9D9D9D;
+.gray-text {
+    color: #9D9D9D;
 }
 
-.regular-text{
-  color: #4A4A4A;
+.regular-text {
+    color: #4A4A4A;
 }
 
-.bar-button-default-ios{
- color: #4A4A4A; 
+.bar-button-default-ios {
+    color: #4A4A4A;
 }
 
-.bolder{
-  font-weight: 700;
+.bolder {
+    font-weight: 700;
 }
 
 ul {
-  padding: 0px;
-
-  &.rating li {
-    padding: 5px 0px !important;
-    background: none;
-    color: #ffb400;
-
-    ion-icon {
-      font-size: 25px;
-      color: #FDD06F;
+    padding: 0px;
+    &.rating li {
+        padding: 5px 0px !important;
+        background: none;
+        color: #ffb400;
+        ion-icon {
+            font-size: 25px;
+            color: #FDD06F;
+        }
     }
-  }
 }
 
-.salon-detail-title{
-  font-size: 20px;
+.salon-detail-title {
+    font-size: 20px;
 }
 
-.prenotare-content{
-  font-size: 20px;
-  margin-bottom: 25px;
+.prenotare-content {
+    font-size: 20px;
+    margin-bottom: 25px;
 }
 
-.telephone{
-  padding: 10px 40px;
-  border: 3px solid #f65c5c;
-  font-weight: bolder;
-  a{
-    color: #f65c5c;
-    font-size: 22px;
-    text-decoration: none;  
-  }
+.telephone {
+    padding: 10px 40px;
+    border: 3px solid #f65c5c;
+    font-weight: bolder;
+    a {
+        color: #f65c5c;
+        font-size: 22px;
+        text-decoration: none;
+    }
 }
 
-.lunedi-content{
-  margin-top:25px;
-  margin-bottom:5px;
-  font-size: 14px;
-  font-weight: 700;
+.lunedi-content {
+    margin-top: 25px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 700;
 }
 
 .btn-cancel {
-  width: 100%;
-  background-color: white;
-  border: 1px solid #9A9A9A;
-  color: #9A9A9A;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #9A9A9A;
+    color: #9A9A9A;
 }
 
 // ion-modal {
 // height: 90%;
 // }
+.range-ios-danger .range-bar-active,
+.range-ios-danger .range-tick-active {
+    background: #93E3DA;
+}
 
-.range-ios-danger .range-bar-active, .range-ios-danger .range-tick-active{
-  background: #93E3DA;
+.toolbar .toolbar-title-ios {
+    font-weight: 100;
+    padding-top: 15px;
+}
+
+.toolbar .toolbar-title-md {
+    font-weight: 100;
+    padding-bottom: 15px;
 }
 
 .toolbar-ios {
-  height: 50px + $cordova-ios-statusbar-padding;
-  padding-top: $cordova-ios-statusbar-padding;
+    height: 60px + $cordova-ios-statusbar-padding;
+    padding-top: $cordova-ios-statusbar-padding;
 }
 
+.toolbar-md {
+    height: 40px + $cordova-ios-statusbar-padding;
+    padding-top: $cordova-ios-statusbar-padding;
+}
+
+.bar-button-default-md,
+.bar-button-clear-md-default,
+.bar-button-md-default {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+
+.bar-button-default-ios,
+.bar-button-clear-ios-default,
+.bar-button-ios-default {
+    margin-right: 5px;
+    position: relative;
+}
+
+.bar-button-default-ios,
+.bar-button-back-ios-default,
+.bar-button-ios-default {
+    margin-left: 5px;
+    position: relative;
+}

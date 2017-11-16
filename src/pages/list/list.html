@@ -1,28 +1,42 @@
 <ion-header>
   <ion-navbar>
-    <ion-title style="text-align: center">Ydanco Seregno</ion-title>
+    <ion-title style="text-align: center">
+      Il BRAND
+      <div style="color:grey; font-size: 12px; ">Benvenuto!</div>
+    </ion-title>
     <ion-buttons right>
-      <button class="bar-button-default-salonist-user" ion-button icon-only (click)="closeModal()"><ion-icon name="ios-close-outline"></ion-icon></button>
+      <button ion-button icon-only (click)="closeModal()">
+        <ion-icon name="ios-close-outline"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-list>
+<ion-content class="list-content-style main-view">
+  <div class="overlay" (click)="closeModal()"></div>
+  <ion-list class="modal_content">
     <ion-item *ngIf="!isSignedIn">
-      <div (click)="goLogin($event)" style="color:#03d9e0">ACCEDI o REGISTRATI</div>
+      <div class="list-content" (click)="goLogin($event)" style="color:#03d9e0">
+        <b>ACCEDI o REGISTRATI</b>
+      </div>
     </ion-item>
     <ion-item *ngIf="isSignedIn">
-      <div (click)="goMybook($event)">Prenota</div>
+      <div class="list-content" (click)="goMyProfile($event)">Il tuo profilo</div>
+    </ion-item>
+    <ion-item>
+      <div class="list-content" [navPush]="ListTreatmentPage">Prenota</div>
+    </ion-item>
+    <ion-item *ngIf="isSignedIn">
+      <div class="list-content" (click)="goMybook($event)">Prenotazioni</div>
     </ion-item>
     <ion-item [navPush]="StaffPage">
-      <div>Lo staff</div>
+      <div class="list-content">Lo staff</div>
     </ion-item>
     <ion-item [navPush]="ContactPage">
-      <div>Contatti & Orari</div>
+      <div class="list-content">Contatti & Orari</div>
     </ion-item>
-    <ion-item *ngIf="isSignedIn" (click)="doLogout()">
-      <div>Logout</div>
+    <ion-item *ngIf="isSignedIn">
+      <div class="list-content" (click)="doLogout($event)">Esci</div>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -1,64 +1,59 @@
-<!--
-  Generated template for the MyBookingPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-  <ion-navbar>
-    <ion-title>Grazie!</ion-title>
+  <ion-navbar hideBackButton="true">
+    <ion-title>Prenotazione<br>effettuata</ion-title>
   </ion-navbar>
 </ion-header>
 
+
 <ion-content>
-  <ion-row class="row-cast" padding>
-    <div class="salon-name" style="color:red">Grazie per aver prenotato!</div>
-  </ion-row>
-
-  <div class="box-card">
-    <ion-grid class="box-grid">
-      <div class="content-customer">
-        <ion-row class="row-box">
-          <b class="salon-name">Yndaco Seregno</b>
-        </ion-row>
-        <ion-row class="row-box">
-          <div class="salon-address">Via Garibaldi 75, Seregno</div>
-        </ion-row>
-      </div>
-
-      <div class="content-customer">
-        <ion-row class="row-box">
-          <b class="salon-name">{{dataOther.dayName}} {{dataOther.date}} {{dataOther.monthDisplay}} {{dataOther.year}}</b>
-        </ion-row>
-
-        <ion-row class="row-box">
-          <div class="salon-address">ore <b class="salon-name"> {{dataOther.time}}</b></div>
-        </ion-row>
-
-        <ion-row class="row-box">
-          <div class="salon-address">con operatore <b class="salon-name">{{operatorParam.operator_name | uppercase}}</b></div>
-        </ion-row>
-      </div>
-
-      <ion-row class="row-box">
-        <div class="salon-address">totale <b class="total-value"> &#8364; {{treatmentParam.price}}</b></div>
-      </ion-row>
-      <ion-row class="row-box">
-        <b class="salon-name-content">Pagherai in salone</b>
-      </ion-row>
-    </ion-grid>
+  <div padding style="padding-bottom: 10px" class="grazie">
+    Grazie per aver prenotato!
+  </div>
+  <div padding style="padding-bottom: 10px">
+    <div class="treatment-name">{{treatmentParam.des_treatment}}</div>
+    <div>
+      <span class="customer-value">{{dataOther.dayName}} {{dataOther.date}} {{dataOther.monthName}} {{dataOther.year}}</span> ore
+      <span class="customer-value">{{dataOther.time}}</span>
+    </div>
   </div>
 
-  <ion-grid padding>
-    <i>
-      <p>Riceverai una conferma via email all'indirizzo con cui ti sei registrato (francesco.ambrosiano@gmail.com).</p>
-      <p>Si prega di prenotare in modo responsabile. E molto grave per i saloni quando  non ti presenti ad un appuntamento. Certo, possono capitare degli imprevisti urgenti, quindi se sei impossibilitato andare all'appuntamento sii cortese e annullalo dalla sezione 'prenotazioni' del tuo profilo.</p>
-	</i>
-  </ion-grid>
+  <hr>
+  <div padding style="padding-top: 8px">
+    <ion-row>
+      <span class="treatment-name">{{salon.name}}</span>
+    </ion-row>
+    <ion-row class="salon-address">
+      {{salon.address}}
+    </ion-row>
+    <br>
+    <div>
+      <span class="con-operatore">con operatore</span>
+      <span class="operator-value">{{operatorParam.operator_name | uppercase}}</span>
+    </div>
+  </div>
 
-  <ion-row padding>
-    <button text-center ion-button color="danger" class="btn-create-reminder" [navPush]="HomePage">CREA PROMEMORIA</button>
-    <button text-center ion-button class="btn-new-reservation" [navPush]="HomePage">NUOVA PRENOTAZIONE</button>
-  </ion-row>
-  
+  <div>
+
+    <ion-row padding class="total-style">
+      <ion-col col-3>
+        <span class="gray-text"> totale</span>
+      </ion-col>
+      <ion-col col-9 style="padding-left: 21%; ">
+          <div class="total-value">&#8364; {{treatmentParam.price}}</div><br>
+        <div class="con-operatore" style="color: #FF4653; text-align:right; float:right; padding-left: 20px !important;">{{optionPay}}</div>
+      </ion-col>
+    </ion-row>
+    <ion-grid padding>
+      <div class="content-page">
+        <p>Riceverai una conferma via email all'indirizzo con cui ti sei registrato (francesco.ambrosiano@gmail.com).</p>
+        <p>Si prega di prenotare in modo responsabile. E molto grave per i saloni quando non ti presenti ad un appuntamento.
+          Certo, possono capitare degli imprevisti urgenti, quindi se sei impossibilitato andare all'appuntamento sii cortese
+          e annullalo dalla sezione 'prenotazioni' del tuo profilo.</p>
+      </div>
+    </ion-grid>
+    <ion-row padding>
+      <button text-center ion-button color="danger" class="btn-create-reminder bold" [navPush]="HomePage">CREA PROMEMORIA</button>
+      <button text-center ion-button class="btn-new-reservation bold" [navPush]="HomePage">NUOVA PRENOTAZIONE</button>
+    </ion-row>
+  </div>
 </ion-content>

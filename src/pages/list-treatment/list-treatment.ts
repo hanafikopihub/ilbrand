@@ -13,7 +13,7 @@ import { AlertService } from '../../providers/shared-service/alert-service';
   templateUrl: 'list-treatment.html'
 })
 export class ListTreatmentPage {
-
+  salon_id: string;
   treatments: Array<any>
   addTreatments: Array<any> = [];
   constructor(
@@ -22,18 +22,22 @@ export class ListTreatmentPage {
     public _navCtrl: NavController,
     public _modalCtrl: ModalController,
     public _restapiServiceProvider: RestapiServiceProvider) {
+
+    this.salon_id = JSON.parse(localStorage.getItem('salon_id'));
+
     this.loadData();
   }
 
   list(ev) {
-    let listModal = this._modalCtrl.create(ListPage)
+    const listModal = this._modalCtrl.create(ListPage)
     listModal.present();
   }
 
   loadData() {
     this._loaderCtrl.showLoader();
-    this._restapiServiceProvider.getSalon(604)
+    this._restapiServiceProvider.getSalon(this.salon_id)
       .subscribe(data => {
+        localStorage.setItem('salon', JSON.stringify(data))
         this.treatments = data.treatments;
         this._loaderCtrl.hideLoader();
       }, (error) => {
@@ -49,14 +53,14 @@ export class ListTreatmentPage {
   }
 
   addToCart() {
-    const treatmentls = JSON.parse(localStorage.getItem("treatments"));
+    const treatmentls = JSON.parse(localStorage.getItem('treatments'));
     if (treatmentls != null) {
 
       this.addTreatments = this.addTreatments.concat(treatmentls);
     }
-    localStorage.setItem("treatments", JSON.stringify(this.addTreatments))
+    localStorage.setItem('treatments', JSON.stringify(this.addTreatments))
     this.addTreatments = [];
-    //this._navCtrl.setRoot
+    // this._navCtrl.setRoot
     this._navCtrl.push(BookingPage);
   }
 }

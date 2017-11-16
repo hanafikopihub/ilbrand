@@ -1,36 +1,84 @@
 <ion-header>
   <ion-navbar>
-    <ion-title style="text-align: center">Ydanco Seregno</ion-title>
+    <ion-title style="text-align: center">
+      Il BRAND
+      <div style="color:grey; font-size: 12px; ">Listino</div>
+    </ion-title>
     <ion-buttons right>
-      <button class="bar-button-default-salonist-user" ion-button icon-only (click)="list($event)"><ion-icon name="list"></ion-icon></button>
+      <button ion-button icon-only (click)="list($event)">
+        <ion-icon name="menu"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <ion-grid *ngFor="let treatment of treatments" class="treatment-list">
-        <ion-row class="row-cast">
-          <ion-col col-9>
-            <h4>{{treatment.des_treatment}}</h4>
-            <div class="treatment-detail-label">
-              <span class="gray-text">Durata:</span> {{treatment.duration_in_minute}} min.
-            </div>
-            <div class="treatment-detail-label">
-              <span class="gray-text">Prezzo:</span> &#8364; {{treatment.price}}
-            </div>
-          </ion-col>
-          <ion-col col-3 class="treatment-action">
-            <button ion-fab color="danger" (click)="addTreatment(treatment)">
-              <ion-icon name="add"></ion-icon>
-            </button>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-        </ion-row>
-      </ion-grid>
-<!--         <ion-fab bottom center color="danger">
-    <button ion-fab color="danger" (click)="addToCart()">
-      <ion-icon name="cart"></ion-icon>
-    </button>
-  </ion-fab> -->
+  <div>
+      <p>Scegli i servizi che vuoi prenotare e poi entra nel <b style="color:red;">carrello</b> per confermare la prenotazione.</p>
+  </div>
+  <ion-grid style="padding-left:0" *ngFor="let treatment of treatments" class="treatment-list">
+    <ion-row style="padding-left:0" class="row-cast">
+      <ion-col style="padding-left:0" col-9>
+        <h4>{{treatment.des_treatment}}</h4>
+        <div class="treatment-detail-label">
+          <span class="gray-text">Durata:</span> {{treatment.duration_in_minute}} min.
+        </div>
+        <div class="treatment-detail-label">
+          <span class="gray-text">Prezzo:</span> &#8364; {{treatment.price}}
+        </div>
+      </ion-col>
+      <ion-col col-3 class="treatment-action">
+        <button ion-fab color="danger" (click)="addTreatment(treatment)">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+    </ion-row>
+  </ion-grid>
+
+  <hr style="height:2px; margin-left:10%; margin-right:10%">
+
+  <div style="text-align: center;">
+    <img src="assets/icon/logo.png" class="icon-image-bottom">
+  </div>
+
+  <ion-row>
+    <ion-col col-4 style="text-align: right;">
+      <img src="assets/icon/Facebook_Color.png">
+    </ion-col>
+    <ion-col col-4 style="text-align: center;">
+      <img src="assets/icon/Instagram_Color.png">
+    </ion-col>
+    <ion-col col-4 style="text-align: left;">
+      <img src="assets/icon/Twitter_Color.png">
+    </ion-col>
+  </ion-row>
+
+
+  <div style="margin-top: 30px;">
+    <div id="title-city">
+      <b>PICABIA SRL</b>
+    </div>
+    <div id="content-address">
+      <p>
+        via Monte San Michele 20/B, 21049 Tradate (VA)
+        <br> RIVA/C.F.:049110609623
+      </p>
+    </div>
+  </div>
+
+  <ion-row id="privacy-help" text-center>
+    <ion-col col-5 style="text-align: right;">
+      <div id="privacy">
+        Privacy
+      </div>
+    </ion-col>
+    <ion-col col-2></ion-col>
+    <ion-col col-5 style="text-align: left;">
+      <div id="help">
+        Aiuto
+      </div>
+    </ion-col>
+  </ion-row>
 </ion-content>

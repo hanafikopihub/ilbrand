@@ -3,10 +3,12 @@ import { ContactPage } from '../contact/contact';
 import { LoginPage } from '../login/login';
 import { HomePage } from '../home/home';
 import { StaffPage } from '../staff/staff';
+import { ProfilePage } from '../profile/profile';
 import { ListCustomerTreatment } from '../list-customer-treatment/list-customer-treatment'
 import { ViewController, NavController, ModalController, LoadingController, ToastController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { Angular2TokenService } from 'angular2-token';
+import { ListTreatmentPage } from '../list-treatment/list-treatment';
 
 @Component({
   selector: 'page-list',
@@ -14,12 +16,13 @@ import { Angular2TokenService } from 'angular2-token';
 })
 export class ListPage {
 
+  ListTreatmentPage = ListTreatmentPage;
   loading: any;
   ContactPage = ContactPage;
   LoginPage = LoginPage;
   StaffPage = StaffPage;
   ListCustomerTreatment = ListCustomerTreatment;
-  public isSignedIn: boolean;
+  isSignedIn: boolean;
 
   constructor(
     public _navCtrl: NavController,
@@ -29,18 +32,30 @@ export class ListPage {
     private _loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
     public _authServiceProvider: AuthServiceProvider) {
-    this.isSignedIn = this._authServiceProvider.userSignedIn
+    //  this.isSignedIn = this._authServiceProvider.userSignedIn
+
+  }
+
+  ionViewDidEnter() {
+    if (this._authServiceProvider.currentAuthData === undefined || this._authServiceProvider.currentAuthData === null) {
+      this.isSignedIn = false
+    } else {
+      this.isSignedIn = true
+    }
   }
 
   goLogin(ev) {
-    let loginModal = this._modalController.create(LoginPage)
+    const loginModal = this._modalController.create(LoginPage)
     loginModal.present();
   }
 
-  goMybook(ev){
+  goMybook(ev) {
     this._navCtrl.push(ListCustomerTreatment)
   }
 
+  goMyProfile(ev) {
+    this._navCtrl.push(ProfilePage)
+  }
   doLogout() {
     this.loading = this._loadingCtrl.create({
       content: 'Please Wait, logout still processing..'
@@ -50,18 +65,18 @@ export class ListPage {
     this._tokenService.signOut().subscribe(
       res => {
         this.loading.dismiss();
-        this._navCtrl.setRoot(HomePage);
+        this._viewController.dismiss();
       },
       error => {
         this.loading.dismiss();
         this.presentToast(error);
-        this._navCtrl.setRoot(HomePage);
+        this._viewController.dismiss();
       }
     )
   }
 
   presentToast(msg) {
-    let toast = this.toastCtrl.create({
+    const toast = this.toastCtrl.create({
       message: msg,
       duration: 3000,
       position: 'bottom',

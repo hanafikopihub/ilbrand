@@ -1,15 +1,12 @@
 import { Component } from '@angular/core';
 import { MyBookingPage } from '../my-booking/my-booking';
 
-import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-import { LoginPage } from '../login/login';
-import { ProfilePage } from '../profile/profile';
-import { ListPage } from '../list/list';
 import { ModalController, NavParams, NavController } from 'ionic-angular';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { LoaderService } from '../../providers/shared-service/loader-service';
 import { AlertService } from '../../providers/shared-service/alert-service';
 
+import { ListPage } from '../list/list';
 import { PayPalPayment, PayPal, PayPalConfiguration } from '@ionic-native/paypal';
 
 @Component({
@@ -31,7 +28,7 @@ export class HistoryBookingPage {
   MyBookingPage = MyBookingPage;
 
   treatment: any
-
+  optionPay: any
   payment: PayPalPayment
   payPalEnvironment: string = 'payPalEnvironmentSandbox';
 
@@ -48,18 +45,28 @@ export class HistoryBookingPage {
     this.operatorParam = this._navParams.get('operators');
     this.dataBooking = this._navParams.get('dataBooking');
     this.dataOther = this._navParams.get('dataOther');
-    this.salon = this._navParams.get('salon');
-
+    this.salon = JSON.parse(localStorage.getItem('salon'));
     this.payOptions = [
-      { 'id': 1, 'option': 'Paga in salone' },
-      { 'id': 2, 'option': 'Paga con carta di credito' }]
+      { 'id': '1', 'option': 'Paga in salone', 'image': 'assets/icon/shop_icon/shop_icon-Small-40.png' },
+      { 'id': '2', 'option': 'Paga con carta di credito', 'image': 'assets/icon/card_icon/card_icon-Small-40.png' }]
 
 
     this.payment = new PayPalPayment(this.treatmentParam.price, 'EUR', this.treatmentParam.des_treatment, '');
 
   }
 
+  list(ev) {
+    const listModal = this._modalCtrl.create(ListPage)
+    listModal.present();
+  }
   onSubmit() {
+
+    this.optionPay = this.payOptions.filter(o => {
+      return o.id === this.payoptionModel
+    })
+
+    this.optionPay = this.optionPay[0].option
+
     this._loaderCtrl.showLoader();
     if (this.payoptionModel === '1') {
       this.toPayDirectly();
@@ -67,6 +74,11 @@ export class HistoryBookingPage {
 
     if (this.payoptionModel === '2') {
       this.toPayPal();
+    }
+
+    if (this.payoptionModel === undefined) {
+      this._loaderCtrl.hideLoader();
+      this._alertService.failedError('è necessario selezionare un opzione di pagamento')
     }
   }
 
@@ -78,7 +90,8 @@ export class HistoryBookingPage {
           dataBooking: this.dataBooking,
           treatment: this.treatmentParam,
           operators: this.operatorParam,
-          dataOther: this.dataOther
+          dataOther: this.dataOther,
+          optionPay: this.optionPay
         })
       this._loaderCtrl.hideLoader();
     }, (error) => {
@@ -134,17 +147,13 @@ export class HistoryBookingPage {
             dataBooking: this.dataBooking,
             treatment: this.treatmentParam,
             operators: this.operatorParam,
-            dataOther: this.dataOther
+            dataOther: this.dataOther,
+            optionPay: this.optionPay
           })
       }, (error) => {
         this._loaderCtrl.hideLoader();
         this._alertService.failedError(error);
       })
-  }
-
-  list(ev) {
-    let listModal = this._modalCtrl.create(ListPage)
-    listModal.present();
   }
 
 }

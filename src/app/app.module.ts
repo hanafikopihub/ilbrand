@@ -53,7 +53,13 @@ import { PayPal } from '@ionic-native/paypal';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      platforms: {
+        ios: {
+          backButtonText: ''
+        }
+      }
+    }),
     CacheModule.forRoot()
   ],
   bootstrap: [IonicApp],
@@ -81,10 +87,10 @@ import { PayPal } from '@ionic-native/paypal';
     AuthServiceProvider,
     RestapiServiceProvider,
     NativeStorage,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     AlertService,
     ToastService,
     LoaderService
   ]
 })
-export class AppModule {}
+export class AppModule { }

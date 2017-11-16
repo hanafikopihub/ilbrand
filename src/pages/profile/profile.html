@@ -1,9 +1,12 @@
 <ion-header>
   <ion-navbar>
-    <div text-center class="regular-text header-main-title">Area personale</div>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="closeModal()">
-        <ion-icon item-right name="ios-close-outline"></ion-icon>
+    <ion-title style="text-align: center">
+      Il BRAND
+      <div style="color:grey; font-size: 12px; ">Area personale</div>
+    </ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="list($event)">
+        <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -11,11 +14,22 @@
 <ion-content padding>
 
   <ion-row class="title">
-    Giuditta
+    {{profile.name}}
   </ion-row>
-  <ion-row class="title-text">4 Prenotazioni effettuate</ion-row>
-  <ion-list>
-    <button ion-item [navPush]="ProfileSettingPage">Il tuo profilo</button>
-    <button ion-item (click)="doLogout()">Esci</button>
-  </ion-list>
+  <ion-row class="title">{{this.name}}</ion-row>
+  <div name="form">
+    <div class="email-content">
+      <div class="label">LA TUA MAIL</div>
+      <hr style="height:1px">
+      <div>{{profile.email}}</div>
+    </div>
+    <div class="phone-content">
+      <div class="label">IL TUA NUMERO</div>
+      <hr style="height:1px">
+      <div>{{profile.number}}</div>
+    </div>
+  </div>
+  <div padding>
+    <button text-center ion-button class="red-bg trova-button-home" style="background-color:#F5F5F0 !important; color: grey; border:2px solid grey" (click)="doLogout()">Esci</button>
+  </div>
 </ion-content>

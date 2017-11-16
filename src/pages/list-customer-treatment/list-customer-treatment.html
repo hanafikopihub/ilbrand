@@ -1,27 +1,27 @@
 <ion-header>
   <ion-navbar>
-    <ion-title style="text-align: center; margin-top:3%">il tuo profilo</ion-title>
+    <ion-title style="text-align: center">
+      Il BRAND
+      <div style="color:grey; font-size: 12px; ">Prenotazioni</div>
+    </ion-title>
     <ion-buttons right>
-      <button class="bar-button-default-salonist-user" style="margin: 0 6px;" ion-button icon-only (click)="list($event)"><ion-icon name="list"></ion-icon></button>
+      <button ion-button icon-only (click)="list($event)">
+        <ion-icon name="menu"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-  <ion-row class="title">
-    {{this.name}}
-  </ion-row>
-  <ion-row class="title-text">{{treatment_count}} Prenotazioni effettuate</ion-row>
-
-  <ion-row class="label-reveration">LE TUE PRENOTAZIONI</ion-row>
-  <hr>
   <ion-grid *ngFor="let treatment of treatments">
     <ion-row class="row-cast">
       <ion-col col-8>
         <h6>{{treatment.title}}</h6>
         <div class="treatment-detail-label">
-          <span><b>{{treatment.salon_name}}</b></span>
+          <span>
+            <b>{{treatment.salon_name}}</b>
+          </span>
         </div>
       </ion-col>
       <ion-col col-4>

@@ -3,6 +3,8 @@ import { Http } from '@angular/http';
 import { ToastController } from 'ionic-angular';
 import { AppApi } from '../../app.api';
 import { CacheService } from 'ionic-cache';
+import { Angular2TokenService } from 'angular2-token';
+import { RequestMethod } from '@angular/http';
 
 import 'rxjs/add/operator/map';
 
@@ -22,6 +24,7 @@ export class RestapiServiceProvider {
   constructor(
     public http: Http,
     private _toastCtrl: ToastController,
+    public _authServiceProvider: Angular2TokenService,
     private cache: CacheService) {
   }
 
@@ -42,7 +45,7 @@ export class RestapiServiceProvider {
 
   getSalon(id) {
     return this.http.get(this.apiUrl + 'salons/' + id)
-        .map(res => res.json());
+      .map(res => res.json());
   }
 
   searchSalons(treatment, location, price, page) {
@@ -71,7 +74,7 @@ export class RestapiServiceProvider {
   getProfile(email) {
     const url = this.apiUrl + 'finds/profile';
     const cacheKey = url;
-    const request =  this.http.post(url, { email: email }).map(res => res.json())
+    const request = this.http.post(url, { email: email }).map(res => res.json())
 
     return this.cache.loadFromObservable(cacheKey, request);
   }
@@ -82,9 +85,16 @@ export class RestapiServiceProvider {
       .map(res => res.json())
   }
 
-  getMyBooking(user_id) {
-    return this.http.post(this.apiUrl + 'bookings/my', { user_id: user_id })
-      .map(res => res.json())
+  // getMyBooking(user_id) {
+  //   return this.http.post(this.apiUrl + 'bookings/my', { user_id: user_id })
+  //     .map(res => res.json())
+  // }
+
+  getMyBooking() {
+    return this._authServiceProvider.request({
+      method: RequestMethod.Post,
+      url: this.apiUrl + 'bookings/my'
+    }).map(res => res.json())
   }
 
   getOperator(data) {
@@ -93,8 +103,11 @@ export class RestapiServiceProvider {
   }
 
   postBooking(data) {
-    return this.http.post(this.apiUrl + 'bookings/create', data)
-      .map(res => res.json())
+    return this._authServiceProvider.request({
+      method: RequestMethod.Post,
+      url: this.apiUrl + 'bookings/create',
+      body: data
+    }).map(res => res.json())
   }
 
   postPayPal(data) {

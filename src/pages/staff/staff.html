@@ -1,74 +1,116 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      <div text-center class="regular-text header-main-title">Lo staff</div>
-	</ion-title>
-    <ion-buttons right style="margin-left: 15px;margin-right: 15px;">
-      <button class="bar-button-default-salonist-user" ion-button icon-only (click)="list($event)"><ion-icon name="list"></ion-icon></button>
+    <ion-title style="text-align: center">
+      Il BRAND
+      <div style="color:grey; font-size: 12px; ">Lo staff</div>
+    </ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="list($event)">
+        <ion-icon name="menu"></ion-icon>
+      </button>
     </ion-buttons>
-</ion-navbar>
+  </ion-navbar>
 </ion-header>
 
 <ion-content>
-    <ion-row>
-    	<img src="assets/img/staff1.png" width="100%">
+  <ion-grid no-padding>
+    <ion-row no-padding>
+      <img src="assets/images/giordano.jpg" width="100%" height="10%">
     </ion-row>
-    <ion-grid padding>
-      <ion-row>
-        <p>
-        Etiam quis turpis vel nibh venenatis accumsan. Etiam at molis felis. Aliquam faucibus justo et neque consectetur, eu vulputate enim venenatis. 
+    <ion-row padding>
+      <div style="font-size:18px">
+        <b>GIORDANO</b>
+      </div>
+      <p>
+        La passione è il punto di forza che caratterizza il lavoro di Giordano.
+        <br> Un professionista sempre alla ricerca di nuove ispirazioni per suggerire look personalizzati.
+        <br> Hair stylist e Formatore z-oneconcept education.
       </p>
-      </ion-row>
-  </ion-grid>
-    <ion-row>
-    	<img src="assets/img/staff2.png" width="100%">
     </ion-row>
-    <ion-grid padding>
-      <ion-row>
-        <p>
-        Etiam quis turpis vel nibh venenatis accumsan. Etiam at molis felis.
+    <ion-row no-padding>
+      <img src="assets/images/lorena.jpg" width="100%" height="10%">
+    </ion-row>
+    <ion-row padding>
+      <div style="font-size:18px">
+        <b>LORENA</b>
+      </div>
+      <p>
+        Dicono che abbia mani di fata! Rimarrete inebriati dalla sua dolcezza e dai suoi massaggi durante ogni trattamento.
+        <br> A questo si aggiunge la grande cura nei dettagli dedicata a ciascun servizio offerto.
       </p>
-      </ion-row>
+    </ion-row>
+    <ion-row no-padding>
+      <img src="assets/images/anna.jpg" width="100%" height="10%">
+    </ion-row>
+    <ion-row padding>
+      <div style="font-size:18px">
+        <b>ANNA</b>
+      </div>
+      <p>
+        Se desiderate una consulenza di immagine per un nuovo look o per esaltare il vostro taglio attuale, Anna è la persona giusta!
+        <br> La sua abilità sta nel saper esaudire i desideri delle donne.
+      </p>
+    </ion-row>
+    <ion-row no-padding>
+      <img src="assets/images/sara.jpg" width="100%" height="10%">
+    </ion-row>
+    <ion-row padding>
+      <div style="font-size:18px">
+        <b>SARA</b>
+      </div>
+      <p>
+        Sara è una new entry nel nostro staff e si definisce CREATIVA!
+        <br> Sempre a vostra disposizione con il sorriso, saprà offrirvi una consulenza personalizzata e coccolarvi con servizi
+        per la cura e la bellezza dei capelli.
+        <br> È specializzata, inoltre, nella cura della barba ed è in grado di rendere ogni uomo impeccabile.
+      </p>
+    </ion-row>
   </ion-grid>
-      <div style="text-align: center;">
-        <img src="assets/img/yndaco.png" class="icon-image-bottom">
+
+  <hr style="height:2px; margin-left:10%; margin-right:10%">
+
+  <div style="text-align: center;">
+    <img src="assets/icon/logo.png" class="icon-image-bottom">
+  </div>
+
+  <ion-row>
+    <ion-col col-4 style="text-align: right;">
+      <img src="assets/icon/Facebook_Color.png">
+    </ion-col>
+    <ion-col col-4 style="text-align: center;">
+      <img src="assets/icon/Instagram_Color.png">
+    </ion-col>
+    <ion-col col-4 style="text-align: left;">
+      <img src="assets/icon/Twitter_Color.png">
+    </ion-col>
+  </ion-row>
+
+
+  <div style="margin-top: 30px;">
+    <div id="title-city">
+      <b>PICABIA SRL</b>
+    </div>
+    <div id="content-address">
+      <p>
+        via Monte San Michele 20/B, 21049 Tradate (VA)
+        <br> RIVA/C.F.:049110609623
+      </p>
+    </div>
+  </div>
+
+  <hr style="height:2px; margin-left:10%; margin-right:10%">
+
+  <ion-row id="privacy-help">
+    <ion-col col-5 style="text-align: right;">
+      <div id="privacy">
+        Privacy
       </div>
-
-      <ion-row>
-        <ion-col col-4 style="text-align: right;">
-          <img src="assets/icon/Facebook_Color.png">
-        </ion-col>
-        <ion-col col-4 style="text-align: center;">
-          <img src="assets/icon/Instagram_Color.png">
-        </ion-col>
-        <ion-col col-4  style="text-align: left;">
-          <img src="assets/icon/Twitter_Color.png">
-        </ion-col>
-      </ion-row>
-
-
-      <div style="margin-top: 30px;">
-        <div id="title-city">
-          <b>PICABIA SRL</b>
-        </div>
-        <div id="content-address"><p>
-          via Monte San Michele 20/B, 21049 Tradate (VA)<br>
-          RIVA/C.F.:049110609623
-        </p></div>
+    </ion-col>
+    <ion-col col-2></ion-col>
+    <ion-col col-5 style="text-align: left;">
+      <div id="help">
+        Aiuto
       </div>
-
-      <ion-row id="privacy-help">
-        <ion-col col-5 style="text-align: right;">
-        <div id="privacy">
-          Privacy
-        </div>
-        </ion-col>
-        <ion-col col-2></ion-col>
-        <ion-col col-5  style="text-align: left;">
-        <div id="help">
-          Aiuto
-        </div>
-        </ion-col>
-      </ion-row>
-      <hr>
+    </ion-col>
+  </ion-row>
 </ion-content>

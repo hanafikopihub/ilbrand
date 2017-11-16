@@ -9,14 +9,14 @@ import { ListPage } from '../list/list';
 export class StaffPage {
 
   constructor(
-  	public navCtrl: NavController,
-  	public _modalCtrl: ModalController,
-  	public _viewController: ViewController) {
+    public navCtrl: NavController,
+    public _modalCtrl: ModalController,
+    public _viewController: ViewController) {
 
   }
 
   list(ev) {
-    let listModal = this._modalCtrl.create(ListPage)
+    const listModal = this._modalCtrl.create(ListPage)
     listModal.present();
   }
 

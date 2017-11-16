@@ -1,75 +1,127 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title style="text-align: center">Ydanco Seregno</ion-title>
-    <div style="text-align: center; color:grey; font-size: 12px; ">Benvenuto!</div>
+  <ion-navbar text-center>
+    <ion-title style="text-align: center">
+      Il BRAND
+      <div style="color:grey; font-size: 12px; ">Benvenuto!</div>
+    </ion-title>
     <ion-buttons right>
-      <button class="bar-button-default-salonist-user" ion-button icon-only (click)="closeModal()"><ion-icon name="ios-close-outline"></ion-icon></button>
+      <button id="close-button" right ion-button icon-only (click)="closeModal()">
+        <ion-icon name="ios-close-outline"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-list>
+<ion-content>
+  <div (click)="closeModal()"></div>
+  <div>
+    <div padding>
+      <div *ngIf="isLoginFormShow">
+        <form (ngSubmit)="doLogin()" #loginForm="ngForm">
+          <ion-row>
+            <ion-col>
+              <ion-list>
 
-    <div *ngIf="isLoginFormShow">
-      <form (ngSubmit)="doLogin()" #loginForm="ngForm">
-        <ion-item>
-          <ion-label color="primary" stacked style="color: #4a4e52">La tua e-mail</ion-label>
-          <ion-input type="text" class="login-border-input" name="email" [(ngModel)]="loginData.email" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label color="primary" stacked style="color: #4a4e52">La tua password</ion-label>
-          <ion-input class="login-border-input" type="password" name="password" [(ngModel)]="loginData.password" required></ion-input>
-        </ion-item>
-        <ion-row>
-          <ion-col class="signup-col">
-            <button ion-button style="background-color:#03d9e0" class="bluesky-button" full type="submit">Accedi</button>
-            <p id="option-forget-password">Hai dimenticato la password? <a (click)="doRequestResetPassword()">Clicca qui</a></p>
-            <p id="option-register">Non sei ancora registrato? <a (click)="presentRegister($event)">Clicca qui</a></p>
-          </ion-col>
-        </ion-row>
-      </form>
+                <ion-col>
+                  <ion-label stacked>La tua e-mail</ion-label>
+                  <ion-input type="text" class="login-border-input" name="email" [(ngModel)]="loginData.email" required></ion-input>
+                </ion-col>
+
+                <ion-col>
+                  <ion-label stacked>La tua password</ion-label>
+                  <ion-input class="login-border-input" type="password" name="password" [(ngModel)]="loginData.password" required></ion-input>
+                </ion-col>
+
+              </ion-list>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col class="signup-col">
+              <button ion-button class="bluesky-button" full type="submit" [disabled]="!loginForm.form.valid">ACCEDI</button>
+              <p text-center>
+                <a (click)="presentForgetPassword($event)" class="text-forgot-password">Ho dimenticato la password</a>
+              </p>
+              <p text-center style="margin-top:12%;">
+                <a (click)="presentRegister($event)" class="text-register">Non sono ancora registato</a>
+              </p>
+            </ion-col>
+          </ion-row>
+
+        </form>
+      </div>
+
+      <div *ngIf="isRegisterFormShow">
+        <form (ngSubmit)="doRegister()" #registerForm="ngForm">
+          <ion-row>
+            <ion-col>
+              <ion-list>
+
+                <ion-item no-lines>
+                  <ion-label stacked>La tua e-mail</ion-label>
+                  <ion-input type="text" class="login-border-input" name="email" [(ngModel)]="registerData.email" required></ion-input>
+                </ion-item>
+
+                <ion-item no-lines>
+                  <ion-label stacked>La tua phone</ion-label>
+                  <ion-input type="number" class="login-border-input" name="email" [(ngModel)]="registerData.cell" required></ion-input>
+                </ion-item>
+
+                <ion-item no-lines>
+                  <ion-label stacked>La tua password</ion-label>
+                  <ion-input class="login-border-input" type="password" name="password" [(ngModel)]="registerData.password" required></ion-input>
+                </ion-item>
+
+                <ion-item no-lines>
+                  <ion-label stacked>La tua password confirmation</ion-label>
+                  <ion-input class="login-border-input" type="password" name="password" [(ngModel)]="registerData.password_confirmation" required></ion-input>
+                </ion-item>
+
+              </ion-list>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col class="signup-col">
+              <button ion-button class="bluesky-button" full type="submit" [disabled]="!registerForm.form.valid">ACCEDI</button>
+              <p>Non sei ancora login?
+                <a (click)="presentLogin($event)">clicca qui</a>
+              </p>
+            </ion-col>
+          </ion-row>
+
+        </form>
+      </div>
+
+
+      <div *ngIf="isForgetPasswordFormShow">
+        <form (ngSubmit)="doRequestResetPassword()" #resetPassForm="ngForm">
+          <ion-row>
+            <ion-col>
+              <ion-list>
+
+                <ion-item no-lines>
+                  <ion-label stacked>La tua e-mail</ion-label>
+                  <ion-input type="text" class="login-border-input" name="email" [(ngModel)]="resetData.email" required></ion-input>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col class="signup-col">
+              <button ion-button class="bluesky-button" full type="submit" [disabled]="!resetPassForm.form.valid">ACCEDI</button>
+              <p>Non sei ancora login?
+                <a (click)="presentLogin($event)">clicca qui</a>
+              </p>
+              <p>Non sei ancora registrato?
+                <a (click)="presentRegister($event)">clicca qui</a>
+              </p>
+            </ion-col>
+          </ion-row>
+
+        </form>
+      </div>
     </div>
-
-    <div *ngIf="isRegisterFormShow">
-      <form (ngSubmit)="doRegister()" #registerForm="ngForm">
-        <ion-row>
-          <ion-col>
-            <ion-list>
-
-              <ion-item no-lines>
-                <ion-label stacked>La tua e-mail</ion-label>
-                <ion-input type="text" class="login-border-input" name="email" [(ngModel)]="registerData.email" required></ion-input>
-              </ion-item>
-
-              <ion-item no-lines>
-                <ion-label stacked>La tua phone</ion-label>
-                <ion-input type="number" class="login-border-input" name="email" [(ngModel)]="registerData.cell" required></ion-input>
-              </ion-item>
-
-              <ion-item no-lines>
-                <ion-label stacked>La tua password</ion-label>
-                <ion-input class="login-border-input" type="password" name="password" [(ngModel)]="registerData.password" required></ion-input>
-              </ion-item>
-
-              <ion-item no-lines>
-                <ion-label stacked>La tua password confirmation</ion-label>
-                <ion-input class="login-border-input" type="password" name="password" [(ngModel)]="registerData.password_confirmation" required></ion-input>
-              </ion-item>
-
-            </ion-list>
-          </ion-col>
-        </ion-row>
-
-        <ion-row>
-          <ion-col class="signup-col">
-            <button ion-button class="bluesky-button" full type="submit" [disabled]="!registerForm.form.valid">Accedi</button>
-            <p>Non sei ancora login? <a (click)="presentLogin($event)">clicca qui</a></p>
-          </ion-col>
-        </ion-row>
-
-      </form>
-    </div>
-
-  </ion-list>
+  </div>
 </ion-content>

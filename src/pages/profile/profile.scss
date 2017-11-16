@@ -1,10 +1,22 @@
 page-profile {
   .title {
-    font-size: 25px;
+    font-size: 20px;
+    font-family: 'Open Sans Semibold';
   }
   .title-text {
     margin-bottom: 25px;
     color: #ea1515;
     font-size: 16px;
+  }
+  .email-content {
+  	width: 100%;
+  	margin-top: 15px;
+  }
+  .phone-content {
+  	margin-top: 15px;
+  }
+  .label {
+    color: #9A9A9A;
+    margin-bottom: -5px;
   }
 }
