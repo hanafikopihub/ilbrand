@@ -14,6 +14,7 @@ import { StaffPage } from '../pages/staff/staff';
 import { ProfilePage } from '../pages/profile/profile';
 import { CartPage } from '../pages/cart/cart';
 import { BookingPage } from '../pages/booking/booking';
+import { ProfileSettingPage } from '../pages/profile-setting/profile-setting';
 import { HistoryBookingPage } from '../pages/history-booking/history-booking';
 import { ListCustomerTreatment } from '../pages/list-customer-treatment/list-customer-treatment';
 import { MyBookingPage } from '../pages/my-booking/my-booking';
@@ -48,6 +49,7 @@ import { PayPal } from '@ionic-native/paypal';
     BookingPage,
     HistoryBookingPage,
     MyBookingPage,
+    ProfileSettingPage,
     ListCustomerTreatment
   ],
   imports: [
@@ -76,6 +78,7 @@ import { PayPal } from '@ionic-native/paypal';
     BookingPage,
     HistoryBookingPage,
     MyBookingPage,
+    ProfileSettingPage,
     ListCustomerTreatment
   ],
   providers: [
