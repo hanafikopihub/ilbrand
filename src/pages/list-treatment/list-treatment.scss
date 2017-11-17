@@ -1,44 +1,51 @@
 page-list-treatment {
- .custome-navbar {
-    padding-top: calc(20px + 4px);
-    min-height: calc(68px + 20px);
- }
- .custome-title {
-     text-align: center;
-     padding-top: 20px;
-     height: calc(68px + 20px);
- }
-.fab ion-icon {
-    font-size: 2.4rem !important;
-    font-weight: 600;
-  }
-
-  .icon-image-bottom {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    height: 60px;
-}
-#privacy-help {
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
-#privacy {
-    font-size: 14px;
-    color: grey;
-    text-align: right;
-}
-#help {
-    font-size: 14px;
-    color: grey;
-    text-align: left;
-}
-#title-city {
-    text-align: center;
-    font-size: 14px;
-}
-#content-address {
-    color: grey;
-    text-align: center;
-}
+    .default-navbar {
+        padding-top: calc(30px + 4px);
+        min-height: calc(68px + 20px);
+    }
+    .default-title {
+        text-align: center;
+        padding-top: 20px;
+        height: calc(68px + 20px);
+    }
+    .custome-navbar {
+        padding-top: calc(20px + 4px);
+        min-height: calc(68px + 20px);
+    }
+    .custome-title {
+        text-align: center;
+        padding-top: 20px;
+        height: calc(68px + 20px);
+    }
+    .fab ion-icon {
+        font-size: 2.4rem !important;
+        font-weight: 600;
+    }
+    .icon-image-bottom {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        height: 60px;
+    }
+    #privacy-help {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    #privacy {
+        font-size: 14px;
+        color: grey;
+        text-align: right;
+    }
+    #help {
+        font-size: 14px;
+        color: grey;
+        text-align: left;
+    }
+    #title-city {
+        text-align: center;
+        font-size: 14px;
+    }
+    #content-address {
+        color: grey;
+        text-align: center;
+    }
 }

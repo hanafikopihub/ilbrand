@@ -1,5 +1,14 @@
 page-list {
 
+    .default-navbar {
+        padding-top: calc(30px + 4px);
+        min-height: calc(68px + 20px);
+    }
+    .default-title {
+        text-align: center;
+        padding-top: 20px;
+        height: calc(68px + 20px);
+    }
     .list-content-style {
         height: 70% !important;
         padding-left: 20px;
