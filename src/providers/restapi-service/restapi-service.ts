@@ -84,7 +84,13 @@ export class RestapiServiceProvider {
     return this.http.post(this.apiUrl + 'finds/address', addresss)
       .map(res => res.json())
   }
-
+  postUpdateCell(number) {
+    return this._authServiceProvider.request({
+      method: RequestMethod.Post,
+      url: this.apiUrl + 'accounts/update_cell',
+      body: { cell: number }
+    }).map(res => res.json())
+  }
   // getMyBooking(user_id) {
   //   return this.http.post(this.apiUrl + 'bookings/my', { user_id: user_id })
   //     .map(res => res.json())

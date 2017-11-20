@@ -1,5 +1,13 @@
 page-list {
-
+    .label {
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+        color: rgba(28, 28, 28, 0.82);
+        font-weight: 600;
+        font-family: "Open Sans";
+        font-size: 16px;
+        line-height: 22px;
+    }
     .default-navbar {
         padding-top: calc(30px + 4px);
         min-height: calc(68px + 20px);

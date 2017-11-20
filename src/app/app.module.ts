@@ -54,11 +54,8 @@ import { PayPal } from '@ionic-native/paypal';
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp, {
-      platforms: {
-        ios: {
+          backButtonIcon: 'custom-back',
           backButtonText: ''
-        }
-      }
     }),
     CacheModule.forRoot()
   ],

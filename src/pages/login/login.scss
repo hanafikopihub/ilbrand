@@ -1,19 +1,28 @@
 page-login {
+    .label-login{
+        color: #9B9B9B; 
+        font-size: 13px;    
+        font-weight: 600;   
+        line-height: 18px;
+        padding-bottom: 3px;
+        border-bottom: 1px solid #D8D8D8;
+    }
     .regular-text {
         color: #4A4A4A;
         font-size: 18px !important;
     }
     .label-ios[stacked] {
-        margin-bottom: 4px;
-        font-size: 14px !important;
+        color: #4A4A4A;
+        font-size: 16px;
+        line-height: 22px;
     }
     .list-ios {
         margin: -1px 0 25px !important;
     }
     .login-border-input {
-        border-radius: 5px;
-        box-shadow: 1px 1px 1px #cec8c8;
-        border: 1px solid #ded8d8;
+        padding-left: 10px;
+        border-radius: 4px; background-color: #FFFFFF;  
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,0.18);
     }
     .col {
         padding: 0;
@@ -26,14 +35,26 @@ page-login {
     }
     .text-forgot-password {
         cursor: pointer;
-        color: grey;
         text-decoration: underline;
+        color: #9B9B9B; 
+        font-size: 13px;
+        line-height: 18px;
     }
     .text-register {
-        cursor: pointer;
-        color: rgb(65, 61, 61);
-        text-decoration: underline;
+        color: #9B9B9B; 
         font-size: 16px;
+        font-weight: 600;
+        line-height: 22px;
+    }
+    .terms{
+        background-color: #F5F5F0;
+        p{
+            color: rgba(77,76,76,0.82);  
+            font-size: 14px;    
+            font-style: italic; 
+            font-weight: 600;   
+            line-height: 19px;
+        }
     }
     .main-view {
         background: transparent;
@@ -70,7 +91,6 @@ page-login {
     .bar-buttons {
         position: absolute;
         right: 0;
-        margin-top: 12px;
         margin-right: 10px;
     }
     .back-button.show-back-button {

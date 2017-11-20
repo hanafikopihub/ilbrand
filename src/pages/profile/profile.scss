@@ -1,7 +1,7 @@
 page-profile {
     .custome-navbar {
-        padding-top: calc(20px + 4px);
-        min-height: calc(68px + 20px);
+       padding-top: calc(20px + 4px);
+       min-height: calc(68px + 20px);
     }
     .custome-title {
         text-align: center;
@@ -9,13 +9,45 @@ page-profile {
         height: calc(68px + 20px);
     }
     .title {
-        font-size: 20px;
-        font-family: 'Open Sans Semibold';
+      font-size: 20px;
+      font-family: 'Open Sans Semibold';
     }
     .title-text {
-        margin-bottom: 25px;
-        color: #ea1515;
-        font-size: 16px;
+      margin-bottom: 25px;
+      color: #ea1515;
+      font-size: 16px;
+    }
+    .item-md {
+        padding-left: 0 !important;
+    }
+    .btn-modif-telephone {
+    width: 100%;
+    background-color: white;
+    border: 1px solid #9A9A9A;
+    color: #9A9A9A;
+    }
+    .form {
+      background-color: #F5F5F0;
+      margin: 20px 0;
+      width: 100%;
+    }
+  
+    .item-ios {
+      padding-left: 0; }
+  
+    .form-change-password {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+  
+    .form-change-phone {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+  
+    .password-input {
+        background-color: #F4F6EF;
+        font-size: 14px
     }
     .email-content {
         width: 100%;
@@ -25,7 +57,78 @@ page-profile {
         margin-top: 15px;
     }
     .label {
-        color: #9A9A9A;
-        margin-bottom: -5px;
+      color: #9A9A9A;
+      margin-bottom: -5px;
     }
-}
+    .delete-account {
+      text-align: center;
+      color: grey;
+      margin-top: 20px;
+      margin-bottom: 20px
+    }
+    .close {
+        background-color: #F4F6EF;
+    }
+    .close-icon {
+        margin-top:15px;
+        background-color: #F4F6EF;
+    }
+  
+  
+    .main-view{
+      background: transparent;
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      opacity: .5;
+      background-color: white;
+    }
+    .modal_content {
+      position: absolute;
+      // top: calc(10% - (10%/2));
+      top: 2%;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+      z-index: 100;
+      margin: 0 auto;
+      padding: 10px;
+      color: #333;
+      background: white;
+      background: -moz-linear-gradient(top, #fff 0%, #e8e8e8 100%);
+      background: -webkit-linear-gradient(top, #fff 0%, #e8e8e8 100%);
+      background: linear-gradient(to bottom, #fff 0%, white 100%);
+      border-radius: 0;
+      box-shadow: 0 2px 3px rgba(51, 51, 51, .35);
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      overflow: hidden;
+    }
+  
+    .btn-custom-style {
+      padding-top:5px !important;
+      padding-bottom:5px !important;
+    }
+  
+    // make button not uppercase
+    .button-md {
+      text-transform: none !important;
+      font-size: 16px;
+    }
+    .text-input-md {
+      margin-left: 0 !important;
+    }
+  
+    .bar-buttons {
+      position: absolute;
+      right: 0;
+  }
+  }	
+  

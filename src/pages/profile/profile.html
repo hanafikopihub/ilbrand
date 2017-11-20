@@ -11,25 +11,72 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
 
-  <ion-row class="title">
-    {{profile.name}}
-  </ion-row>
-  <ion-row class="title">{{this.name}}</ion-row>
-  <div name="form">
-    <div class="email-content">
-      <div class="label">LA TUA MAIL</div>
-      <hr style="height:1px">
-      <div>{{profile.email}}</div>
+<ion-content>
+  
+    <!-- Description User -->
+    <div padding>
+      <ion-row class="title">{{this.name}}</ion-row>
+      <div name="form">
+        <div class="email-content">
+          <div class="label">LA TUA MAIL</div>
+          <hr style="height:1px">
+          <div>{{this.email}}</div>
+        </div>
+        <div class="phone-content">
+          <div class="label">IL TUA NUMERO</div>
+          <hr style="height:1px">
+          <div>{{this.number}}</div>
+        </div>
+      </div>
     </div>
-    <div class="phone-content">
-      <div class="label">IL TUA NUMERO</div>
-      <hr style="height:1px">
-      <div>{{profile.number}}</div>
+  
+    <!-- Form Change Password -->
+    <div class="form" *ngIf="showPasswordForm">
+      <div text-right class="close" style="background-color:#F5F5F0; width:97%">
+        <div icon-only (click)="showPasswordForm=false" style="background-color:#F5F5F0;">
+          <ion-icon name="close" class="close-icon" style="background-color:#F5F5F0;"></ion-icon>
+        </div>
+      </div>
+      <ion-row class="form-change-password">
+        <ion-item class="password-input" style="background-color:#F5F5F0">
+          <ion-input type="password" [(ngModel)]="passwordData.password" placeholder="Scrivi qui la password attuale"></ion-input>
+        </ion-item>
+        <ion-item style="background-color:#F5F5F0" class="password-input">
+          <ion-input style="background-color:#F5F5F0" type="password" [(ngModel)]="passwordData.passwordConfirmation" placeholder="Scrivi qui la nouva password"></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row padding>
+        <button text-center ion-button color="danger" (click)="updatePassword()" class="red-bg trova-button-home">Modifica password</button>
+      </ion-row>
     </div>
-  </div>
-  <!-- <div padding>
-    <button text-center ion-button class="red-bg trova-button-home" style="background-color:#F5F5F0 !important; color: grey; border:2px solid grey" (click)="doLogout()">Esci</button>
-  </div> -->
-</ion-content>
+  
+    <!-- Button Change Password -->
+    <div padding class="btn-custom-style">
+      <button style="width:100%" text-center ion-button color="danger" *ngIf="!showPasswordForm" (click)="changePassword();"
+        class="red-bg trova-button-home">Modifica password</button>
+    </div>
+  
+    <!-- Form Change Phone Number -->
+    <div class="form" *ngIf="showPhoneForm">
+      <div text-right class="close" style="background-color:#F5F5F0; width:97%">
+        <div icon-only (click)="showPhoneForm=false" style="background-color:#F5F5F0;">
+          <ion-icon name="close" class="close-icon" style="background-color:#F5F5F0;"></ion-icon>
+        </div>
+      </div>
+      <ion-row class="form-change-phone">
+        <ion-item class="password-input" style="background-color:#F5F5F0">
+          <ion-input type="text" [(ngModel)]="phoneNumber" placeholder="Scrivi qui il nuovo numero di telefono"></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row padding>
+        <button text-center ion-button color="danger" class="red-bg trova-button-home" style="background-color:#6A6A69 !important;" (click)="updateCell()">Modifica numero di telefono</button>
+      </ion-row>
+    </div>
+  
+    <!-- Button Change Phone Number -->
+    <div padding class="btn-custom-style">
+      <button *ngIf="!showPhoneForm" text-center ion-button class="btn-modif-telephone" (click)="changePhone()">Modifica numero di telefono</button>
+    </div>
+  
+  </ion-content>
