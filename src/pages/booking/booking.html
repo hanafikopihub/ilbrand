@@ -6,7 +6,7 @@
     </ion-title>
     <ion-buttons right class="bar-button-custom">
       <button ion-button icon-only (click)="list($event)">
-        <ion-icon name="menu"></ion-icon>
+        <ion-icon name="custom-hamburger-two-line"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -34,12 +34,12 @@
       </ion-slide>
     </ion-slides> 
     <ion-label class="text-title-operator">OPERATORI DISPONIBILI</ion-label>
-    <hr>
+
     <div *ngFor="let operator of operatorArray">
     <div>
       <ion-label  class="text-title-operator-name">{{operator.operator_name}}</ion-label>
     </div>
-    <ion-slides #sliderTime slidesPerView="3" (click)="postOperator(operator)">
+    <ion-slides #sliderTime slidesPerView="3.4" (click)="postOperator(operator)">
       <ion-slide *ngFor="let time of operator.hours">
         <button class="btn-slide-time" ion-button [class.active]="changeColorTime === time.id" (click)="onClickTime(time)">
         <div [class.active-text-time]="changeColorTime === time.id" style="font-family: 'Open Sans Bold';">{{time.hour}}</div>  
@@ -50,6 +50,6 @@
     </div>
   </div>
   <ion-row padding>
-    <button text-center ion-button color="danger" (click)=onSumbit() class="btn-next bold">PROSEGUI</button>
+    <button text-center ion-button color="danger" (click)=onSumbit() class="btn-next bold"><b>PROSEGUI</b></button>
   </ion-row>
 </ion-content>

@@ -109,8 +109,8 @@ export class BookingPage {
   }
 
   ionViewDidLoad() {
-    this.sliderMonth.slidesPerView = 3;
-    this.sliderDate.slidesPerView = 3;
+    this.sliderMonth.slidesPerView = 3.4;
+    this.sliderDate.slidesPerView = 3.4;
     if (this.sliderTime !== undefined) {
       this.sliderTime.slidesPerView = 3;
     }
