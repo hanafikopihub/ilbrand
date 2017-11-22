@@ -99,7 +99,8 @@ export class RestapiServiceProvider {
   getMyBooking() {
     return this._authServiceProvider.request({
       method: RequestMethod.Post,
-      url: this.apiUrl + 'bookings/my'
+      url: this.apiUrl + 'bookings/my',
+      body: {salon_id: AppApi.SALON_ID}
     }).map(res => res.json())
   }
 
