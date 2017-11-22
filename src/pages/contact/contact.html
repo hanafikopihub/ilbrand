@@ -31,48 +31,49 @@
     <ion-item style="font-size: 14px; text-align: center; color: #4A4A4A;">
       <b>ORARI DI APERTUA</b>
     </ion-item>
+    <hr style="height:1px; margin-left:5%;  margin-right:5%">
     <div>
-    <ion-row *ngFor="let item of contact.salon_work_day" style="color: #666">
-      <ion-col col-6 style="text-align: left;">
-        {{item.day}}
-      </ion-col>
-      <ion-col col-6 style="text-align: right;">
-        {{item.time}}
-      </ion-col>
-    </ion-row>
+      <ion-row *ngFor="let item of contact.salon_work_day" style="color: #666">
+        <ion-col col-6 style="text-align: left;">
+          {{item.day}}
+        </ion-col>
+        <ion-col col-6 style="text-align: right;">
+          {{item.time}}
+        </ion-col>
+      </ion-row>
     </div>
   </div>
+  <hr style="height:1px; margin: 20px 10%;">
+  <ion-row style="margin-top: 15px;">
+    <ion-col col-4 style="text-align: right;">
+      <img src="assets/icon/facebook_icon.png">
+    </ion-col>
+    <ion-col col-4 style="text-align: center;">
+      <img src="assets/icon/instagram_icon.png">
+    </ion-col>
+    <ion-col col-4 style="text-align: left;">
+      <img src="assets/icon/twitter_icon.png">
+    </ion-col>
+  </ion-row>
 
   <div style="text-align: center;">
     <img src="assets/icon/logo.png" class="icon-image-bottom">
   </div>
 
-  <ion-row>
-      <ion-col col-4 style="text-align: right;">
-          <img src="assets/icon/facebook_icon.png">
-      </ion-col>
-      <ion-col col-4 style="text-align: center;">
-          <img src="assets/icon/instagram_icon.png">
-      </ion-col>
-      <ion-col col-4 style="text-align: left;">
-          <img src="assets/icon/twitter_icon.png">
-      </ion-col>
-    </ion-row>
-
-    <div style="margin-top: 30px;">
-      <div id="title-city">
-        <b>Il Brand - consulenti d'immagine</b>
-      </div>
-      <div id="content-address">
-        <p>
-          via Monte Grappa, 30 Tradate
-          <br> C.F.:0331 844778
-        </p>
-      </div>
+  <div>
+    <div id="title-city">
+      <b>Il Brand - consulenti d'immagine</b>
     </div>
-    
-    <hr style="height:2px; margin-left:10%; margin-right:10%">
-    
+    <div id="content-address">
+      <p>
+        via Monte Grappa, 30 Tradate
+        <br> C.F.:0331 844778
+      </p>
+    </div>
+  </div>
+
+  <hr style="height:2px; margin-left:10%; margin-right:10%">
+
   <ion-row id="privacy-help">
     <ion-col col-5 style="text-align: right;">
       <div id="privacy">

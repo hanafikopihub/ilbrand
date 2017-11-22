@@ -5,6 +5,7 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { ToastService } from '../../providers/shared-service/toast-service';
 import { LoaderService } from '../../providers/shared-service/loader-service';
 import { ListPage } from '../list/list';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-list-customer-treatment',
@@ -32,17 +33,21 @@ export class ListCustomerTreatment {
 
     this._loaderCtrl.showLoader();
     console.log(this._authServiceProvider.currentAuthData);
-
-    this._restapiServiceProvider.getMyBooking()
-      .subscribe(response => {
-        this.response = response.total_booking
-        this.treatments = response.bookings;
-        this.treatment_count = response.total_booking;
-        this._loaderCtrl.hideLoader();
-      }, (error) => {
-        this._loaderCtrl.hideLoader();
-        this._toastCtrl.presentToast(error);
-      })
+    if (this._authServiceProvider.currentAuthData === null || this._authServiceProvider.currentAuthData === undefined) {
+      const toLogin = this._modalCtrl.create(LoginPage);
+      toLogin.present()
+    } else {
+      this._restapiServiceProvider.getMyBooking()
+        .subscribe(response => {
+          this.response = response.total_booking
+          this.treatments = response.bookings;
+          this.treatment_count = response.total_booking;
+          this._loaderCtrl.hideLoader();
+        }, (error) => {
+          this._loaderCtrl.hideLoader();
+          this._toastCtrl.presentToast(error);
+        })
+    }
 
     // this.treatments = [{"title":"Piedi Applicazione Semipermanen","salon_name":"Yndaco Seregno","reservation_date":"19/02/2017"}]
   }

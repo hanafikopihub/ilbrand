@@ -6,6 +6,7 @@ import { Angular2TokenService } from 'angular2-token';
 import { RequestMethod } from '@angular/http';
 import { AppApi } from '../../app.api';
 
+import { HomePage } from '../home/home';
 import { ProfileSettingPage } from '../profile-setting/profile-setting';
 import { ListCustomerTreatment } from '../list-customer-treatment/list-customer-treatment';
 
@@ -81,7 +82,7 @@ export class LoginPage {
     this._tokenService.resetPassword(this.resetData).subscribe(
       res => {
         this.loading.dismiss();
-        this.viewCtrl.dismiss();
+        this.navCtrl.push(HomePage, {'status' : true});
         this.presentToast('We have sent the reset password instruction to your email');
       },
       error => {

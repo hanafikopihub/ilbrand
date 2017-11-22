@@ -15,6 +15,11 @@
 
 /* open-sans-regular - latin */
 
+.content {
+    font-weight: 400 !important;
+    color: #4A4A4A !important;
+}
+
 @font-face {
     font-family: 'Merriweather Regular';
     font-style: normal;
@@ -280,8 +285,8 @@ ion-icon {
         background: currentColor;
     }
     &[class*="custom-back"] {
-        width: 25px;
-        height: 25px;
+        width: 21px;
+        height: 21px;
         mask-image: url(../assets/icon/back.png);
         mask-size: contain;
         mask-position: 50% 50%;
