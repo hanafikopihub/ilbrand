@@ -34,10 +34,13 @@ import { CacheModule } from 'ionic-cache';
 
 import { PayPal } from '@ionic-native/paypal';
 
+import { PhoneSalonPage } from '../pages/list-treatment/phone-salon/phone-salon';
+
 @NgModule({
   declarations: [
     MyApp,
     ListTreatmentPage,
+    PhoneSalonPage,
     ContactPage,
     HomePage,
     ListPage,
@@ -63,6 +66,7 @@ import { PayPal } from '@ionic-native/paypal';
   entryComponents: [
     MyApp,
     ListTreatmentPage,
+    PhoneSalonPage,
     ContactPage,
     HomePage,
     ListPage,

@@ -239,49 +239,44 @@ export class BookingPage {
   }
 
   onSumbit() {
-    if (this._authServiceProvider.userSignedIn) {
 
-      if (this.operators == null || this.timeId === undefined || this.dateId === undefined) {
-        return this._toastCtrl.presentToast('Nessuna disponibilita per il giorno selezionato')
-      } else {
-        const dataBooking = {
-          booking: {
-            'time_id': this.timeId,
-            'date_id': this.dateId,
-            'month_id': this.monthId,
-            'year_id': this.yearId,
-            'length': this.treatmentParam.duration,
-            'from_where': 'android',
-            'salon_id': this.salon_id,
-            'price': this.treatmentParam.price,
-            'discount_price': this.treatmentParam.price,
-            'operator_id': this.operators.operator_id,
-            's_treatment_id': this.treatmentParam.s_treatment_id,
-            'user_id': this._authServiceProvider.currentAuthData.uid
-          }
-        }
-
-        const dataOther = {
-          'dayName': this.dayName,
-          'monthName': this.monthName,
-          'date': this.dateId,
-          'time': this.timeId,
-          'year': this.yearId
-        }
-
-        this._navController.push(
-          HistoryBookingPage,
-          {
-            salon: this.salonParam,
-            dataBooking: dataBooking,
-            treatment: this.treatmentParam,
-            operators: this.operators, dataOther: dataOther
-          })
-      }
+    if (this.operators == null || this.timeId === undefined || this.dateId === undefined) {
+      return this._toastCtrl.presentToast('Nessuna disponibilita per il giorno selezionato')
     } else {
-      this._alertService.mustLoginAlert();
+      const dataBooking = {
+        booking: {
+          'time_id': this.timeId,
+          'date_id': this.dateId,
+          'month_id': this.monthId,
+          'year_id': this.yearId,
+          'length': this.treatmentParam.duration,
+          'from_where': 'android',
+          'salon_id': this.salon_id,
+          'price': this.treatmentParam.price,
+          'discount_price': this.treatmentParam.price,
+          'operator_id': this.operators.operator_id,
+          's_treatment_id': this.treatmentParam.s_treatment_id
+        }
+      }
 
+      const dataOther = {
+        'dayName': this.dayName,
+        'monthName': this.monthName,
+        'date': this.dateId,
+        'time': this.timeId,
+        'year': this.yearId
+      }
+
+      this._navController.push(
+        HistoryBookingPage,
+        {
+          salon: this.salonParam,
+          dataBooking: dataBooking,
+          treatment: this.treatmentParam,
+          operators: this.operators, dataOther: dataOther
+        })
     }
+
   }
 
 

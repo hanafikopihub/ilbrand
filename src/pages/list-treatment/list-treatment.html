@@ -20,14 +20,13 @@
             <div class="treatment-info">
               <span class="treatment-detail-label">Durata:</span> {{treatment.duration_in_minute}} min.
             </div>
-            <div class="treatment-info">
+            <div *ngIf="treatment.price !== 0"  class="treatment-info">
               <span class="treatment-detail-label">Prezzo:</span> &#8364; {{treatment.price}}
             </div>
           </ion-col>
           <ion-col col-3 class="treatment-action">
-            <button ion-fab color="danger" (click)="addTreatment(treatment)">
-              <ion-icon ios="md-add" md="md-add"></ion-icon>
-            </button>
+            <ion-icon *ngIf="treatment.price !== 0" name="custom-add" (click)="addTreatment(treatment)"></ion-icon>
+            <ion-icon *ngIf="treatment.price === 0" name="custom-tel" (click)="showPhone()"></ion-icon>
           </ion-col>
         </ion-row>
         <ion-row>

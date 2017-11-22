@@ -14,25 +14,31 @@
 
 
 <ion-content>
-  <div padding style="padding-bottom: 10px">
+  <div padding-left padding-right class="treatment-info-detail">
     <div class="treatment-name">{{treatmentParam.des_treatment}}</div>
-    <div>
-      <span class="customer-value"><b>{{dataOther.dayName}} {{dataOther.date}} {{dataOther.monthName}}</b></span> ore
+    <div class="treatment-time">
+      <span class="customer-value">
+        <b>{{dataOther.dayName}} {{dataOther.date}} {{dataOther.monthName}}</b>
+      </span> ore
       <span class="customer-value">{{dataOther.time}}</span>
     </div>
   </div>
 
-  <hr>
-  <div padding style="padding-top: 8px">
+  <div padding-left padding-right>
+    <hr>
+  </div>  
+  <div padding-left padding-right class="treatment-info-salon-detail">
     <ion-row>
       <span class="treatment-name">{{salon.name}}</span>
     </ion-row>
-    <ion-row class="salon-address">
+    <ion-row class="treatment-info-salon-address">
       {{salon.address}}
     </ion-row>
     <div>
       <span class="con-operatore">con operatore</span>
-      <span class="operator-value"><b>{{operatorParam.operator_name | uppercase}}</b></span>
+      <span class="operator-value">
+        {{operatorParam.operator_name | uppercase}}
+      </span>
     </div>
   </div>
 
@@ -45,18 +51,52 @@
       </div>
     </div>
     <ion-grid padding>
-
       <ion-row radio-group [(ngModel)]="payoptionModel" style="text-align:center">
         <ion-col col-6 *ngFor="let payoption of payOptions">
           <div class="payoption-name">{{payoption.option}}</div>
-          <div style="margin-bottom: 5px;"><img src="{{payoption.image}}"></div> 
-          <div><ion-radio mode="md" value="{{payoption.id}}"></ion-radio></div>
+          <div style="margin-bottom: 5px;">
+            <img src="{{payoption.image}}" style="width:50px; height:50px;">
+          </div>
+          <div>
+            <ion-radio mode="md" value="{{payoption.id}}"></ion-radio>
+          </div>
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-row padding>
-      <button text-center ion-button block color="danger" class="bold" (click)="onSubmit()">CONFERMA PRENOTAZIONE</button>
-      <button text-center ion-button class="cambia-orario">CAMBIA ORARIO</button>
-    </ion-row>
+
+    <div *ngIf="!showFormEmail">
+      <form [formGroup]="entryForm">
+      <div class="email-form-style" padding>Per completare la prenotazione ci servono alcuni dati. In questo modo potremo contattarti in caso di necessita e il
+        salone avra i tuoi riferimenti per eventuali comunicazioni.
+        <br> Se vuoi leggere la nostra Privacy Policy puoi
+        <u class="email-form-style">cliccare qui</u>
+      </div>
+      <div padding style="padding-top:0; padding-bottom:0 !important;">
+        <ion-col>
+          <ion-label class="label-form" stacked>il tuo nome</ion-label>
+          <ion-input type="text" class="email-border-input" required formControlName="name"></ion-input>
+          <div *ngIf="showError && entryForm.controls.name.value === '' " style="color:red; font-size: 12px;">*Questo campo è richiesto</div>
+        </ion-col>
+
+        <ion-col>
+          <ion-label class="label-form" stacked>il tuo indirizzo email</ion-label>
+          <ion-input class="email-border-input" type="email" required formControlName="email"></ion-input>
+          <div *ngIf="showError && entryForm.controls.email.value === '' " style="color:red; font-size: 12px;">*Questo campo è richiesto</div>
+          <div *ngIf="entryForm.controls.email.errors?.email " style="color:red; font-size: 12px;">*Formato email non corretto</div>
+        </ion-col>
+
+        <ion-col>
+          <ion-label class="label-form" stacked>il tuo numero di telefono</ion-label>
+          <ion-input class="email-border-input" type="tel" required formControlName="phone"></ion-input>
+          <div *ngIf="showError && entryForm.controls.phone.value === '' " style="color:red; font-size: 12px;">*Questo campo è richiesto</div>
+        </ion-col>
+      </div>
+      </form>
+    </div>
+
+    <div padding>
+      <button text-center ion-button block color="danger" class="bold" (click)="onSave()">CONFERMA PRENOTAZIONE</button>
+      <button text-center ion-button class="cambia-orario" (click)="backToCalendar()">CAMBIA ORARIO</button>
+    </div>
   </div>
 </ion-content>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ListPage } from '../list/list';
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { ListTreatmentPage } from '../list-treatment/list-treatment';
 
 import { AppApi } from '../../app.api';
@@ -10,10 +10,13 @@ import { AppApi } from '../../app.api';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  fromModal: boolean = false;
   ListTreatmentPage = ListTreatmentPage;
   constructor(
+    public _navParams: NavParams,
     public _navCtrl: NavController,
     public _modalCtrl: ModalController) {
+      this.fromModal = this._navParams.get('status');
       this.getSalonId();
   }
 

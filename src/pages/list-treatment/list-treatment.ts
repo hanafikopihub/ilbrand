@@ -5,12 +5,14 @@ import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-
 import { BookingPage } from '../booking/booking';
 import { LoaderService } from '../../providers/shared-service/loader-service';
 import { AlertService } from '../../providers/shared-service/alert-service';
+import { PhoneSalonPage } from './phone-salon/phone-salon';
 
 @Component({
   selector: 'page-list-treatment',
   templateUrl: 'list-treatment.html'
 })
 export class ListTreatmentPage {
+  salon: any;
   salon_id: string;
   fromModal: boolean = false;
   treatments: Array<any>
@@ -38,6 +40,7 @@ export class ListTreatmentPage {
     this._loaderCtrl.showLoader();
     this._restapiServiceProvider.getSalon(this.salon_id)
       .subscribe(data => {
+        this.salon = data
         localStorage.setItem('salon', JSON.stringify(data))
         this.treatments = data.treatments;
         this._loaderCtrl.hideLoader();
@@ -50,7 +53,7 @@ export class ListTreatmentPage {
   addTreatment(treatment) {
     this.addTreatments = this.addTreatments.concat(treatment)
 
-    this._navCtrl.push(BookingPage, { treatment: treatment });
+    this._navCtrl.push(BookingPage, { treatment: treatment, salon: this.salon });
   }
 
   addToCart() {
@@ -63,6 +66,11 @@ export class ListTreatmentPage {
     this.addTreatments = [];
     // this._navCtrl.setRoot
     this._navCtrl.push(BookingPage);
+  }
+
+  showPhone() {
+    const phoneSalon = this._modalCtrl.create(PhoneSalonPage);
+    phoneSalon.present();
   }
 }
 

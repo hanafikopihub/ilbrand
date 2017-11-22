@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { ListCustomerTreatment } from '../list-customer-treatment/list-customer-treatment';
 import { HomePage } from '../home/home';
-import { ListPage } from '../list/list';
 
 /**
  * Generated class for the MyBookingPage page.
@@ -24,9 +23,7 @@ export class MyBookingPage {
   salon: any;
   optionPay: any;
 
-  customerTreatment = ListCustomerTreatment ;
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    public _modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
 
     this.treatmentParam = this.navParams.get('treatment');
     this.operatorParam = this.navParams.get('operators');
@@ -36,13 +33,12 @@ export class MyBookingPage {
     this.optionPay = this.navParams.get('optionPay');
   }
 
-  list(ev) {
-    const listModal = this._modalCtrl.create(ListPage)
-    listModal.present();
-  }
-
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MyBookingPage');
   }
-
+  toHomePage() {
+    this.navCtrl.push(HomePage, {'status' : true})
+  }
+  toTreatmentUser() {
+    this.navCtrl.push(ListCustomerTreatment)
+  }
 }
