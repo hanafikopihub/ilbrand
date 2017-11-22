@@ -8,9 +8,23 @@ page-history-booking {
         padding-top: 20px;
         height: calc(68px + 20px);
     }
+    .treatment-info-detail {
+        padding-top: 18px;
+        padding-bottom: 12px;
+    }
+    .treatment-info-salon-detail {
+        padding-top: 6px;
+        padding-bottom: 13px;
+    }
+    .treatment-info-salon-address {
+        color: #9B9B9B;
+        font-size: 14px;
+        line-height: 19px;
+    }
     hr {
-        height: 1px !important;
-        margin: 0 20px;
+        height: 1.91px;
+        border: 0.5px solid #D8D8D8;
+        margin-top: 0;
     }
     .total-value {
         font-size: 18px;
@@ -33,7 +47,7 @@ page-history-booking {
     }
     .treatment-name {
         font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
-        font-size: 18px;
+        font-size: 16px;
         color: #4A4A4A;
     }
     .row-cast {
@@ -59,7 +73,6 @@ page-history-booking {
         height: 45px;
     }
     .customer-value {
-        font-size: 16px;
         color: #08d9f5;
         font-family: 'Open Sans', Arial, Helvetica, sans-serif;
         font-weight: 600;
@@ -72,7 +85,16 @@ page-history-booking {
     }
     .total-style {
         background-color: #F9F6F6;
-        height: 50px;
+    }
+    .email-form-style {
+        background-color: #F9F6F6;
+        font-family: 'Open Sans Semibold Italic';
+        color: #4A4A4A;
+        font-size: 14px;
+    }
+    .treatment-time {
+        font-size: 16px;
+        line-height: 22px;
     }
     .gray-text {
         font-size: 17px;
@@ -134,5 +156,17 @@ page-history-booking {
         padding-right: 5px;
         margin-left: 6px;
         margin-right: 6px;
+    }
+    .email-border-input {
+        border-radius: 4px;
+        background-color: #FFFFFF;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.18);
+        margin-top: 13px;
+    }
+    .label-form {
+        color: #4A4A4A;
+        font-family: "Open Sans";
+        font-size: 15px !important;
+        line-height: 20px;
     }
 }

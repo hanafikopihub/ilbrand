@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-navbar class="default-navbar">
-    <ion-title class="default-title">
+  <ion-navbar class="default-navbar" [class.custome-navbar]="fromModal" hideBackButton="true">
+    <ion-title class="default-title" [class.custome-title]="fromModal">
       Il Brand
       <div style="color:grey; font-size: 12px; ">Benvenuto!</div>
     </ion-title>

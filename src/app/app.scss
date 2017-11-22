@@ -131,7 +131,7 @@
     padding-top: 15px;
 }
 
-.back-button{
+.back-button {
     padding-top: 15px;
 }
 
@@ -263,9 +263,11 @@ ion-title {
     height: 100%;
     text-align: center;
 }
+
 .toolbar-title {
     color: #4A4A4A;
 }
+
 // custome icon
 ion-icon {
     &[class*="custom-x"] {
@@ -290,6 +292,26 @@ ion-icon {
         mask-image: url(../assets/icon/menu-icon.svg);
         width: 32px;
         height: 32px;
+        mask-size: contain;
+        mask-position: 50% 50%;
+        mask-repeat: no-repeat;
+        background: currentColor;
+    }
+    &[class*="custom-add"] {
+        mask-image: url(../assets/icon/add_icon/add_icon-AppStore.png);
+        content: url(../assets/icon/add_icon/add_icon-AppStore.png);
+        width: 55px;
+        height: 55px;
+        mask-size: contain;
+        mask-position: 50% 50%;
+        mask-repeat: no-repeat;
+        background: currentColor;
+    }
+    &[class*="custom-tel"] {
+        mask-image: url(../assets/icon/tel_icon/tel_icon-AppStore.png);
+        content: url(../assets/icon/tel_icon/tel_icon-AppStore.png);
+        width: 55px;
+        height: 55px;
         mask-size: contain;
         mask-position: 50% 50%;
         mask-repeat: no-repeat;
