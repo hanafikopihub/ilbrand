@@ -70,7 +70,8 @@ export class LoginPage {
       },
       error => {
         this.loading.dismiss();
-        this.presentToast(error);
+        const error_message = JSON.parse(error._body);
+        this.presentToast(error_message.errors.join('. '));
       }
       );
   }
@@ -107,7 +108,7 @@ export class LoginPage {
           response => {
             this.loading.dismiss();
             this.viewCtrl.dismiss();
-            this.presentToast('Welcome to salonist');
+            this.presentToast('Welcome to ilbrand!');
           },
           error => {
             this.loading.dismiss();
@@ -116,9 +117,9 @@ export class LoginPage {
           );
       },
       error => {
-        console.log(error.json())
         this.loading.dismiss();
-        this.presentToast(error);
+        const error_message = JSON.parse(error._body);
+        this.presentToast(error_message.errors.full_messages.join('. '));
       }
       );
   }

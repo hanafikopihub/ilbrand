@@ -134,8 +134,14 @@
       <ion-row>
         <ion-col class="signup-col">
           <button ion-button class="bluesky-button" full type="submit" [disabled]="!resetPassForm.form.valid">ACCEDI</button>
-          <p>Non sei ancora login? <a (click)="presentLogin($event)">clicca qui</a></p>
-          <p>Non sei ancora registrato? <a (click)="presentRegister($event)">clicca qui</a></p>
+          
+          <div padding-top>
+            <button (click)="presentLogin($event)" text-center block outline ion-button color="light" style="border: 2px solid #9B9B9B;  border-radius: 5px;"><span class="text-register">Non sei ancora login?</span></button>
+          </div>
+
+          <div padding-top>
+            <button (click)="presentRegister($event)" text-center block outline ion-button color="light" style="border: 2px solid #9B9B9B;  border-radius: 5px;"><span class="text-register">Non sei ancora registrato?</span></button>
+          </div>
         </ion-col>
       </ion-row>
   
