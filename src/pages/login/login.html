@@ -1,67 +1,69 @@
   <ion-header>
-      <ion-navbar text-center>
-        <ion-title style="text-align: center">
-            Il Brand
-          <div style="color:grey; font-size: 12px; ">Accedi</div>
-        </ion-title>
-        <ion-buttons right>
-          <button id="close-button" right ion-button icon-only (click)="closeModal()">
-            <ion-icon name="custom-x"></ion-icon>
-          </button>
-        </ion-buttons>
-      </ion-navbar>
-    </ion-header>
+    <ion-navbar text-center>
+      <ion-title style="text-align: center">
+        Il Brand
+        <div style="color:grey; font-size: 12px; ">Accedi</div>
+      </ion-title>
+      <ion-buttons right>
+        <button tappable id="close-button" right ion-button icon-only (click)="closeModal()">
+          <ion-icon name="custom-x"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
   <ion-content>
-    <div (click)="closeModal()"></div>
+    <div tappable (click)="closeModal()"></div>
     <div>
-      <div *ngIf="isLoginFormShow" padding>
-        <div class="label-login">INSERISCI I TUOI DATI DI ACCESSO</div>
-        <form (ngSubmit)="doLogin()" #loginForm="ngForm" padding-top>
+      <form (ngSubmit)="doLogin()" #loginForm="ngForm">
+        <div *ngIf="isLoginFormShow" padding>
+          <div class="label-login">INSERISCI I TUOI DATI DI ACCESSO</div>
           <ion-row>
             <ion-col>
               <ion-list>
-  
+
                 <ion-col>
                   <ion-label stacked>La tua e-mail</ion-label>
                   <ion-row padding-top>
                     <ion-input type="text" class="login-border-input" name="email" [(ngModel)]="loginData.email" required></ion-input>
                   </ion-row>
                 </ion-col>
-  
+
                 <ion-col>
                  <ion-label stacked>La tua password</ion-label>
                  <ion-row padding-top>
                   <ion-input class="login-border-input" type="password" name="password" [(ngModel)]="loginData.password" required></ion-input>
                 </ion-row>
               </ion-col>
-  
+
             </ion-list>
           </ion-col>
         </ion-row>
-  
+
         <ion-row>
           <ion-col class="signup-col">
             <button ion-button class="bluesky-button" full type="submit" [disabled]="!loginForm.form.valid">ACCEDI</button>
-            <p text-center style="padding-top: 20px;"><a (click)="presentForgetPassword($event)" class="text-forgot-password">Ho dimenticato la password</a></p>
+            <p  text-center style="padding-top: 20px;"><a tappable (click)="presentForgetPassword($event)" class="text-forgot-password">Ho dimenticato la password</a></p>
             <p text-center style="margin-top:12%;">
-              <button (click)="presentRegister($event)" text-center block outline ion-button color="light" style="border: 2px solid #9B9B9B;  border-radius: 5px;"><span class="text-register">Non sono ancora registato</span></button>
+              <button tappable (click)="presentRegister($event)" text-center block outline ion-button color="light" style="border: 2px solid #9B9B9B;  border-radius: 5px;"><span class="text-register">REGISTRATI</span></button>
             </p>
           </ion-col>
         </ion-row>
-  
-      </form>
-    </div>
-  
-    <div *ngIf="isRegisterFormShow">
-      <ion-row class="terms">
-        <p padding>I dati sono necessari al salone per poter gestire al meglio il tuo appuntamento e offrirti l’accesso a servizi avanzati. Se vuoi leggere la nostra Privacy Policy puoi <span style="text-decoration: underline;">cliccare qui</span>
-        </p>
-      </ion-row>
-      <div padding>
-        <div class="label-login">INSERISCI I TUOI DATI </div>
+
+
       </div>
-      <form (ngSubmit)="doRegister()" #registerForm="ngForm" padding>
-        <ion-row>
+    </form>
+
+    <form (ngSubmit)="doRegister()" #registerForm="ngForm">
+      <div *ngIf="isRegisterFormShow">
+        <ion-row class="terms">
+          <p padding>I dati sono necessari al salone per poter gestire al meglio il tuo appuntamento e offrirti l’accesso a servizi avanzati. Se vuoi leggere la nostra Privacy Policy puoi <span style="text-decoration: underline;">cliccare qui</span>
+          </p>
+        </ion-row>
+        <div padding>
+          <div class="label-login">INSERISCI I TUOI DATI </div>
+        </div>
+
+        <ion-row padding-left padding-right>
           <ion-col>
             <ion-list>
               <ion-col>
@@ -70,54 +72,52 @@
                   <ion-input type="text" class="login-border-input" name="email" [(ngModel)]="registerData.name" required></ion-input>
                 </ion-row>
               </ion-col>
-  
+
               <ion-col>
                 <ion-label stacked>Il tuo indirizzo email</ion-label>
                 <ion-row padding-top>
                   <ion-input type="text" class="login-border-input" name="email" [(ngModel)]="registerData.email" required></ion-input>
                 </ion-row>
               </ion-col>
-  
+
               <ion-col>
                 <ion-label stacked>Il tuo numero di telefono</ion-label>
                 <ion-row padding-top>
                   <ion-input type="number" class="login-border-input" name="email" [(ngModel)]="registerData.cell" required></ion-input>
                 </ion-row>
               </ion-col>
-  
+
               <ion-col>
                <ion-label stacked>La tua password</ion-label>
                <ion-row padding-top>
                  <ion-input class="login-border-input" type="password" name="password" [(ngModel)]="registerData.password" required></ion-input>
-                </ion-row>
+               </ion-row>
              </ion-col>
-  
+
              <ion-col>
                <ion-label stacked>La tua password confirmation</ion-label>
                <ion-row padding-top>
                  <ion-input class="login-border-input" type="password" name="password" [(ngModel)]="registerData.password_confirmation" required></ion-input>
-                </ion-row>
+               </ion-row>
              </ion-col>
-  
+
            </ion-list>
          </ion-col>
        </ion-row>
-  
-       <ion-row>
+
+       <ion-row padding-right padding-left padding-bottom>
         <ion-col class="signup-col">
           <button ion-button class="bluesky-button" full type="submit" [disabled]="!registerForm.form.valid">CONFERMA REGISTRAZIONE</button>
           <div padding-top>
-            <button (click)="presentLogin($event)" text-center block outline ion-button color="light" style="border: 2px solid #9B9B9B;  border-radius: 5px;"><span class="text-register">Non sei ancora login</span></button>
+            <button tappable (click)="presentLogin($event)" text-center block outline ion-button color="light" style="border: 2px solid #9B9B9B;  border-radius: 5px;"><span class="text-register">ACCEDI</span></button>
           </div>
         </ion-col>
-      </ion-row>
+      </ion-row>      
+    </div>
+  </form>
   
-    </form>
-  </div>
-  
-  
-  <div *ngIf="isForgetPasswordFormShow" padding>
-    <form (ngSubmit)="doRequestResetPassword()" #resetPassForm="ngForm">
+  <form (ngSubmit)="doRequestResetPassword()" #resetPassForm="ngForm">
+    <div *ngIf="isForgetPasswordFormShow" padding>
       <ion-row>
         <ion-col>
           <ion-list>
@@ -130,23 +130,23 @@
           </ion-list>
         </ion-col>
       </ion-row>
-  
+
       <ion-row>
         <ion-col class="signup-col">
           <button ion-button class="bluesky-button" full type="submit" [disabled]="!resetPassForm.form.valid">ACCEDI</button>
           
           <div padding-top>
-            <button (click)="presentLogin($event)" text-center block outline ion-button color="light" style="border: 2px solid #9B9B9B;  border-radius: 5px;"><span class="text-register">Non sei ancora login?</span></button>
+            <button tappable (click)="presentLogin($event)" text-center block outline ion-button color="light" style="border: 2px solid #9B9B9B;  border-radius: 5px;"><span class="text-register">ACCEDI</span></button>
           </div>
 
           <div padding-top>
-            <button (click)="presentRegister($event)" text-center block outline ion-button color="light" style="border: 2px solid #9B9B9B;  border-radius: 5px;"><span class="text-register">Non sei ancora registrato?</span></button>
+            <button tappable (click)="presentRegister($event)" text-center block outline ion-button color="light" style="border: 2px solid #9B9B9B;  border-radius: 5px;"><span class="text-register">REGISTRATI</span></button>
           </div>
         </ion-col>
       </ion-row>
-  
-    </form>
-  </div>
-  
-  </div>
-  </ion-content>
+
+
+    </div>
+  </form>
+</div>
+</ion-content>

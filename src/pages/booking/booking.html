@@ -1,13 +1,13 @@
 <ion-header>
-  <ion-navbar class="default-navbar">
-    <ion-title class="default-title">
+  <ion-navbar class="default-navbar" [class.custome-navbar]="fromModal">
+    <ion-title class="default-title" [class.custome-title]="fromModal">
       Il Brand
       <div style="color:grey; font-size: 12px; ">
         Contatti & Orari
       </div>
     </ion-title>
     <ion-buttons right class="bar-button-custom">
-      <button ion-button icon-only (click)="list($event)">
+      <button tappable ion-button icon-only (click)="list($event)">
         <ion-icon name="custom-hamburger-two-line"></ion-icon>
       </button>
     </ion-buttons>
@@ -18,7 +18,7 @@
   <div class="" padding style="padding-right:0 !important">
     <ion-slides #sliderMonth >
       <ion-slide *ngFor="let month of months" [class.changebutton]="setColorMonth === month.id">
-        <button class="btn-slide-month" ion-button [class.active]="changeColorMonth === month.id" ion-button (click)="onClickMonth(month)">
+        <button tappable class="btn-slide-month" ion-button [class.active]="changeColorMonth === month.id" ion-button (click)="onClickMonth(month)">
         <span  [class.active-text-month]="changeColorMonth === month.id" style="font-size:13px;">{{month.month}}</span>
         </button>
       </ion-slide>
@@ -26,7 +26,7 @@
     <ion-slides  #sliderDate>
     <ion-slide *ngFor="let date of dates" [class.changebutton]="setColorDate === date.id">
      
-      <button class="btn-slide-date" ion-button [class.active]="changeColorDate === date.id" (click)="onClickDate(date)">
+      <button tappable class="btn-slide-date" ion-button [class.active]="changeColorDate === date.id" (click)="onClickDate(date)">
           <ion-row>
                 <div class="text-day" [class.active-text-day]="changeColorDate === date.id">{{date.shortDay}}</div>
             
@@ -44,7 +44,7 @@
     </div>
     <ion-slides #sliderTime slidesPerView="3.4" (click)="postOperator(operator)">
       <ion-slide *ngFor="let time of operator.hours">
-        <button class="btn-slide-time" ion-button [class.active]="changeColorTime === time.id" (click)="onClickTime(time)">
+        <button tappable class="btn-slide-time" ion-button [class.active]="changeColorTime === time.id" (click)="onClickTime(time)">
         <div [class.active-text-time]="changeColorTime === time.id" style="font-family: 'Open Sans Bold';">{{time.hour}}</div>  
         </button>
       </ion-slide>
@@ -52,7 +52,7 @@
     {{opeartorNameProvider}}
     </div>
   </div>
-  <ion-row padding>
-    <button text-center ion-button color="danger" (click)=onSumbit() class="btn-next bold"><b>PROSEGUI</b></button>
+  <ion-row padding style="padding-bottom: 25px">
+    <button tappable text-center ion-button color="danger" (click)=onSumbit() class="btn-next bold"><b>PROSEGUI</b></button>
   </ion-row>
 </ion-content>

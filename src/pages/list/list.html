@@ -5,7 +5,7 @@
       <div style="color:grey; font-size: 12px; ">Benvenuto!</div>
     </ion-title>
     <ion-buttons right>
-      <button ion-button icon-only (click)="closeModal()">
+      <button tappable ion-button icon-only (click)="closeModal()">
         <ion-icon item-right name="custom-x" style="margin-right:5px;"></ion-icon>
       </button>
     </ion-buttons>
@@ -13,21 +13,21 @@
 </ion-header>
 
 <ion-content class="main-view">
-  <div class="overlay" (click)="closeModal()"></div>
+  <div tappable class="overlay" (click)="closeModal()"></div>
   <ion-list class="modal_content">
     <ion-item *ngIf="!isSignedIn">
-      <div class="list-content" (click)="goLogin($event)" style="color:#03d9e0">
+      <div tappable class="list-content" (click)="goLogin($event)" style="color:#03d9e0">
         <b>ACCEDI o REGISTRATI</b>
       </div>
     </ion-item>
     <ion-item *ngIf="isSignedIn">
-      <div class="list-content" (click)="goMyProfile($event)">Il tuo profilo</div>
+      <div tappable class="list-content" (click)="goMyProfile($event)">Il tuo profilo</div>
     </ion-item>
     <ion-item>
-      <div class="list-content" (click)="goListTreatment($event)">Prenota</div>
+      <div tappable class="list-content" (click)="goListTreatment($event)">Prenota</div>
     </ion-item>
     <ion-item *ngIf="isSignedIn">
-      <div class="list-content" (click)="goMybook($event)">Prenotazioni</div>
+      <div tappable class="list-content" (click)="goMybook($event)">Prenotazioni</div>
     </ion-item>
     <ion-item [navPush]="StaffPage">
       <div class="list-content">Lo staff</div>
@@ -36,7 +36,7 @@
       <div class="list-content">Contatti & Orari</div>
     </ion-item>
     <ion-item *ngIf="isSignedIn">
-      <div class="list-content" (click)="doLogout($event)">Esci</div>
+      <div tappable class="list-content" (click)="doLogout($event)">Esci</div>
     </ion-item>
   </ion-list>
 </ion-content>

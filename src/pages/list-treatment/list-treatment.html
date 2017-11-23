@@ -5,7 +5,7 @@
       <div style="color:grey; font-size: 12px; ">Listino</div>
     </ion-title>
     <ion-buttons right class="bar-button-custom">
-      <button ion-button icon-only (click)="list($event)">
+      <button tappable ion-button icon-only (click)="list($event)">
         <ion-icon name="custom-hamburger-two-line"></ion-icon>
       </button>
     </ion-buttons>
@@ -25,8 +25,8 @@
             </div>
           </ion-col>
           <ion-col col-3 class="treatment-action">
-            <ion-icon *ngIf="treatment.price !== 0" name="custom-add" (click)="addTreatment(treatment)"></ion-icon>
-            <ion-icon *ngIf="treatment.price === 0" name="custom-tel" (click)="showPhone()"></ion-icon>
+            <ion-icon tappable *ngIf="treatment.price !== 0" name="custom-add" (click)="addTreatment(treatment)"></ion-icon>
+            <ion-icon tappable *ngIf="treatment.price === 0" name="custom-tel" (click)="showPhone()"></ion-icon>
           </ion-col>
         </ion-row>
         <ion-row>

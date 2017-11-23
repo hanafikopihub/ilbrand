@@ -5,7 +5,7 @@
       <div style="color:grey; font-size: 12px; ">Area personale</div>
     </ion-title>
     <ion-buttons right>
-      <button ion-button icon-only (click)="list($event)">
+      <button tappable ion-button icon-only (click)="list($event)">
         <ion-icon name="custom-hamburger-two-line"></ion-icon>
       </button>
     </ion-buttons>
@@ -47,20 +47,20 @@
         </ion-item>
       </ion-row>
       <ion-row padding>
-        <button text-center ion-button color="danger" (click)="updatePassword()" class="red-bg trova-button-home">Modifica password</button>
+        <button tappable text-center ion-button color="danger" (click)="updatePassword()" class="red-bg trova-button-home">Modifica password</button>
       </ion-row>
     </div>
   
     <!-- Button Change Password -->
     <div padding class="btn-custom-style">
-      <button style="width:100%" text-center ion-button color="danger" *ngIf="!showPasswordForm" (click)="changePassword();"
+      <button tappable style="width:100%" text-center ion-button color="danger" *ngIf="!showPasswordForm" (click)="changePassword();"
         class="red-bg trova-button-home">Modifica password</button>
     </div>
   
     <!-- Form Change Phone Number -->
     <div class="form" *ngIf="showPhoneForm">
       <div text-right class="close" style="background-color:#F5F5F0; width:97%">
-        <div icon-only (click)="showPhoneForm=false" style="background-color:#F5F5F0;">
+        <div tappable icon-only (click)="showPhoneForm=false" style="background-color:#F5F5F0;">
           <ion-icon name="close" class="close-icon" style="background-color:#F5F5F0;"></ion-icon>
         </div>
       </div>
@@ -70,13 +70,13 @@
         </ion-item>
       </ion-row>
       <ion-row padding>
-        <button text-center ion-button color="danger" class="red-bg trova-button-home" style="background-color:#6A6A69 !important;" (click)="updateCell()">Modifica numero di telefono</button>
+        <button tappable text-center ion-button color="danger" class="red-bg trova-button-home" style="background-color:#6A6A69 !important;" (click)="updateCell()">Modifica numero di telefono</button>
       </ion-row>
     </div>
   
     <!-- Button Change Phone Number -->
     <div padding class="btn-custom-style">
-      <button *ngIf="!showPhoneForm" text-center ion-button class="btn-modif-telephone" (click)="changePhone()">Modifica numero di telefono</button>
+      <button tappable *ngIf="!showPhoneForm" text-center ion-button class="btn-modif-telephone" (click)="changePhone()">Modifica numero di telefono</button>
     </div>
   
   </ion-content>
