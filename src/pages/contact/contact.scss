@@ -1,19 +1,90 @@
 .ios,
 .md {
     page-contact {
+        #title-salon {
+            height: 24px;
+            color: #4A4A4A;
+            font-family: "Open Sans";
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 24px;
+        }
+        #sub-title-salon {
+            color: #AEB5BB;
+            font-family: "Open Sans";
+            font-size: 14px;
+            line-height: 19px;
+            font-weight: 400;
+        }
+        .address {
+            color: #9B9B9B;
+            font-family: "Open Sans";
+            font-size: 13px;
+            line-height: 18px;
+        }
+        .name-salon {
+            color: #4A4A4A;
+            font-family: "Open Sans";
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 27px;
+        }
+        .des-salon {
+            margin: 16px;
+        }
+        .contact {
+            margin-top: 10px;
+        }
+        .phone {
+            margin-left: 5px;
+            color: rgba(28, 28, 28, 0.82);
+            font-family: "Open Sans";
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 20px;
+        }
+        .email {
+            margin-left: 5px;
+            color: rgba(28, 28, 28, 0.82);
+            font-family: "Open Sans";
+            font-size: 14px;
+            line-height: 19px;
+        }
+        .schedule {
+            color: rgba(28, 28, 28, 0.82);
+            font-family: "Open Sans";
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 19px;
+            text-align: center;
+        }
+        .day {
+            text-align: left;
+            color: #9B9B9B;
+            font-family: "Open Sans";
+            font-size: 15px;
+            line-height: 21px;
+        }
+        .time {
+            text-align: right;
+            font-family: "Open Sans";
+            font-size: 15px;
+            line-height: 21px;
+            font-weight: 600;
+        }
         .item-ios.item-block .item-inner {
             padding-right: 8px;
             border-bottom: none;
         }
-      .custome-navbar {
-         padding-top: calc(20px + 4px);
-         min-height: calc(68px + 20px);
-      }
-      .custome-title {
-          text-align: center;
-          padding-top: 20px;
-          height: calc(68px + 20px);
-      }
+        .custome-navbar {
+            padding-top: calc(20px + 4px);
+            min-height: calc(68px + 20px);
+        }
+        .custome-title {
+            text-align: center;
+            padding-top: 20px;
+            height: calc(68px + 20px);
+        }
         #map {
             width: 100%;
             height: 50%;
@@ -21,13 +92,19 @@
             margin-bottom: 20px;
         }
         #title-city {
-            text-align: center;
+            color: #4A4A4A;
+            font-family: "Open Sans";
             font-size: 14px;
-            color: #4c5b69;
+            font-weight: bold;
+            line-height: 18px;
+            text-align: center;
         }
         #content-address {
+            color: #4A4A4A;
+            font-family: "Open Sans";
+            font-size: 14px;
+            line-height: 18px;
             text-align: center;
-            color: grey;
         }
         .icon-image-bottom {
             margin-top: 35px;

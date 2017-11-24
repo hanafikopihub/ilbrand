@@ -12,12 +12,14 @@ import { LoginPage } from '../login/login';
   templateUrl: 'list-customer-treatment.html'
 })
 export class ListCustomerTreatment {
-  loading: any;
-  name: string;
-  prenoCount: any;
-  response: any;
   treatments: Array<any>;
+  activeTreatment: Array<any>;
+  pastTreatment: Array<any>;
   treatment_count: number;
+  name: string;
+  isSignedIn: boolean;
+  user_id: any;
+
   constructor(
     private _toastCtrl: ToastService,
     private _loaderCtrl: LoaderService,
@@ -29,29 +31,31 @@ export class ListCustomerTreatment {
   ) {
   }
 
-  ionViewDidLoad() {
-
-    this._loaderCtrl.showLoader();
-    console.log(this._authServiceProvider.currentAuthData);
-    if (this._authServiceProvider.currentAuthData === null || this._authServiceProvider.currentAuthData === undefined) {
-      const toLogin = this._modalCtrl.create(LoginPage);
-      toLogin.present()
+  ionViewDidEnter() {
+    const client = localStorage.getItem('client');
+    if (client !== null && this._authServiceProvider.currentAuthData !== null) {
+      this.listTreatment();
     } else {
-      this._restapiServiceProvider.getMyBooking()
-        .subscribe(response => {
-          this.response = response.total_booking
-          this.treatments = response.bookings;
-          this.treatment_count = response.total_booking;
-          this._loaderCtrl.hideLoader();
-        }, (error) => {
-          this._loaderCtrl.hideLoader();
-          this._toastCtrl.presentToast(error);
-        })
+      this.presentLogin('ListCustomerTreatment');
     }
-
-    // this.treatments = [{"title":"Piedi Applicazione Semipermanen","salon_name":"Yndaco Seregno","reservation_date":"19/02/2017"}]
   }
 
+  listTreatment() {
+    this._loaderCtrl.showLoader();
+    this._restapiServiceProvider.getMyBooking()
+      .subscribe(response => {
+        this._loaderCtrl.hideLoader();
+        this.name = response.name;
+        this.activeTreatment = response.bookings.filter(item => item.active_status);
+        this.pastTreatment = response.bookings.filter(item => !item.active_status);
+        this.treatment_count = response.total_booking;
+      }, (error) => {
+        this._loaderCtrl.hideLoader();
+      })
+  }
+  presentLogin(fromPage) {
+    this.navCtrl.push(LoginPage, { 'fromPage': fromPage });
+  }
   list(ev) {
     const listModal = this._modalCtrl.create(ListPage)
     listModal.present();

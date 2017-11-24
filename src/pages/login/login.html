@@ -1,8 +1,8 @@
   <ion-header>
     <ion-navbar text-center>
       <ion-title style="text-align: center">
-        Il Brand
-        <div style="color:grey; font-size: 12px; ">Accedi</div>
+        <div id="title-salon">Il Brand</div>
+        <div id="sub-title-salon">Benvenuto!</div>
       </ion-title>
       <ion-buttons right>
         <button tappable id="close-button" right ion-button icon-only (click)="closeModal()">
@@ -16,7 +16,6 @@
     <div>
       <form (ngSubmit)="doLogin()" #loginForm="ngForm">
         <div *ngIf="isLoginFormShow" padding>
-          <div class="label-login">INSERISCI I TUOI DATI DI ACCESSO</div>
           <ion-row>
             <ion-col>
               <ion-list>
@@ -42,7 +41,7 @@
         <ion-row>
           <ion-col class="signup-col">
             <button ion-button class="bluesky-button" full type="submit" [disabled]="!loginForm.form.valid">ACCEDI</button>
-            <p  text-center style="padding-top: 20px;"><a tappable (click)="presentForgetPassword($event)" class="text-forgot-password">Ho dimenticato la password</a></p>
+            <p  text-center><a tappable (click)="presentForgetPassword($event)" class="text-forgot-password">Ho dimenticato la password</a></p>
             <p text-center style="margin-top:12%;">
               <button tappable (click)="presentRegister($event)" text-center block outline ion-button color="light" style="border: 2px solid #9B9B9B;  border-radius: 5px;"><span class="text-register">REGISTRATI</span></button>
             </p>

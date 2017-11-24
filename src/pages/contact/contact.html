@@ -1,8 +1,8 @@
 <ion-header>
   <ion-navbar class="custome-navbar">
     <ion-title class="custome-title">
-      Il Brand
-      <div style="color:grey; font-size: 12px; ">Contatti & Orari</div>
+      <div id="title-salon">Il Brand</div>
+      <div id="sub-title-salon">Contatti & Orari</div>
     </ion-title>
     <ion-buttons right>
       <button tappable ion-button icon-only (click)="list($event)">
@@ -13,31 +13,34 @@
 </ion-header>
 
 <ion-content>
-  <div style="margin-left: 15px;">
-    <div style="color: #4A4A4A;">
-      <h6>{{contact.name | uppercase}}</h6>
+  <div class="des-salon">
+    <div class="name-salon">
+      Il Brand
     </div>
-    <div style="color: grey">{{contact.address}}</div>
-
-    <div style="color: #4A4A4A;">
-      <h6>
-        <b>0331 844778</b>
-      </h6>
+    <div class="address">via Monte Grappa 30 - 21049 Tradate</div>
+    <div class="contact">
+      <div style="margin-bottom: 3px;">
+        <ion-icon name="call"></ion-icon>
+        <span class="phone">0331 844778</span>
+      </div>
+      <div>
+        <ion-icon name="ios-at-outline"></ion-icon>
+        <span class="email">info@ilbrandtradate.it</span>
+      </div>
     </div>
   </div>
 
   <div #map id="map"></div>
   <div style="margin-left: 50px;margin-right: 50px;">
-    <ion-item style="font-size: 14px; text-align: center; color: #4A4A4A;">
+    <ion-item class="schedule">
       <b>ORARI DI APERTURA</b>
     </ion-item>
-    <hr style="height:1px; margin-left:5%;  margin-right:5%">
     <div>
       <ion-row *ngFor="let item of contact.salon_work_day" style="color: #666">
-        <ion-col col-6 style="text-align: left;">
+        <ion-col col-6 class="day">
           {{item.day}}
         </ion-col>
-        <ion-col col-6 style="text-align: right;">
+        <ion-col col-6 class="time">
           {{item.time}}
         </ion-col>
       </ion-row>
@@ -62,12 +65,12 @@
 
   <div>
     <div id="title-city">
-      <b>Il Brand - consulenti d'immagine</b>
+      <b>Il Brand</b>
     </div>
     <div id="content-address">
-      <p>
-        via Monte Grappa, 30 Tradate
-        <br> C.F.:0331 844778
+      <p style="margin-top:3px;">via Monte Grappa, 30 - 21049 Tradate 
+        <br>0331 844778 
+        <br>P.IVA 12590770157
       </p>
     </div>
   </div>

@@ -8,14 +8,49 @@ page-list-customer-treatment {
         padding-top: 20px;
         height: calc(68px + 20px);
     }
-    ion-modal {
-        height: 90%;
+    #title-salon {
+        height: 24px;
+        color: #4A4A4A;
+        font-family: "Open Sans";
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 24px;
+    }
+    #sub-title-salon {
+        color: #AEB5BB;
+        font-family: "Open Sans";
+        font-size: 14px;
+        line-height: 19px;
+        font-weight: 400;
     }
     hr {
-        height: 2px !important;
+        margin-top: 3px;
+        background: none;
     }
     .title {
-        font-size: 25px;
+        color: rgba(28, 28, 28, 0.82);
+        font-family: 'Merriweather Regular';
+        font-size: 21px;
+        font-weight: bold;
+        line-height: 27px;
+    }
+    .treatment-head-section {
+        color: #9B9B9B;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 18px;
+        font-family: 'Open Sans Semibold';
+    }
+    .treatment-title {
+        font-size: 16px;
+        line-height: 20px;
+        font-family: 'Open Sans Semibold';
+        .active {
+            color: #4A4A4A;
+        }
+        .past {
+            color: #9B9B9B;
+        }
     }
     .title-text {
         margin-bottom: 25px;
@@ -26,9 +61,17 @@ page-list-customer-treatment {
         font-size: 14px;
         color: grey;
     }
-    .label-reveration {
-        font-size: 1.5rem;
-        color: grey;
+    .treatment-detail-label {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 22px;
+        font-family: 'Open Sans Semibold';
+        .active {
+            color: #10CBD2;
+        }
+        .past {
+            color: #9B9B9B;
+        }
     }
     .btn-modif-telephone {
         width: 100%;
@@ -36,10 +79,37 @@ page-list-customer-treatment {
         border: 1px solid #9A9A9A;
         color: #9A9A9A;
     }
-    .row-cast {
-        border-bottom: 1px solid #ccd3d9;
-        margin: 0;
-        padding: 0;
+    .active-treatment-list .treatment-list {
+        .row-cast {
+            border-bottom: 1px solid #ccd3d9;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 13px;
+        }
+    }
+    .active-treatment-list .treatment-list:last-child {
+        .row-cast {
+            border-bottom: none;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 13px;
+        }
+    }
+    .old-treatment-list .treatment-list {
+        .row-cast {
+            border-bottom: 1px solid #ccd3d9;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 13px;
+        }
+    }
+    .old-treatment-list .treatment-list:last-child {
+        .row-cast {
+            border-bottom: none;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 13px;
+        }
     }
     .delete-account {
         text-align: center;

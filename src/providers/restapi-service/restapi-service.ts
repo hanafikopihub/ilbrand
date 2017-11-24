@@ -71,6 +71,11 @@ export class RestapiServiceProvider {
       .map(res => res.json())
   }
 
+  getDetailTreatment(id) {
+    return this.http.get(this.apiUrl + 'treatments/' + id)
+      .map(res => res.json())
+  }
+
   getProfile(email) {
     const url = this.apiUrl + 'finds/profile';
     const cacheKey = url;
@@ -104,6 +109,13 @@ export class RestapiServiceProvider {
     }).map(res => res.json())
   }
 
+  getDetailBooking(bookingId) {
+    return this._authServiceProvider.request({
+      method: RequestMethod.Get,
+      url: this.apiUrl + 'bookings/' + bookingId
+    }).map(res => res.json())
+  }
+
   getOperator(data) {
     return this.http.post(this.apiUrl + 'operators/available_for_treatments', data)
       .map(res => res.json())
@@ -120,5 +132,14 @@ export class RestapiServiceProvider {
   postPayPal(data) {
     return this.http.post(this.apiUrl + 'bookings/paypal_confirm', data)
       .map(res => res.json())
+  }
+
+
+  postSalonReview(data) {
+    return this._authServiceProvider.request({
+      method: RequestMethod.Post,
+      url: this.apiUrl + 'reviews/create',
+      body: data
+    }).map(res => res.json())
   }
 }

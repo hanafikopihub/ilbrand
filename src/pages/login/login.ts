@@ -167,7 +167,7 @@ export class LoginPage {
   }
 
   closeModal() {
-    this.viewCtrl.dismiss();
+    this.navCtrl.push(HomePage, {'status' : true});
   }
 
 }

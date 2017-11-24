@@ -1,8 +1,8 @@
 <ion-header>
   <ion-navbar class="custome-navbar">
     <ion-title class="custome-title">
-      Il Brand
-      <div style="color:grey; font-size: 12px; ">Prenotazioni</div>
+      <div id="title-salon">Il Brand</div>
+      <div id="sub-title-salon">Prenotazioni</div>
     </ion-title>
     <ion-buttons right>
       <button tappable ion-button icon-only (click)="list($event)">
@@ -11,28 +11,37 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
+<ion-content padding style="padding-bottom:10px;">
+  <ion-row class="title" padding-top padding-bottom>
+    {{this.name}}
+  </ion-row>
 
-
-<ion-content padding>
-  
-  <!-- <div *ngIf="response === 0" style="text-align:center;">
-    <h5><b>elenco di trattamenti vuoto</b></h5>
-  </div> -->
-  <ion-grid *ngFor="let treatment of treatments">
-    <ion-row class="row-cast">
-      <ion-col col-8>
-        <h6>{{treatment.title}}</h6>
-        <div class="treatment-detail-label">
-          <span>
-            <b>{{treatment.salon_name}}</b>
-          </span>
-        </div>
-      </ion-col>
-      <ion-col col-4>
-        <ion-icon class="text-date" float-right>
-          <i>{{treatment.reservation_date}}</i>
-        </ion-icon>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-row padding-top class="treatment-head-section">PRENOTAZIONI ATTIVE</ion-row>
+  <hr />
+  <div class="active-treatment-list">
+    <ion-grid *ngFor="let treatment of activeTreatment" style="padding: 0; padding-bottom: 13px" class="treatment-list">
+      <ion-row class="row-cast" (click)="goToActiveDetailBooking(treatment)">
+        <ion-col col-10 style="padding-left: 0">
+          <h6 class="treatment-title active">{{treatment.title}}</h6>
+          <div class="treatment-detail-label">
+            <span class="active">{{treatment.reservation_date}}</span> ore <span class="active">{{treatment.reservation_hour}}</span>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <ion-row padding-top class="treatment-head-section">PRENOTAZIONI TRASCORE</ion-row>
+  <hr style="height: 1px;" />
+  <div class="old-treatment-list">
+    <ion-grid *ngFor="let treatment of pastTreatment" style="padding: 0; padding-bottom: 13px" class="treatment-list">
+      <ion-row class="row-cast" (click)="goToPastDetailBooking(treatment)">
+        <ion-col col-10 style="padding-left: 0">
+          <h6 class="treatment-title past">{{treatment.title}}</h6>
+          <div class="treatment-detail-label">
+            {{treatment.reservation_date}} ore {{treatment.reservation_hour}}
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
