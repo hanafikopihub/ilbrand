@@ -34,14 +34,16 @@
   <div>
 
     <ion-row padding class="total-style">
-      <ion-col col-3>
-        <span class="gray-text"> totale</span>
-      </ion-col>
-      <ion-col col-9 style="padding-left: 35px; ">
-          <div class="total-value">&#8364; {{treatmentParam.price}}</div><br>
-        <div class="con-operatore" style="color: #FF4653; text-align:right; float:right; padding-left: 21% !important;">{{optionPay}}</div>
-      </ion-col>
-    </ion-row>
+        <ion-col col-3>
+          <span> totale</span>
+        </ion-col>
+        <ion-col col-9 class="total-value">
+            <div><b>&#8364; {{treatmentParam.price}}</b></div>
+        </ion-col>
+        <ion-col col-12 class="pay-option">
+          <div>{{optionPay}}</div>
+        </ion-col>
+      </ion-row>
     <ion-grid padding>
       <div class="content-page">
         <p>Riceverai una conferma via email all'indirizzo con cui ti sei registrato (francesco.ambrosiano@gmail.com).</p>

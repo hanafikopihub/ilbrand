@@ -41,8 +41,8 @@
         <ion-row>
           <ion-col class="signup-col">
             <button ion-button class="bluesky-button" full type="submit" [disabled]="!loginForm.form.valid">ACCEDI</button>
-            <p  text-center><a tappable (click)="presentForgetPassword($event)" class="text-forgot-password">Ho dimenticato la password</a></p>
-            <p text-center style="margin-top:12%;">
+            <p *ngIf="fromPageString !== 'HistoryBookingPage'" text-center><a tappable (click)="presentForgetPassword($event)" class="text-forgot-password">Ho dimenticato la password</a></p>
+            <p *ngIf="fromPageString !== 'HistoryBookingPage'" text-center style="margin-top:12%;">
               <button tappable (click)="presentRegister($event)" text-center block outline ion-button color="light" style="border: 2px solid #9B9B9B;  border-radius: 5px;"><span class="text-register">REGISTRATI</span></button>
             </p>
           </ion-col>

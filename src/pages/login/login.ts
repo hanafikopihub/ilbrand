@@ -9,6 +9,7 @@ import { AppApi } from '../../app.api';
 import { HomePage } from '../home/home';
 import { ProfileSettingPage } from '../profile-setting/profile-setting';
 import { ListCustomerTreatment } from '../list-customer-treatment/list-customer-treatment';
+import { HistoryBookingPage } from '../history-booking/history-booking';
 
 @Component({
   selector: 'page-login',
@@ -26,6 +27,7 @@ export class LoginPage {
   loading: any;
 
   fromPage: any;
+  fromPageString: string;
   constructor(
     public navParams: NavParams, public navCtrl: NavController, public viewCtrl: ViewController, private toastCtrl: ToastController,
     private loadingCtrl: LoadingController, public modalCtrl: ModalController,
@@ -49,6 +51,10 @@ export class LoginPage {
 
     if (this.fromPage === 'ProfileSettingPage') {
       this.fromPage = ProfileSettingPage
+    }
+
+    if (this.fromPage === 'HistoryBookingPage') {
+      this.fromPageString = 'HistoryBookingPage'
     }
   }
 
@@ -82,7 +88,7 @@ export class LoginPage {
     this._tokenService.resetPassword(this.resetData).subscribe(
       res => {
         this.loading.dismiss();
-        this.navCtrl.push(HomePage, {'status' : true});
+        this.navCtrl.push(HomePage, { 'status': true });
         this.presentToast('We have sent the reset password instruction to your email');
       },
       error => {
@@ -167,7 +173,11 @@ export class LoginPage {
   }
 
   closeModal() {
-    this.navCtrl.push(HomePage, {'status' : true});
+    if (this.fromPageString === 'HistoryBookingPage') {
+      this.viewCtrl.dismiss();
+    } else {
+      this.navCtrl.push(HomePage, { 'status': true });
+    }
   }
 
 }

@@ -71,7 +71,19 @@
         <br> Se vuoi leggere la nostra Privacy Policy puoi
         <u class="email-form-style">cliccare qui</u>
       </div>
-      <div padding style="padding-top:0; padding-bottom:0 !important;">
+      <div padding>
+
+        <div>
+          <div class="label-registrasi">Sei già registrato su Salonist?</div>
+          <div class="btn-text-register">
+            <button tappable text-center ion-button block class="bold btn-register" (click)="toLogin()">ACCEDI</button>
+          </div>
+          <div class="label-registrasi">Non sei registrato?</div>
+          <div class="text-reservation">
+              Inserisci i tuoi dati per completare la prenotazione
+          </div>
+        </div>
+
         <ion-col>
           <ion-label class="label-form" stacked>il tuo nome</ion-label>
           <ion-input type="text" class="email-border-input" required formControlName="name"></ion-input>

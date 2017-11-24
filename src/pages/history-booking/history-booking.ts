@@ -11,6 +11,7 @@ import { PayPalPayment, PayPal, PayPalConfiguration } from '@ionic-native/paypal
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { ListPage } from '../list/list';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-history-booking',
@@ -139,6 +140,12 @@ export class HistoryBookingPage {
       this._alertService.failedError('controllare l\'input immesso')
     }
   }
+
+  toLogin() {
+    this._navController.push(LoginPage,
+      { 'fromPage': 'HistoryBookingPage' })
+  }
+
   onSubmit() {
     this.bookingVisitor = this.entryForm.value;
     this.optionPay = this.payOptions.filter(o => {
@@ -251,5 +258,4 @@ export class HistoryBookingPage {
         this._alertService.failedError(error);
       })
   }
-
 }
