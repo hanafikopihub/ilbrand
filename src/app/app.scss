@@ -123,10 +123,6 @@
     font-family: 'Open Sans';
 }
 
-.playfair {
-    font-family: 'Playfair Display'
-}
-
 .toolbar-title {
     padding-top: 20px;
     padding-bottom: 10px;
@@ -196,6 +192,15 @@ ul {
 .prenotare-content {
     font-size: 20px;
     margin-bottom: 25px;
+}
+
+#title-salon {
+    height: 24px;
+    color: #4A4A4A;
+    font-size: 18px;
+    font-weight: 400 !important;
+    font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
+    line-height: 24px;
 }
 
 .telephone {

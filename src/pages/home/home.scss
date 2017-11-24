@@ -14,14 +14,6 @@ page-home {
         padding-top: 20px;
         height: calc(68px + 20px);
     }
-    #title-salon {
-        height: 24px;
-        color: #4A4A4A;
-        font-family: "Open Sans";
-        font-size: 18px;
-        font-weight: 600;
-        line-height: 24px;
-    }
     #sub-title-salon {
         color: #AEB5BB;
         font-family: "Open Sans";
@@ -38,9 +30,9 @@ page-home {
     #title {
         text-transform: uppercase;
         color: #4A4A4A;
-        font-family: "Open Sans";
         font-size: 16px;
-        font-weight: bold;
+        font-weight: 600 !important;
+        font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
         line-height: 21px;
         text-align: center;
     }

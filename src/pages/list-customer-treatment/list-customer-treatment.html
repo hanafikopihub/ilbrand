@@ -20,7 +20,7 @@
   <hr />
   <div class="active-treatment-list">
     <ion-grid *ngFor="let treatment of activeTreatment" style="padding: 0; padding-bottom: 13px" class="treatment-list">
-      <ion-row class="row-cast" (click)="goToActiveDetailBooking(treatment)">
+      <ion-row class="row-cast">
         <ion-col col-10 style="padding-left: 0">
           <h6 class="treatment-title active">{{treatment.title}}</h6>
           <div class="treatment-detail-label">
@@ -34,7 +34,7 @@
   <hr style="height: 1px;" />
   <div class="old-treatment-list">
     <ion-grid *ngFor="let treatment of pastTreatment" style="padding: 0; padding-bottom: 13px" class="treatment-list">
-      <ion-row class="row-cast" (click)="goToPastDetailBooking(treatment)">
+      <ion-row class="row-cast">
         <ion-col col-10 style="padding-left: 0">
           <h6 class="treatment-title past">{{treatment.title}}</h6>
           <div class="treatment-detail-label">

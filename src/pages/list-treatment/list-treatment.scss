@@ -1,12 +1,4 @@
 page-list-treatment {
-    #title-salon {
-        height: 24px;
-        color: #4A4A4A;
-        font-family: "Open Sans";
-        font-size: 18px;
-        font-weight: 600;
-        line-height: 24px;
-    }
     #sub-title-salon {
         color: #AEB5BB;
         font-family: "Open Sans";
@@ -18,18 +10,18 @@ page-list-treatment {
         padding-left: 10px;
     }
     .treatment-info-title {
-        font-family: 'Open Sans';
+        font-weight: 400 !important;
+        font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
         color: #4A4A4A;
         font-size: 15px;
-        font-weight: 600;
         line-height: 18px;
         margin-bottom: 5px;
     }
     .treatment-info {
-        font-family: 'Open Sans';
         color: #4A4A4A;
         font-size: 15px;
-        font-weight: 600;
+        font-weight: 400 !important;
+        font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
     }
     .treatment-detail-label {
         color: #D8D8D8;
