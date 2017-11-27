@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Dettaglio Preno</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div padding style="padding-bottom: 10px">
+    <div class="treatment-name">{{booking?.title}}</div>
+    <div>
+      <span class="customer-value">{{booking?.reservation_date}}</span> ore
+      <span class="customer-value">{{booking?.reservation_hour}}</span>
+    </div>
+  </div>
+
+  <hr>
+  <div padding style="padding-top: 8px">
+    <ion-row>
+      <span class="treatment-name">{{booking?.salon_name}}</span>
+    </ion-row>
+    <ion-row class="salon-address">
+      {{booking?.salon_address}}
+    </ion-row>
+    <br>
+    <div>
+      <span>con operatore</span>
+      <span class="operator-value">{{booking?.operator_name | uppercase}}</span>
+    </div>
+  </div>
+
+  <div>
+
+    <ion-row padding class="total-style">
+      <ion-col col-3>
+        <span class="totale-price"> totale</span>
+      </ion-col>
+      <ion-col col-9>
+        <div class="total-value">&#8364; {{booking?.price}}</div>
+        <div class="con-operatore">{{booking?.option_pay}}</div>
+      </ion-col>
+    </ion-row>
+    <ion-row padding>
+      <button text-center block outline ion-button color="danger" (click)="cancel()">ANNULA PRENOTAZIONE</button>
+    </ion-row>
+  </div>
+</ion-content>

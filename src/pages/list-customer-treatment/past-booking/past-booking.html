@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Dettaglio preno</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div padding style="padding-bottom: 10px">
+    <div class="treatment-name">{{booking?.title}}</div>
+    <div>
+      <span class="customer-value">{{booking?.reservation_date}} ore</span>
+      <span class="customer-value">{{booking?.reservation_hour}}</span>
+    </div>
+  </div>
+
+  <hr>
+  <div padding style="padding-top: 8px">
+    <ion-row>
+      <span class="treatment-name">{{booking?.salon_name}}</span>
+    </ion-row>
+    <ion-row class="salon-address">
+      {{booking?.salon_address}}
+    </ion-row>
+    <br>
+    <div>
+      <span class="con-operatore">con operatore</span>
+      <span class="operator-value">{{booking?.operator_name | uppercase}}</span>
+    </div>
+  </div>
+
+  <ion-row padding class="total-style">
+    <ion-col col-3>
+      <span class="gray-text"> totale</span>
+    </ion-col>
+    <ion-col col-9>
+      <div class="total-value">&#8364; {{booking?.price}}</div>
+    </ion-col>
+  </ion-row>
+  <ion-row padding>
+    <button tappable text-center block ion-button color="danger" class="bold" (click)="rebooking()">RIPRENOTA</button>
+  </ion-row>
+
+  <div padding-top padding-left padding-right>
+    <div class="vote-label-main">VOTA IL SALONE PER QUESTO APPUNTAMENTO</div>
+    <div *ngIf="!booking?.has_review">
+      <div padding text-center>
+        <div class="vote-label">Ambiente</div>
+        <ion-row>
+          <ion-col col-8 offset-2 style="padding-top: 0">
+            <rating [(ngModel)]="rating.environment"></rating>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div padding-bottom padding-right padding-left text-center>
+        <div class="vote-label">Servizio</div>
+        <ion-row>
+          <ion-col col-8 offset-2 style="padding-top: 0">
+            <rating [(ngModel)]="rating.service"></rating>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div padding-bottom padding-right padding-left text-center>
+        <div class="vote-label">Staff</div>
+        <ion-row>
+          <ion-col col-8 offset-2 style="padding-top: 0">
+            <rating [(ngModel)]="rating.staff"></rating>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div padding-bottom padding-right padding-left text-center>
+        <div class="vote-label">Qualita/Prezzo</div>
+        <ion-row>
+          <ion-col col-8 offset-2 style="padding-top: 0">
+            <rating [(ngModel)]="rating.quality"></rating>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div padding-bottom text-center>
+        <div class="vote-label">Commento (opzionale)</div>
+        <ion-textarea name="description" class="comment-field" [(ngModel)]="rating.review"></ion-textarea>
+      </div>
+      <ion-row padding-bottom padding-top>
+        <button tappable text-center block ion-button color="primary" class="bold" (click)="postReview()">INVIA</button>
+      </ion-row>
+    </div>
+
+    <div padding-bottom padding-right padding-left text-center *ngIf="booking?.has_review">
+      <ion-col col-8 offset-2 style="padding-top: 0">
+        <rating [(ngModel)]="booking.review_rating" readOnly="true"></rating>
+      </ion-col>
+    </div>
+
+  </div>
+
+</ion-content>

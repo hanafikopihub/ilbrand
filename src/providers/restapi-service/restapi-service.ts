@@ -105,7 +105,7 @@ export class RestapiServiceProvider {
     return this._authServiceProvider.request({
       method: RequestMethod.Post,
       url: this.apiUrl + 'bookings/my',
-      body: {salon_id: AppApi.SALON_ID}
+      body: { salon_id: AppApi.SALON_ID }
     }).map(res => res.json())
   }
 
@@ -113,6 +113,14 @@ export class RestapiServiceProvider {
     return this._authServiceProvider.request({
       method: RequestMethod.Get,
       url: this.apiUrl + 'bookings/' + bookingId
+    }).map(res => res.json())
+  }
+
+  postCancelBooking(bookingId) {
+    return this._authServiceProvider.request({
+      method: RequestMethod.Post,
+      url: this.apiUrl + 'bookings/cancel',
+      body: { booking_id: bookingId }
     }).map(res => res.json())
   }
 

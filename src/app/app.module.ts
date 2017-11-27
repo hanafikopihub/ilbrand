@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
+// Import ionic2-rating module
+import { Ionic2RatingModule } from 'ionic2-rating';
+
 import { ListTreatmentPage } from '../pages/list-treatment/list-treatment';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -16,6 +19,8 @@ import { BookingPage } from '../pages/booking/booking';
 import { ProfileSettingPage } from '../pages/profile-setting/profile-setting';
 import { HistoryBookingPage } from '../pages/history-booking/history-booking';
 import { ListCustomerTreatment } from '../pages/list-customer-treatment/list-customer-treatment';
+import { ActiveBookingPage } from '../pages/list-customer-treatment/active-booking/active-booking';
+import { PastBookingPage } from '../pages/list-customer-treatment/past-booking/past-booking';
 import { MyBookingPage } from '../pages/my-booking/my-booking';
 import { HttpModule } from '@angular/http';
 import { Angular2TokenService } from 'angular2-token';
@@ -40,6 +45,8 @@ import { PhoneSalonPage } from '../pages/list-treatment/phone-salon/phone-salon'
   declarations: [
     MyApp,
     ListTreatmentPage,
+    ActiveBookingPage,
+    PastBookingPage,
     PhoneSalonPage,
     ContactPage,
     HomePage,
@@ -60,12 +67,16 @@ import { PhoneSalonPage } from '../pages/list-treatment/phone-salon/phone-salon'
           backButtonIcon: 'custom-back',
           backButtonText: ''
     }),
+    CacheModule.forRoot(),
+    Ionic2RatingModule,
     CacheModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     ListTreatmentPage,
+    ActiveBookingPage,
+    PastBookingPage,
     PhoneSalonPage,
     ContactPage,
     HomePage,

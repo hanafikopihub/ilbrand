@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
-import { NavController, LoadingController, ModalController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavParams, NavController, Navbar, LoadingController, ModalController } from 'ionic-angular';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-import { ToastService } from '../../providers/shared-service/toast-service';
 import { LoaderService } from '../../providers/shared-service/loader-service';
-import { ListPage } from '../list/list';
 import { LoginPage } from '../login/login';
+
+import { PastBookingPage } from './past-booking/past-booking';
+import { ActiveBookingPage } from './active-booking/active-booking';
 
 @Component({
   selector: 'page-list-customer-treatment',
@@ -19,16 +20,18 @@ export class ListCustomerTreatment {
   name: string;
   isSignedIn: boolean;
   user_id: any;
+  @ViewChild('navbar') navBar: Navbar;
 
   constructor(
-    private _toastCtrl: ToastService,
-    private _loaderCtrl: LoaderService,
-    public _modalCtrl: ModalController,
+    public navParams: NavParams,
     public navCtrl: NavController,
+    public modalCtrl: ModalController,
     public _authServiceProvider: AuthServiceProvider,
+    public _loaderCtrl: LoaderService,
     public _restapiServiceProvider: RestapiServiceProvider,
-    public loadingCtrl: LoadingController
-  ) {
+    public loading: LoadingController) {
+    this.isSignedIn = this._authServiceProvider.userSignedIn;
+
   }
 
   ionViewDidEnter() {
@@ -38,6 +41,22 @@ export class ListCustomerTreatment {
     } else {
       this.presentLogin('ListCustomerTreatment');
     }
+
+    // this.navBar.backButtonClick = () => {
+    //   alert('hhahah')
+    // };
+  }
+
+  goToActiveDetailBooking(booking) {
+    this.navCtrl.push(ActiveBookingPage, {
+      booking: booking
+    });
+  }
+
+  goToPastDetailBooking(booking) {
+    this.navCtrl.push(PastBookingPage, {
+      booking: booking
+    });
   }
 
   listTreatment() {
@@ -53,11 +72,13 @@ export class ListCustomerTreatment {
         this._loaderCtrl.hideLoader();
       })
   }
+
+  detailTreatment(treatment) {
+
+  }
+
   presentLogin(fromPage) {
     this.navCtrl.push(LoginPage, { 'fromPage': fromPage });
   }
-  list(ev) {
-    const listModal = this._modalCtrl.create(ListPage)
-    listModal.present();
-  }
+
 }

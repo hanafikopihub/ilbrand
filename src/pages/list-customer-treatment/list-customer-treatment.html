@@ -1,16 +1,9 @@
-<ion-header>
-  <ion-navbar class="custome-navbar">
-    <ion-title class="custome-title">
-      <div id="title-salon">Il Brand</div>
-      <div id="sub-title-salon">Prenotazioni</div>
-    </ion-title>
-    <ion-buttons right>
-      <button tappable ion-button icon-only (click)="list($event)">
-        <ion-icon name="custom-hamburger-two-line"></ion-icon>
-      </button>
-    </ion-buttons>
+<ion-header no-border>
+  <ion-navbar #navbar>
+    <ion-title>Prenotazioni</ion-title>
   </ion-navbar>
 </ion-header>
+
 <ion-content padding style="padding-bottom:10px;">
   <ion-row class="title" padding-top padding-bottom>
     {{this.name}}
@@ -20,12 +13,15 @@
   <hr />
   <div class="active-treatment-list">
     <ion-grid *ngFor="let treatment of activeTreatment" style="padding: 0; padding-bottom: 13px" class="treatment-list">
-      <ion-row class="row-cast">
+      <ion-row tappable class="row-cast" (click)="goToActiveDetailBooking(treatment)">
         <ion-col col-10 style="padding-left: 0">
           <h6 class="treatment-title active">{{treatment.title}}</h6>
           <div class="treatment-detail-label">
-            <span class="active">{{treatment.reservation_date}}</span> ore <span class="active">{{treatment.reservation_hour}}</span>
+            <span class="active"><b>{{treatment.reservation_date}}</b></span> ore <span class="active"><b>{{treatment.reservation_hour}}</b></span>
           </div>
+        </ion-col>
+        <ion-col col-2>
+          <ion-icon name="ios-arrow-forward-outline" float-right style="font-size: 2.2em;"></ion-icon>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -34,12 +30,15 @@
   <hr style="height: 1px;" />
   <div class="old-treatment-list">
     <ion-grid *ngFor="let treatment of pastTreatment" style="padding: 0; padding-bottom: 13px" class="treatment-list">
-      <ion-row class="row-cast">
+      <ion-row tappable class="row-cast" (click)="goToPastDetailBooking(treatment)">
         <ion-col col-10 style="padding-left: 0">
           <h6 class="treatment-title past">{{treatment.title}}</h6>
           <div class="treatment-detail-label">
             {{treatment.reservation_date}} ore {{treatment.reservation_hour}}
           </div>
+        </ion-col>
+        <ion-col col-2>
+          <ion-icon name="ios-arrow-forward-outline" float-right style="font-size: 2.2em;"></ion-icon>
         </ion-col>
       </ion-row>
     </ion-grid>

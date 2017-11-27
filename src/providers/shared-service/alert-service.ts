@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AlertController, ModalController } from 'ionic-angular';
-import { LoginPage } from '../../pages/login/login';
+import { AlertController } from 'ionic-angular';
 
 @Injectable()
 export class AlertService {
-  constructor(
-    public _alertCtrl: AlertController,
-    public _modalCtrl: ModalController) { }
+  constructor(public _alertCtrl: AlertController) { }
 
   errorConnectionAlert() {
     const alert = this._alertCtrl.create({
@@ -21,22 +18,7 @@ export class AlertService {
     const alert = this._alertCtrl.create({
       title: 'Scusa',
       subTitle: 'Devi effettuare il login per effettuare una prenotazione',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Ok',
-          handler: () => {
-            const loginModal = this._modalCtrl.create(LoginPage)
-            loginModal.present();
-          }
-        }
-      ]
+      buttons: ['OK']
     });
     alert.present();
   }
@@ -57,6 +39,15 @@ export class AlertService {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  error(data) {
+    const alert = this._alertCtrl.create({
+      title: 'Informazioni',
+      subTitle: data,
+      buttons: ['OK']
+    });
+    return alert.present();
   }
 }
 
