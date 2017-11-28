@@ -37,17 +37,18 @@ export class ListTreatmentPage {
   }
 
   loadData() {
-    this._loaderCtrl.showLoader();
-    this._restapiServiceProvider.getSalon(this.salon_id)
-      .subscribe(data => {
-        this.salon = data
-        localStorage.setItem('salon', JSON.stringify(data))
-        this.treatments = data.treatments;
-        this._loaderCtrl.hideLoader();
-      }, (error) => {
-        this._alertCtrl.failedError(error);
-        this._loaderCtrl.hideLoader();
-      });
+    this._loaderCtrl.showLoader().then(res => {
+      this._restapiServiceProvider.getSalon(this.salon_id)
+        .subscribe(data => {
+          this._loaderCtrl.hideLoader();
+          this.salon = data
+          localStorage.setItem('salon', JSON.stringify(data))
+          this.treatments = data.treatments;
+        }, (error) => {
+          this._alertCtrl.failedError(error);
+          this._loaderCtrl.hideLoader();
+        });
+    })
   }
 
   addTreatment(treatment) {

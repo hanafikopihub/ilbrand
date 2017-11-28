@@ -6,15 +6,15 @@ import {
   Slides
 } from 'ionic-angular';
 
-// libary local
+// libary page
+import { AlertService } from '../../providers/shared-service/alert-service';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { HistoryBookingPage } from '../history-booking/history-booking';
-import { ProfilePage } from '../profile/profile';
 import { ListPage } from '../list/list';
-import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
-import { AlertService } from '../../providers/shared-service/alert-service';
-import { ToastService } from '../../providers/shared-service/toast-service';
 import { LoaderService } from '../../providers/shared-service/loader-service';
+import { ProfilePage } from '../profile/profile';
+import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
+import { ToastService } from '../../providers/shared-service/toast-service';
 
 @Component({
   selector: 'page-booking',
@@ -54,8 +54,8 @@ export class BookingPage {
   yearId: string;
   dayName: any;
   monthName: any;
-
   salon_id: any;
+
   @ViewChild('sliderMonth') sliderMonth: Slides;
   @ViewChild('sliderDate') sliderDate: Slides;
   @ViewChild('sliderTime') sliderTime: Slides;
@@ -116,33 +116,72 @@ export class BookingPage {
     }
   }
 
-  list(ev) {
-    const listModal = this._modalCtrl.create(ListPage)
-    listModal.present();
-  }
-
   // get month during 1 year
   getMonths() {
-    this._loaderCtrl.showLoader();
-    this._restapiServiceProvider.getMonths()
-      .subscribe(response => {
-        this._loaderCtrl.hideLoader();
-        this.dates = response.days;
-        this.months = response.months;
-        this.dayName = response.days[0].day
-        this.monthName = response.months[0].month; // month date display
-        this.dateId = response.days[0].date;
-        this.monthId = response.months[0].month_id;
-        this.yearId = response.months[0].year;
-        this.setOperator(this.dateId, this.monthId, this.yearId)
+    this._loaderCtrl.showLoader().then(res => {
+      this._restapiServiceProvider.getMonths()
+        .subscribe(response => {
+          this._loaderCtrl.hideLoader();
 
-      },
-      (error) => {
-        // handle error
+          this.dates = response.days;
+          this.months = response.months;
+
+          this.dayName = response.days[0].day;
+          this.monthName = response.months[0].month;
+
+          this.dateId = response.days[0].date;
+          this.monthId = response.months[0].month_id;
+          this.yearId = response.months[0].year;
+
+          this.setOperator(this.dateId, this.monthId, this.yearId)
+        },
+        (error) => {
+          this._loaderCtrl.hideLoader();
+          return this._toastCtrl.presentToast('non è riuscito a ottenere dati');
+        })
+    });
+  }
+
+  // set object data for passing to get treatment
+  setOperator(dateId, monthId, yearId) {
+
+    const datetimefull = dateId + '/' + monthId + '/' + yearId
+
+    const treatmentGetOperator = [
+      {
+        'treatment_id': this.treatmentParam.s_treatment_id,
+        'duration': this.treatmentParam.duration
+      }]
+
+    const data = { 'when': datetimefull, 'treatments': treatmentGetOperator }
+    this.getOperator(data)
+  }
+
+  // get oprator data
+  getOperator(data) {
+    this._loaderCtrl.showLoader().then(res => {
+      this._restapiServiceProvider.getOperator(data).subscribe(response => {
+        this._loaderCtrl.hideLoader();
+        this.operatorArray = response.operators[0].operators;
+        if (response.operators[0].operators.length === 0) {
+          this.operators = null;
+          this.times = null;
+          this.nameOperator = null;
+          return this._toastCtrl.presentToast('Nessuna disponibilita per il giorno selezionato')
+        } else {
+          // this.operators = response.operators[0].operators[0]
+          // this.times = response.operators[0].operators[0].hours
+          // this.nameOperator = response.operators[0].operators[0].operator_name
+        }
+
+      }, (error) => {
         this._loaderCtrl.hideLoader();
         return this._toastCtrl.presentToast('non è riuscito a ottenere dati');
       })
+    })
   }
+
+  // ----------------------------Event Click-------------------------------------
 
   onClickMonth(month) {
     this.monthId = month.month_id
@@ -188,58 +227,12 @@ export class BookingPage {
     this.timeId = time.hour
   }
 
-  // set object data for passing to get treatment
-  setOperator(dateId, monthId, yearId) {
-
-    this._loaderCtrl.showLoader();
-
-    const datetimefull = dateId + '/' + monthId + '/' + yearId
-
-    const treatmentGetOperator = [
-      {
-        'treatment_id': this.treatmentParam.s_treatment_id,
-        'duration': this.treatmentParam.duration
-      }]
-
-    const data = { 'when': datetimefull, 'treatments': treatmentGetOperator }
-    this.getOperator(data)
-  }
-
-  // get oprator data
-  getOperator(data) {
-    this._restapiServiceProvider.getOperator(data).subscribe(response => {
-
-      this._loaderCtrl.hideLoader();
-      this.operatorArray = response.operators[0].operators;
-      if (response.operators[0].operators.length === 0) {
-        this.operators = null;
-        this.times = null;
-        this.nameOperator = null;
-        return this._toastCtrl.presentToast('Nessuna disponibilita per il giorno selezionato')
-      } else {
-        // this.operators = response.operators[0].operators[0]
-        // this.times = response.operators[0].operators[0].hours
-        // this.nameOperator = response.operators[0].operators[0].operator_name
-      }
-
-    }, (error) => {
-      this._loaderCtrl.hideLoader();
-      return this._toastCtrl.presentToast('non è riuscito a ottenere dati');
-    })
-  }
 
   postOperator(operator) {
     this.operators = operator;
   }
 
-
-  presentProfile(event) {
-    const profileModal = this._modalCtrl.create(ProfilePage)
-    profileModal.present();
-  }
-
   onSumbit() {
-
     if (this.operators == null || this.timeId === undefined || this.dateId === undefined) {
       return this._toastCtrl.presentToast('Nessuna disponibilita per il giorno selezionato')
     } else {
@@ -276,8 +269,11 @@ export class BookingPage {
           operators: this.operators, dataOther: dataOther
         })
     }
-
   }
 
+  list(ev) {
+    const listModal = this._modalCtrl.create(ListPage)
+    listModal.present();
+  }
 
 }

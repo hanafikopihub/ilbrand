@@ -79,6 +79,7 @@ export class HistoryBookingPage {
   ngOnInit() {
     this.buildForm();
   }
+
   ionViewDidEnter() {
     this.dataBooking = {
       booking: {
@@ -169,49 +170,51 @@ export class HistoryBookingPage {
   }
 
   toPayDirectly() {
-    this._loaderCtrl.showLoader();
-    this.dataBooking['visitor_name'] = this.bookingVisitor.name;
-    this.dataBooking['visitor_email'] = this.bookingVisitor.email;
-    this.dataBooking['visitor_phone'] = this.bookingVisitor.phone;
-    this._restapiServiceProvider.postBooking(this.dataBooking).subscribe(response => {
-      if (response.error !== undefined) {
-        this._alertService.failedError(response.error);
-      } else {
-        this._navController.push(MyBookingPage,
-          {
-            salon: this.salon,
-            dataBooking: this.dataBooking,
-            treatment: this.treatmentParam,
-            operators: this.operatorParam,
-            dataOther: this.dataOther,
-            optionPay: this.optionPay
-          })
-      }
-      this._loaderCtrl.hideLoader();
-    }, (error) => {
-      console.log(error);
-      this._loaderCtrl.hideLoader();
-      this._alertService.failedSubmit();
-    })
+    this._loaderCtrl.showLoader().then(res => {
+      this.dataBooking['visitor_name'] = this.bookingVisitor.name;
+      this.dataBooking['visitor_email'] = this.bookingVisitor.email;
+      this.dataBooking['visitor_phone'] = this.bookingVisitor.phone;
+      this._restapiServiceProvider.postBooking(this.dataBooking).subscribe(response => {
+        if (response.error !== undefined) {
+          this._alertService.failedError(response.error);
+        } else {
+          this._navController.push(MyBookingPage,
+            {
+              salon: this.salon,
+              dataBooking: this.dataBooking,
+              treatment: this.treatmentParam,
+              operators: this.operatorParam,
+              dataOther: this.dataOther,
+              optionPay: this.optionPay
+            })
+        }
+        this._loaderCtrl.hideLoader();
+      }, (error) => {
+        console.log(error);
+        this._loaderCtrl.hideLoader();
+        this._alertService.failedSubmit();
+      })
+    });
   }
 
   toPayPal() {
-    this._loaderCtrl.showLoader();
-    this.dataBooking['visitor_name'] = this.bookingVisitor.name;
-    this.dataBooking['visitor_email'] = this.bookingVisitor.email;
-    this.dataBooking['visitor_phone'] = this.bookingVisitor.phone;
-    this.dataBooking['selected_card'] = 'new';
-    this._restapiServiceProvider.postBooking(this.dataBooking).subscribe(response => {
-      if (response.error !== undefined) {
-        this._alertService.failedError(response.error);
-      } else {
-        localStorage.setItem('booking_nr', JSON.stringify(response.booking_nr))
-        this.getPayPal(response);
+    this._loaderCtrl.showLoader().then(res => {
+      this.dataBooking['visitor_name'] = this.bookingVisitor.name;
+      this.dataBooking['visitor_email'] = this.bookingVisitor.email;
+      this.dataBooking['visitor_phone'] = this.bookingVisitor.phone;
+      this.dataBooking['selected_card'] = 'new';
+      this._restapiServiceProvider.postBooking(this.dataBooking).subscribe(response => {
         this._loaderCtrl.hideLoader();
-      }
-    }, (error) => {
-      this._loaderCtrl.hideLoader();
-      this._alertService.failedSubmit();
+        if (response.error !== undefined) {
+          this._alertService.failedError(response.error);
+        } else {
+          localStorage.setItem('booking_nr', JSON.stringify(response.booking_nr))
+          this.getPayPal(response);
+        }
+      }, (error) => {
+        this._loaderCtrl.hideLoader();
+        this._alertService.failedSubmit();
+      })
     })
   }
 

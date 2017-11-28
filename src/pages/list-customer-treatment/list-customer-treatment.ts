@@ -60,17 +60,18 @@ export class ListCustomerTreatment {
   }
 
   listTreatment() {
-    this._loaderCtrl.showLoader();
-    this._restapiServiceProvider.getMyBooking()
-      .subscribe(response => {
-        this._loaderCtrl.hideLoader();
-        this.name = response.name;
-        this.activeTreatment = response.bookings.filter(item => item.active_status);
-        this.pastTreatment = response.bookings.filter(item => !item.active_status);
-        this.treatment_count = response.total_booking;
-      }, (error) => {
-        this._loaderCtrl.hideLoader();
-      })
+    this._loaderCtrl.showLoader().then(res => {
+      this._restapiServiceProvider.getMyBooking()
+        .subscribe(response => {
+          this._loaderCtrl.hideLoader();
+          this.name = response.name;
+          this.activeTreatment = response.bookings.filter(item => item.active_status);
+          this.pastTreatment = response.bookings.filter(item => !item.active_status);
+          this.treatment_count = response.total_booking;
+        }, (error) => {
+          this._loaderCtrl.hideLoader();
+        })
+    })
   }
 
   detailTreatment(treatment) {

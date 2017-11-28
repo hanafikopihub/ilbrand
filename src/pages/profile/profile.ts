@@ -57,19 +57,19 @@ export class ProfilePage {
 
   getProfile() {
     const currentEmail = this._authServiceProvider.currentAuthData.uid;
-    this._loaderCtrl.showLoader();
-
-    this._restapiServiceProvider.getProfile(currentEmail)
-      .subscribe(response => {
-        this.email = response.email;
-        this.number = response.number;
-        this.name = response.name;
-        this.phoneNumber = response.number;
-        this._loaderCtrl.hideLoader();
-      }, (error) => {
-        this._toastCtrl.presentToast(error);
-      })
-      ;
+    this._loaderCtrl.showLoader().then(res => {
+      this._restapiServiceProvider.getProfile(currentEmail)
+        .subscribe(response => {
+          this._loaderCtrl.hideLoader();
+          this.email = response.email;
+          this.number = response.number;
+          this.name = response.name;
+          this.phoneNumber = response.number;
+        }, (error) => {
+          this._loaderCtrl.hideLoader();
+          this._toastCtrl.presentToast(error);
+        });
+    })
   }
 
   presentLogin(fromPage) {
@@ -77,34 +77,37 @@ export class ProfilePage {
   }
 
   updatePassword() {
-    this._loaderCtrl.showLoader();
-    this._tokenService.updatePassword(this.passwordData).subscribe(
-      res => {
-        this._loaderCtrl.hideLoader();
-        this.showPasswordForm = false;
-        this._toastCtrl.presentToast('Password aggiornata correttamente!');
-      },
-      error => {
-        this._loaderCtrl.hideLoader();
-        this._toastCtrl.presentToast(error);
-      }
-    )
+    this._loaderCtrl.showLoader().then(response => {
+      this._tokenService.updatePassword(this.passwordData).subscribe(
+        res => {
+          this._loaderCtrl.hideLoader();
+          this.showPasswordForm = false;
+          this._toastCtrl.presentToast('Password aggiornata correttamente!');
+        },
+        error => {
+          this._loaderCtrl.hideLoader();
+          this._toastCtrl.presentToast(error);
+        }
+      )
+    })
+
   }
 
   updateCell() {
-    this._loaderCtrl.showLoader();
-    this._restapiServiceProvider.postUpdateCell(this.phoneNumber).subscribe(
-      res => {
-        this._loaderCtrl.hideLoader();
-        this.showPhoneForm = false;
-        this.number = this.phoneNumber;
-        this._toastCtrl.presentToast('Numero aggiornata correttamente!');
-      },
-      error => {
-        this._loaderCtrl.hideLoader();
-        this._toastCtrl.presentToast(error);
-      }
-    )
+    this._loaderCtrl.showLoader().then(response => {
+      this._restapiServiceProvider.postUpdateCell(this.phoneNumber).subscribe(
+        res => {
+          this._loaderCtrl.hideLoader();
+          this.showPhoneForm = false;
+          this.number = this.phoneNumber;
+          this._toastCtrl.presentToast('Numero aggiornata correttamente!');
+        },
+        error => {
+          this._loaderCtrl.hideLoader();
+          this._toastCtrl.presentToast(error);
+        }
+      )
+    });
   }
 
   list(ev) {

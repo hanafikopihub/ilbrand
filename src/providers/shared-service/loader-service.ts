@@ -10,9 +10,10 @@ export class LoaderService {
 
     showLoader() {
         this.loading = this._loadingCtrl.create({
-            content: 'loading...'
+            content: 'loading...',
+            dismissOnPageChange: false
         });
-        this.loading.present();
+        return this.loading.present();
     }
 
     hideLoader() {

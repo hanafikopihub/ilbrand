@@ -33,7 +33,7 @@ export class ContactPage {
     public _alertCtrl: AlertService,
     public _restapiServiceProvider: RestapiServiceProvider,
     public _modalCtrl: ModalController) {
-      this.salon_id = JSON.parse(localStorage.getItem('salon_id'));
+    this.salon_id = JSON.parse(localStorage.getItem('salon_id'));
   }
 
   ionViewDidLoad() {
@@ -41,23 +41,24 @@ export class ContactPage {
   }
 
   getDataSalon() {
-    this._loaderCtrl.showLoader();
-    this._restapiServiceProvider.getSalon(858)
-      .subscribe(data => {
-        this._loaderCtrl.hideLoader();
-        this.contact = {
-          name: data.name,
-          city: data.city,
-          address: data.address,
-          lat: data.lat,
-          lng: data.lng,
-          salon_work_day: data.salon_work_day
-        };
-        this.loadMap(data.lat, data.lng);
-      }, (error) => {
-        this._alertCtrl.failedError(error);
-        this._loaderCtrl.hideLoader();
-      });
+    this._loaderCtrl.showLoader().then(res => {
+      this._restapiServiceProvider.getSalon(this.salon_id)
+        .subscribe(data => {
+          this._loaderCtrl.hideLoader();
+          this.contact = {
+            name: data.name,
+            city: data.city,
+            address: data.address,
+            lat: data.lat,
+            lng: data.lng,
+            salon_work_day: data.salon_work_day
+          };
+          this.loadMap(data.lat, data.lng);
+        }, (error) => {
+          this._loaderCtrl.hideLoader();
+          this._alertCtrl.failedError(error);
+        });
+    })
   }
 
   loadMap(lat, lng) {
