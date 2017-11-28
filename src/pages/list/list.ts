@@ -4,7 +4,7 @@ import { LoginPage } from '../login/login';
 import { StaffPage } from '../staff/staff';
 import { ProfilePage } from '../profile/profile';
 import { ListCustomerTreatment } from '../list-customer-treatment/list-customer-treatment'
-import { ViewController, NavController, ModalController, LoadingController, ToastController } from 'ionic-angular';
+import { ViewController, NavController, NavParams, ModalController, LoadingController, ToastController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { Angular2TokenService } from 'angular2-token';
 import { ListTreatmentPage } from '../list-treatment/list-treatment';
@@ -22,9 +22,11 @@ export class ListPage {
   StaffPage = StaffPage;
   ListCustomerTreatment = ListCustomerTreatment;
   isSignedIn: boolean;
+  isHistoryPage: boolean = false;
 
   constructor(
     public _navCtrl: NavController,
+    public _navParams: NavParams,
     private _tokenService: Angular2TokenService,
     public _modalController: ModalController,
     public _viewController: ViewController,
@@ -36,6 +38,10 @@ export class ListPage {
   }
 
   ionViewDidEnter() {
+    const from = this._navParams.get('fromPage');
+    if ( from === 'HistoryBookingPage') {
+      this.isHistoryPage = true;
+    }
     if (this._authServiceProvider.currentAuthData === undefined || this._authServiceProvider.currentAuthData === null) {
       this.isSignedIn = false
     } else {

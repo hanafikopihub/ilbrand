@@ -109,7 +109,7 @@ export class HistoryBookingPage {
   }
 
   list(ev) {
-    const listModal = this._modalCtrl.create(ListPage)
+    const listModal = this._modalCtrl.create(ListPage, {'fromPage': 'HistoryBookingPage'})
     listModal.present();
   }
 
