@@ -327,4 +327,28 @@ ion-icon {
         mask-repeat: no-repeat;
         background: currentColor;
     }
+    &[class*="custom-star-empty"] {
+        width: 21px;
+        height: 21px;
+        mask-size: contain;
+        background: currentColor;
+        mask-image: url(../assets/icon/star_empty/star_empty-AppStore@2x.png);
+        content: url(../assets/icon/star_empty/star_empty-AppStore@2x.png);
+    }
+    &[class*="custom-star-full"] {
+        width: 21px;
+        height: 21px;
+        mask-size: contain;
+        background: currentColor;
+        mask-image: url(../assets/icon/star_full/star_full-AppStore@2x.png);
+        content: url(../assets/icon/star_full/star_full-AppStore@2x.png);
+    }
+    &[class*="custom-star-half"] {
+        width: 21px;
+        height: 21px;
+        mask-size: contain;
+        background: currentColor;
+        mask-image: url(../assets/icon/star_half/star_half.png);  
+        content: url(../assets/icon/star_half/star_half.png);    }
+    
 }

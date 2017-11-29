@@ -47,7 +47,7 @@
         <div class="vote-label">Ambiente</div>
         <ion-row>
           <ion-col col-8 offset-2 style="padding-top: 0">
-            <rating [(ngModel)]="rating.environment"></rating>
+            <rating [(ngModel)]="rating.environment" emptyStarIconName="custom-star-empty" halfStarIconName="custom-star-half" starIconName="custom-star-full"></rating>
           </ion-col>
         </ion-row>
       </div>
@@ -55,7 +55,7 @@
         <div class="vote-label">Servizio</div>
         <ion-row>
           <ion-col col-8 offset-2 style="padding-top: 0">
-            <rating [(ngModel)]="rating.service"></rating>
+            <rating [(ngModel)]="rating.service" emptyStarIconName="custom-star-empty" halfStarIconName="custom-star-half" starIconName="custom-star-full"></rating>
           </ion-col>
         </ion-row>
       </div>
@@ -63,7 +63,7 @@
         <div class="vote-label">Staff</div>
         <ion-row>
           <ion-col col-8 offset-2 style="padding-top: 0">
-            <rating [(ngModel)]="rating.staff"></rating>
+            <rating [(ngModel)]="rating.staff" emptyStarIconName="custom-star-empty" halfStarIconName="custom-star-half" starIconName="custom-star-full"></rating>
           </ion-col>
         </ion-row>
       </div>
@@ -71,7 +71,7 @@
         <div class="vote-label">Qualita/Prezzo</div>
         <ion-row>
           <ion-col col-8 offset-2 style="padding-top: 0">
-            <rating [(ngModel)]="rating.quality"></rating>
+            <rating [(ngModel)]="rating.quality" emptyStarIconName="custom-star-empty" halfStarIconName="custom-star-half" starIconName="custom-star-full"></rating>
           </ion-col>
         </ion-row>
       </div>
@@ -86,7 +86,7 @@
 
     <div padding-bottom padding-right padding-left text-center *ngIf="booking?.has_review">
       <ion-col col-8 offset-2 style="padding-top: 0">
-        <rating [(ngModel)]="booking.review_rating" readOnly="true"></rating>
+        <rating [(ngModel)]="booking.review_rating" readOnly="true" emptyStarIconName="custom-star-empty" halfStarIconName="custom-star-half" starIconName="custom-star-full"></rating>
       </ion-col>
     </div>
 
