@@ -1,104 +1,111 @@
 page-list-customer-treatment {
-    hr {
-      margin-top: 3px;
-      background:none;
-    }
-    .title {
-      color: rgba(28,28,28,0.82); 
-      font-family: 'Merriweather Regular';  
-      font-size: 21px;  
-      font-weight: bold;  
-      line-height: 27px;
-    }
-  
-    .treatment-head-section{
-      color: #9B9B9B; 
-      font-size: 13px; 
-      font-weight: 400 !important; 
-      line-height: 18px;
-      font-family: 'Open Sans Semibold';
-    }
-  
-    .treatment-title{
-        font-size: 16px;  line-height: 20px; font-family: 'Open Sans Semibold';
-        .active{
-          color: #4A4A4A;
-        }
-        .past{
-          color: #9B9B9B;
-        }
-    }
-    .title-text {
-      margin-bottom: 25px;
-      color: #ea1515;
-      font-size: 16px;
-    }
-    .text-date {
-      font-size: 14px;
-      color: grey;
-    }
-    .treatment-detail-label {
-      font-size: 16px;  
-      font-weight: 400 !important; 
-      line-height: 22px; 
-      font-family: 'Open Sans Semibold';
-      
+  hr {
+    margin-top: 3px;
+    background:none;
+  }
+  .title {
+    color: rgba(28,28,28,0.82); 
+    font-family: 'Merriweather Regular';  
+    font-size: 21px;  
+    font-weight: bold;  
+    line-height: 27px;
+  }
+
+  .treatment-head-section{
+    color: #9B9B9B; 
+    font-size: 13px; 
+    font-weight: 400 !important; 
+    line-height: 18px;
+    font-family: 'Open Sans Semibold';
+  }
+
+  .treatment-title{
+      font-size: 16px;  line-height: 20px; font-family: 'Open Sans Semibold';
       .active{
-        color: #10CBD2;
+        color: #4A4A4A;
       }
       .past{
         color: #9B9B9B;
       }
-    }
-    .btn-modif-telephone {
-      width: 100%;
-      background-color: white;
-      border: 1px solid #9A9A9A;
-      color: #9A9A9A;
-    }
+  }
+  .title-text {
+    margin-bottom: 25px;
+    color: #ea1515;
+    font-size: 16px;
+  }
+  .text-date {
+    font-size: 14px;
+    color: grey;
+  }
+  .treatment-detail-label {
+    font-size: 16px;  
+    font-weight: 400 !important; 
+    line-height: 22px; 
+    font-family: 'Open Sans Semibold';
     
-    .active-treatment-list .treatment-list{
-      .row-cast {
-        border-bottom: 1px solid #ccd3d9;
-        margin:0;
-        padding:0;
-        padding-bottom: 13px;
-      }
+    .active{
+      color: #10CBD2;
     }
-  
-    .active-treatment-list .treatment-list:last-child
-      {
-        .row-cast {
-          border-bottom: none;
-          margin:0;
-          padding:0;
-          padding-bottom: 13px;
-        }
-      }
-  
-    .old-treatment-list .treatment-list{
-      .row-cast {
-        border-bottom: 1px solid #ccd3d9;
-        margin:0;
-        padding:0;
-        padding-bottom: 13px;
-      }
-    }
-  
-    .old-treatment-list .treatment-list:last-child
-      {
-        .row-cast {
-          border-bottom: none;
-          margin:0;
-          padding:0;
-          padding-bottom: 13px;
-        }
-      }
-  
-    .delete-account {
-      text-align: center;
-      color: grey;
-      margin-top: 30px
+    .past{
+      color: #9B9B9B;
     }
   }
+  .btn-modif-telephone {
+    width: 100%;
+    background-color: white;
+    border: 1px solid #9A9A9A;
+    color: #9A9A9A;
+  }
+
+  .active-treatment-list{
+      margin-top: 15px;
+  }
+
+  .old-treatment-list{
+      margin-top: 15px;
+  }
   
+  .active-treatment-list .treatment-list{
+    .row-cast {
+      border-bottom: 1px solid #ccd3d9;
+      margin:0;
+      padding:0;
+      padding-bottom: 13px;
+    }
+  }
+
+  .active-treatment-list .treatment-list:last-child
+    {
+      .row-cast {
+        border-bottom: none;
+        margin:0;
+        padding:0;
+        padding-bottom: 13px;
+      }
+    }
+
+  .old-treatment-list .treatment-list{
+    .row-cast {
+      border-bottom: 1px solid #ccd3d9;
+      margin:0;
+      padding:0;
+      padding-bottom: 13px;
+    }
+  }
+
+  .old-treatment-list .treatment-list:last-child
+    {
+      .row-cast {
+        border-bottom: none;
+        margin:0;
+        padding:0;
+        padding-bottom: 13px;
+      }
+    }
+
+  .delete-account {
+    text-align: center;
+    color: grey;
+    margin-top: 30px
+  }
+}
