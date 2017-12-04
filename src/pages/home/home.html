@@ -14,10 +14,10 @@
 
 <ion-content>
   <ion-row>
-    <img src="assets/images/home-img.jpg" width="100%" height="235px">
+    <img src="{{salon? salon.cover_image : 'assets/images/image-empty.png'}}" width="100%" height="235px">
   </ion-row>
   <ion-grid padding>
-    <ion-row id="title">PROFESSIONISTI NEL COLORE E NELLA BELLEZZA</ion-row>
+    <ion-row id="title">{{salon?.short_des}}</ion-row>
     <ion-row id="content">
       <p>
         Rivendiamo al dettaglio prodotti professionali per capelli ed estetica, in particolare tutto ciò che riguarda il trattamento
@@ -44,11 +44,11 @@
 
     <div>
       <div id="title-city">
-        <b>Il Brand</b>
+        <b>{{salon?.name}}</b>
       </div>
       <div id="content-address">
-        <p style="margin-top:3px;">via Monte Grappa, 30 - 21049 Tradate 
-          <br>0331 844778 
+        <p style="margin-top:3px;">{{salon?.address}} {{salon?.city}}
+          <br>0331 844778
           <br>P.IVA 12590770157
         </p>
       </div>

@@ -17,6 +17,6 @@ export class LoaderService {
     }
 
     hideLoader() {
-        this.loading.dismiss();
+        this.loading.dismissAll();
     }
 }

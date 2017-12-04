@@ -15,9 +15,9 @@
 <ion-content>
   <div class="des-salon">
     <div class="name-salon">
-      Il Brand
+      {{contact?.name}}
     </div>
-    <div class="address">via Monte Grappa 30 - 21049 Tradate</div>
+    <div class="address">{{contact?.address}} {{contact?.city}}</div>
     <div class="contact">
       <div style="margin-bottom: 3px;">
         <ion-icon name="call"></ion-icon>
@@ -36,7 +36,7 @@
       <b>ORARI DI APERTURA</b>
     </ion-item>
     <div>
-      <ion-row *ngFor="let item of contact.salon_work_day" style="color: #666">
+      <ion-row *ngFor="let item of contact?.salon_work_day" style="color: #666">
         <ion-col col-6 class="day">
           {{item.day}}
         </ion-col>
@@ -59,10 +59,10 @@
 
   <div>
     <div id="title-city">
-      <b>Il Brand</b>
+      <b>{{contact?.name}}</b>
     </div>
     <div id="content-address">
-      <p style="margin-top:3px;">via Monte Grappa, 30 - 21049 Tradate 
+      <p style="margin-top:3px;">{{contact?.address}} {{contact?.city}} 
         <br>0331 844778 
         <br>P.IVA 12590770157
       </p>

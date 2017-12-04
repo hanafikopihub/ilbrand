@@ -17,14 +17,7 @@ export class ContactPage {
   map: any;
   ListPage = ListPage;
   salon_id: string;
-  contact = {
-    name: '',
-    city: '',
-    address: '',
-    lat: '',
-    lng: '',
-    salon_work_day: ''
-  };
+  contact: object;
 
   constructor(
     public _loaderCtrl: LoaderService,
@@ -45,14 +38,7 @@ export class ContactPage {
       this._restapiServiceProvider.getSalon(this.salon_id)
         .subscribe(data => {
           this._loaderCtrl.hideLoader();
-          this.contact = {
-            name: data.name,
-            city: data.city,
-            address: data.address,
-            lat: data.lat,
-            lng: data.lng,
-            salon_work_day: data.salon_work_day
-          };
+          this.contact = data;
           this.loadMap(data.lat, data.lng);
         }, (error) => {
           this._loaderCtrl.hideLoader();
@@ -73,8 +59,7 @@ export class ContactPage {
 
     new google.maps.Marker({
       position: latLng,
-      map: this.map,
-      title: 'Hello World!'
+      map: this.map
     });
 
   }
