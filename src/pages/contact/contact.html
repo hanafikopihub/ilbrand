@@ -21,11 +21,11 @@
     <div class="contact">
       <div style="margin-bottom: 3px;">
         <ion-icon name="call"></ion-icon>
-        <span class="phone">0331 844778</span>
+        <span class="phone">{{contact?.phone}}</span>
       </div>
       <div>
         <ion-icon name="ios-at-outline"></ion-icon>
-        <span class="email">info@ilbrandtradate.it</span>
+        <span class="email">{{contact?.email}}</span>
       </div>
     </div>
   </div>
@@ -63,8 +63,8 @@
     </div>
     <div id="content-address">
       <p style="margin-top:3px;">{{contact?.address}} {{contact?.city}} 
-        <br>0331 844778 
-        <br>P.IVA 12590770157
+        <br>{{contact?.phone}}
+        <br><div *ngIf="contact !== null">P.IVA {{contact?.piva}}</div>
       </p>
     </div>
   </div>

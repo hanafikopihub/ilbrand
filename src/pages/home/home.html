@@ -14,14 +14,18 @@
 
 <ion-content>
   <ion-row>
-    <img src="{{salon? salon.cover_image : 'assets/images/image-empty.png'}}" width="100%" height="235px">
+      <ion-slides pager="true">
+          <ion-slide *ngFor="let salon of salon?.salon_image_gallery">
+              <img src="{{salon? salon : 'assets/images/image-empty.png'}}" width="100%" height="235px">
+          </ion-slide>
+          </ion-slides>
+    <!-- <img src="{{salon? salon.cover_image : 'assets/images/image-empty.png'}}" width="100%" height="235px"> -->
   </ion-row>
   <ion-grid padding>
     <ion-row id="title">{{salon?.short_des}}</ion-row>
     <ion-row id="content">
       <p>
-        Rivendiamo al dettaglio prodotti professionali per capelli ed estetica, in particolare tutto ciò che riguarda il trattamento
-        delle unghie. Forniamo inoltre servizio di applicazione smalto semipermanente
+        {{salon?.description}}
       </p>
     </ion-row>
     <ion-row>
@@ -48,8 +52,8 @@
       </div>
       <div id="content-address">
         <p style="margin-top:3px;">{{salon?.address}} {{salon?.city}}
-          <br>0331 844778
-          <br>P.IVA 12590770157
+          <br>{{salon?.phone}}
+          <br><div *ngIf="salon !== null">P.IVA {{salon?.piva}}</div>
         </p>
       </div>
     </div>

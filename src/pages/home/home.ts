@@ -15,7 +15,7 @@ import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-
 
 export class HomePage {
   salon_id: string;
-  salon: object;
+  salon: object = null;
   fromModal: boolean = false;
   ListTreatmentPage = ListTreatmentPage;
   constructor(

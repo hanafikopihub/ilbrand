@@ -84,9 +84,9 @@
       <b>{{staff?.name}}</b>
     </div>
     <div id="content-address">
-      <p style="margin-top:3px;">{{staff?.address}} {{salon?.city}} 
-        <br>0331 844778 
-        <br>P.IVA 12590770157
+      <p style="margin-top:3px;">{{staff?.address}} {{staff?.city}} 
+        <br>{{staff?.phone}}
+        <br><div *ngIf="staff !== null">P.IVA {{staff?.piva}}</div>
       </p>
     </div>
   </div>

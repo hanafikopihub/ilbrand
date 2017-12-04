@@ -9,7 +9,6 @@ import { AppApi } from '../../app.api';
 import { HomePage } from '../home/home';
 import { ProfileSettingPage } from '../profile-setting/profile-setting';
 import { ListCustomerTreatment } from '../list-customer-treatment/list-customer-treatment';
-import { HistoryBookingPage } from '../history-booking/history-booking';
 
 @Component({
   selector: 'page-login',

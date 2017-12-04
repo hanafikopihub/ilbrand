@@ -12,7 +12,6 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { HistoryBookingPage } from '../history-booking/history-booking';
 import { ListPage } from '../list/list';
 import { LoaderService } from '../../providers/shared-service/loader-service';
-import { ProfilePage } from '../profile/profile';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { ToastService } from '../../providers/shared-service/toast-service';
 
