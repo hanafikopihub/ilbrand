@@ -32,13 +32,15 @@
     <ion-grid *ngFor="let treatment of pastTreatment" style="padding: 0; padding-bottom: 13px" class="treatment-list">
       <ion-row tappable class="row-cast" (click)="goToPastDetailBooking(treatment)">
         <ion-col col-10 style="padding-left: 0">
-          <h6 class="treatment-title past">{{treatment.title}}</h6>
+          <h6 class="treatment-title">
+            <span class="past">{{treatment.title}}</span>
+          </h6>
           <div class="treatment-detail-label">
-            {{treatment.reservation_date}} ore {{treatment.reservation_hour}}
+            <span class="past">{{treatment.reservation_date}} ore {{treatment.reservation_hour}}</span>
           </div>
         </ion-col>
         <ion-col col-2>
-          <ion-icon name="ios-arrow-forward-outline" float-right style="font-size: 2.2em;"></ion-icon>
+          <ion-icon name="ios-arrow-forward-outline" float-right style="font-size: 2.2em;color: #9B9B9B;"></ion-icon>
         </ion-col>
       </ion-row>
     </ion-grid>
