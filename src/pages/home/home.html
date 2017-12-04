@@ -14,11 +14,11 @@
 
 <ion-content>
   <ion-row>
-      <ion-slides pager="true">
-          <ion-slide *ngFor="let salon of salon?.salon_image_gallery">
-              <img src="{{salon? salon : 'assets/images/image-empty.png'}}" width="100%" height="235px">
-          </ion-slide>
-          </ion-slides>
+    <ion-slides pager="true" *ngIf="true">
+      <ion-slide *ngFor="let salon of salon?.salon_image_gallery">
+        <img src="{{salon? salon : 'assets/images/image-empty.png'}}" width="100%" height="235px">
+      </ion-slide>
+    </ion-slides>
     <!-- <img src="{{salon? salon.cover_image : 'assets/images/image-empty.png'}}" width="100%" height="235px"> -->
   </ion-row>
   <ion-grid padding>
