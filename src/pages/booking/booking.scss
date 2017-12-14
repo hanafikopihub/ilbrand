@@ -174,4 +174,16 @@ page-booking {
     .active-select {
         width: 10px;
     }
-}
+    .scroll-content {
+        bottom: -56px !important;
+        padding-bottom: 30px !important;
+    }
+    .hide-header {
+        transition: bottom 0.25s ease;
+        bottom: 0 !important;
+    }
+    .show-header {
+        transition: bottom 0.25s ease;
+        bottom: -53px !important;
+    }
+} 

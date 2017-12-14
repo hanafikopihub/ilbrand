@@ -19,9 +19,9 @@
         <img src="{{salon? salon : 'assets/images/image-empty.png'}}" width="100%">
       </ion-slide>
     </ion-slides>
-    <img *ngIf="salon?.salon_image_gallery?.length === 1" src="{{salon? salon.cover_image : 'assets/images/image-empty.png'}}"
-      width="100%" height="235px">
   </ion-row>
+  <img *ngIf="salon?.salon_image_gallery?.length === 1" src="{{salon? salon.cover_image : 'assets/images/image-empty.png'}}"
+    width="100%" height="235px">
   <ion-grid padding>
     <ion-row id="title">{{salon?.short_des}}</ion-row>
     <ion-row id="content">

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import {
   ModalController,
   NavController,
@@ -55,6 +55,11 @@ export class BookingPage {
   monthName: any;
   salon_id: any;
 
+  // button flowing
+  ionScroll: any;
+  showheader: boolean;
+  hideheader: boolean;
+
   @ViewChild('sliderMonth') sliderMonth: Slides;
   @ViewChild('sliderDate') sliderDate: Slides;
   @ViewChild('sliderTime') sliderTime: Slides;
@@ -67,8 +72,12 @@ export class BookingPage {
     public _modalCtrl: ModalController,
     public _navController: NavController,
     public _navParams: NavParams,
+    public _myElement: ElementRef,
     public _restapiServiceProvider: RestapiServiceProvider,
   ) {
+
+    this.showheader = false;
+    this.hideheader = true;
 
     // sign login or logout
     this.isSignedIn = this._authServiceProvider.userSignedIn
@@ -105,6 +114,16 @@ export class BookingPage {
       this.sliderTime.centeredSlides = false;
     }
     this.getMonths();
+  }
+
+  ngOnInit() {
+    // Ionic scroll element
+    this.ionScroll = this._myElement.nativeElement.getElementsByClassName('scroll-content')[0];
+    // On scroll function
+    this.ionScroll.addEventListener('scroll', () => {
+      this.showheader = false;
+      this.hideheader = true;
+    });
   }
 
   ionViewDidLoad() {
@@ -224,6 +243,9 @@ export class BookingPage {
   onClickTime(time) {
     this.changeColorTime = time.id;
     this.timeId = time.hour
+
+    this.showheader = true;
+    this.hideheader = false;
   }
 
 

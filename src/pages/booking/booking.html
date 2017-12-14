@@ -50,7 +50,12 @@
     {{opeartorNameProvider}}
     </div>
   </div>
-  <ion-row padding style="padding-bottom: 35px">
-    <button tappable text-center ion-button color="danger" (click)=onSumbit() class="btn-next bold"><b>PROSEGUI</b></button>
-  </ion-row>
 </ion-content>
+
+<ion-footer [ngClass]="{'hide-header':showheader,'show-header':hideheader}">
+  
+    <ion-row style="padding-left:20px; padding-right:20px;">
+      <button tappable text-center ion-button color="danger" (click)=onSumbit() class="btn-next">PROSEGUI</button>
+    </ion-row>
+  
+  </ion-footer>
