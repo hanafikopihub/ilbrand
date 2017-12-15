@@ -1,11 +1,4 @@
-page-login {
-    #sub-title-salon {
-        color: #AEB5BB;
-        font-family: "Open Sans";
-        font-size: 14px;
-        line-height: 19px;
-        font-weight: 400;
-    }
+register-page {
     form {
         margin-top: -12px !important;
     }
@@ -81,18 +74,30 @@ page-login {
             line-height: 19px;
         }
     }
-    .main-view {
-        background: transparent;
-    }
     .bar-buttons {
         margin-right: 10px;
     }
     .back-button.show-back-button {
         display: none !important;
     }
-    
     .button {
         text-transform: none !important;
         height: 47px;
+    }
+    .custome-navbar {
+        padding-top: calc(20px + 4px);
+        min-height: calc(68px + 20px);
+    }
+    .custome-title {
+        text-align: center;
+        padding-top: 20px;
+        height: calc(68px + 20px);
+    }
+    #sub-title-salon {
+        color: #AEB5BB;
+        font-family: "Open Sans";
+        font-size: 14px;
+        line-height: 19px;
+        font-weight: 400;
     }
 }

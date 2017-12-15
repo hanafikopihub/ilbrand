@@ -348,7 +348,13 @@ ion-icon {
         height: 21px;
         mask-size: contain;
         background: currentColor;
-        mask-image: url(../assets/icon/star_half/star_half.png);  
-        content: url(../assets/icon/star_half/star_half.png);    }
-    
+        mask-image: url(../assets/icon/star_half/star_half.png);
+        content: url(../assets/icon/star_half/star_half.png);
+    }
+}
+
+// change toast background color
+.toast-message {
+    background-color: #f65c5c !important;
+    border-radius: 5px;
 }

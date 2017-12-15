@@ -10,24 +10,26 @@ import { HomePage } from '../home/home';
 import { ProfileSettingPage } from '../profile-setting/profile-setting';
 import { ListCustomerTreatment } from '../list-customer-treatment/list-customer-treatment';
 
+import { RegisterPage } from './register/register';
+import { ChangePasswordPage } from './change-password/change-password';
+
+import { ToastService } from '../../providers/shared-service/toast-service';
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  public isLoginFormShow: boolean;
-  public isRegisterFormShow: boolean;
-  public isForgetPasswordFormShow: boolean;
 
   loginData = { email: '', password: '' };
-  resetData = { email: '' };
-  registerData = { email: '', password: '', password_confirmation: '', cell: '' };
   data: any;
   loading: any;
 
   fromPage: any;
   fromPageString: string;
   constructor(
+
+    public _toastService: ToastService,
     public navParams: NavParams, public navCtrl: NavController, public viewCtrl: ViewController, private toastCtrl: ToastController,
     private loadingCtrl: LoadingController, public modalCtrl: ModalController,
     public _authServiceProvider: AuthServiceProvider, private _tokenService: Angular2TokenService) {
@@ -35,11 +37,6 @@ export class LoginPage {
       apiBase: AppApi.BASE_API_URL,
       apiPath: '/api/v1'
     });
-
-    this.isLoginFormShow = true
-    this.isRegisterFormShow = false
-    this.isForgetPasswordFormShow = false
-
 
     this.fromPage = this.navParams.get('fromPage');
     if (this.fromPage === undefined) {
@@ -63,6 +60,13 @@ export class LoginPage {
       this.navCtrl.push(this.fromPage)
     }
   }
+  submitLogin() {
+    if (this.loginData.email === '' || this.loginData.password === '') {
+      this._toastService.presentToast('controllare l\'input immesso')
+    } else {
+      this.doLogin();
+    }
+  }
   doLogin() {
     this.showLoader();
     this._tokenService.request({
@@ -78,54 +82,6 @@ export class LoginPage {
         this.loading.dismiss();
         const error_message = JSON.parse(error._body);
         this.presentToast(error_message.errors.join('. '));
-      }
-      );
-  }
-
-  doRequestResetPassword() {
-    this.showLoader();
-    this._tokenService.resetPassword(this.resetData).subscribe(
-      res => {
-        this.loading.dismiss();
-        this.navCtrl.push(HomePage, { 'status': true });
-        this.presentToast('We have sent the reset password instruction to your email');
-      },
-      error => {
-        this.loading.dismiss();
-        this.presentToast(error);
-      }
-    );
-  }
-
-  doRegister() {
-    this.showLoader();
-    this._tokenService.request({
-      method: RequestMethod.Post,
-      url: AppApi.BASE_API_URL + '/api/v1/auth',
-      body: { user: this.registerData }
-    }).subscribe(
-      res => {
-        this.loginData = { email: this.registerData.email, password: this.registerData.password };
-        this._tokenService.request({
-          method: RequestMethod.Post,
-          url: AppApi.BASE_API_URL + '/api/v1/auth/sign_in',
-          body: this.loginData
-        }).subscribe(
-          response => {
-            this.loading.dismiss();
-            this.viewCtrl.dismiss();
-            this.presentToast('Welcome to ilbrand!');
-          },
-          error => {
-            this.loading.dismiss();
-            this.presentToast(error);
-          }
-          );
-      },
-      error => {
-        this.loading.dismiss();
-        const error_message = JSON.parse(error._body);
-        this.presentToast(error_message.errors.full_messages.join('. '));
       }
       );
   }
@@ -153,22 +109,12 @@ export class LoginPage {
     toast.present();
   }
 
-  presentRegister() {
-    this.isLoginFormShow = false
-    this.isForgetPasswordFormShow = false
-    this.isRegisterFormShow = true
+  toRegister() {
+    this.navCtrl.push(RegisterPage)
   }
 
-  presentForgetPassword() {
-    this.isLoginFormShow = false
-    this.isForgetPasswordFormShow = true
-    this.isRegisterFormShow = false
-  }
-
-  presentLogin() {
-    this.isLoginFormShow = true
-    this.isForgetPasswordFormShow = false
-    this.isRegisterFormShow = false
+  toChangePassword() {
+    this.navCtrl.push(ChangePasswordPage)
   }
 
   closeModal() {

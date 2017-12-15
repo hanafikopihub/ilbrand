@@ -11,6 +11,8 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
+import { ChangePasswordPage } from '../pages/login/change-password/change-password';
+import { RegisterPage } from '../pages/login/register/register';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StaffPage } from '../pages/staff/staff';
@@ -52,6 +54,8 @@ import { PhoneSalonPage } from '../pages/list-treatment/phone-salon/phone-salon'
     HomePage,
     ListPage,
     LoginPage,
+    RegisterPage,
+    ChangePasswordPage,
     StaffPage,
     ProfilePage,
     BookingPage,
@@ -64,8 +68,8 @@ import { PhoneSalonPage } from '../pages/list-treatment/phone-salon/phone-salon'
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp, {
-          backButtonIcon: 'custom-back',
-          backButtonText: ''
+      backButtonIcon: 'custom-back',
+      backButtonText: ''
     }),
     CacheModule.forRoot(),
     Ionic2RatingModule,
@@ -82,6 +86,8 @@ import { PhoneSalonPage } from '../pages/list-treatment/phone-salon/phone-salon'
     HomePage,
     ListPage,
     LoginPage,
+    RegisterPage,
+    ChangePasswordPage,
     StaffPage,
     ProfilePage,
     BookingPage,
