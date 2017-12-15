@@ -21,6 +21,7 @@
     "@angular/platform-browser": "4.4.3",
     "@angular/platform-browser-dynamic": "4.4.3",
     "@angular/router": "^4.4.4",
+    "@ionic-native/calendar": "^4.4.2",
     "@ionic-native/core": "4.3.0",
     "@ionic-native/geolocation": "^4.3.1",
     "@ionic-native/native-storage": "^4.3.1",
@@ -33,6 +34,7 @@
     "com.paypal.cordova.mobilesdk": "^3.5.0",
     "cordova-android": "6.3.0",
     "cordova-ios": "^4.5.3",
+    "cordova-plugin-calendar": "~4.6.0",
     "cordova-plugin-device": "^1.1.6",
     "cordova-plugin-splashscreen": "^4.0.3",
     "cordova-plugin-statusbar": "git+https://github.com/apache/cordova-plugin-statusbar.git",
@@ -59,7 +61,8 @@
       "cordova-plugin-statusbar": {},
       "cordova-plugin-whitelist": {},
       "ionic-plugin-keyboard": {},
-      "com.paypal.cordova.mobilesdk": {}
+      "com.paypal.cordova.mobilesdk": {},
+      "cordova-plugin-calendar": {}
     },
     "platforms": [
       "android",

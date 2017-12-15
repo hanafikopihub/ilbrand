@@ -39,6 +39,7 @@ import { LoaderService } from '../providers/shared-service/loader-service';
 
 import { CacheModule } from 'ionic-cache';
 
+import { Calendar } from '@ionic-native/calendar';
 import { PayPal } from '@ionic-native/paypal';
 
 import { PhoneSalonPage } from '../pages/list-treatment/phone-salon/phone-salon';
@@ -99,6 +100,7 @@ import { PhoneSalonPage } from '../pages/list-treatment/phone-salon/phone-salon'
   providers: [
     Angular2TokenService,
     StatusBar,
+    Calendar,
     SplashScreen,
     PayPal,
     Geolocation,

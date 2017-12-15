@@ -276,6 +276,7 @@ export class BookingPage {
       const dataOther = {
         'dayName': this.dayName,
         'monthName': this.monthName,
+        'month': this.monthId,
         'date': this.dateId,
         'time': this.timeId,
         'year': this.yearId

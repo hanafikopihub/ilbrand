@@ -19,4 +19,25 @@ export class ToastService {
 
     toast.present();
   }
+
+  successToast(msg) {
+    const toast = this._toastCtrl.create({
+      message: msg,
+      duration: 5000,
+      position: 'bottom',
+      dismissOnPageChange: true
+    });
+
+    toast.present();
+  }
+
+  errorToast(msg) {
+    const toast = this._toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      position: 'top',
+      dismissOnPageChange: true
+    });
+    toast.present();
+  }
 }
