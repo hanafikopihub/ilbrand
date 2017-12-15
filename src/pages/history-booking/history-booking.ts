@@ -60,8 +60,8 @@ export class HistoryBookingPage {
     this.salon = this._navParams.get('salon');
 
     this.payOptions = [
-      { 'id': '1', 'option': 'Paga in salone', 'image': 'assets/icon/shop_icon/shop_icon-AppStore.png' },
-      { 'id': '2', 'option': 'Paga con carta di credito', 'image': 'assets/icon/card_icon/card_icon-AppStore.png' }]
+      { 'id': '1', 'option': 'Paga in salone', 'image': 'assets/icon/shop_icon/shop_icon-AppStore.png', 'disable': false },
+      { 'id': '2', 'option': 'Paga con carta di credito', 'image': 'assets/icon/card_icon/card-disable_icon-AppStore.png', 'disable': true}]
 
 
     this.payment = new PayPalPayment(this.treatmentParam.price, 'EUR', this.treatmentParam.des_treatment, '');

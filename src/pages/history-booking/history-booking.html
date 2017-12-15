@@ -53,12 +53,12 @@
     <ion-grid padding>
       <ion-row radio-group [(ngModel)]="payoptionModel" style="text-align:center">
         <ion-col col-6 *ngFor="let payoption of payOptions">
-          <div class="payoption-name">{{payoption.option}}</div>
+          <div class="payoption-name" [class.disable-text]="payoption.disable === true">{{payoption.option}}</div>
           <div style="margin-bottom: 5px;">
             <img src="{{payoption.image}}" style="width:50px; height:50px;">
           </div>
           <div>
-            <ion-radio mode="md" value="{{payoption.id}}"></ion-radio>
+            <ion-radio disabled="{{payoption.disable}}" mode="md" value="{{payoption.id}}"></ion-radio>
           </div>
         </ion-col>
       </ion-row>
