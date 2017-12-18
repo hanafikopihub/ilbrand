@@ -10,7 +10,7 @@ export class LoaderService {
 
     showLoader() {
         this.loading = this._loadingCtrl.create({
-            content: 'loading...',
+            content: 'Attendere prego...',
             dismissOnPageChange: false
         });
         return this.loading.present();
