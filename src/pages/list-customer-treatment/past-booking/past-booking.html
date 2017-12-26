@@ -1,6 +1,9 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Dettaglio preno</ion-title>
+  <ion-navbar #navbar class="custome-navbar">
+    <ion-title class="default-title">
+      <div id="title-salon">Il Brand</div>
+      <div id="sub-title-salon">Dettaglio Preno</div>
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -37,7 +40,7 @@
     </ion-col>
   </ion-row>
   <ion-row padding>
-    <button tappable text-center block ion-button color="danger" class="bold" (click)="rebooking()">RIPRENOTA</button>
+    <button tappable text-center block ion-button color="danger" class="bold riprenota" (click)="rebooking()">RIPRENOTA</button>
   </ion-row>
 
   <div padding-top padding-left padding-right>

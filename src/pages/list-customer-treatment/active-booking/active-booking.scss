@@ -1,134 +1,163 @@
 page-active-booking {
+    .custome-navbar {
+        padding-top: calc(20px + 4px);
+        min-height: calc(68px + 20px);
+    }
+    .default-navbar {
+        padding-top: calc(30px + 4px);
+        min-height: calc(68px + 20px);
+    }
+    .default-title {
+        text-align: center;
+        padding-top: 20px;
+        height: calc(68px + 20px);
+    }
+    #sub-title-salon {
+        color: #AEB5BB;
+        font-family: "Open Sans";
+        font-size: 14px;
+        line-height: 19px;
+        font-weight: 400;
+    }
     hr {
-      height: 1px !important;
-      margin: 0 20px;
-  }
-  .total-value {
-      font-size: 18px;
-      padding-left: 79%;
-      color: #FF4653 !important;
-      font-weight: 600;
-  }
-  .text-pay {
-      font-family: 'Open Sans Regular', Arial, Helvetica, sans-serif;
-  }
-  .trova-button-home {
-      width: 100%;
-      background-color: #FF4653;
-      font-weight: 600;
-  }
-  .header-label {
-      font-weight: 600;
-      color: #9A9A9A;
-      margin-bottom: -5px;
-  }
-  .treatment-name {
-      font-weight: 400 !important;
-      font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
-      font-size: 16px;
-      color: #4A4A4A;
-  }
-  .row-cast {
-      border-bottom: 1px solid #ccd3d9;
-      margin: 0;
-      padding: 0;
-  }
-  .salon-address {
-      color: #9B9B9B;
-      font-size: 14px;    line-height: 19px;
-      font-family: 'Open Sans, Open Sans Regular', Arial, Helvetica, sans-serif;
-  }
-  .con-operatore{
-      color: #FF4653;  
-      font-size: 15px; 
-      line-height: 19px;
-      text-align: right;
-  }
-  .payoption-name{
-      color: #4A4A4A; 
-      font-family: "Open Sans";   
-      font-size: 15px;
-      line-height: 20px;
-      min-height: 45px;
-  }
-  .customer-value {
-      font-size: 16px;
-      color: #08d9f5;
-      font-weight: 400 !important;
-      font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
-  }
-  .operator-value {
-      font-weight: 600;
-      font-size: 15px;
-      color: #08d9f5;
-      font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-  }
-  .totale-price{
-          color: #4A4A4A; font-size: 16px;    line-height: 22px;
-  }
-  .total-style {
-      background-color: #F9F6F6;
-      min-height: 50px;
-  }
-  .gray-text {
-      font-size: 17px;
-      font-family: 'Open Sans Regular', Arial, Helvetica, sans-serif;
-  }
-  .size-radio-btn {
-      width: 1.5em;
-      height: 1.5em;
-  }
-  .list-md .item-block .item-inner {
-      margin-left: -30px;
-  }
-  .item-md [item-left],
-  .item-md [item-right],
-  .item-md [item-start],
-  .item-md [item-end] {
-      padding-top: 5px;
-  }
-  .item-radio-checked.item-md ion-label {
-      color: #252627;
-  }
-  .radio-md .radio-icon .radio-inner {
-      background-color: #08d9f5;
-      font-size: 50px;
-      width: 17px;
-      height: 17px;
-  }
-  .radio-md .radio-icon {
-      width: 25px;
-      height: 25px;
-      border-color: #10cbd2;
-  }
-  .radio-md .radio-checked {
-      border-color: #08d9f5;
-      font-size: 68px;
-      width: 25px;
-      height: 25px;
-  }
-  .cambia-orario {
-      width: 100%;
-      background-color: white;
-      border: 2px solid #9B9B9B;
-      color: #9B9B9B;
-  }
-  .item-md {
-      padding-left: 0;
-  }
-  .item-radio.item-md ion-label {
-      margin-left: 0;
-      padding-top: 5px;
-  }
-  .bar-buttons-md[right] {
-      text-align: right;
-      -webkit-box-ordinal-group: 7;
-      -webkit-order: 6;
-      -ms-flex-order: 6;
-      order: 6;
-      padding-left: 5px;
-      padding-right: 5px;
-      margin-left: 6px;
-      margin-right: 6px;
-  }
+        height: 1px !important;
+        margin: 0 20px;
+    }
+    .total-value {
+        font-size: 18px;
+        padding-left: 79%;
+        color: #FF4653 !important;
+        font-weight: 600;
+    }
+    .text-pay {
+        font-family: 'Open Sans Regular', Arial, Helvetica, sans-serif;
+    }
+    .trova-button-home {
+        width: 100%;
+        background-color: #FF4653;
+        font-weight: 600;
+    }
+    .header-label {
+        font-weight: 600;
+        color: #9A9A9A;
+        margin-bottom: -5px;
+    }
+    .treatment-name {
+        font-weight: 400 !important;
+        font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        color: #4A4A4A;
+    }
+    .row-cast {
+        border-bottom: 1px solid #ccd3d9;
+        margin: 0;
+        padding: 0;
+    }
+    .salon-address {
+        color: #9B9B9B;
+        font-size: 14px;
+        line-height: 19px;
+        font-family: 'Open Sans, Open Sans Regular', Arial, Helvetica, sans-serif;
+    }
+    .con-operatore {
+        color: #FF4653;
+        font-size: 15px;
+        line-height: 19px;
+        text-align: right;
+    }
+    .payoption-name {
+        color: #4A4A4A;
+        font-family: "Open Sans";
+        font-size: 15px;
+        line-height: 20px;
+        min-height: 45px;
+    }
+    .customer-value {
+        font-size: 16px;
+        color: #08d9f5;
+        font-weight: 400 !important;
+        font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
+    }
+    .operator-value {
+        font-weight: 600;
+        font-size: 15px;
+        color: #08d9f5;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    }
+    .totale-price {
+        color: #4A4A4A;
+        font-size: 16px;
+        line-height: 22px;
+    }
+    .total-style {
+        background-color: #F9F6F6;
+        min-height: 50px;
+    }
+    .gray-text {
+        font-size: 17px;
+        font-family: 'Open Sans Regular', Arial, Helvetica, sans-serif;
+    }
+    .size-radio-btn {
+        width: 1.5em;
+        height: 1.5em;
+    }
+    .list-md .item-block .item-inner {
+        margin-left: -30px;
+    }
+    .item-md [item-left],
+    .item-md [item-right],
+    .item-md [item-start],
+    .item-md [item-end] {
+        padding-top: 5px;
+    }
+    .item-radio-checked.item-md ion-label {
+        color: #252627;
+    }
+    .radio-md .radio-icon .radio-inner {
+        background-color: #08d9f5;
+        font-size: 50px;
+        width: 17px;
+        height: 17px;
+    }
+    .radio-md .radio-icon {
+        width: 25px;
+        height: 25px;
+        border-color: #10cbd2;
+    }
+    .radio-md .radio-checked {
+        border-color: #08d9f5;
+        font-size: 68px;
+        width: 25px;
+        height: 25px;
+    }
+    .cambia-orario {
+        width: 100%;
+        background-color: white;
+        border: 2px solid #9B9B9B;
+        color: #9B9B9B;
+    }
+    .item-md {
+        padding-left: 0;
+    }
+    .item-radio.item-md ion-label {
+        margin-left: 0;
+        padding-top: 5px;
+    }
+    .bar-buttons-md[right] {
+        text-align: right;
+        -webkit-box-ordinal-group: 7;
+        -webkit-order: 6;
+        -ms-flex-order: 6;
+        order: 6;
+        padding-left: 5px;
+        padding-right: 5px;
+        margin-left: 6px;
+        margin-right: 6px;
+    }
+    .button {
+        height: 3.6rem;
+        font-size: 1.4rem;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
 }

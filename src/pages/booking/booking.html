@@ -2,7 +2,7 @@
   <ion-navbar class="default-navbar" [class.custome-navbar]="fromModal">
     <ion-title class="default-title" [class.custome-title]="fromModal">
       <div id="title-salon">Il Brand</div>
-      <div id="sub-title-salon">Contatti & Orari</div>
+      <div id="sub-title-salon">Scegli una data</div>
     </ion-title>
     <ion-buttons right class="bar-button-custom">
       <button tappable ion-button icon-only (click)="list($event)">
@@ -35,7 +35,7 @@
     </ion-slides> 
     <div class="text-title-operator">OPERATORI DISPONIBILI</div>
 
-    <div *ngFor="let operator of operatorArray">
+    <div [hidden]="hideTime" *ngFor="let operator of operatorArray">
     <div>
       <ion-label  class="text-title-operator-name">{{operator.operator_name | uppercase}}</ion-label>
     </div>

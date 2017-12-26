@@ -1,130 +1,167 @@
 page-past-booking {
-  .comment-field{
-    border-radius: 6px;  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.12);
-    height: 90px;
-  }
-  hr {
-      height: 1px !important;
-      margin: 0 20px;
-  }
-  .total-value {
-      font-size: 18px;
-      padding-left: 79%;
-      color: #9B9B9B !important;
-      font-weight: 600;
-  }
-  .text-pay {
-      font-family: 'Open Sans Regular', Arial, Helvetica, sans-serif;
-  }
-  .trova-button-home {
-      width: 100%;
-      background-color: #FF4653;
-      font-weight: 600;
-  }
-  .header-label {
-      font-weight: 600;
-      color: #9A9A9A;
-      margin-bottom: -5px;
-  }
-  .treatment-name {
-      font-weight: 400 !important;
-      font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
-      font-size: 16px;
-      color: #9B9B9B;
-  }
-  .row-cast {
-      border-bottom: 1px solid #ccd3d9;
-      margin: 0;
-      padding: 0;
-  }
-  .salon-address {
-      color: #9B9B9B;
-      font-size: 14px;
-      font-family: 'Open Sans, Open Sans Regular', Arial, Helvetica, sans-serif;
-  }
-  .con-operatore{
-      color: #9B9B9B; font-family: "Open Sans";  
-      font-size: 15px; 
-      line-height: 19px;
-      text-align: right;
-  }
-  .payoption-name{
-      color: #4A4A4A; 
-      font-family: "Open Sans";   
-      font-size: 15px;
-      line-height: 20px;
-      min-height: 45px;
-  }
-  .customer-value {
-      font-size: 16px;
-      color: #9B9B9B;
-      font-weight: 400 !important;
-      font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
-  }
-  .operator-value {
-      font-weight: 600;
-      font-size: 15px;
-      color: #9B9B9B;
-      font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-  }
-  .total-style {
-      background-color: #F9F6F6;
-      min-height: 50px;
-  }
-  .vote-label-main{
-    color: #9B9B9B; 
-    font-weight: 400 !important;
-    font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
-    font-size: 12px;  
-    line-height: 17px;
-    padding-bottom: 2px;
-    border-bottom: 1px solid #D8D8D8;
-  }
-  .vote-label{
-      color: rgba(77,76,76,0.82);
-      font-size: 14px;  
-      font-weight: 600; 
-      line-height: 19px;
-  }
-  .gray-text {
-      font-size: 17px;
-      font-family: 'Open Sans Regular', Arial, Helvetica, sans-serif;
-  }
-  .size-radio-btn {
-      width: 1.5em;
-      height: 1.5em;
-  }
-  .list-md .item-block .item-inner {
-      margin-left: -30px;
-  }
-  .item-md [item-left],
-  .item-md [item-right],
-  .item-md [item-start],
-  .item-md [item-end] {
-      padding-top: 5px;
-  }
-  .cambia-orario {
-      width: 100%;
-      background-color: white;
-      border: 2px solid #9B9B9B;
-      color: #9B9B9B;
-  }
-  .item-md {
-      padding-left: 0;
-  }
-  .item-radio.item-md ion-label {
-      margin-left: 0;
-      padding-top: 5px;
-  }
-  .bar-buttons-md[right] {
-      text-align: right;
-      -webkit-box-ordinal-group: 7;
-      -webkit-order: 6;
-      -ms-flex-order: 6;
-      order: 6;
-      padding-left: 5px;
-      padding-right: 5px;
-      margin-left: 6px;
-      margin-right: 6px;
-  }
+    .custome-navbar {
+        padding-top: calc(20px + 4px);
+        min-height: calc(68px + 20px);
+    }
+    .default-navbar {
+        padding-top: calc(30px + 4px);
+        min-height: calc(68px + 20px);
+    }
+    .default-title {
+        text-align: center;
+        padding-top: 20px;
+        height: calc(68px + 20px);
+    }
+    #sub-title-salon {
+        color: #AEB5BB;
+        font-family: "Open Sans";
+        font-size: 14px;
+        line-height: 19px;
+        font-weight: 400;
+    }
+    .comment-field {
+        border-radius: 6px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+        height: 90px;
+    }
+    hr {
+        height: 1px !important;
+        margin: 0 20px;
+    }
+    .total-value {
+        font-size: 18px;
+        padding-left: 79%;
+        color: #9B9B9B !important;
+        font-weight: 600;
+    }
+    .text-pay {
+        font-family: 'Open Sans Regular', Arial, Helvetica, sans-serif;
+    }
+    .trova-button-home {
+        width: 100%;
+        background-color: #FF4653;
+        font-weight: 600;
+    }
+    .header-label {
+        font-weight: 600;
+        color: #9A9A9A;
+        margin-bottom: -5px;
+    }
+    .treatment-name {
+        font-weight: 400 !important;
+        font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        color: #9B9B9B;
+    }
+    .row-cast {
+        border-bottom: 1px solid #ccd3d9;
+        margin: 0;
+        padding: 0;
+    }
+    .salon-address {
+        color: #9B9B9B;
+        font-size: 14px;
+        font-family: 'Open Sans, Open Sans Regular', Arial, Helvetica, sans-serif;
+    }
+    .con-operatore {
+        color: #9B9B9B;
+        font-family: "Open Sans";
+        font-size: 15px;
+        line-height: 19px;
+        text-align: right;
+    }
+    .payoption-name {
+        color: #4A4A4A;
+        font-family: "Open Sans";
+        font-size: 15px;
+        line-height: 20px;
+        min-height: 45px;
+    }
+    .customer-value {
+        font-size: 16px;
+        color: #9B9B9B;
+        font-weight: 400 !important;
+        font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
+    }
+    .operator-value {
+        font-weight: 600;
+        font-size: 15px;
+        color: #9B9B9B;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    }
+    .total-style {
+        background-color: #F9F6F6;
+        min-height: 50px;
+    }
+    .vote-label-main {
+        color: #9B9B9B;
+        font-weight: 400 !important;
+        font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        line-height: 17px;
+        padding-bottom: 2px;
+        border-bottom: 1px solid #D8D8D8;
+    }
+    .vote-label {
+        color: rgba(77, 76, 76, 0.82);
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 19px;
+    }
+    .gray-text {
+        font-size: 17px;
+        font-family: 'Open Sans Regular', Arial, Helvetica, sans-serif;
+    }
+    .size-radio-btn {
+        width: 1.5em;
+        height: 1.5em;
+    }
+    .list-md .item-block .item-inner {
+        margin-left: -30px;
+    }
+    .item-md [item-left],
+    .item-md [item-right],
+    .item-md [item-start],
+    .item-md [item-end] {
+        padding-top: 5px;
+    }
+    .cambia-orario {
+        width: 100%;
+        background-color: white;
+        border: 2px solid #9B9B9B;
+        color: #9B9B9B;
+    }
+    .riprenota{
+        .button-inner{
+            font-family: 'Open Sans Semibold';
+            font-size: 15px;
+            font-weight: 500 !important;
+            line-height: 20px;
+        }
+    }
+    .item-md {
+        padding-left: 0;
+    }
+    .item-radio.item-md ion-label {
+        margin-left: 0;
+        padding-top: 5px;
+    }
+    .bar-buttons-md[right] {
+        text-align: right;
+        -webkit-box-ordinal-group: 7;
+        -webkit-order: 6;
+        -ms-flex-order: 6;
+        order: 6;
+        padding-left: 5px;
+        padding-right: 5px;
+        margin-left: 6px;
+        margin-right: 6px;
+    }
+    .button {
+        height: 3.6rem;
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        font-weight: 500 !important;
+        font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
+    }
 }

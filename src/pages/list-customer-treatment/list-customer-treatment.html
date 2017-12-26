@@ -1,6 +1,9 @@
 <ion-header no-border>
-  <ion-navbar #navbar>
-    <ion-title>Prenotazioni</ion-title>
+  <ion-navbar #navbar class="custome-navbar">
+    <ion-title class="custome-title">
+      <div id="title-salon">Il Brand</div>
+      <div id="sub-title-salon">Prenotazioni</div>
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -17,7 +20,7 @@
         <ion-col col-10 style="padding-left: 0">
           <h6 class="treatment-title active">{{treatment.title}}</h6>
           <div class="treatment-detail-label">
-            <span class="active"><b>{{treatment.reservation_date}}</b></span> ore <span class="active"><b>{{treatment.reservation_hour}}</b></span>
+            <span class="active"><b>{{treatment.reservation_date}}</b></span> <span style="color: #D8D8D8;">ore</span> <span class="active"><b>{{treatment.reservation_hour}}</b></span>
           </div>
         </ion-col>
         <ion-col col-2>

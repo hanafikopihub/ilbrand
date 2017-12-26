@@ -1,4 +1,20 @@
 page-list-customer-treatment {
+  .custome-navbar {
+      padding-top: calc(20px + 4px);
+      min-height: calc(68px + 20px);
+  }
+  .custome-title {
+      text-align: center;
+      padding-top: 20px;
+      height: calc(68px + 20px);
+  }
+  #sub-title-salon {
+      color: #AEB5BB;
+      font-family: "Open Sans";
+      font-size: 14px;
+      line-height: 19px;
+      font-weight: 400;
+  }
   hr {
     margin-top: 3px;
     background:none;
@@ -38,16 +54,17 @@ page-list-customer-treatment {
     color: grey;
   }
   .treatment-detail-label {
-    font-size: 16px;  
-    font-weight: 400 !important; 
-    line-height: 22px; 
-    font-family: 'Open Sans Semibold';
+    font-size: 14px;   
     
     .active{
       color: #10CBD2;
+      font-family: 'Open Sans Semibold';
+      font-weight: 400 !important;
     }
     .past{
       color: #9B9B9B;
+      font-family: 'Open Sans Semibold';
+      font-weight: 400 !important;
     }
   }
   .btn-modif-telephone {
@@ -107,5 +124,9 @@ page-list-customer-treatment {
     text-align: center;
     color: grey;
     margin-top: 30px
+  }
+  .treatment-list {
+    padding-left: 3% !important;
+    padding-right: 3% !important;
   }
 }

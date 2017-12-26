@@ -45,7 +45,7 @@ page-booking {
         color: red;
     }
     .btn-slide-month {
-        width: 78px;
+        width: 90%;
 
         .button-inner{
           span{
@@ -57,9 +57,10 @@ page-booking {
         }
     }
     .btn-slide-date {
-        width: 78px;
+        width: 90%;
         height: 90px !important;
         border: none;
+        float: center;
     }
     .btn-slide-date .text-day {
         font-size: 100%;
@@ -104,7 +105,7 @@ page-booking {
         margin-bottom: 0;
     }
     .btn-slide-time {
-        width: 78px;
+        width: 90%;
         height: 50px;
         margin-top: 5px;
     }

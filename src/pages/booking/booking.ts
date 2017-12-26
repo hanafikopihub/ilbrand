@@ -54,6 +54,7 @@ export class BookingPage {
   dayName: any;
   monthName: any;
   salon_id: any;
+  hideTime: boolean = false;
 
   // button flowing
   ionScroll: any;
@@ -202,6 +203,11 @@ export class BookingPage {
   // ----------------------------Event Click-------------------------------------
 
   onClickMonth(month) {
+
+    this.showheader = false;
+    this.hideheader = true;
+
+    this.hideTime = true;
     this.monthId = month.month_id
     this.sliderDate.centeredSlides = false
     this._restapiServiceProvider.getMonth(month.month_id, month.year)
@@ -231,6 +237,11 @@ export class BookingPage {
   }
 
   onClickDate(date) {
+
+    this.showheader = false;
+    this.hideheader = true;
+
+    this.hideTime = false;
     this.changeColorTime = 'false';
     this.timeId = undefined;
     this.setColorDate = 'false';

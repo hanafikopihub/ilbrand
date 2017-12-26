@@ -4,11 +4,11 @@
       <div id="title-salon">Il Brand</div>
       <div id="sub-title-salon">Profilo</div>
     </ion-title>
-    <ion-buttons right>
+    <!-- <ion-buttons right>
       <button tappable ion-button icon-only (click)="list($event)">
         <ion-icon name="custom-hamburger-two-line"></ion-icon>
       </button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-navbar>
 </ion-header>
 
@@ -20,13 +20,13 @@
       <div name="form">
         <div class="email-content">
           <div class="label">LA TUA MAIL</div>
-          <hr style="height:1px">
-          <div>{{this.email}}</div>
+          <hr style="height:1px;">
+          <div class="value-input">{{this.email}}</div>
         </div>
         <div class="phone-content">
           <div class="label">IL TUA NUMERO</div>
           <hr style="height:1px">
-          <div>{{this.number}}</div>
+          <div class="value-input">{{this.number}}</div>
         </div>
       </div>
     </div>
@@ -35,7 +35,7 @@
     <div class="form" *ngIf="showPasswordForm">
       <div text-right class="close" style="background-color:#F5F5F0; width:97%">
         <div icon-only (click)="showPasswordForm=false" style="background-color:#F5F5F0;">
-          <ion-icon name="close" class="close-icon" style="background-color:#F5F5F0;"></ion-icon>
+          <ion-icon name="custom-x" class="close-icon"></ion-icon>
         </div>
       </div>
       <ion-row class="form-change-password">
@@ -47,21 +47,21 @@
         </ion-item>
       </ion-row>
       <ion-row padding>
-        <button tappable text-center ion-button color="danger" (click)="updatePassword()" class="red-bg trova-button-home">Modifica password</button>
+        <button tappable text-center ion-button color="danger" (click)="updatePassword()" class="red-bg trova-button-home">MODIFICA PASSWORD</button>
       </ion-row>
     </div>
   
     <!-- Button Change Password -->
     <div padding class="btn-custom-style">
       <button tappable style="width:100%" text-center ion-button color="danger" *ngIf="!showPasswordForm" (click)="changePassword();"
-        class="red-bg trova-button-home">Modifica password</button>
+        class="red-bg trova-button-home">MODIFICA PASSWORD</button>
     </div>
   
     <!-- Form Change Phone Number -->
     <div class="form" *ngIf="showPhoneForm">
       <div text-right class="close" style="background-color:#F5F5F0; width:97%">
         <div tappable icon-only (click)="showPhoneForm=false" style="background-color:#F5F5F0;">
-          <ion-icon name="close" class="close-icon" style="background-color:#F5F5F0;"></ion-icon>
+          <ion-icon name="custom-x" class="close-icon"></ion-icon>
         </div>
       </div>
       <ion-row class="form-change-phone">
@@ -70,13 +70,13 @@
         </ion-item>
       </ion-row>
       <ion-row padding>
-        <button tappable text-center ion-button color="danger" class="red-bg trova-button-home" style="background-color:#6A6A69 !important;" (click)="updateCell()">Modifica numero di telefono</button>
+        <button tappable text-center ion-button color="danger" class="red-bg trova-button-home" style="background-color:#6A6A69 !important;" (click)="updateCell()">MODIFICA NUMERO DI TELEFONO </button>
       </ion-row>
     </div>
   
     <!-- Button Change Phone Number -->
     <div padding class="btn-custom-style">
-      <button tappable *ngIf="!showPhoneForm" text-center ion-button class="btn-modif-telephone" (click)="changePhone()">Modifica numero di telefono</button>
+      <button tappable *ngIf="!showPhoneForm" text-center ion-button class="btn-modif-telephone" (click)="changePhone()">MODIFICA NUMERO DI TELEFONO</button>
     </div>
   
   </ion-content>
