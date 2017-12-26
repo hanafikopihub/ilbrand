@@ -52,7 +52,6 @@ page-booking {
             font-family: 'Open Sans Semibold';
             font-weight: 400 !important;
             font-size: 13px;
-            text-transform: uppercase;       
           }
 
         }
@@ -66,12 +65,12 @@ page-booking {
         font-size: 100%;
         text-align: left;
         color: #9B9B9B;
-        font-family: 'Merriweather Regular', Arial, Helvetica, sans-serif;
     }
     .btn-slide-date .text-date {
         font-size: 53px;
         text-align: left;
         color: #9B9B9B;
+        font-family: 'Open Sans Light';
     }
     .active-text-month {
         font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif !important;
@@ -90,9 +89,14 @@ page-booking {
         font-family: 'Open Sans Bold', Arial, Helvetica, sans-serif;
     }
     .text-title-operator {
-        margin-top: 29px;
         font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
         color: #9B9B9B;
+        font-size: 14px;
+        line-height: 19px;
+        margin-top: 29px;
+        padding-bottom: 3px;
+        border-bottom: 1px solid #D8D8D8;
+        width: 95%;
     }
     .text-title-operator-name {
         font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;

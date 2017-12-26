@@ -37,13 +37,16 @@ export class MyBookingPage {
     this.dataOther = this.navParams.get('dataOther');
     this.salon = this.navParams.get('salon');
     this.optionPay = this.navParams.get('optionPay');
+
+    if (this.optionPay === 'Paga in salone') {
+      this.optionPay = 'Pagherai in salone'
+    }
   }
 
   toHomePage() {
     this.navCtrl.push(HomePage, { 'status': true })
   }
   SaveToCalendar() {
-    debugger
     this.dataOther.month = this.dataOther.month.toString()
     if (this.dataOther.month.length < 2) {
       this.dataOther.month = `0${this.dataOther.month}`;

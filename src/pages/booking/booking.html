@@ -34,11 +34,10 @@
       </ion-slide>
     </ion-slides> 
     <div class="text-title-operator">OPERATORI DISPONIBILI</div>
-    <hr>
 
     <div *ngFor="let operator of operatorArray">
     <div>
-      <ion-label  class="text-title-operator-name">{{operator.operator_name}}</ion-label>
+      <ion-label  class="text-title-operator-name">{{operator.operator_name | uppercase}}</ion-label>
     </div>
     <ion-slides #sliderTime slidesPerView="3.4" (click)="postOperator(operator)">
       <ion-slide *ngFor="let time of operator.hours">

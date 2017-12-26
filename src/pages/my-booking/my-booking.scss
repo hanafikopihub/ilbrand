@@ -53,7 +53,8 @@ page-my-booking {
     }
     .salon-address {
         color: #9B9B9B;
-        font-family: 'Open Sans, Open Sans Regular', Arial, Helvetica, sans-serif;
+        font-weight: 400 !important;
+        font-size: 14px;
     }
     .con-operatore {
         color: #4A4A4A;
@@ -77,15 +78,17 @@ page-my-booking {
         height: 45px;
     }
     .customer-value {
-        font-weight: 600;
         font-size: 16px;
         color: #08d9f5;
-        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-weight: 400 !important;
+        font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
     }
     .operator-value {
-        font-size: 16px;
+        font-weight: 400 !important;
+        font-size: 15px;
         color: #08d9f5;
-        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        text-transform: uppercase;
+        font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
     }
     .total-style {
         background-color: #F9F6F6;
@@ -104,9 +107,22 @@ page-my-booking {
     }
     .btn-create-reminder {
         width: 100%;
+        .button-inner{
+            font-weight: 400 !important;
+            font-family: 'Open Sans Semibold';
+            font-size: 16px;
+            line-height: 20px;
+          }
     }
     .btn-new-reservation {
         width: 100%;
+        background-color: #10CBD2;
+        .button-inner{
+            font-weight: 400 !important;
+            font-family: 'Open Sans Semibold';
+            font-size: 16px;
+            line-height: 20px;
+          }
     }
     .bar-buttons-md[right] {
         text-align: right;

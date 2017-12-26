@@ -1,6 +1,6 @@
 <ion-header no-border>
   <ion-navbar hideBackButton="true">
-    <ion-title>Preno effettuata</ion-title>
+    <ion-title style="padding-left: 0; padding-right:0">Prenotazione effettuata</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -24,8 +24,7 @@
     <ion-row class="salon-address">
       {{salon.address}}
     </ion-row>
-    <br>
-    <div>
+    <div style="padding-top: 11px">
       <span class="con-operatore">con operatore</span>
       <span class="operator-value">{{operatorParam.operator_name | uppercase}}</span>
     </div>
@@ -54,7 +53,8 @@
     </ion-grid>
     <ion-row padding>
       <button tappable text-center ion-button color="danger" class="btn-create-reminder bold" (click)="SaveToCalendar()">CREA PROMEMORIA</button>
-      <button tappable text-center ion-button class="btn-new-reservation bold" (click)="toHomePage()">NUOVA PRENOTAZIONE</button>
+      <button text-center ion-button class="btn-new-reservation bold" (click)="toHomePage()">NUOVA PRENOTAZIONE</button>
+      
     </ion-row>
   </div>
 </ion-content>
