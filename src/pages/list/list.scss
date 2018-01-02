@@ -10,8 +10,8 @@ page-list {
         padding-top: 5px !important;
         padding-bottom: 5px !important;
         color: rgba(28, 28, 28, 0.82);
-        font-weight: 600;
-        font-family: "Open Sans";
+        font-weight: 400;
+        font-family: "Open Sans Semibold";
         font-size: 16px;
         line-height: 22px;
     }
@@ -34,6 +34,11 @@ page-list {
     }
     .list-content {
         margin: 5px 0;
+
+        b{
+            font-weight: 400;
+            font-family: "Open Sans Semibold";  
+        }
     }
     .main-view {
         background: transparent;
