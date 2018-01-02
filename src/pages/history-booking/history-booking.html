@@ -4,8 +4,8 @@
       <div id="title-salon">Il Brand</div>
       <div id="sub-title-salon">Riepilogo</div>
     </ion-title>
-    <ion-buttons right class="bar-button-custom">
-      <button tappable ion-button icon-only (click)="list($event)">
+    <ion-buttons right class="bar-button-custom" (click)="list($event)">
+      <button tappable ion-button icon-only>
         <ion-icon name="custom-hamburger-two-line"></ion-icon>
       </button>
     </ion-buttons>
@@ -105,7 +105,7 @@
     </div>
 
     <div padding>
-      <button text-center ion-button block color="danger" class="conferma" class="conferma" (click)="onSave()">CONFERMA PRENOTAZIONE</button>
+      <button tappable text-center ion-button block color="danger" class="conferma" class="conferma" (click)="onSave()">CONFERMA PRENOTAZIONE</button>
     </div>
   </div>
 </ion-content>

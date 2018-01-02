@@ -4,8 +4,8 @@
         <div id="title-salon">Il Brand</div>
         <div id="sub-title-salon">Benvenuto!</div>
     </ion-title>
-    <ion-buttons right>
-      <button tappable ion-button icon-only (click)="closeModal()">
+    <ion-buttons right (click)="closeModal()">
+      <button tappable ion-button icon-only>
         <ion-icon item-right name="custom-x" style="margin-right:5px;"></ion-icon>
       </button>
     </ion-buttons>
@@ -30,10 +30,10 @@
       <div tappable class="list-content" (click)="goMybook($event)">Prenotazioni</div>
     </ion-item>
     <ion-item [navPush]="StaffPage">
-      <div class="list-content">Lo staff</div>
+      <div tappable class="list-content">Lo staff</div>
     </ion-item>
     <ion-item [navPush]="ContactPage">
-      <div class="list-content">Contatti & Orari</div>
+      <div tappable class="list-content">Contatti & Orari</div>
     </ion-item>
     <ion-item *ngIf="isSignedIn" [hidden]="isHistoryPage">
       <div tappable class="list-content" (click)="doLogout($event)">Esci</div>
