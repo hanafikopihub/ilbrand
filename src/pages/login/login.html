@@ -4,8 +4,8 @@
       <div id="title-salon">Il Brand</div>
       <div id="sub-title-salon">Benvenuto!</div>
     </ion-title>
-    <ion-buttons right>
-      <button tappable id="close-button" right ion-button icon-only (click)="closeModal()">
+    <ion-buttons right (click)="closeModal()">
+      <button tappable id="close-button" right ion-button icon-only>
         <ion-icon name="custom-x"></ion-icon>
       </button>
     </ion-buttons>
@@ -43,7 +43,7 @@
   
           <ion-row>
             <ion-col class="signup-col">
-              <button ion-button class="login-btn" full  (click)="submitLogin()">ACCEDI</button>
+              <button tappable ion-button class="login-btn" full  (click)="submitLogin()">ACCEDI</button>
   
               <p *ngIf="fromPageString !== 'HistoryBookingPage'" style="margin-top:10px; margin-bottom:0 !important; " text-center>
                 <a tappable (click)="toChangePassword($event)" class="text-forgot-password">Ho dimenticato la password</a>

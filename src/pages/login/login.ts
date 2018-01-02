@@ -88,7 +88,7 @@ export class LoginPage {
 
   showLoader() {
     this.loading = this.loadingCtrl.create({
-      content: 'Authenticating...'
+      content: 'Attendere...'
     });
 
     this.loading.present();
