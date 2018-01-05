@@ -10,11 +10,12 @@ import {
 import { AlertService } from '../../providers/shared-service/alert-service';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { HistoryBookingPage } from '../history-booking/history-booking';
-import { ListPage } from '../list/list';
 import { LoaderService } from '../../providers/shared-service/loader-service';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { ToastService } from '../../providers/shared-service/toast-service';
+import { IonicPage } from 'ionic-angular/navigation/ionic-page';
 
+@IonicPage()
 @Component({
   selector: 'page-booking',
   templateUrl: 'booking.html'
@@ -305,7 +306,7 @@ export class BookingPage {
   }
 
   list(ev) {
-    const listModal = this._modalCtrl.create(ListPage)
+    const listModal = this._modalCtrl.create('ListPage')
     listModal.present();
   }
 

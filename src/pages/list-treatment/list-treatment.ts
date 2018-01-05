@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { ModalController, NavController, NavParams } from 'ionic-angular';
-import { ListPage } from '../list/list';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
-import { BookingPage } from '../booking/booking';
 import { LoaderService } from '../../providers/shared-service/loader-service';
 import { AlertService } from '../../providers/shared-service/alert-service';
 import { PhoneSalonPage } from './phone-salon/phone-salon';
+import { IonicPage } from 'ionic-angular/navigation/ionic-page';
 
+@IonicPage()
 @Component({
   selector: 'page-list-treatment',
   templateUrl: 'list-treatment.html'
@@ -32,7 +32,7 @@ export class ListTreatmentPage {
   }
 
   list(ev) {
-    const listModal = this._modalCtrl.create(ListPage)
+    const listModal = this._modalCtrl.create('ListPage')
     listModal.present();
   }
 
@@ -54,7 +54,7 @@ export class ListTreatmentPage {
   addTreatment(treatment) {
     this.addTreatments = this.addTreatments.concat(treatment)
 
-    this._navCtrl.push(BookingPage, { treatment: treatment, salon: this.salon });
+    this._navCtrl.push('BookingPage', { treatment: treatment, salon: this.salon });
   }
 
   addToCart() {
@@ -66,7 +66,7 @@ export class ListTreatmentPage {
     localStorage.setItem('treatments', JSON.stringify(this.addTreatments))
     this.addTreatments = [];
     // this._navCtrl.setRoot
-    this._navCtrl.push(BookingPage);
+    this._navCtrl.push('BookingPage');
   }
 
   showPhone() {

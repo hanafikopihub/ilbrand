@@ -8,13 +8,11 @@ import { CustomValidators } from 'ng2-validation';
 
 // cores
 import { AppApi } from '../../../app.api';
-import { HomePage } from '../../home/home';
 
 // services
 import { Angular2TokenService } from 'angular2-token';
 import { ToastService } from '../../../providers/shared-service/toast-service';
 import { LoaderService } from '../../../providers/shared-service/loader-service';
-import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 
 @Component({
   selector: 'register-page',
@@ -68,7 +66,7 @@ export class RegisterPage {
             }).subscribe(
               response => {
                 this._loader.hideLoader();
-                this._navCtrl.push(HomePage, { 'status': true });
+                this._navCtrl.push('HomePage', { 'status': true });
                 // this._toastService.successToast('Welcome to salonist')
               },
               error => {

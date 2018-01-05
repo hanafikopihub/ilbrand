@@ -1,25 +1,21 @@
 import { Component } from '@angular/core';
-import { ContactPage } from '../contact/contact';
 import { LoginPage } from '../login/login';
-import { StaffPage } from '../staff/staff';
 import { ProfilePage } from '../profile/profile';
 import { ListCustomerTreatment } from '../list-customer-treatment/list-customer-treatment'
 import { ViewController, NavController, NavParams, ModalController, LoadingController, ToastController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { Angular2TokenService } from 'angular2-token';
-import { ListTreatmentPage } from '../list-treatment/list-treatment';
+import { IonicPage } from 'ionic-angular/navigation/ionic-page';
 
+@IonicPage()
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
 })
 export class ListPage {
 
-  ListTreatmentPage = ListTreatmentPage;
   loading: any;
-  ContactPage = ContactPage;
   LoginPage = LoginPage;
-  StaffPage = StaffPage;
   ListCustomerTreatment = ListCustomerTreatment;
   isSignedIn: boolean;
   isHistoryPage: boolean = false;
@@ -63,7 +59,7 @@ export class ListPage {
   }
 
   goListTreatment() {
-    this._navCtrl.push(ListTreatmentPage, {'status' : true})
+    this._navCtrl.push('ListTreatmentPage', {'status' : true})
   }
 
   doLogout() {
@@ -98,6 +94,14 @@ export class ListPage {
     });
 
     toast.present();
+  }
+
+  goContactPage() {
+    this._navCtrl.push('ContactPage');
+  }
+
+  goStaffPage() {
+    this._navCtrl.push('StaffPage');
   }
 
   closeModal() {

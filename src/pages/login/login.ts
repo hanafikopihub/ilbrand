@@ -6,7 +6,6 @@ import { Angular2TokenService } from 'angular2-token';
 import { RequestMethod } from '@angular/http';
 import { AppApi } from '../../app.api';
 
-import { HomePage } from '../home/home';
 import { ProfileSettingPage } from '../profile-setting/profile-setting';
 import { ListCustomerTreatment } from '../list-customer-treatment/list-customer-treatment';
 
@@ -121,7 +120,7 @@ export class LoginPage {
     if (this.fromPageString === 'HistoryBookingPage') {
       this.viewCtrl.dismiss();
     } else {
-      this.navCtrl.push(HomePage, { 'status': true });
+      this.navCtrl.push('HomePage', { 'status': true });
     }
   }
 

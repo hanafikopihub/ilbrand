@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ModalController, NavController, NavParams, ViewController } from 'ionic-angular';
 import { Angular2TokenService } from 'angular2-token';
 
-import { HomePage } from '../../home/home';
 
 // service
 import { LoaderService } from '../../../providers/shared-service/loader-service';
@@ -34,7 +33,7 @@ export class ChangePasswordPage {
         this._tokenService.resetPassword(this.resetData).subscribe(
           res => {
             this._loader.hideLoader();
-            this._navCtrl.push(HomePage, { 'status': true });
+            this._navCtrl.push('HomePage', { 'status': true });
             // this._toastService.presentToast('We have sent the reset password instruction to your email');
           },
           error => {

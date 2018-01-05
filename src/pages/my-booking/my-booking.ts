@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
 
 import { Calendar } from '@ionic-native/calendar';
 import { ToastService } from '../../providers/shared-service/toast-service';
@@ -16,7 +15,6 @@ import { ToastService } from '../../providers/shared-service/toast-service';
   templateUrl: 'my-booking.html',
 })
 export class MyBookingPage {
-  HomePage = HomePage;
 
   treatmentParam: any;
   operatorParam: any;
@@ -44,7 +42,7 @@ export class MyBookingPage {
   }
 
   toHomePage() {
-    this.navCtrl.push(HomePage, { 'status': true })
+    this.navCtrl.push('HomePage', { 'status': true })
   }
   SaveToCalendar() {
     this.dataOther.month = this.dataOther.month.toString()

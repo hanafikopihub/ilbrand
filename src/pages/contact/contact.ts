@@ -2,11 +2,12 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { LoaderService } from '../../providers/shared-service/loader-service';
 import { NavController, ViewController, ModalController } from 'ionic-angular';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
-import { ListPage } from '../list/list';
 import { AlertService } from '../../providers/shared-service/alert-service';
+import { IonicPage } from 'ionic-angular/navigation/ionic-page';
 
 declare var google;
 
+@IonicPage()
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html'
@@ -15,7 +16,6 @@ export class ContactPage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  ListPage = ListPage;
   salon_id: string;
   contact: object;
 
@@ -65,7 +65,7 @@ export class ContactPage {
   }
 
   list(ev) {
-    const listModal = this._modalCtrl.create(ListPage)
+    const listModal = this._modalCtrl.create('ListPage')
     listModal.present();
   }
 

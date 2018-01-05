@@ -29,10 +29,10 @@
     <ion-item *ngIf="isSignedIn">
       <div tappable class="list-content" (click)="goMybook($event)">Prenotazioni</div>
     </ion-item>
-    <ion-item [navPush]="StaffPage">
+    <ion-item tappable (click)="goStaffPage()">
       <div tappable class="list-content">Lo staff</div>
     </ion-item>
-    <ion-item [navPush]="ContactPage">
+    <ion-item tappable (click)="goContactPage()">
       <div tappable class="list-content">Contatti & Orari</div>
     </ion-item>
     <ion-item *ngIf="isSignedIn" [hidden]="isHistoryPage">

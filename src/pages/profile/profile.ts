@@ -9,8 +9,6 @@ import { LoaderService } from '../../providers/shared-service/loader-service';
 import { AppApi } from '../../app.api';
 
 import { LoginPage } from '../login/login';
-import { HomePage } from '../home/home';
-import { ListPage } from '../list/list';
 
 
 @Component({
@@ -111,7 +109,7 @@ export class ProfilePage {
   }
 
   list(ev) {
-    const listModal = this.modalCtrl.create(ListPage)
+    const listModal = this.modalCtrl.create('ListPage')
     listModal.present();
   }
 
@@ -127,7 +125,7 @@ export class ProfilePage {
 
   closeModal() {
     this.viewCtrl.dismiss();
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.setRoot('HomePage');
   }
 
 }

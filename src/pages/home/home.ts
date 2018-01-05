@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 
 import { AppApi } from '../../app.api';
-import { ListPage } from '../list/list';
-import { ListTreatmentPage } from '../list-treatment/list-treatment';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { AlertService } from '../../providers/shared-service/alert-service';
 import { LoaderService } from '../../providers/shared-service/loader-service';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
+import { IonicPage } from 'ionic-angular/navigation/ionic-page';
 
+@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -17,7 +17,6 @@ export class HomePage {
   salon_id: string;
   salon: object = null;
   fromModal: boolean = false;
-  ListTreatmentPage = ListTreatmentPage;
   constructor(
     public _navParams: NavParams,
     public _navCtrl: NavController,
@@ -50,7 +49,11 @@ export class HomePage {
   }
 
   list(ev) {
-    const listModal = this._modalCtrl.create(ListPage)
+    const listModal = this._modalCtrl.create('ListPage')
     listModal.present();
+  }
+
+  goListTreatmentPage() {
+    this._navCtrl.push('ListTreatmentPage');
   }
 }

@@ -10,7 +10,6 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { PayPalPayment, PayPal, PayPalConfiguration } from '@ionic-native/paypal';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
-import { ListPage } from '../list/list';
 import { LoginPage } from '../login/login';
 
 @Component({
@@ -109,7 +108,7 @@ export class HistoryBookingPage {
   }
 
   list(ev) {
-    const listModal = this._modalCtrl.create(ListPage, {'fromPage': 'HistoryBookingPage'})
+    const listModal = this._modalCtrl.create('ListPage', {'fromPage': 'HistoryBookingPage'})
     listModal.present();
   }
 

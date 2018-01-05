@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { ViewController, NavController, ModalController } from 'ionic-angular';
 
-import { ListPage } from '../list/list';
 import { AlertService } from '../../providers/shared-service/alert-service';
 import { LoaderService } from '../../providers/shared-service/loader-service';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
+import { IonicPage } from 'ionic-angular/navigation/ionic-page';
 
+@IonicPage()
 @Component({
   selector: 'page-staff',
   templateUrl: 'staff.html'
@@ -42,7 +43,7 @@ export class StaffPage {
   }
 
   list(ev) {
-    const listModal = this._modalCtrl.create(ListPage)
+    const listModal = this._modalCtrl.create('ListPage')
     listModal.present();
   }
 

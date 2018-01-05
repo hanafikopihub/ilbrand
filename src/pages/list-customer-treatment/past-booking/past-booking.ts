@@ -4,7 +4,6 @@ import { RestapiServiceProvider } from '../../../providers/restapi-service/resta
 import { ToastService } from '../../../providers/shared-service/toast-service';
 import { LoaderService } from '../../../providers/shared-service/loader-service';
 import { AlertService } from '../../../providers/shared-service/alert-service';
-import { BookingPage } from '../../booking/booking';
 
 @Component({
   selector: 'page-past-booking',
@@ -82,7 +81,7 @@ export class PastBookingPage {
   }
 
   rebooking() {
-    this.navCtrl.push(BookingPage, { treatment: this.treatment, salon: this.salon })
+    this.navCtrl.push('BookingPage', { treatment: this.treatment, salon: this.salon })
   }
 
   postReview() {

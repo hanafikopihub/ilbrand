@@ -6,18 +6,12 @@ import { MyApp } from './app.component';
 // Import ionic2-rating module
 import { Ionic2RatingModule } from 'ionic2-rating';
 
-import { ListTreatmentPage } from '../pages/list-treatment/list-treatment';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { ChangePasswordPage } from '../pages/login/change-password/change-password';
 import { RegisterPage } from '../pages/login/register/register';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { StaffPage } from '../pages/staff/staff';
 import { ProfilePage } from '../pages/profile/profile';
-import { BookingPage } from '../pages/booking/booking';
 import { ProfileSettingPage } from '../pages/profile-setting/profile-setting';
 import { HistoryBookingPage } from '../pages/history-booking/history-booking';
 import { ListCustomerTreatment } from '../pages/list-customer-treatment/list-customer-treatment';
@@ -47,19 +41,13 @@ import { PhoneSalonPage } from '../pages/list-treatment/phone-salon/phone-salon'
 @NgModule({
   declarations: [
     MyApp,
-    ListTreatmentPage,
     ActiveBookingPage,
     PastBookingPage,
     PhoneSalonPage,
-    ContactPage,
-    HomePage,
-    ListPage,
     LoginPage,
     RegisterPage,
     ChangePasswordPage,
-    StaffPage,
     ProfilePage,
-    BookingPage,
     HistoryBookingPage,
     MyBookingPage,
     ProfileSettingPage,
@@ -79,19 +67,13 @@ import { PhoneSalonPage } from '../pages/list-treatment/phone-salon/phone-salon'
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    ListTreatmentPage,
     ActiveBookingPage,
     PastBookingPage,
     PhoneSalonPage,
-    ContactPage,
-    HomePage,
-    ListPage,
     LoginPage,
     RegisterPage,
     ChangePasswordPage,
-    StaffPage,
     ProfilePage,
-    BookingPage,
     HistoryBookingPage,
     MyBookingPage,
     ProfileSettingPage,
