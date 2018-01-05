@@ -348,3 +348,69 @@ ion-icon {
     background-color: #f65c5c !important;
     border-radius: 5px;
 }
+
+ion-title {
+    position: absolute;
+    top: 0;
+    height: 100%;
+}
+
+// make all header text center
+.md ion-title {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0 90px 1px;
+    width: 100%;
+    text-align: center;
+    z-index: -1;
+}
+
+.bar-button-default-md {
+    margin-bottom: 0 !important;
+}
+
+// Set Default Header
+.default-navbar {
+    padding-top: calc(20px + 4px);
+    min-height: calc(75px + 20px);
+}
+
+.default-title {
+    text-align: center;
+    padding-top: 20px;
+    height: calc(68px + 20px);
+}
+
+.custome-navbar {
+    padding-top: calc(20px + 4px);
+    min-height: calc(75px + 20px);
+}
+
+.custome-title {
+    text-align: center;
+    padding-top: 20px;
+    height: calc(68px + 20px);
+}
+
+.toolbar-md {
+    // Set Default Header
+    .default-navbar {
+        padding-top: 24px;
+        min-height: 60px;
+    }
+    .default-title {
+        text-align: center;
+        padding-top: 20px;
+        height: 60px;
+    }
+    .custome-navbar {
+        padding-top: 24px;
+        min-height: 60px;
+    }
+    .custome-title {
+        text-align: center;
+        padding-top: 20px;
+        height: 60px;
+    }
+}
