@@ -47,10 +47,12 @@ page-list-customer-treatment {
   .treatment-detail-label {
     font-size: 14px;   
     
-    .active{
-      color: #10CBD2;
-      font-family: 'Open Sans Semibold';
-      font-weight: 400 !important;
+    .active {
+      b{
+        color: #10CBD2;
+        font-family: 'Open Sans Semibold';
+        font-weight: 400 !important;
+      }
     }
     .past{
       color: #9B9B9B;
