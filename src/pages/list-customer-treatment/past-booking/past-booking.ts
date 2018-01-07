@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { Platform, IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { RestapiServiceProvider } from '../../../providers/restapi-service/restapi-service';
 import { ToastService } from '../../../providers/shared-service/toast-service';
 import { LoaderService } from '../../../providers/shared-service/loader-service';
 import { AlertService } from '../../../providers/shared-service/alert-service';
 
+@IonicPage()
 @Component({
   selector: 'page-past-booking',
   templateUrl: 'past-booking.html',
@@ -16,7 +17,10 @@ export class PastBookingPage {
   review_entry: any;
   rating = { environment: 0, service: 0, staff: 0, quality: 0, review: '' };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(
+    public platform: Platform,
+    public navCtrl: NavController, 
+    public navParams: NavParams,
     public _loader: LoaderService,
     private _toastCtrl: ToastService,
     public _alertService: AlertService,
@@ -25,6 +29,11 @@ export class PastBookingPage {
   }
 
   ionViewDidLoad() {
+    // for back button hardwere (android)
+    this.platform.ready().then(() => {
+      this.platform.registerBackButtonAction(() => this.back());
+    })
+
     const bookingParam = this.navParams.get('booking');
 
     this.booking = {
@@ -100,6 +109,11 @@ export class PastBookingPage {
         this._toastCtrl.presentToast(error);
       }
     )
+  }
+
+  back() {
+    this._loader.hideLoader();
+    this.navCtrl.pop();
   }
 
 }

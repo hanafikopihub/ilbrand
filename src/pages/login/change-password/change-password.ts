@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { ModalController, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, ModalController, NavController, NavParams, ViewController } from 'ionic-angular';
 import { Angular2TokenService } from 'angular2-token';
-
 
 // service
 import { LoaderService } from '../../../providers/shared-service/loader-service';
 import { ToastService } from '../../../providers/shared-service/toast-service';
 
+@IonicPage()
 @Component({
   selector: 'change-password',
   templateUrl: 'change-password.html',

@@ -1,13 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavParams, NavController, Navbar, LoadingController, ModalController } from 'ionic-angular';
+import { Platform, IonicPage, NavParams, Navbar, NavController, LoadingController, ModalController } from 'ionic-angular';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { LoaderService } from '../../providers/shared-service/loader-service';
-import { LoginPage } from '../login/login';
 
-import { PastBookingPage } from './past-booking/past-booking';
-import { ActiveBookingPage } from './active-booking/active-booking';
-
+@IonicPage()
 @Component({
   selector: 'page-list-customer-treatment',
   templateUrl: 'list-customer-treatment.html'
@@ -23,6 +20,7 @@ export class ListCustomerTreatment {
   @ViewChild('navbar') navBar: Navbar;
 
   constructor(
+    public _platform: Platform,
     public navParams: NavParams,
     public navCtrl: NavController,
     public modalCtrl: ModalController,
@@ -42,19 +40,20 @@ export class ListCustomerTreatment {
       this.presentLogin('ListCustomerTreatment');
     }
 
-    // this.navBar.backButtonClick = () => {
-    //   alert('hhahah')
-    // };
+    // for back button hardwere (android)
+    this._platform.ready().then(() => {
+      this._platform.registerBackButtonAction(() => this.back());
+    })
   }
 
   goToActiveDetailBooking(booking) {
-    this.navCtrl.push(ActiveBookingPage, {
+    this.navCtrl.push('ActiveBookingPage', {
       booking: booking
     });
   }
 
   goToPastDetailBooking(booking) {
-    this.navCtrl.push(PastBookingPage, {
+    this.navCtrl.push('PastBookingPage', {
       booking: booking
     });
   }
@@ -79,7 +78,11 @@ export class ListCustomerTreatment {
   }
 
   presentLogin(fromPage) {
-    this.navCtrl.push(LoginPage, { 'fromPage': fromPage });
+    this.navCtrl.push('LoginPage', { 'fromPage': fromPage });
+  }
+
+  back() {
+    this._platform.exitApp();
   }
 
 }

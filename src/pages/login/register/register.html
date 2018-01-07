@@ -1,76 +1,73 @@
-
-    <ion-header no-border>
-      <ion-navbar class="custome-navbar">
-        <ion-title class="custome-title" text-center>
-          
+<ion-header no-border>
+  <ion-navbar class="custome-navbar">
+    <ion-title class="custome-title" text-center>
       <div id="title-salon">Il Brand</div>
       <div id="sub-title-salon">Registrazione</div>
-      
-      </ion-title>
-        <ion-buttons left>
-          <button tappable ion-button icon-only navPop>
-            <ion-icon name="custom-back" style="margin-left:10px;"></ion-icon>
-          </button>
-        </ion-buttons>
-      </ion-navbar>
-    </ion-header>
-    <ion-content>
-    <form (ngSubmit)="doRegister()" [formGroup]="registerData" padding-top padding-bottom>
-      <div>
-        <ion-row class="terms">
-          <p padding>I dati sono necessari al salone per poter gestire al meglio il tuo appuntamento e offrirti l’accesso a servizi avanzati.
-            Se vuoi leggere la nostra Privacy Policy puoi
-            <span style="text-decoration: underline;">cliccare qui</span>
-          </p>
+    </ion-title>
+    <ion-buttons left>
+      <button tappable ion-button icon-only navPop>
+        <ion-icon name="custom-back" style="margin-left:10px;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+<form (ngSubmit)="doRegister()" [formGroup]="registerData" padding-top padding-bottom>
+  <div>
+    <ion-row class="terms">
+      <p padding>I dati sono necessari al salone per poter gestire al meglio il tuo appuntamento e offrirti l’accesso a servizi avanzati.
+        Se vuoi leggere la nostra Privacy Policy puoi
+        <span style="text-decoration: underline;">cliccare qui</span>
+      </p>
+    </ion-row>
+    <div padding>
+      <div class="label-login">INSERISCI I TUOI DATI </div>
+    </div>
+
+    <ion-list padding-left padding-right>
+      <ion-col>
+        <ion-label stacked>Il tuo nome</ion-label>
+        <ion-row padding-top>
+          <ion-input type="text" class="login-border-input" formControlName="name" required></ion-input>
         </ion-row>
-        <div padding>
-          <div class="label-login">INSERISCI I TUOI DATI </div>
-        </div>
+      </ion-col>
 
-        <ion-list padding-left padding-right>
-          <ion-col>
-            <ion-label stacked>Il tuo nome</ion-label>
-            <ion-row padding-top>
-              <ion-input type="text" class="login-border-input" formControlName="name" required></ion-input>
-            </ion-row>
-          </ion-col>
-
-          <ion-col>
-            <ion-label stacked>Il tuo indirizzo email</ion-label>
-            <ion-row padding-top>
-              <ion-input type="text" class="login-border-input" formControlName="email" required></ion-input>
-            </ion-row>
-          </ion-col>
-
-          <ion-col>
-            <ion-label stacked>Il tuo numero di telefono</ion-label>
-            <ion-row padding-top>
-              <ion-input type="number" class="login-border-input" formControlName="cell" required></ion-input>
-            </ion-row>
-          </ion-col>
-
-          <ion-col>
-            <ion-label stacked>La tua password</ion-label>
-            <ion-row padding-top>
-              <ion-input class="login-border-input" type="password" formControlName="password" required></ion-input>
-            </ion-row>
-          </ion-col>
-
-          <ion-col>
-            <ion-label stacked>La tua password confirmation</ion-label>
-            <ion-row padding-top>
-              <ion-input class="login-border-input" type="password" formControlName="password_confirmation" required></ion-input>
-            </ion-row>
-          </ion-col>
-
-        </ion-list>
-
-        <ion-row padding>
-          <ion-col class="signup-col">
-            <button tappable ion-button class="login-btn" full type="submit">CONFERMA REGISTRAZIONE</button>
-          </ion-col>
+      <ion-col>
+        <ion-label stacked>Il tuo indirizzo email</ion-label>
+        <ion-row padding-top>
+          <ion-input type="text" class="login-border-input" formControlName="email" required></ion-input>
         </ion-row>
+      </ion-col>
 
-      </div>
-    </form>
-    </ion-content>
+      <ion-col>
+        <ion-label stacked>Il tuo numero di telefono</ion-label>
+        <ion-row padding-top>
+          <ion-input type="number" class="login-border-input" formControlName="cell" required></ion-input>
+        </ion-row>
+      </ion-col>
+
+      <ion-col>
+        <ion-label stacked>La tua password</ion-label>
+        <ion-row padding-top>
+          <ion-input class="login-border-input" type="password" formControlName="password" required></ion-input>
+        </ion-row>
+      </ion-col>
+
+      <ion-col>
+        <ion-label stacked>La tua password confirmation</ion-label>
+        <ion-row padding-top>
+          <ion-input class="login-border-input" type="password" formControlName="password_confirmation" required></ion-input>
+        </ion-row>
+      </ion-col>
+
+    </ion-list>
+
+    <ion-row padding>
+      <ion-col class="signup-col">
+        <button tappable ion-button class="login-btn" full type="submit">CONFERMA REGISTRAZIONE</button>
+      </ion-col>
+    </ion-row>
+
+  </div>
+</form>
+</ion-content>

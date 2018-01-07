@@ -295,7 +295,7 @@ export class BookingPage {
       }
 
       this._navController.push(
-        HistoryBookingPage,
+        'HistoryBookingPage',
         {
           salon: this.salonParam,
           dataBooking: dataBooking,

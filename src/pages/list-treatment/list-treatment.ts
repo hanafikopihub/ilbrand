@@ -3,7 +3,6 @@ import { ModalController, NavController, NavParams } from 'ionic-angular';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { LoaderService } from '../../providers/shared-service/loader-service';
 import { AlertService } from '../../providers/shared-service/alert-service';
-import { PhoneSalonPage } from './phone-salon/phone-salon';
 import { IonicPage } from 'ionic-angular/navigation/ionic-page';
 
 @IonicPage()
@@ -70,7 +69,7 @@ export class ListTreatmentPage {
   }
 
   showPhone() {
-    const phoneSalon = this._modalCtrl.create(PhoneSalonPage);
+    const phoneSalon = this._modalCtrl.create('PhoneSalonPage');
     phoneSalon.present();
   }
 }

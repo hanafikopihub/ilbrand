@@ -1,15 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Platform, IonicPage } from 'ionic-angular';
 
 import { Calendar } from '@ionic-native/calendar';
 import { ToastService } from '../../providers/shared-service/toast-service';
 
-/**
- * Generated class for the MyBookingPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+@IonicPage()
 @Component({
   selector: 'page-my-booking',
   templateUrl: 'my-booking.html',
@@ -24,6 +19,7 @@ export class MyBookingPage {
   optionPay: any;
 
   constructor(
+    public platform: Platform,
     private _calendar: Calendar,
     public navCtrl: NavController,
     public _toastService: ToastService,

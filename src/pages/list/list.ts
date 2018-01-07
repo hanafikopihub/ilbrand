@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { LoginPage } from '../login/login';
-import { ProfilePage } from '../profile/profile';
 import { ListCustomerTreatment } from '../list-customer-treatment/list-customer-treatment'
 import { ViewController, NavController, NavParams, ModalController, LoadingController, ToastController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
@@ -46,16 +45,16 @@ export class ListPage {
   }
 
   goLogin(ev) {
-    const loginModal = this._modalController.create(LoginPage)
+    const loginModal = this._modalController.create('LoginPage')
     loginModal.present();
   }
 
   goMybook(ev) {
-    this._navCtrl.push(ListCustomerTreatment)
+    this._navCtrl.push('ListCustomerTreatment')
   }
 
   goMyProfile(ev) {
-    this._navCtrl.push(ProfilePage)
+    this._navCtrl.push('ProfilePage')
   }
 
   goListTreatment() {

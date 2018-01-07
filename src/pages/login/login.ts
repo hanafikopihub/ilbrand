@@ -1,19 +1,13 @@
 import { Component } from '@angular/core';
-import { ViewController, NavParams, NavController, ToastController, LoadingController, ModalController } from 'ionic-angular';
+import { Platform, IonicPage, ViewController, NavParams, NavController, ToastController, LoadingController, ModalController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 import { Angular2TokenService } from 'angular2-token';
 import { RequestMethod } from '@angular/http';
 import { AppApi } from '../../app.api';
-
-import { ProfileSettingPage } from '../profile-setting/profile-setting';
-import { ListCustomerTreatment } from '../list-customer-treatment/list-customer-treatment';
-
-import { RegisterPage } from './register/register';
-import { ChangePasswordPage } from './change-password/change-password';
-
 import { ToastService } from '../../providers/shared-service/toast-service';
 
+@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -41,11 +35,11 @@ export class LoginPage {
     if (this.fromPage === undefined) {
     }
     if (this.fromPage === 'ListCustomerTreatment') {
-      this.fromPage = ListCustomerTreatment
+      this.fromPage = 'ListCustomerTreatment'
     }
 
     if (this.fromPage === 'ProfileSettingPage') {
-      this.fromPage = ProfileSettingPage
+      this.fromPage = 'ProfileSettingPage'
     }
 
     if (this.fromPage === 'HistoryBookingPage') {
@@ -56,7 +50,7 @@ export class LoginPage {
   ionViewDidEnter() {
     const client = localStorage.getItem('client');
     if (client) {
-      this.navCtrl.push(this.fromPage)
+      this.navCtrl.push(''+this.fromPage+'')
     }
   }
   submitLogin() {
@@ -109,11 +103,11 @@ export class LoginPage {
   }
 
   toRegister() {
-    this.navCtrl.push(RegisterPage)
+    this.navCtrl.push('RegisterPage')
   }
 
   toChangePassword() {
-    this.navCtrl.push(ChangePasswordPage)
+    this.navCtrl.push('ChangePasswordPage')
   }
 
   closeModal() {

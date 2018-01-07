@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { MyBookingPage } from '../my-booking/my-booking';
 
-import { ModalController, NavParams, NavController } from 'ionic-angular';
+import { IonicPage, ModalController, NavParams, NavController, Platform } from 'ionic-angular';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { LoaderService } from '../../providers/shared-service/loader-service';
 import { AlertService } from '../../providers/shared-service/alert-service';
@@ -10,8 +9,8 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { PayPalPayment, PayPal, PayPalConfiguration } from '@ionic-native/paypal';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
-import { LoginPage } from '../login/login';
 
+@IonicPage()
 @Component({
   selector: 'page-history-booking',
   templateUrl: 'history-booking.html'
@@ -34,7 +33,6 @@ export class HistoryBookingPage {
 
   payoption: any;
   payoptionModel: any;
-  MyBookingPage = MyBookingPage;
 
   treatment: any
   optionPay: any
@@ -142,7 +140,7 @@ export class HistoryBookingPage {
   }
 
   toLogin() {
-    this._navController.push(LoginPage,
+    this._navController.push('LoginPage',
       { 'fromPage': 'HistoryBookingPage' })
   }
 
@@ -177,7 +175,7 @@ export class HistoryBookingPage {
         if (response.error !== undefined) {
           this._alertService.failedError(response.error);
         } else {
-          this._navController.push(MyBookingPage,
+          this._navController.push('MyBookingPage',
             {
               salon: this.salon,
               dataBooking: this.dataBooking,
@@ -246,7 +244,7 @@ export class HistoryBookingPage {
     this._restapiServiceProvider.postPayPal(data)
       .subscribe(response => {
         this._loaderCtrl.hideLoader();
-        this._navController.push(MyBookingPage,
+        this._navController.push('MyBookingPage',
           {
             salon: this.salon,
             dataBooking: this.dataBooking,

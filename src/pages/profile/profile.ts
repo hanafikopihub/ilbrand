@@ -7,10 +7,9 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { ToastService } from '../../providers/shared-service/toast-service';
 import { LoaderService } from '../../providers/shared-service/loader-service';
 import { AppApi } from '../../app.api';
+import { IonicPage } from 'ionic-angular/navigation/ionic-page';
 
-import { LoginPage } from '../login/login';
-
-
+@IonicPage()
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html',
@@ -71,7 +70,7 @@ export class ProfilePage {
   }
 
   presentLogin(fromPage) {
-    this.navCtrl.push(LoginPage, { 'fromPage': fromPage });
+    this.navCtrl.push('LoginPage', { 'fromPage': fromPage });
   }
 
   updatePassword() {

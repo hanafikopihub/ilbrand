@@ -1,11 +1,4 @@
 page-booking {
-    #sub-title-salon {
-        color: #AEB5BB;
-        font-family: "Open Sans";
-        font-size: 14px;
-        line-height: 19px;
-        font-weight: 400;
-    }
     form,
     input,
     optgroup,
@@ -177,5 +170,9 @@ page-booking {
     .show-header {
         transition: bottom 0.25s ease;
         bottom: -53px !important;
+    }
+
+    .toolbar-title-ios{
+        margin-top: 16px;
     }
 } 

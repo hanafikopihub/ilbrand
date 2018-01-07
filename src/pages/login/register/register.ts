@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RequestMethod } from '@angular/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ModalController, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, ModalController, NavController, NavParams, ViewController } from 'ionic-angular';
 
 // extrenal library
 import { CustomValidators } from 'ng2-validation';
@@ -14,6 +14,7 @@ import { Angular2TokenService } from 'angular2-token';
 import { ToastService } from '../../../providers/shared-service/toast-service';
 import { LoaderService } from '../../../providers/shared-service/loader-service';
 
+@IonicPage()
 @Component({
   selector: 'register-page',
   templateUrl: 'register.html',

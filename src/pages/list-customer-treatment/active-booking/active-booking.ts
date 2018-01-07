@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { Platform, IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { RestapiServiceProvider } from '../../../providers/restapi-service/restapi-service';
 import { ToastService } from '../../../providers/shared-service/toast-service';
 import { LoaderService } from '../../../providers/shared-service/loader-service';
 import { AlertService } from '../../../providers/shared-service/alert-service';
 
-import { ListCustomerTreatment } from '../../list-customer-treatment/list-customer-treatment';
-
+@IonicPage()
 @Component({
   selector: 'page-active-booking',
   templateUrl: 'active-booking.html',
@@ -14,7 +13,10 @@ import { ListCustomerTreatment } from '../../list-customer-treatment/list-custom
 export class ActiveBookingPage {
   booking: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(
+    public platform: Platform,
+    public navCtrl: NavController, 
+    public navParams: NavParams,
     public _loader: LoaderService,
     private _toastCtrl: ToastService,
     public _alertService: AlertService,
@@ -23,6 +25,11 @@ export class ActiveBookingPage {
   }
 
   ionViewDidLoad() {
+    // for back button hardwere (android)
+    this.platform.ready().then(() => {
+      this.platform.registerBackButtonAction(() => this.back());
+    })
+
     const bookingParam = this.navParams.get('booking');
 
     this.booking = {
@@ -58,7 +65,7 @@ export class ActiveBookingPage {
     this._restapiServiceProvider.postCancelBooking(this.booking.booking_id)
       .subscribe(data => {
         this._loader.hideLoader();
-        this.navCtrl.push(ListCustomerTreatment);
+        this.navCtrl.push('ListCustomerTreatment');
         this._toastCtrl.presentToast('Prenotazione annullata!');
       }, (error) => {
         console.log(error);
@@ -67,6 +74,11 @@ export class ActiveBookingPage {
         this._alertService.errorConnectionAlert();
         return this._toastCtrl.presentToast('non è riuscito a ottenere dati');
       });
+  }
+
+  back() {
+    this._loader.hideLoader();
+    this.navCtrl.pop();
   }
 
 }
