@@ -3,7 +3,7 @@
     <name>Ilbrand</name>
     <description>An awesome salon on Italy.</description>
     <author email="info@salonist.it" href="http://www.salonist.it/">Salonist</author>
-    <content original-src="index.html" src="http://192.168.100.9:8101" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
@@ -15,6 +15,7 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <preference name="ScrollEnabled" value="false" />
+    <preference name="orientation" value="portrait" />
     <preference name="deployment-target" value="7.0" />
     <preference name="android-minSdkVersion" value="16" />
     <preference name="BackupWebStorage" value="none" />
@@ -112,4 +113,5 @@
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <plugin name="com.paypal.cordova.mobilesdk" spec="^3.5.0" />
     <plugin name="cordova-plugin-calendar" spec="^4.6.0" />
+    <plugin name="cordova-plugin-file-transfer" spec="^1.7.0" />
 </widget>

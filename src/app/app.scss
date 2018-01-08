@@ -246,7 +246,7 @@ ul {
 .bar-button-default-md,
 .bar-button-clear-md-default,
 .bar-button-md-default {
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     position: relative;
 }
 
@@ -376,11 +376,47 @@ ion-icon {
     height: 60px;
 }
 
-
 #sub-title-salon {
     color: #AEB5BB;
     font-family: "Open Sans";
     font-size: 14px;
     line-height: 19px;
     font-weight: 400;
+}
+
+.toolbar-md {
+    padding: 4px;
+    min-height: 65px;
+    height: 70px !important;
+}
+
+.bar-buttons-md {
+    position: absolute;
+    right: 0;
+    text-align: none;
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+.back-button-md {
+    z-index: 1;
+    position: absolute !important;
+    min-width: 0px !important;
+}
+
+.toolbar-title-md {
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: 600 !important;
+    color: #4A4A4A;
+    pointer-events: auto;
+}
+
+.button-md {
+    height: 2.8em;
+    font-size: 1.6rem;
+    border-radius: 4px;
+    margin: 0.4rem 0.2rem;
+    padding: 0px 1em;
+    box-shadow: none !important;
 }

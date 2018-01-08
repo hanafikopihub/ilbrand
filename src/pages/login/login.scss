@@ -20,6 +20,11 @@ page-login {
         font-size: 16px;
         line-height: 22px;
     }
+    .label-md[stacked] {
+        color: #4A4A4A;
+        font-size: 16px;
+        line-height: 22px;
+    }
     .list-ios {
         margin: -1px 0 25px !important;
     }
@@ -31,12 +36,6 @@ page-login {
     }
     .col {
         padding: 0;
-    }
-    .label-md[stacked],
-    .label-md[floating] {
-        margin-left: 0;
-        margin-bottom: 10px;
-        font-family: 'Open Sans';
     }
     .text-forgot-password {
         cursor: pointer;
