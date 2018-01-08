@@ -15,6 +15,8 @@ export class StaffPage {
 
   salon_id: string;
   staff: object;
+  staffs: Array<any>;
+
   constructor(
     public _loaderCtrl: LoaderService,
     public navCtrl: NavController,
@@ -22,8 +24,30 @@ export class StaffPage {
     public _restapiServiceProvider: RestapiServiceProvider,
     public _modalCtrl: ModalController,
     public _viewController: ViewController) {
+    
     this.salon_id = JSON.parse(localStorage.getItem('salon_id'));
-
+    this.staffs = [
+      {
+        'name': 'GIORDANO',
+        'about': 'La passione è il punto di forza che caratterizza il lavoro di Giordano. <br> Un professionista sempre alla ricerca di nuove ispirazioni per suggerire look personalizzati.<br> Hair stylist e Formatore z-oneconcept education.',
+        'image': 'https://staging.salonist.it/mobile_app/ilbrand/giordano.jpg',
+      },
+      {
+        'name': 'LORENA',
+        'about': 'Dicono che abbia mani di fata! Rimarrete inebriati dalla sua dolcezza e dai suoi massaggi durante ogni trattamento.<br> A questo si aggiunge la grande cura nei dettagli dedicata a ciascun servizio offerto.',
+        'image': 'https://staging.salonist.it/mobile_app/ilbrand/lorena.jpg'
+      },
+      {
+        'name': 'ANNA',
+        'about': 'Se desiderate una consulenza di immagine per un nuovo look o per esaltare il vostro taglio attuale, Anna è la persona giusta! <br> La sua abilità sta nel saper esaudire i desideri delle donne.',
+        'image': 'https://staging.salonist.it/mobile_app/ilbrand/anna.jpg'
+      },
+      {
+        'name': 'SARA',
+        'about': 'Sara è una new entry nel nostro staff e si definisce CREATIVA! <br> Sempre a vostra disposizione con il sorriso, saprà offrirvi una consulenza personalizzata e coccolarvi con servizi per la cura e la bellezza dei capelli. <br> È specializzata, inoltre, nella cura della barba ed è in grado di rendere ogni uomo impeccabile.',
+        'image': 'https://staging.salonist.it/mobile_app/ilbrand/sara.jpg'
+      }
+    ]
   }
   ionViewDidLoad() {
     this.getDataSalon();
