@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="it.salonist.ilbrand" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="it.salonist.ilbrand" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" ios-CFBundleVersion="1">
     <name>Ilbrand</name>
     <description>An awesome salon on Italy.</description>
     <author email="info@salonist.it" href="http://www.salonist.it/">Salonist</author>
@@ -24,7 +24,7 @@
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
-    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="AutoHideSplashScreen" value="false" />
     <platform name="android">
         <allow-intent href="market:*" />
         <icon height="57" src="resources/android/icon/icon.png" width="57" />
@@ -114,4 +114,5 @@
     <plugin name="com.paypal.cordova.mobilesdk" spec="^3.5.0" />
     <plugin name="cordova-plugin-calendar" spec="^4.6.0" />
     <plugin name="cordova-plugin-file-transfer" spec="^1.7.0" />
+    <allow-navigation href="http://192.168.100.17:8101" />
 </widget>
