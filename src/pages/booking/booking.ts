@@ -29,6 +29,8 @@ export class BookingPage {
   // status user login or logout
   public isSignedIn: boolean;
 
+  fromModal: boolean = false;
+
   // general variable
   salonParam: any;
   treatmentParam: any;
@@ -88,7 +90,7 @@ export class BookingPage {
     this.salonParam = this._navParams.get('salon');
     this.treatmentParam = this._navParams.get('treatment');
     this.salon_id = JSON.parse(localStorage.getItem('salon_id'));
-
+    this.fromModal = this._navParams.get('status');
   }
 
   // load this function although callback button from next page
@@ -300,7 +302,8 @@ export class BookingPage {
           salon: this.salonParam,
           dataBooking: dataBooking,
           treatment: this.treatmentParam,
-          operators: this.operators, dataOther: dataOther
+          operators: this.operators, dataOther: dataOther,
+          status: this.fromModal
         })
     }
   }

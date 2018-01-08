@@ -53,7 +53,7 @@ export class ListTreatmentPage {
   addTreatment(treatment) {
     this.addTreatments = this.addTreatments.concat(treatment)
 
-    this._navCtrl.push('BookingPage', { treatment: treatment, salon: this.salon });
+    this._navCtrl.push('BookingPage', { treatment: treatment, salon: this.salon, status: this.fromModal });
   }
 
   addToCart() {

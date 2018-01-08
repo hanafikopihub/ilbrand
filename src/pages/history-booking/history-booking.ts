@@ -18,6 +18,7 @@ import { CustomValidators } from 'ng2-validation';
 
 export class HistoryBookingPage {
 
+  fromModal: boolean = false;
   entryForm: FormGroup;
   treatmentParam: any;
   operatorParam: any;
@@ -55,6 +56,7 @@ export class HistoryBookingPage {
     this.dataBookingParam = this._navParams.get('dataBooking');
     this.dataOther = this._navParams.get('dataOther');
     this.salon = this._navParams.get('salon');
+    this.fromModal = this._navParams.get('status');
 
     this.payOptions = [
       { 'id': '1', 'option': 'Paga in salone', 'image': 'assets/icon/shop_icon/shop_icon-AppStore.png', 'disable': false },
