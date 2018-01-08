@@ -24,7 +24,6 @@
     "@ionic-native/calendar": "^4.4.2",
     "@ionic-native/core": "4.3.0",
     "@ionic-native/geolocation": "^4.3.1",
-    "@ionic-native/native-storage": "^4.3.1",
     "@ionic-native/paypal": "^4.3.2",
     "@ionic-native/splash-screen": "4.3.0",
     "@ionic-native/status-bar": "4.3.0",
@@ -32,8 +31,7 @@
     "angular2-token": "^0.2.0-beta.12",
     "card.io.cordova.mobilesdk": "^2.1.0",
     "com.paypal.cordova.mobilesdk": "^3.5.0",
-    "cordova-android": "6.3.0",
-    "cordova-ios": "^4.5.3",
+    "cordova-ios": "4.5.4",
     "cordova-plugin-calendar": "^4.6.0",
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-device": "^1.1.7",
@@ -48,7 +46,8 @@
     "ng2-validation": "^4.2.0",
     "rxjs": "5.4.3",
     "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.18"
+    "zone.js": "0.8.18",
+    "cordova-android": "6.3.0"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.0.0",
@@ -63,11 +62,14 @@
       "cordova-plugin-whitelist": {},
       "ionic-plugin-keyboard": {},
       "com.paypal.cordova.mobilesdk": {},
-      "cordova-plugin-calendar": {}
+      "cordova-plugin-calendar": {
+        "CALENDAR_USAGE_DESCRIPTION": " "
+      },
+      "cordova-plugin-compat": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }
