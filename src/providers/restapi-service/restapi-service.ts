@@ -26,6 +26,7 @@ export class RestapiServiceProvider {
     private _toastCtrl: ToastController,
     public _authServiceProvider: Angular2TokenService,
     private cache: CacheService) {
+    cache.setDefaultTTL(60 * 60);
   }
 
   presentToast(msg) {
@@ -36,23 +37,14 @@ export class RestapiServiceProvider {
       dismissOnPageChange: true
     });
 
-    toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
-    });
-
     toast.present();
   }
 
   getSalon(id) {
-    return this.http.get(this.apiUrl + 'salons/' + id)
-      .map(res => res.json());
+    const url = this.apiUrl + 'salons/' + id;
+    const request = this.http.get(url).map(res => res.json());
+    return this.cache.loadFromObservable(url, request);
   }
-
-  searchSalons(treatment, location, price, page) {
-    return this.http.post(this.apiUrl + 'finds/salons', { treatment: treatment, where: location, price: price, page: page })
-      .map(res => res.json())
-  }
-
 
   getMonths() {
     const data = { year: '', 'month': '' }
@@ -63,11 +55,6 @@ export class RestapiServiceProvider {
   getMonth(month, year) {
     const data = { year: year, 'month': month }
     return this.http.post(this.apiUrl + 'finds/month_calendar', data)
-      .map(res => res.json())
-  }
-
-  getTreatment() {
-    return this.http.get(this.apiUrl + 'treatments/popular')
       .map(res => res.json())
   }
 
@@ -96,10 +83,6 @@ export class RestapiServiceProvider {
       body: { cell: number }
     }).map(res => res.json())
   }
-  // getMyBooking(user_id) {
-  //   return this.http.post(this.apiUrl + 'bookings/my', { user_id: user_id })
-  //     .map(res => res.json())
-  // }
 
   getMyBooking() {
     return this._authServiceProvider.request({

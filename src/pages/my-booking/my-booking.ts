@@ -17,6 +17,7 @@ export class MyBookingPage {
   dataOther: any;
   salon: any;
   optionPay: any;
+  fromModal: boolean = false;
 
   constructor(
     public platform: Platform,
@@ -31,6 +32,7 @@ export class MyBookingPage {
     this.dataOther = this.navParams.get('dataOther');
     this.salon = this.navParams.get('salon');
     this.optionPay = this.navParams.get('optionPay');
+    this.fromModal = this.navParams.get('status');
 
     if (this.optionPay === 'Paga in salone') {
       this.optionPay = 'Pagherai in salone'
