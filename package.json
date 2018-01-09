@@ -47,7 +47,8 @@
     "rxjs": "5.4.3",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.18",
-    "cordova-plugin-file-transfer": "~1.7.0"
+    "cordova-plugin-file-transfer": "~1.7.0",
+    "cordova-android": "6.3.0"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.0.0",
