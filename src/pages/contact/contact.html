@@ -16,11 +16,11 @@
     <div class="contact">
       <div style="margin-bottom: 3px;">
         <ion-icon name="call"></ion-icon>
-        <span class="phone">{{contact?.phone}}</span>
+        <a href="tel:{{contact?.phone}}" class="phone">{{contact?.phone}}</a>
       </div>
       <div>
         <ion-icon name="ios-at-outline"></ion-icon>
-        <span class="email">{{contact?.email}}</span>
+        <a href="mailto:{{contact?.email}}" class="email">{{contact?.email}}</a>
       </div>
     </div>
   </div>
