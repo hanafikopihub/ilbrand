@@ -11,8 +11,9 @@
   <div padding style="padding-bottom: 10px">
     <div class="treatment-name">{{booking?.title}}</div>
     <div>
-      <span class="customer-value">{{booking?.reservation_date}} ore</span>
-      <span class="customer-value">{{booking?.reservation_hour}}</span>
+      <span class="treatment-name">{{booking?.reservation_date}} </span>
+      <span class="customer-value">ore</span>
+      <span class="treatment-name">{{booking?.reservation_hour}}</span>
     </div>
   </div>
 
@@ -22,7 +23,7 @@
       <span class="treatment-name">{{booking?.salon_name}}</span>
     </ion-row>
     <ion-row class="salon-address">
-      {{booking?.salon_address}}
+      {{booking?.salon_address}}, {{booking?.salon_city}}
     </ion-row>
     <br>
     <div>
@@ -44,8 +45,8 @@
   </ion-row>
 
   <div padding-top padding-left padding-right>
-    <div class="vote-label-main">VOTA IL SALONE PER QUESTO APPUNTAMENTO</div>
     <div *ngIf="!booking?.has_review">
+      <div class="vote-label-main">VOTA IL SALONE PER QUESTO APPUNTAMENTO</div>
       <div padding text-center>
         <div class="vote-label">Ambiente</div>
         <ion-row>
@@ -71,7 +72,7 @@
         </ion-row>
       </div>
       <div padding-bottom padding-right padding-left text-center>
-        <div class="vote-label">Qualita/Prezzo</div>
+        <div class="vote-label">Qualità/Prezzo</div>
         <ion-row>
           <ion-col col-8 offset-2 style="padding-top: 0">
             <rating [(ngModel)]="rating.quality" emptyStarIconName="custom-star-empty" halfStarIconName="custom-star-half" starIconName="custom-star-full"></rating>
@@ -88,8 +89,10 @@
     </div>
 
     <div padding-bottom padding-right padding-left text-center *ngIf="booking?.has_review">
+      <div class="vote-label-main">HAI GIA' VOTATO PER QUESTO APPUNTAMENTO</div>
       <ion-col col-8 offset-2 style="padding-top: 0">
         <rating [(ngModel)]="booking.review_rating" readOnly="true" emptyStarIconName="custom-star-empty" halfStarIconName="custom-star-half" starIconName="custom-star-full"></rating>
+        <p style="margin-top: 0; padding-top: 0">{{booking.review_rating_text}}</p>
       </ion-col>
     </div>
 

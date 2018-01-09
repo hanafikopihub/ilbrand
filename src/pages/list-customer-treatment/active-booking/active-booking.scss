@@ -3,14 +3,27 @@ page-active-booking {
         height: 1px !important;
         margin: 0 20px;
     }
-    .total-value {
-        font-size: 18px;
-        padding-left: 79%;
-        color: #FF4653 !important;
-        font-weight: 600;
-    }
     .text-pay {
         font-family: 'Open Sans Regular', Arial, Helvetica, sans-serif;
+    }
+    .total-value {
+        padding-left: 35px;
+        padding-bottom: 0 !important;
+        font-size: 17px;
+        text-align: right;
+        float: right;
+        color: #FF4653 !important;
+        font-weight: bold;
+    }
+    .pay-option {
+        color: #FF4653;
+        text-align: right;
+        float: right;
+        font-family: "Open Sans";
+        font-size: 15px;
+        line-height: 19px;
+        padding-left: 35px;
+        padding-top: 0 !important;
     }
     .trova-button-home {
         width: 100%;
@@ -25,7 +38,7 @@ page-active-booking {
     .treatment-name {
         font-weight: 400 !important;
         font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
-        font-size: 16px;
+        font-size: 17px;
         color: #4A4A4A;
     }
     .row-cast {
@@ -59,10 +72,10 @@ page-active-booking {
         font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
     }
     .operator-value {
-        font-weight: 600;
         font-size: 15px;
         color: #08d9f5;
-        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-weight: 400 !important;
+        font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
     }
     .totale-price {
         color: #4A4A4A;
@@ -133,6 +146,16 @@ page-active-booking {
         padding-right: 5px;
         margin-left: 6px;
         margin-right: 6px;
+    }
+    .pay-option {
+        color: #FF4653;
+        text-align: right;
+        float: right;
+        font-family: "Open Sans";
+        font-size: 15px;
+        line-height: 19px;
+        padding-left: 35px;
+        padding-top: 0 !important;
     }
     .button {
         height: 3.6rem;
