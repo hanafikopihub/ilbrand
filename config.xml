@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="it.salonist.ilbrand" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" ios-CFBundleVersion="1">
+<widget id="it.salonist.ilbrand" ios-CFBundleVersion="1" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Ilbrand</name>
     <description>An awesome salon on Italy.</description>
     <author email="info@salonist.it" href="http://www.salonist.it/">Salonist</author>
-    <content original-src="index.html" src="http://192.168.100.9:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
@@ -106,8 +106,6 @@
     <allow-navigation href="http://192.168.100.9:8100" />
     <allow-navigation href="http://192.168.0.108:8101" />
     <allow-navigation href="http://192.168.100.9:8101" />
-    <engine name="android" spec="6.3.0" />
-    <engine name="ios" spec="^4.5.3" />
     <plugin name="cordova-plugin-device" spec="^1.1.7" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.1.0" />
     <plugin name="cordova-plugin-statusbar" spec="git+https://github.com/apache/cordova-plugin-statusbar.git" />
@@ -116,4 +114,6 @@
     <plugin name="com.paypal.cordova.mobilesdk" spec="^3.5.0" />
     <plugin name="cordova-plugin-calendar" spec="^4.6.0" />
     <plugin name="cordova-plugin-file-transfer" spec="~1.7.0" />
+    <engine name="ios" spec="4.5.4" />
+    <engine name="android" spec="6.3.0" />
 </widget>
