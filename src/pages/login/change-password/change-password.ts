@@ -27,7 +27,7 @@ export class ChangePasswordPage {
 
   doRequestResetPassword() {
     if (this.resetData.email === '') {
-      this._toastService.presentToast('controllare l\'input immesso')
+      this._toastService.presentToast('Completa con tutti i dati, grazie!')
     } else {
       this._loader.showLoader().then(response => {
         this._tokenService.resetPassword(this.resetData).subscribe(
