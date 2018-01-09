@@ -1,19 +1,22 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+
+import { ElementRef, Renderer } from '@angular/core';
 import {
   ModalController,
   NavController,
   NavParams,
-  Slides
+  Slides,
+  Content
 } from 'ionic-angular';
 
-// libary page
-import { AlertService } from '../../providers/shared-service/alert-service';
+// libary local
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-import { HistoryBookingPage } from '../history-booking/history-booking';
-import { LoaderService } from '../../providers/shared-service/loader-service';
+import { IonicPage, Platform } from 'ionic-angular';
+
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
+import { AlertService } from '../../providers/shared-service/alert-service';
 import { ToastService } from '../../providers/shared-service/toast-service';
-import { IonicPage } from 'ionic-angular/navigation/ionic-page';
+import { LoaderService } from '../../providers/shared-service/loader-service';
 
 @IonicPage()
 @Component({
@@ -23,13 +26,8 @@ import { IonicPage } from 'ionic-angular/navigation/ionic-page';
 
 export class BookingPage {
 
-  // Routes
-  HistoryBookingPage = HistoryBookingPage;
-
   // status user login or logout
   public isSignedIn: boolean;
-
-  fromModal: boolean = false;
 
   // general variable
   salonParam: any;
@@ -44,6 +42,7 @@ export class BookingPage {
   changeColorMonth: any;
   setColorMonth: any;
   setColorDate: any;
+  hideTime: boolean = false;
 
   // time variable date
   operatorArray: Array<any>
@@ -56,19 +55,20 @@ export class BookingPage {
   yearId: string;
   dayName: any;
   monthName: any;
-  salon_id: any;
-  hideTime: boolean = false;
 
-  // button flowing
+  // show hide button
   ionScroll: any;
   showheader: boolean;
   hideheader: boolean;
 
+  @ViewChild(Content) content: Content;
   @ViewChild('sliderMonth') sliderMonth: Slides;
   @ViewChild('sliderDate') sliderDate: Slides;
   @ViewChild('sliderTime') sliderTime: Slides;
 
   constructor(
+    public navCtrl: NavController, public renderer: Renderer, public myElement: ElementRef, public navParams: NavParams,
+
     private _toastCtrl: ToastService,
     public _alertService: AlertService,
     public _authServiceProvider: AuthServiceProvider,
@@ -76,25 +76,27 @@ export class BookingPage {
     public _modalCtrl: ModalController,
     public _navController: NavController,
     public _navParams: NavParams,
-    public _myElement: ElementRef,
     public _restapiServiceProvider: RestapiServiceProvider,
+    public plt: Platform
   ) {
 
     this.showheader = false;
     this.hideheader = true;
-
     // sign login or logout
     this.isSignedIn = this._authServiceProvider.userSignedIn
 
     // get data from paramater
     this.salonParam = this._navParams.get('salon');
     this.treatmentParam = this._navParams.get('treatment');
-    this.salon_id = JSON.parse(localStorage.getItem('salon_id'));
-    this.fromModal = this._navParams.get('status');
   }
 
   // load this function although callback button from next page
   ionViewDidEnter() {
+
+    // for back button hardwere (android)
+    this.plt.ready().then(() => {
+      this.plt.registerBackButtonAction(() => this.back());
+    })
 
     // clear and set today when callback from history page
     this.dateId = '';
@@ -120,9 +122,27 @@ export class BookingPage {
     this.getMonths();
   }
 
+  ionViewDidLoad() {
+    if (this.plt.is('ipad') || this.plt.is('tablet')) {
+      this.sliderMonth.slidesPerView = 7.5;
+      this.sliderDate.slidesPerView = 7.5;
+    } else {
+      this.sliderMonth.slidesPerView = 3.4;
+      this.sliderDate.slidesPerView = 3.4;
+    }
+
+    if (this.sliderTime !== undefined) {
+      if (this.plt.is('ipad') || this.plt.is('tablet')) {
+        this.sliderTime.slidesPerView = 7;
+      } else {
+        this.sliderTime.slidesPerView = 3;
+      }
+    }
+  }
+
   ngOnInit() {
     // Ionic scroll element
-    this.ionScroll = this._myElement.nativeElement.getElementsByClassName('scroll-content')[0];
+    this.ionScroll = this.myElement.nativeElement.getElementsByClassName('scroll-content')[0];
     // On scroll function
     this.ionScroll.addEventListener('scroll', () => {
       this.showheader = false;
@@ -130,81 +150,28 @@ export class BookingPage {
     });
   }
 
-  ionViewDidLoad() {
-    this.sliderMonth.slidesPerView = 3.4;
-    this.sliderDate.slidesPerView = 3.4;
-    if (this.sliderTime !== undefined) {
-      this.sliderTime.slidesPerView = 3;
-    }
-  }
-
   // get month during 1 year
   getMonths() {
-    this._loaderCtrl.showLoader().then(res => {
-      this._restapiServiceProvider.getMonths()
-        .subscribe(response => {
-          this._loaderCtrl.hideLoader();
-
-          this.dates = response.days;
-          this.months = response.months;
-
-          this.dayName = response.days[0].day;
-          this.monthName = response.months[0].month;
-
-          this.dateId = response.days[0].date;
-          this.monthId = response.months[0].month_id;
-          this.yearId = response.months[0].year;
-
-          this.setOperator(this.dateId, this.monthId, this.yearId)
-        },
-        (error) => {
-          this._loaderCtrl.hideLoader();
-          return this._toastCtrl.presentToast('non è riuscito a ottenere dati');
-        })
-    });
-  }
-
-  // set object data for passing to get treatment
-  setOperator(dateId, monthId, yearId) {
-
-    const datetimefull = dateId + '/' + monthId + '/' + yearId
-
-    const treatmentGetOperator = [
-      {
-        'treatment_id': this.treatmentParam.s_treatment_id,
-        'duration': this.treatmentParam.duration
-      }]
-
-    const data = { 'when': datetimefull, 'treatments': treatmentGetOperator }
-    this.getOperator(data)
-  }
-
-  // get oprator data
-  getOperator(data) {
-    this._loaderCtrl.showLoader().then(res => {
-      this._restapiServiceProvider.getOperator(data).subscribe(response => {
+    this._loaderCtrl.showLoader();
+    this._restapiServiceProvider.getMonths()
+      .subscribe(response => {
         this._loaderCtrl.hideLoader();
-        this.operatorArray = response.operators[0].operators;
-        if (response.operators[0].operators.length === 0) {
-          this.operators = null;
-          this.times = null;
-          this.nameOperator = null;
-          
-          return this._toastCtrl.presentToast('Nessuna disponibilità per il giorno selezionato')
-        } else {
-          // this.operators = response.operators[0].operators[0]
-          // this.times = response.operators[0].operators[0].hours
-          // this.nameOperator = response.operators[0].operators[0].operator_name
-        }
+        this.dates = response.days;
+        this.months = response.months;
+        this.dayName = response.days[0].day
+        this.monthName = response.months[0].month; // month date display
+        this.dateId = response.days[0].date;
+        this.monthId = response.months[0].month_id;
+        this.yearId = response.months[0].year;
+        this.setOperator(this.dateId, this.monthId, this.yearId)
 
-      }, (error) => {
+      },
+      (error) => {
+        // handle error
         this._loaderCtrl.hideLoader();
         return this._toastCtrl.presentToast('non è riuscito a ottenere dati');
       })
-    })
   }
-
-  // ----------------------------Event Click-------------------------------------
 
   onClickMonth(month) {
 
@@ -257,15 +224,65 @@ export class BookingPage {
 
   onClickTime(time) {
     this.changeColorTime = time.id;
-    this.timeId = time.hour
+    this.timeId = time.hour;
 
     this.showheader = true;
     this.hideheader = false;
+
   }
 
+  // set object data for passing to get treatment
+  setOperator(dateId, monthId, yearId) {
+
+    this._loaderCtrl.showLoader();
+
+    const datetimefull = dateId + '/' + monthId + '/' + yearId
+
+    const treatmentGetOperator = [
+      {
+        'treatment_id': this.treatmentParam.s_treatment_id,
+        'duration': this.treatmentParam.duration
+      }]
+
+    const data = { 'when': datetimefull, 'treatments': treatmentGetOperator }
+    this.getOperator(data)
+  }
+
+  // get oprator data
+  getOperator(data) {
+    this._restapiServiceProvider.getOperator(data).subscribe(response => {
+
+      this._loaderCtrl.hideLoader();
+      this.operatorArray = response.operators[0].operators;
+
+      // validate slider
+      this.operatorArray.map(o => {
+        if (this.plt.is('ipad') || this.plt.is('tablet')) {
+          o.slider = 7.4
+        } else {
+          o.slider = 3.4
+        }
+      })
+
+      if (response.operators[0].operators.length === 0) {
+        this.operators = null;
+        this.times = null;
+        this.nameOperator = null;
+        return this._toastCtrl.presentToast('Nessuna disponibilita per il giorno selezionato')
+      }
+
+    }, (error) => {
+      this._loaderCtrl.hideLoader();
+      return this._toastCtrl.presentToast('non è riuscito a ottenere dati');
+    })
+  }
 
   postOperator(operator) {
     this.operators = operator;
+  }
+  presentLogin(event) {
+    const loginModal = this._modalCtrl.create('LoginPage')
+    loginModal.present();
   }
 
   onSumbit() {
@@ -280,7 +297,7 @@ export class BookingPage {
           'year_id': this.yearId,
           'length': this.treatmentParam.duration,
           'from_where': 'android',
-          'salon_id': this.salon_id,
+          'salon_id': this.salonParam.salon_id,
           'price': this.treatmentParam.price,
           'discount_price': this.treatmentParam.price,
           'operator_id': this.operators.operator_id,
@@ -303,15 +320,14 @@ export class BookingPage {
           salon: this.salonParam,
           dataBooking: dataBooking,
           treatment: this.treatmentParam,
-          operators: this.operators, dataOther: dataOther,
-          status: this.fromModal
+          operators: this.operators, dataOther: dataOther
         })
     }
   }
 
-  list(ev) {
-    const listModal = this._modalCtrl.create('ListPage')
-    listModal.present();
+  back() {
+    this._loaderCtrl.hideLoader();
+    this.navCtrl.pop();
   }
 
 }
