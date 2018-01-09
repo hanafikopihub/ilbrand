@@ -55,7 +55,7 @@ export class LoginPage {
   }
   submitLogin() {
     if (this.loginData.email === '' || this.loginData.password === '') {
-      this._toastService.presentToast('controllare l\'input immesso')
+      this._toastService.presentToast('Completa con tutti i dati, grazie!')
     } else {
       this.doLogin();
     }

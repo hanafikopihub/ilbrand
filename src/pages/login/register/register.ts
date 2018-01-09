@@ -50,7 +50,7 @@ export class RegisterPage {
 
   doRegister() {
     if (!this.registerData.valid) {
-      this._toastService.presentToast('controllare l\'input immesso');
+      this._toastService.presentToast('Completa con tutti i dati, grazie!');
     } else {
       this._loader.showLoader().then(result => {
         this._tokenService.request({

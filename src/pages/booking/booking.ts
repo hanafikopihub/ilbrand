@@ -189,7 +189,8 @@ export class BookingPage {
           this.operators = null;
           this.times = null;
           this.nameOperator = null;
-          return this._toastCtrl.presentToast('Nessuna disponibilita per il giorno selezionato')
+          
+          return this._toastCtrl.presentToast('Nessuna disponibilità per il giorno selezionato')
         } else {
           // this.operators = response.operators[0].operators[0]
           // this.times = response.operators[0].operators[0].hours

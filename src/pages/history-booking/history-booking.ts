@@ -128,7 +128,7 @@ export class HistoryBookingPage {
     if (this.payoptionModel !== undefined) {
       this.onSubmit();
     } else {
-      this._alertService.failedError('controllare l\'input immesso')
+      this._alertService.failedError('Completa con tutti i dati, grazie!')
     }
   }
 
@@ -137,7 +137,7 @@ export class HistoryBookingPage {
       this.onSubmit();
     } else {
       this.showError = true;
-      this._alertService.failedError('controllare l\'input immesso')
+      this._alertService.failedError('Completa con tutti i dati, grazie!')
     }
   }
 
