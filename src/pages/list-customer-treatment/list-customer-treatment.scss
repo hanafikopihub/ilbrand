@@ -38,14 +38,17 @@ page-list-customer-treatment {
     color: grey;
   }
   .treatment-detail-label {
-    font-size: 14px;   
+    color: #D8D8D8;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400 !important;
+    font-family: 'Open Sans Semibold'; 
+
+    .active{
+      color: #10CBD2;
+      font-family: 'Open Sans Semibold';
+      font-weight: 400 !important;
     
-    .active {
-      b{
-        color: #10CBD2;
-        font-family: 'Open Sans Semibold';
-        font-weight: 400 !important;
-      }
     }
     .past{
       color: #9B9B9B;
@@ -62,6 +65,18 @@ page-list-customer-treatment {
 
   .active-treatment-list{
       margin-top: 15px;
+  }
+  
+  .row-treatment{
+    // margin-top: 15%;
+    font-size: 2.2em;
+    display: flex !important;
+    // justify-content: center !important;
+    // align-items: center !important;
+    // height: 100%;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
   }
 
   .old-treatment-list{
@@ -111,8 +126,9 @@ page-list-customer-treatment {
     color: grey;
     margin-top: 30px
   }
-  .treatment-list {
-    padding-left: 3% !important;
-    padding-right: 3% !important;
+  .md .col {
+    .treatment-detail-label {
+      font-size: 5px !important;
+    }
   }
 }

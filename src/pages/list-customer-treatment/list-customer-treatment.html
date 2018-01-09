@@ -20,16 +20,16 @@
         <ion-col col-10 style="padding-left: 0">
           <h6 class="treatment-title active">{{treatment.title}}</h6>
           <div class="treatment-detail-label">
-            <span class="active"><b>{{treatment.reservation_date}}</b></span> <span style="color: #D8D8D8;">ore</span> <span class="active"><b>{{treatment.reservation_hour}}</b></span>
+            <span class="active">{{treatment.reservation_date}}</span> ore <span class="active">{{treatment.reservation_hour}}</span>
           </div>
         </ion-col>
         <ion-col col-2>
-          <ion-icon name="ios-arrow-forward-outline" float-right style="font-size: 2.2em;"></ion-icon>
+          <ion-icon name="ios-arrow-forward-outline" class="row-treatment" float-right></ion-icon>
         </ion-col>
       </ion-row>
     </ion-grid>
   </div>
-  <ion-row padding-top class="treatment-head-section">PRENOTAZIONI TRASCORE</ion-row>
+  <ion-row padding-top class="treatment-head-section">PRENOTAZIONI TRASCORSE</ion-row>
   <hr style="height: 1px;" />
   <div class="old-treatment-list">
     <ion-grid *ngFor="let treatment of pastTreatment" style="padding: 0; padding-bottom: 13px" class="treatment-list">
@@ -38,12 +38,12 @@
           <h6 class="treatment-title">
             <span class="past">{{treatment.title}}</span>
           </h6>
-          <div class="treatment-detail-label">
-            <span class="past">{{treatment.reservation_date}} ore {{treatment.reservation_hour}}</span>
+          <div class="treatment-detail-label past">
+            {{treatment.reservation_date}} ore {{treatment.reservation_hour}}
           </div>
         </ion-col>
         <ion-col col-2>
-          <ion-icon name="ios-arrow-forward-outline" float-right style="font-size: 2.2em;color: #9B9B9B;"></ion-icon>
+          <ion-icon name="ios-arrow-forward-outline" class="row-treatment" float-right style="color: #9B9B9B;"></ion-icon>
         </ion-col>
       </ion-row>
     </ion-grid>
