@@ -14,7 +14,7 @@
 
 <ion-content>
     <ion-grid *ngFor="let treatment of treatments" class="content-style">
-        <ion-row >
+        <ion-row class="content-style-margin" >
           <ion-col col-9>
             <div class="treatment-info-title">{{treatment.des_treatment}}</div>
             <div class="treatment-info">
@@ -31,7 +31,8 @@
         </ion-row>
         <ion-row>
           <ion-col style="padding-left: 6%;padding-right: 6%;">
-            <div style="box-sizing: border-box; height: 1px;border: 0.6px solid #D8D8D8;"></div>
+            <!-- <div style="box-sizing: border-box; height: 1px;border: 0.6px solid #D8D8D8;"></div> -->
+            <hr>
           </ion-col>
         </ion-row>
       </ion-grid>

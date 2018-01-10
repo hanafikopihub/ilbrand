@@ -330,4 +330,8 @@ export class BookingPage {
     this.navCtrl.pop();
   }
 
+  list(ev) {
+    const listModal = this._modalCtrl.create('ListPage')
+    listModal.present();
+  }
 }
