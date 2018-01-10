@@ -14,47 +14,45 @@
 
 <ion-content>
   <div class="" padding style="padding-right:0 !important">
-    <ion-slides #sliderMonth >
+    <ion-slides #sliderMonth>
       <ion-slide *ngFor="let month of months" [class.changebutton]="setColorMonth === month.id">
         <button tappable class="btn-slide-month" ion-button [class.active]="changeColorMonth === month.id" ion-button (click)="onClickMonth(month)">
-        <span  [class.active-text-month]="changeColorMonth === month.id" style="font-size:13px;">{{month.month}}</span>
+          <span [class.active-text-month]="changeColorMonth === month.id" style="font-size:13px;">{{month.month}}</span>
         </button>
       </ion-slide>
     </ion-slides>
-    <ion-slides  #sliderDate>
-    <ion-slide *ngFor="let date of dates" [class.changebutton]="setColorDate === date.id">
-     
-      <button tappable class="btn-slide-date" ion-button [class.active]="changeColorDate === date.id" (click)="onClickDate(date)">
-          <ion-row>
-                <div class="text-day" [class.active-text-day]="changeColorDate === date.id">{{date.shortDay}}</div>
-            
-                <div class="text-date" [class.active-text]="changeColorDate === date.id">{{date.date}}</div>
-          </ion-row>
-        </button>
-      </ion-slide>
-    </ion-slides> 
-    <div class="text-title-operator">OPERATORI DISPONIBILI</div>
+    <ion-slides #sliderDate>
+      <ion-slide *ngFor="let date of dates" [class.changebutton]="setColorDate === date.id">
 
-    <div [hidden]="hideTime" *ngFor="let operator of operatorArray">
-    <div>
-      <ion-label  class="text-title-operator-name">{{operator.operator_name | uppercase}}</ion-label>
-    </div>
-    <ion-slides #sliderTime slidesPerView="3.4" (click)="postOperator(operator)">
-      <ion-slide *ngFor="let time of operator.hours">
-        <button tappable class="btn-slide-time" ion-button [class.active]="changeColorTime === time.id" (click)="onClickTime(time)">
-        <div [class.active-text-time]="changeColorTime === time.id" style="font-family: 'Open Sans Bold';">{{time.hour}}</div>  
+        <button tappable class="btn-slide-date" ion-button [class.active]="changeColorDate === date.id" (click)="onClickDate(date)">
+          <div>
+            <div class="text-day" [class.active-text-day]="changeColorDate === date.id">{{date.shortDay}}</div>
+            <div class="text-date" [class.active-text]="changeColorDate === date.id">{{date.date}}</div>
+          </div>
         </button>
       </ion-slide>
+
     </ion-slides>
-    {{opeartorNameProvider}}
+
+    <div class="text-title-operator" padding-right>OPERATORI DISPONIBILI</div>
+    <div [hidden]="hideTime" *ngFor="let operator of operatorArray" class="operator-with-hour-list">
+      <div>
+        <ion-label class="text-title-operator-name">{{operator.operator_name | uppercase}}</ion-label>
+      </div>
+      <ion-slides tappable #sliderTime slidesPerView="{{operator.slider}}" (click)="postOperator(operator)">
+        <ion-slide *ngFor="let time of operator.hours">
+          <button tappable class="btn-slide-time" ion-button [class.active]="changeColorTime === time.id" (click)="onClickTime(time)">
+            <div [class.active-text-time]="changeColorTime === time.id" style="font-family: 'Open Sans Bold';">{{time.hour}}</div>
+          </button>
+        </ion-slide>
+      </ion-slides>
+      {{opeartorNameProvider}}
     </div>
   </div>
 </ion-content>
 
 <ion-footer [ngClass]="{'hide-header':showheader,'show-header':hideheader}">
-  
-    <ion-row style="padding-left:20px; padding-right:20px;">
-      <button tappable text-center ion-button color="danger" (click)=onSumbit() class="btn-next">PROSEGUI</button>
-    </ion-row>
-  
-  </ion-footer>
+  <ion-row style="padding-left:20px; padding-right:20px;">
+    <button tappable text-center ion-button color="danger" (click)=onSumbit() class="btn-next">PROSEGUI</button>
+  </ion-row>
+</ion-footer>

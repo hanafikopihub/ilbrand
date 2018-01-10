@@ -25,7 +25,7 @@
       <span class="treatment-name">{{salon.name}}</span>
     </ion-row>
     <ion-row class="salon-address">
-      {{salon.address}}
+      {{salon.address}}, {{salon.city}}
     </ion-row>
     <div style="padding-top: 11px">
       <span class="con-operatore">con operatore</span>
@@ -36,28 +36,28 @@
   <div>
 
     <ion-row padding class="total-style">
-        <ion-col col-3>
-          <span> totale</span>
-        </ion-col>
-        <ion-col col-9 class="total-value">
-            <div><b>&#8364; {{treatmentParam.price}}</b></div>
-        </ion-col>
-        <ion-col col-12 class="pay-option">
-          <div>{{optionPay}}</div>
-        </ion-col>
-      </ion-row>
+      <ion-col col-3>
+        <span> totale</span>
+      </ion-col>
+      <ion-col col-9 class="total-value">
+          <div><b>&#8364; {{treatmentParam.price}}</b></div>
+      </ion-col>
+      <ion-col col-12 class="pay-option">
+        <div>{{optionPay}}</div>
+      </ion-col>
+    </ion-row>
+
     <ion-grid padding>
       <div class="content-page">
-        <p>Riceverai una conferma via email all'indirizzo con cui ti sei registrato (francesco.ambrosiano@gmail.com).</p>
+        <p>Riceverai una conferma via email all'indirizzo con cui ti sei registrato ({{userBookingEmail}}).</p>
         <p>Si prega di prenotare in modo responsabile. E molto grave per i saloni quando non ti presenti ad un appuntamento.
           Certo, possono capitare degli imprevisti urgenti, quindi se sei impossibilitato andare all'appuntamento sii cortese
           e annullalo dalla sezione 'prenotazioni' del tuo profilo.</p>
       </div>
     </ion-grid>
     <ion-row padding>
-      <button tappable text-center ion-button color="danger" class="btn-create-reminder bold" (click)="SaveToCalendar()">CREA PROMEMORIA</button>
-      <button tappable text-center ion-button class="btn-new-reservation bold" (click)="toHomePage()">NUOVA PRENOTAZIONE</button>
-      
+      <button text-center ion-button color="danger" class="btn-create-reminder bold" (click)="SaveToCalendar()">CREA PROMEMORIA</button>
+      <button text-center ion-button class="btn-new-reservation bold" [navPush]="'HomePage'">NUOVA PRENOTAZIONE</button>
     </ion-row>
   </div>
 </ion-content>

@@ -18,7 +18,7 @@
     <div class="treatment-name">{{treatmentParam.des_treatment}}</div>
     <div class="treatment-time">
       <span class="customer-value">
-        <b>{{dataOther.dayName}} {{dataOther.date}} {{dataOther.monthName}}</b>
+        {{dataOther.dayName}} {{dataOther.date}} {{dataOther.monthName}}
       </span> ore
       <span class="customer-value">{{dataOther.time}}</span>
     </div>
@@ -26,18 +26,18 @@
 
   <div padding-left padding-right>
     <hr>
-  </div>  
+  </div>
   <div padding-left padding-right class="treatment-info-salon-detail">
     <ion-row>
       <span class="treatment-name">{{salon.name}}</span>
     </ion-row>
     <ion-row class="treatment-info-salon-address">
-      {{salon.address}}
+      {{salon.address}}, {{salon.city}}
     </ion-row>
     <div style="margin-top: 15px">
       <span class="con-operatore">con operatore</span>
       <span class="operator-value">
-        {{operatorParam.operator_name | uppercase}}
+        {{operatorParam.operator_name}}
       </span>
     </div>
   </div>
@@ -46,7 +46,7 @@
 
     <div class="total-style">
       <div padding>
-        <span class="gray-text"> totale</span>
+        <span class="total-label"> totale</span>
         <span class="total-value">&#8364; {{treatmentParam.price}}</span>
       </div>
     </div>
@@ -58,7 +58,7 @@
             <img src="{{payoption.image}}" style="width:50px; height:50px;">
           </div>
           <div>
-            <ion-radio disabled="{{payoption.disable}}" mode="md" value="{{payoption.id}}"></ion-radio>
+            <ion-radio mode="md" disabled="{{payoption.disable}}" value="{{payoption.id}}"></ion-radio>
           </div>
         </ion-col>
       </ion-row>
@@ -66,46 +66,44 @@
 
     <div *ngIf="!showFormEmail">
       <form [formGroup]="entryForm">
-      <div class="email-form-style" padding>Per completare la prenotazione ci servono alcuni dati. In questo modo potremo contattarti in caso di necessita e il
-        salone avra i tuoi riferimenti per eventuali comunicazioni.
-      </div>
-      <div padding>
-
-        <div>
-          <div class="label-registrasi">Sei già registrato?</div>
-          <div class="btn-text-register">
-            <button tappable text-center ion-button block class="bold btn-register" (click)="toLogin()">ACCEDI</button>
-          </div>
-          <div class="label-registrasi">Non sei registrato?</div>
-          <div class="text-reservation">
-              Inserisci i tuoi dati per completare la prenotazione
-          </div>
+        <div class="email-form-style" padding>Per completare la prenotazione ci servono alcuni dati. In questo modo potremo contattarti in caso di necessita e
+          il salone avra i tuoi riferimenti per eventuali comunicazioni.
         </div>
+        <div padding >
+          <div>
+            <div class="label-registrasi">Sei già registrato?</div>
+            <div class="btn-text-register">
+              <button tappable text-center ion-button block class="bold btn-register" (click)="toLogin()">ACCEDI</button>
+            </div>
+            <div class="label-registrasi">Non sei registrato?</div>
+            <div class="text-reservation">
+                Inserisci i tuoi dati per completare la prenotazione
+            </div>
+          </div>
+          <ion-col>
+            <ion-label style="margin-top:0 !important; padding-top:0 !important;" class="label-form" stacked>Il tuo nome</ion-label>
+            <ion-input type="text" class="email-border-input" required formControlName="name"></ion-input>
+            <div *ngIf="showError && entryForm.controls.name.value === '' " style="color:red; font-size: 12px;">*Questo campo è richiesto</div>
+          </ion-col>
 
-        <ion-col>
-          <ion-label class="label-form" stacked>Il tuo nome</ion-label>
-          <ion-input type="text" class="email-border-input" required formControlName="name"></ion-input>
-          <div *ngIf="showError && entryForm.controls.name.value === '' " style="color:red; font-size: 12px;">*Questo campo è richiesto</div>
-        </ion-col>
+          <ion-col>
+            <ion-label class="label-form" stacked>Il tuo indirizzo email</ion-label>
+            <ion-input class="email-border-input" type="email" required formControlName="email"></ion-input>
+            <div *ngIf="showError && entryForm.controls.email.value === '' " style="color:red; font-size: 12px;">*Questo campo è richiesto</div>
+            <div *ngIf="entryForm.controls.email.errors?.email " style="color:red; font-size: 12px;">*Formato email non corretto</div>
+          </ion-col>
 
-        <ion-col>
-          <ion-label class="label-form" stacked>Il tuo indirizzo email</ion-label>
-          <ion-input class="email-border-input" type="email" required formControlName="email"></ion-input>
-          <div *ngIf="showError && entryForm.controls.email.value === '' " style="color:red; font-size: 12px;">*Questo campo è richiesto</div>
-          <div *ngIf="entryForm.controls.email.errors?.email " style="color:red; font-size: 12px;">*Formato email non corretto</div>
-        </ion-col>
-
-        <ion-col>
-          <ion-label class="label-form" stacked>Il tuo numero di telefono</ion-label>
-          <ion-input class="email-border-input" type="tel" required formControlName="phone"></ion-input>
-          <div *ngIf="showError && entryForm.controls.phone.value === '' " style="color:red; font-size: 12px;">*Questo campo è richiesto</div>
-        </ion-col>
-      </div>
+          <ion-col>
+            <ion-label class="label-form" stacked>Il tuo numero di telefono</ion-label>
+            <ion-input class="email-border-input" type="tel" required formControlName="phone"></ion-input>
+            <div *ngIf="showError && entryForm.controls.phone.value === '' " style="color:red; font-size: 12px;">*Questo campo è richiesto</div>
+          </ion-col>
+        </div>
       </form>
     </div>
 
     <div padding>
-      <button tappable text-center ion-button block color="danger" class="conferma" class="conferma" (click)="onSave()">CONFERMA PRENOTAZIONE</button>
+      <button tappable text-center ion-button block color="danger" class="conferma" (click)="onSave()">CONFERMA PRENOTAZIONE</button>
     </div>
   </div>
 </ion-content>

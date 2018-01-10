@@ -13,7 +13,7 @@ page-history-booking {
         line-height: 19px;
     }
     hr {
-        height: 1.91px;
+        height: 1px;
         border: 0.5px solid #D8D8D8;
         margin-top: 0;
     }
@@ -21,8 +21,19 @@ page-history-booking {
         font-size: 18px;
         float: right;
         color: #FF4653 !important;
-        font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        line-height: 24px;
+        font-family: 'Open Sans Semibold'
     }
+    .conferma {
+        .button-inner {
+            font-family: 'Open Sans Semibold';
+            font-size: 15px;
+            font-weight: 400 !important;
+            line-height: 20px;
+        }
+    }
+
     .text-pay {
         font-family: 'Open Sans Regular', Arial, Helvetica, sans-serif;
     }
@@ -37,6 +48,7 @@ page-history-booking {
         margin-bottom: -5px;
     }
     .treatment-name {
+        font-weight: 400 !important;
         font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
         font-size: 16px;
         color: #4A4A4A;
@@ -65,8 +77,8 @@ page-history-booking {
     }
     .customer-value {
         color: #08d9f5;
-        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-        font-weight: 600;
+        font-weight: 400 !important;
+        font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
     }
     .operator-value {
         font-weight: 400 !important;
@@ -79,7 +91,7 @@ page-history-booking {
         background-color: #F9F6F6;
     }
     .email-form-style {
-        background-color: #F9F6F6;
+        background-color: #F5F5F0;
         font-family: 'Open Sans Semibold Italic';
         color: #4A4A4A;
         font-size: 14px;
@@ -87,11 +99,11 @@ page-history-booking {
     .treatment-time {
         font-size: 16px;
         line-height: 22px;
+        font-weight: 400 !important;
+        font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
     }
     .gray-text {
-        color: #4A4A4A;
-        font-size: 16px;
-        line-height: 22px;
+        font-size: 17px;
         font-family: 'Open Sans Regular', Arial, Helvetica, sans-serif;
     }
     .size-radio-btn {
@@ -119,7 +131,7 @@ page-history-booking {
     .radio-md .radio-icon {
         width: 25px;
         height: 25px;
-        border-color: #10cbd2;
+        border-color: rgba(28, 28, 28, 0.82);
     }
     .radio-md .radio-checked {
         border-color: #08d9f5;
@@ -151,6 +163,11 @@ page-history-booking {
         margin-left: 6px;
         margin-right: 6px;
     }
+    .total-label {
+        color: #4A4A4A;
+        font-size: 16px;
+        line-height: 22px;
+    }
     .email-border-input {
         border-radius: 4px;
         background-color: #FFFFFF;
@@ -165,9 +182,9 @@ page-history-booking {
     }
     .label-registrasi {
         color: #4A4A4A;
-        font-family: "Open Sans";
+        font-family: "Open Sans Semibold";
         font-size: 16px;
-        font-weight: bold;
+        font-weight: 400 !important;
         line-height: 22px;
     }
     .btn-text-register {
@@ -181,26 +198,22 @@ page-history-booking {
     .btn-register {
         border-radius: 5px;
         background-color: #10CBD2;
+        .button-inner {
+            font-family: 'Open Sans Semibold';
+            font-weight: 400 !important;
+        }
     }
     .text-reservation {
         color: #9B9B9B !important;
-        font-family: "Open Sans";
+        font-family: "Open Sans Semibold";
         font-size: 14px;
-        line-height: 22px;
-        font-weight: bold;
+        line-height: 20px;
+        font-weight: 400 !important;
     }
     .disable-text {
         color: #c7c7c7;
     }
-    .conferma {
-        .button-inner {
-            font-family: 'Open Sans Semibold';
-            font-size: 15px;
-            font-weight: 400 !important;
-            line-height: 20px;
-        }
-    }
-    .content-md hr {
-        height: 1px;
+    .button {
+      height: 4.6rem;
     }
 }

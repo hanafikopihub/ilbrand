@@ -1,4 +1,11 @@
 page-booking {
+    .button-md {
+        text-transform: none;
+    }
+    .back-button.show-back-button {
+        display: inline-block;
+        position: absolute;
+    }
     form,
     input,
     optgroup,
@@ -26,23 +33,22 @@ page-booking {
     }
     .btn-slide-month {
         width: 90%;
-
-        .button-inner{
-          span{
-            font-family: 'Open Sans Semibold';
-            font-weight: 400 !important;
-            font-size: 13px;
-          }
-
+        .button-inner {
+            span {
+                font-family: 'Open Sans Semibold';
+                font-weight: 400 !important;
+                font-size: 10px;
+            }
         }
     }
     .btn-slide-date {
         width: 90%;
         height: 90px !important;
         border: none;
-        float: center;
+        font-family: 'Open Sans Light', Arial, Helvetica, sans-serif;
     }
     .btn-slide-date .text-day {
+        width: 100%;
         font-size: 100%;
         text-align: left;
         color: #9B9B9B;
@@ -82,7 +88,15 @@ page-booking {
     .text-title-operator-name {
         font-family: 'Open Sans Semibold', Arial, Helvetica, sans-serif;
         font-size: 16px;
-        margin-bottom: 0;
+        margin-top: 0 !important;
+    }
+    .operator-with-hour-list {
+        padding-top: 14px;
+        padding-bottom: 14px;
+        border-bottom: 0.6px solid #D8D8D8;
+    }
+    .operator-with-hour-list:last-child {
+        border-bottom: none;
     }
     .btn-slide-time {
         width: 90%;
@@ -93,17 +107,6 @@ page-booking {
         color: #D7D7D7;
         font-size: 12px;
         margin-top: -10px;
-    }
-    .swiper-slide-active {
-        .button-default {
-            // border-radius: 8px;
-            // background-color: #00CED4;
-            // border: none;
-        }
-    }
-    .button-default.activated {
-        // background-color: #00CED4;
-        // background-color: red;
     }
     .active {
         background-color: #00CED4;
@@ -139,6 +142,12 @@ page-booking {
         border: none;
         background-color: #f65c5c;
         color: #FFFFFF;
+        .button-inner {
+            font-weight: 400 !important;
+            font-family: 'Open Sans Semibold';
+            font-size: 16px;
+            line-height: 20px;
+        }
     }
     .bar-buttons-md[right] {
         text-align: right;
@@ -159,6 +168,9 @@ page-booking {
     .active-select {
         width: 10px;
     }
+    ion-fab {
+        width: 100%;
+    }
     .scroll-content {
         bottom: -56px !important;
         padding-bottom: 30px !important;
@@ -170,8 +182,5 @@ page-booking {
     .show-header {
         transition: bottom 0.25s ease;
         bottom: -53px !important;
-    }
-    .button-md {
-        text-transform: none;
     }
 } 

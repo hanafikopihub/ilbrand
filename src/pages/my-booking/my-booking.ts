@@ -3,6 +3,7 @@ import { NavController, NavParams, Platform, IonicPage } from 'ionic-angular';
 
 import { Calendar } from '@ionic-native/calendar';
 import { ToastService } from '../../providers/shared-service/toast-service';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 @IonicPage()
 @Component({
@@ -18,11 +19,13 @@ export class MyBookingPage {
   salon: any;
   optionPay: any;
   fromModal: boolean = false;
+  userBookingEmail: any;
 
   constructor(
     public platform: Platform,
     private _calendar: Calendar,
     public navCtrl: NavController,
+    public _authServiceProvider: AuthServiceProvider,
     public _toastService: ToastService,
     public navParams: NavParams) {
 
@@ -36,6 +39,13 @@ export class MyBookingPage {
 
     if (this.optionPay === 'Paga in salone') {
       this.optionPay = 'Pagherai in salone'
+    }
+
+    if (this._authServiceProvider.userSignedIn) {
+      this.userBookingEmail = this._authServiceProvider.currentAuthData.uid
+     
+    } else {
+      this.userBookingEmail = this.dataBooking['visitor_email'];
     }
   }
 
