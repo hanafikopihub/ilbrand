@@ -20,6 +20,11 @@
     color: #4A4A4A !important;
 }
 
+.loading-content {
+    font-family: 'Open Sans Semibold';
+    font-weight: 400 !important;
+}
+
 @font-face {
     font-family: 'Merriweather Regular';
     font-style: normal;
@@ -350,10 +355,12 @@ ion-icon {
 }
 
 .button-inner {
-    font-family: 'Open Sans Semibold';
+    font-family: 'Open Sans';
     font-weight: 400;
     b {
-        font-family: 'Open Sans Semibold';
+        font-family: 'Open Sans';
+        font-weight: 600;
+        letter-spacing: 0;
     }
 } // Set Default Header
 .default-navbar {

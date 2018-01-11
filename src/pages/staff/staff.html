@@ -16,7 +16,7 @@
   <ion-grid no-padding>
     <span *ngFor="let staff of staffs">
       <ion-row no-padding>
-        <img src="{{staff.image}}" width="100%" height="10%">
+        <div class="image-staff" [style.background-image]="'url(' + staff.image + ')'"></div>
       </ion-row>
       <ion-row padding>
         <div class="title-content">
