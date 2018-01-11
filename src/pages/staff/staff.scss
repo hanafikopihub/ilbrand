@@ -1,10 +1,18 @@
 page-staff {
+    .image-staff{
+        background-repeat:no-repeat;
+        background-size: cover;
+        background-position:center;
+        height:40vh !important; 
+        width: 100%; 
+    }
     p {
         color: #666;
     }
     .title-content {
         color: #4A4A4A;
         font-size: 18px;
+        width: 100%;
     }
     #privacy-help {
         margin-top: 15px;

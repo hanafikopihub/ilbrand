@@ -33,11 +33,14 @@ page-home {
     }
     #title-city {
         color: #4A4A4A;
-        font-family: "Open Sans";
         font-size: 14px;
-        font-weight: bold;
         line-height: 18px;
         text-align: center;
+        b{
+            font-family: "Open Sans";
+            font-weight: 600;
+            letter-spacing: 0;
+        }
     }
     #content-address {
         color: #4A4A4A;
