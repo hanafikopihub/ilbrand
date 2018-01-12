@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController, NavController, NavParams } from 'ionic-angular';
+import { Events, ModalController, NavController, NavParams } from 'ionic-angular';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { LoaderService } from '../../providers/shared-service/loader-service';
 import { AlertService } from '../../providers/shared-service/alert-service';
@@ -14,6 +14,7 @@ export class ListTreatmentPage {
   salon: any;
   salon_id: string;
   fromModal: boolean = false;
+  scrollStatus: string;
   treatments: Array<any>
   addTreatments: Array<any> = [];
   constructor(
@@ -21,8 +22,15 @@ export class ListTreatmentPage {
     public _loaderCtrl: LoaderService,
     public _navCtrl: NavController,
     public _navParams: NavParams,
+    public _events: Events,
     public _modalCtrl: ModalController,
     public _restapiServiceProvider: RestapiServiceProvider) {
+
+    _events.subscribe('page:scroll', (data) => {
+      this.scrollStatus = data;
+    });
+
+    this.scrollStatus = 'can-scroll';
 
     this.salon_id = JSON.parse(localStorage.getItem('salon_id'));
 
@@ -31,6 +39,7 @@ export class ListTreatmentPage {
   }
 
   list(ev) {
+    this.scrollStatus = 'no-scroll';
     const listModal = this._modalCtrl.create('ListPage')
     listModal.present();
   }

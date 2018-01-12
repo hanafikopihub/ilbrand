@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginPage } from '../login/login';
-import { ListCustomerTreatment } from '../list-customer-treatment/list-customer-treatment'
-import { ViewController, NavController, NavParams, ModalController, LoadingController, ToastController } from 'ionic-angular';
+import { ListCustomerTreatment } from '../list-customer-treatment/list-customer-treatment';
+import { Events,ViewController, NavController, NavParams, ModalController, LoadingController, ToastController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { Angular2TokenService } from 'angular2-token';
 import { IonicPage } from 'ionic-angular/navigation/ionic-page';
@@ -27,6 +27,7 @@ export class ListPage {
     public _viewController: ViewController,
     private _loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
+    public events: Events,
     public _authServiceProvider: AuthServiceProvider) {
     //  this.isSignedIn = this._authServiceProvider.userSignedIn
 
@@ -104,6 +105,7 @@ export class ListPage {
   }
 
   closeModal() {
+    this.events.publish('page:scroll', 'can-scroll')
     this._viewController.dismiss();
   }
 }

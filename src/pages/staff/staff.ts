@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewController, NavController, ModalController } from 'ionic-angular';
+import { Events, ViewController, NavController, ModalController } from 'ionic-angular';
 
 import { AlertService } from '../../providers/shared-service/alert-service';
 import { LoaderService } from '../../providers/shared-service/loader-service';
@@ -23,7 +23,14 @@ export class StaffPage {
     public _alertCtrl: AlertService,
     public _restapiServiceProvider: RestapiServiceProvider,
     public _modalCtrl: ModalController,
+    public _events: Events,
     public _viewController: ViewController) {
+
+    _events.subscribe('page:scroll', (data) => {
+      this.scrollStatus = data;
+    });
+
+    this.scrollStatus = 'can-scroll';
     
     this.salon_id = JSON.parse(localStorage.getItem('salon_id'));
     this.staffs = [
@@ -67,6 +74,7 @@ export class StaffPage {
   }
 
   list(ev) {
+    this.scrollStatus = 'no-scroll';
     const listModal = this._modalCtrl.create('ListPage')
     listModal.present();
   }

@@ -12,7 +12,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="{{scrollStatus}}" style="background: #fff">
   <ion-row>
     <ion-slides [hidden]="salon?.salon_image_gallery?.length === 1" *ngIf="true" pager="true">
       <ion-slide *ngFor="let salon of salon?.salon_image_gallery">

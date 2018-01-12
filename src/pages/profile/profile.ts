@@ -1,6 +1,6 @@
 
 import { Component } from '@angular/core';
-import { ViewController, NavController, ModalController } from 'ionic-angular';
+import { Events, ViewController, NavController, ModalController } from 'ionic-angular';
 import { Angular2TokenService } from 'angular2-token';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
@@ -23,6 +23,8 @@ export class ProfilePage {
   number: string;
   name: string;
 
+  scrollStatus: string;
+
   isSignedIn: boolean;
   showPhoneForm: boolean = false;
   showPasswordForm: boolean = false;
@@ -35,12 +37,18 @@ export class ProfilePage {
     public _restapiServiceProvider: RestapiServiceProvider,
     private _toastCtrl: ToastService,
     public _loaderCtrl: LoaderService,
+    public _events: Events,
     private _tokenService: Angular2TokenService) {
     this._tokenService.init({
       apiBase: AppApi.BASE_API_URL,
       apiPath: '/api/v1'
     });
     this.isSignedIn = this._authServiceProvider.userSignedIn;
+    _events.subscribe('page:scroll', (data) => {
+      this.scrollStatus = data;
+    });
+
+    this.scrollStatus = 'can-scroll';
   }
 
   ionViewDidEnter() {
@@ -108,6 +116,7 @@ export class ProfilePage {
   }
 
   list(ev) {
+    this.scrollStatus = 'no-scroll';
     const listModal = this.modalCtrl.create('ListPage')
     listModal.present();
   }

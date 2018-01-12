@@ -11,7 +11,7 @@ import {
 
 // libary local
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-import { IonicPage, Platform } from 'ionic-angular';
+import { IonicPage, Platform, Events } from 'ionic-angular';
 
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { AlertService } from '../../providers/shared-service/alert-service';
@@ -35,6 +35,8 @@ export class BookingPage {
   operators: any;
   nameOperator: any;
   nameOperatorClick: any;
+
+  scrollStatus: string;
 
   // variable for modification style
   changeColorTime: any;
@@ -76,18 +78,25 @@ export class BookingPage {
     public _modalCtrl: ModalController,
     public _navController: NavController,
     public _navParams: NavParams,
+    public _events: Events,
     public _restapiServiceProvider: RestapiServiceProvider,
     public plt: Platform
   ) {
 
     this.showheader = false;
     this.hideheader = true;
+
+    this.scrollStatus = 'can-scroll';
     // sign login or logout
     this.isSignedIn = this._authServiceProvider.userSignedIn
 
     // get data from paramater
     this.salonParam = this._navParams.get('salon');
     this.treatmentParam = this._navParams.get('treatment');
+
+    _events.subscribe('page:scroll', (data) => {
+      this.scrollStatus = data;
+    });
   }
 
   // load this function although callback button from next page
@@ -331,6 +340,7 @@ export class BookingPage {
   }
 
   list(ev) {
+    this.scrollStatus = 'no-scroll';
     const listModal = this._modalCtrl.create('ListPage')
     listModal.present();
   }

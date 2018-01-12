@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { LoaderService } from '../../providers/shared-service/loader-service';
-import { NavController, ViewController, ModalController } from 'ionic-angular';
+import { NavController, ViewController, ModalController, Events } from 'ionic-angular';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { AlertService } from '../../providers/shared-service/alert-service';
 import { IonicPage } from 'ionic-angular/navigation/ionic-page';
@@ -18,15 +18,21 @@ export class ContactPage {
   map: any;
   salon_id: string;
   contact: object;
+  scrollStatus: string;
 
   constructor(
     public _loaderCtrl: LoaderService,
     public navCtrl: NavController,
     public _viewController: ViewController,
     public _alertCtrl: AlertService,
+    public _events: Events,
     public _restapiServiceProvider: RestapiServiceProvider,
     public _modalCtrl: ModalController) {
     this.salon_id = JSON.parse(localStorage.getItem('salon_id'));
+    this.scrollStatus = 'can-scroll';
+    _events.subscribe('page:scroll', (data) => {
+      this.scrollStatus = data;
+    });
   }
 
   ionViewDidLoad() {
@@ -65,6 +71,7 @@ export class ContactPage {
   }
 
   list(ev) {
+    this.scrollStatus = 'no-scroll';
     const listModal = this._modalCtrl.create('ListPage')
     listModal.present();
   }
