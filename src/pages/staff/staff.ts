@@ -16,6 +16,7 @@ export class StaffPage {
   salon_id: string;
   staff: object;
   staffs: Array<any>;
+  scrollStatus: string;
 
   constructor(
     public _loaderCtrl: LoaderService,
