@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="" padding style="padding-right:0 !important">
+  <div class="{{scrollStatus}}" padding style="background: #fff;padding-right:0 !important">
     <ion-slides #sliderMonth>
       <ion-slide *ngFor="let month of months" [class.changebutton]="setColorMonth === month.id">
         <button tappable class="btn-slide-month" ion-button [class.active]="changeColorMonth === month.id" ion-button (click)="onClickMonth(month)">

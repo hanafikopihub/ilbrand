@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginPage } from '../login/login';
-import { ListCustomerTreatment } from '../list-customer-treatment/list-customer-treatment'
-import { ViewController, NavController, NavParams, ModalController, LoadingController, ToastController } from 'ionic-angular';
+import { ListCustomerTreatment } from '../list-customer-treatment/list-customer-treatment';
+import { Events, ViewController, NavController, NavParams, ModalController, LoadingController, ToastController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { Angular2TokenService } from 'angular2-token';
 import { IonicPage } from 'ionic-angular/navigation/ionic-page';
@@ -27,6 +27,7 @@ export class ListPage {
     public _viewController: ViewController,
     private _loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
+    public events: Events,
     public _authServiceProvider: AuthServiceProvider) {
     //  this.isSignedIn = this._authServiceProvider.userSignedIn
 
@@ -34,7 +35,7 @@ export class ListPage {
 
   ionViewDidEnter() {
     const from = this._navParams.get('fromPage');
-    if ( from === 'HistoryBookingPage') {
+    if (from === 'HistoryBookingPage') {
       this.isHistoryPage = true;
     }
     if (this._authServiceProvider.currentAuthData === undefined || this._authServiceProvider.currentAuthData === null) {
@@ -58,7 +59,7 @@ export class ListPage {
   }
 
   goListTreatment() {
-    this._navCtrl.push('ListTreatmentPage', {'status' : true})
+    this._navCtrl.push('ListTreatmentPage', { 'status': true })
   }
 
   doLogout() {
@@ -104,6 +105,7 @@ export class ListPage {
   }
 
   closeModal() {
+    this.events.publish('page:scroll', 'can-scroll')
 
     // condition when user login in history page, then page reload ( cause problem 2 must step back)
     if (this.isHistoryPage) {

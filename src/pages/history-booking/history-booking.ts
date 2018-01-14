@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { IonicPage, ModalController, NavParams, NavController, Platform } from 'ionic-angular';
+import { IonicPage, ModalController, NavParams, NavController, Platform, Events } from 'ionic-angular';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { LoaderService } from '../../providers/shared-service/loader-service';
 import { AlertService } from '../../providers/shared-service/alert-service';
@@ -33,6 +33,7 @@ export class HistoryBookingPage {
   bookingVisitor;
 
   payoption: any;
+  scrollStatus: string;
   payoptionModel: any;
 
   treatment: any
@@ -49,6 +50,7 @@ export class HistoryBookingPage {
     public _loaderCtrl: LoaderService,
     public _alertService: AlertService,
     public _authServiceProvider: AuthServiceProvider,
+    public _events: Events,
     public _restapiServiceProvider: RestapiServiceProvider) {
 
     this.treatmentParam = this._navParams.get('treatment');
@@ -57,6 +59,12 @@ export class HistoryBookingPage {
     this.dataOther = this._navParams.get('dataOther');
     this.salon = this._navParams.get('salon');
     this.fromModal = this._navParams.get('status');
+
+    _events.subscribe('page:scroll', (data) => {
+      this.scrollStatus = data;
+    });
+
+    this.scrollStatus = 'can-scroll';
 
     this.payOptions = [
       { 'id': '1', 'option': 'Paga in salone', 'image': 'assets/icon/shop_icon/shop_icon-AppStore.png', 'disable': false },
@@ -108,7 +116,8 @@ export class HistoryBookingPage {
   }
 
   list(ev) {
-    const listModal = this._modalCtrl.create('ListPage', { 'fromPage': 'HistoryBookingPage' })
+    this.scrollStatus = 'no-scroll';
+    const listModal = this._modalCtrl.create('ListPage', {'fromPage': 'HistoryBookingPage'})
     listModal.present();
 
     // condition when user login, then page reload

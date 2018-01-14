@@ -12,7 +12,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="main-view">
+<ion-content class="main-view" no-bounce>
   <div tappable class="overlay" (click)="closeModal()"></div>
   <ion-list class="modal_content">
     <ion-item *ngIf="!isSignedIn" [hidden]="false">
