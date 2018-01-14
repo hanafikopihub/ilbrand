@@ -60,7 +60,7 @@ export class HistoryBookingPage {
 
     this.payOptions = [
       { 'id': '1', 'option': 'Paga in salone', 'image': 'assets/icon/shop_icon/shop_icon-AppStore.png', 'disable': false },
-      { 'id': '2', 'option': 'Paga con carta di credito', 'image': 'assets/icon/card_icon/card-disable_icon-AppStore.png', 'disable': true}]
+      { 'id': '2', 'option': 'Paga con carta di credito', 'image': 'assets/icon/card_icon/card-disable_icon-AppStore.png', 'disable': true }]
 
 
     this.payment = new PayPalPayment(this.treatmentParam.price, 'EUR', this.treatmentParam.des_treatment, '');
@@ -108,8 +108,21 @@ export class HistoryBookingPage {
   }
 
   list(ev) {
-    const listModal = this._modalCtrl.create('ListPage', {'fromPage': 'HistoryBookingPage'})
+    const listModal = this._modalCtrl.create('ListPage', { 'fromPage': 'HistoryBookingPage' })
     listModal.present();
+
+    // condition when user login, then page reload
+    listModal.onDidDismiss(data => {
+      if (data !== undefined) {
+        if (data.status) {
+          this.showFormEmail = true;
+        } else {
+          this.showFormEmail = false;
+        }
+      } else {
+        this.showFormEmail = false;
+      }
+    })
   }
 
   backToCalendar() {

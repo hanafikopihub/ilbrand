@@ -104,6 +104,13 @@ export class ListPage {
   }
 
   closeModal() {
-    this._viewController.dismiss();
+
+    // condition when user login in history page, then page reload ( cause problem 2 must step back)
+    if (this.isHistoryPage) {
+      this._viewController.dismiss(
+        { 'status': this.isSignedIn });
+    } else {
+      this._viewController.dismiss()
+    }
   }
 }

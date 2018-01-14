@@ -15,7 +15,7 @@
 <ion-content class="main-view">
   <div tappable class="overlay" (click)="closeModal()"></div>
   <ion-list class="modal_content">
-    <ion-item *ngIf="!isSignedIn" [hidden]="isHistoryPage">
+    <ion-item *ngIf="!isSignedIn" [hidden]="false">
       <div tappable class="list-content" (click)="goLogin($event)" style="color:#03d9e0">
         <b>ACCEDI o REGISTRATI</b>
       </div>
@@ -35,7 +35,7 @@
     <ion-item tappable (click)="goContactPage()">
       <div tappable class="list-content">Contatti & Orari</div>
     </ion-item>
-    <ion-item *ngIf="isSignedIn" [hidden]="isHistoryPage">
+    <ion-item *ngIf="isSignedIn" [hidden]="false">
       <div tappable class="list-content" (click)="doLogout($event)">Esci</div>
     </ion-item>
   </ion-list>
