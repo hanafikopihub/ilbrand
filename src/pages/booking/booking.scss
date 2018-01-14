@@ -183,10 +183,7 @@ page-booking {
         transition: bottom 0.25s ease;
         bottom: -53px !important;
     }
-    .header-md::after,
-    .tabs-md[tabsPlacement="top"]>.tabbar::after,
-    .footer-md::before,
-    .tabs-md[tabsPlacement="bottom"]>.tabbar::before {
+    .footer-md::before {
         background-image: none !important;
     }
 }
