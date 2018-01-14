@@ -114,7 +114,9 @@ export class LoginPage {
     if (this.fromPageString === 'HistoryBookingPage') {
       this.viewCtrl.dismiss();
     } else {
-      this.navCtrl.push('HomePage', { 'status': true });
+      // this.navCtrl.push('HomePage', { 'status': true });
+      // when close modal, back to before page, not redirect to Home page
+      this.viewCtrl.dismiss();
     }
   }
 
