@@ -18,46 +18,35 @@
       <p padding>I dati sono necessari al salone per poter gestire al meglio il tuo appuntamento e offrirti l’accesso a servizi avanzati.
       </p>
     </ion-row>
-    <div padding>
+    <div padding-top padding-left padding-right>
       <div class="label-login">INSERISCI I TUOI DATI </div>
     </div>
 
     <ion-list padding-left padding-right>
       <ion-col>
-        <ion-label stacked>Il tuo nome</ion-label>
-        <ion-row padding-top>
-          <ion-input type="text" class="login-border-input" formControlName="name" required></ion-input>
-        </ion-row>
+        <ion-label stacked style="margin-top:0 !important; padding-top:0 !important;">Il tuo nome</ion-label>
+        <ion-input type="text" class="login-border-input" formControlName="name" required></ion-input>
       </ion-col>
 
       <ion-col>
         <ion-label stacked>Il tuo indirizzo email</ion-label>
-        <ion-row padding-top>
-          <ion-input type="text" class="login-border-input" formControlName="email" required></ion-input>
-        </ion-row>
+        <ion-input type="text" class="login-border-input" formControlName="email" required></ion-input>
       </ion-col>
 
       <ion-col>
         <ion-label stacked>Il tuo numero di telefono</ion-label>
-        <ion-row padding-top>
-          <ion-input type="number" class="login-border-input" formControlName="cell" required></ion-input>
-        </ion-row>
+        <ion-input type="number" class="login-border-input" formControlName="cell" required></ion-input>
       </ion-col>
 
       <ion-col>
         <ion-label stacked>La tua password</ion-label>
-        <ion-row padding-top>
-          <ion-input class="login-border-input" type="password" formControlName="password" required></ion-input>
-        </ion-row>
+        <ion-input class="login-border-input" type="password" formControlName="password" required></ion-input>
       </ion-col>
 
       <ion-col>
         <ion-label stacked>Conferma la password</ion-label>
-        <ion-row padding-top>
-          <ion-input class="login-border-input" type="password" formControlName="password_confirmation" required></ion-input>
-        </ion-row>
+        <ion-input class="login-border-input" type="password" formControlName="password_confirmation" required></ion-input>
       </ion-col>
-
     </ion-list>
 
     <ion-row padding>

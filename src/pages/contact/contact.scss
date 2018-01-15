@@ -39,11 +39,14 @@
         }
         .schedule {
             color: rgba(28, 28, 28, 0.82);
-            font-family: "Open Sans Semibold";
             font-size: 14px;
-            font-weight: 400;
             line-height: 19px;
             text-align: center;
+
+            b{
+                font-family: "Open Sans Semibold";
+                font-weight: 400 !important;
+            }
         }
         .day {
             text-align: left;
