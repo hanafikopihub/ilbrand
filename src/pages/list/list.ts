@@ -105,6 +105,10 @@ export class ListPage {
     this._navCtrl.push('StaffPage');
   }
 
+  goPrivacy(ev) {
+    this._navCtrl.push('PrivacyPage');
+  }
+
   closeModal() {
     this.events.publish('page:scroll', 'can-scroll')
 
