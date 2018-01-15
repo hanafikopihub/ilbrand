@@ -63,6 +63,7 @@ export class ListPage {
   }
 
   doLogout() {
+    this.events.publish('page:scroll', 'can-scroll')
     this.loading = this._loadingCtrl.create({
       content: 'Please Wait, logout still processing..'
     });
