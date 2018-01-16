@@ -2,6 +2,9 @@ page-login {
     form {
         margin-top: -12px !important;
     }
+    .text-input{
+        margin-left: 2px !important;
+    }
     .label-login {
         color: #9B9B9B;
         font-size: 13px;
@@ -33,10 +36,9 @@ page-login {
         background-color: #FFFFFF;
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.18);
         padding-left: 10px;
+        margin-top: 13px;
     }
-    .col {
-        padding: 0;
-    }
+    
     .text-forgot-password {
         cursor: pointer;
         text-decoration: underline;

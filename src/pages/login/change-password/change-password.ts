@@ -34,7 +34,7 @@ export class ChangePasswordPage {
           res => {
             this._loader.hideLoader();
             this._navCtrl.push('HomePage', { 'status': true });
-            // this._toastService.presentToast('We have sent the reset password instruction to your email');
+            this._toastService.successToast('Ti abbiamo spedito una mail per il reset della password');
           },
           error => {
             const error_messasge = JSON.parse(error._body);
