@@ -43,48 +43,52 @@ export class RegisterPage {
       name: ['', Validators.required],
       email: ['', [Validators.required, CustomValidators.email]],
       cell: '',
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       password_confirmation: ['', Validators.required],
     });
   }
 
   doRegister() {
-    if (!this.registerData.valid) {
-      this._toastService.presentToast('Completa con tutti i dati, grazie!');
+    if (!this.registerData.controls.password.valid && this.registerData.value.password !== '') {
+      this._toastService.presentToast('La password deve essere di almeno 6 caratteri');
     } else {
-      this._loader.showLoader().then(result => {
-        this._tokenService.request({
-          method: RequestMethod.Post,
-          url: AppApi.BASE_API_URL + '/api/v1/auth',
-          body: { user: this.registerData.value }
-        }).subscribe(
-          res => {
-            const loginData = { email: this.registerData.value.email, password: this.registerData.value.password };
-            this._tokenService.request({
-              method: RequestMethod.Post,
-              url: AppApi.BASE_API_URL + '/api/v1/auth/sign_in',
-              body: loginData
-            }).subscribe(
-              response => {
-                this._loader.hideLoader();
-                this._navCtrl.push('HomePage', { 'status': true });
-                // this._toastService.successToast('Welcome to salonist')
-              },
-              error => {
-                this._loader.hideLoader();
+      if (!this.registerData.valid) {
+        this._toastService.presentToast('Completa con tutti i dati, grazie!');
+      } else {
+        this._loader.showLoader().then(result => {
+          this._tokenService.request({
+            method: RequestMethod.Post,
+            url: AppApi.BASE_API_URL + '/api/v1/auth',
+            body: { user: this.registerData.value }
+          }).subscribe(
+            res => {
+              const loginData = { email: this.registerData.value.email, password: this.registerData.value.password };
+              this._tokenService.request({
+                method: RequestMethod.Post,
+                url: AppApi.BASE_API_URL + '/api/v1/auth/sign_in',
+                body: loginData
+              }).subscribe(
+                response => {
+                  this._loader.hideLoader();
+                  this._navCtrl.push('HomePage', { 'status': true });
+                  // this._toastService.successToast('Welcome to salonist')
+                },
+                error => {
+                  this._loader.hideLoader();
 
-                const error_message = JSON.parse(error._body);
-                this._toastService.presentToast(error_message.errors.full_messages[0]);
-              }
-              );
-          },
-          error => {
-            this._loader.hideLoader();
-            const error_message = JSON.parse(error._body);
-            this._toastService.presentToast(error_message.errors.full_messages.join('. '));
-          }
-          );
-      })
+                  const error_message = JSON.parse(error._body);
+                  this._toastService.presentToast(error_message.errors.full_messages[0]);
+                }
+                );
+            },
+            error => {
+              this._loader.hideLoader();
+              const error_message = JSON.parse(error._body);
+              this._toastService.presentToast(error_message.errors.full_messages.join('. '));
+            }
+            );
+        })
+      }
     }
   }
 }
