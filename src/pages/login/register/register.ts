@@ -70,15 +70,13 @@ export class RegisterPage {
               }).subscribe(
                 response => {
                   this._loader.hideLoader();
-                  this._toastService.successToast('Benvenuto in Salonist')
-
+                  this._toastService.successToast('Bevenuto!');
                   setTimeout(() => {
                     this._navCtrl.push('HomePage', { 'status': true });
                   }, 2000)
                 },
                 error => {
                   this._loader.hideLoader();
-
                   const error_message = JSON.parse(error._body);
                   this._toastService.presentToast(error_message.errors.full_messages[0]);
                 }
