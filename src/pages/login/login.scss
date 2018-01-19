@@ -31,12 +31,15 @@ page-login {
     .list-ios {
         margin: -1px 0 25px !important;
     }
+    .list-md {
+        margin: 0 !important;
+    }
     .login-border-input {
         border-radius: 4px;
         background-color: #FFFFFF;
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.18);
         padding-left: 10px;
-        margin-top: 13px;
+        margin-top: 6px;
     }
     
     .text-forgot-password {
@@ -88,5 +91,8 @@ page-login {
     .button {
         text-transform: none !important;
         height: 47px;
+    }
+    .label-md {
+        margin: 0;
     }
 }

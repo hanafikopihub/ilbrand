@@ -34,13 +34,13 @@ register-page {
         background-color: #FFFFFF;
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.18);
         padding-left: 10px;
-        margin-top: 13px;
+        margin-top: 7px;
     }
-    .label-md[stacked],
-    .label-md[floating] {
-        margin-left: 0;
-        margin-bottom: 10px;
-        font-family: 'Open Sans';
+    
+    .label-md[stacked] {
+        color: #4A4A4A;
+        font-size: 16px;
+        line-height: 22px;
     }
     .text-forgot-password {
         cursor: pointer;
@@ -87,5 +87,8 @@ register-page {
     .button {
         text-transform: none !important;
         height: 47px;
+    }
+    .label {
+        margin: 0 !important;
     }
 }
