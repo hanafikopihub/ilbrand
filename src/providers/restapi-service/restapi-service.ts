@@ -76,6 +76,15 @@ export class RestapiServiceProvider {
     return this.http.post(this.apiUrl + 'finds/address', addresss)
       .map(res => res.json())
   }
+
+  postVoucherVerify(data) {
+    return this._authServiceProvider.request({
+      method: RequestMethod.Post,
+      url: this.apiUrl + 'vouchers/verify',
+      body: data
+    }).map(res => res.json())
+  }
+
   postUpdateCell(number) {
     return this._authServiceProvider.request({
       method: RequestMethod.Post,

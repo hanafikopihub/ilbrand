@@ -178,7 +178,7 @@ export class BookingPage {
       (error) => {
         // handle error
         this._loaderCtrl.hideLoader();
-        return this._toastCtrl.presentToast('non è riuscito a ottenere dati');
+        return this._toastCtrl.presentToast('Attenzione! Questa app necessita di una connessione internet per funzionare');
       })
   }
 
@@ -282,7 +282,7 @@ export class BookingPage {
 
     }, (error) => {
       this._loaderCtrl.hideLoader();
-      return this._toastCtrl.presentToast('non è riuscito a ottenere dati');
+      return this._toastCtrl.presentToast('Attenzione! Questa app necessita di una connessione internet per funzionare');
     })
   }
 

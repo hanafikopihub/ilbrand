@@ -7,7 +7,6 @@ page-active-booking {
         font-family: 'Open Sans Regular', Arial, Helvetica, sans-serif;
     }
     .total-value {
-        padding-left: 35px;
         padding-bottom: 0 !important;
         font-size: 17px;
         text-align: right;
@@ -162,5 +161,13 @@ page-active-booking {
         font-size: 1.4rem;
         font-weight: 500;
         text-transform: uppercase;
+    }
+    .total-value-voucher {
+        padding-bottom: 0 !important;
+        font-size: 17px;
+        text-align: right;
+        float: right;
+        color: #9B9B9B !important;
+        font-weight: bold;
     }
 }

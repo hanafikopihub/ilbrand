@@ -10,7 +10,6 @@ page-my-booking {
         margin: 0 20px;
     }
     .total-value {
-        padding-left: 35px;
         padding-bottom: 0 !important;
         font-size: 17px;
         text-align: right;
@@ -63,8 +62,8 @@ page-my-booking {
     }
     .pay-option {
         color: #FF4653;
-        text-align:right;
-        float:right;
+        text-align: right;
+        float: right;
         font-family: "Open Sans";
         font-size: 15px;
         line-height: 19px;
@@ -108,21 +107,21 @@ page-my-booking {
     }
     .btn-create-reminder {
         width: 100%;
-        .button-inner{
+        .button-inner {
             font-weight: 400 !important;
             font-family: 'Open Sans Semibold';
             font-size: 16px;
             line-height: 20px;
-          }
+        }
     }
     .btn-new-reservation {
         width: 100%;
-        .button-inner{
+        .button-inner {
             font-weight: 400 !important;
             font-family: 'Open Sans Semibold';
             font-size: 16px;
             line-height: 20px;
-          }
+        }
     }
     .bar-buttons-md[right] {
         text-align: right;
@@ -135,10 +134,17 @@ page-my-booking {
         margin-left: 6px;
         margin-right: 6px;
     }
-
-    .total-label{
-        color: #4A4A4A; 
+    .total-label {
+        color: #4A4A4A;
         font-size: 16px;
         line-height: 22px;
+    }
+    .total-value-voucher {
+        padding-bottom: 0 !important;
+        font-size: 17px;
+        text-align: right;
+        float: right;
+        color: #9B9B9B !important;
+        font-weight: bold;
     }
 }

@@ -12,10 +12,13 @@ import { AlertService } from '../../../providers/shared-service/alert-service';
 })
 export class ActiveBookingPage {
   booking: any;
+  voucherUseStatus: boolean = false;
+  rimanente: any;
+  voucherPrice: any;
 
   constructor(
     public platform: Platform,
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public _loader: LoaderService,
     private _toastCtrl: ToastService,
@@ -48,11 +51,16 @@ export class ActiveBookingPage {
       .subscribe(data => {
         this._loader.hideLoader();
         this.booking = data;
+        if (this.booking.voucher_id !== 0) {
+          this.voucherUseStatus = true;
+          this.rimanente = this.booking.vouchered_price;
+          this.voucherPrice = this.booking.voucher_credit_used;
+        }
       }, (error) => {
         this._loader.hideLoader();
         this._viewController.dismiss();
-        this._alertService.errorConnectionAlert();
-        return this._toastCtrl.presentToast('non è riuscito a ottenere dati');
+        this._alertService.errorConnectionAlert(error);
+        return this._toastCtrl.presentToast('Attenzione! Questa app necessita di una connessione internet per funzionare');
       });
   }
 
@@ -71,8 +79,8 @@ export class ActiveBookingPage {
         console.log(error);
         this._loader.hideLoader();
         this._viewController.dismiss();
-        this._alertService.errorConnectionAlert();
-        return this._toastCtrl.presentToast('non è riuscito a ottenere dati');
+        this._alertService.errorConnectionAlert(error);
+        return this._toastCtrl.presentToast('Attenzione! Questa app necessita di una connessione internet per funzionare');
       });
   }
 

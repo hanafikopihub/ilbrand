@@ -33,7 +33,6 @@ page-history-booking {
             line-height: 20px;
         }
     }
-
     .text-pay {
         font-family: 'Open Sans Regular', Arial, Helvetica, sans-serif;
     }
@@ -172,7 +171,9 @@ page-history-booking {
         border-radius: 4px;
         background-color: #FFFFFF;
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.18);
-        margin-top: 13px;
+    }
+    input {
+        padding-left: 12px;
     }
     .label-form {
         color: #4A4A4A;
@@ -214,6 +215,39 @@ page-history-booking {
         color: #c7c7c7;
     }
     .button {
-      height: 4.6rem;
+        height: 4.6rem;
+    }
+    .label-gifcard {
+        color: #4A4A4A;
+        font-family: "Open Sans";
+        font-size: 16px;
+        font-weight: 400 !important;
+        line-height: 22px;
+    }
+    .btn-validation-giftcard {
+        border-radius: 5px;
+        background-color: #10CBD2;
+        .button-inner {
+            font-family: 'Open Sans Semibold';
+            font-weight: 400 !important;
+        }
+    }
+    .giftcard-border-input {
+        border-radius: 4px;
+        background-color: #FFFFFF;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.18);
+        padding-left: 16px;
+    }
+    input {
+        padding-left: 12px;
+    }
+
+    .total-value-discount{
+        font-size: 18px;
+        float: right;
+        color: #9B9B9B !important;
+        font-weight: bold;
+        line-height: 24px;
+        font-family: 'Open Sans Semibold';
     }
 }

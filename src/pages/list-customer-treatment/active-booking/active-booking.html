@@ -32,18 +32,45 @@
   </div>
 
   <div>
+    <div padding class="total-style">
+      <ion-row>
+        <ion-col col-3>
+          <span class="totale-price"> totale</span>
+        </ion-col>
+        <ion-col [class.total-value-voucher]="voucherUseStatus" [class.total-value]="!voucherUseStatus" col-9>
+          <div>&#8364; {{booking?.price}}</div>
+        </ion-col>
+        <ion-col col-12 class="pay-option" *ngIf="!voucherUseStatus">
+          <div>{{booking?.option_pay}}</div>
+        </ion-col>
+      </ion-row>
 
-    <ion-row padding class="total-style">
-      <ion-col col-3>
-        <span class="totale-price"> totale</span>
-      </ion-col>
-      <ion-col col-9 class="total-value">
-        <div>&#8364; {{booking?.price}}</div>
-      </ion-col>
-      <ion-col col-12 class="pay-option">
-        <div>{{booking?.option_pay}}</div>
-      </ion-col>
-    </ion-row>
+      <ion-row *ngIf="voucherUseStatus">
+        <ion-col col-8>
+          <span> pagato con GIFT CARD</span>
+        </ion-col>
+        <ion-col col-4 class="total-value-voucher">
+          <div>
+            <b>&#8364; {{voucherPrice}}</b>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="voucherUseStatus">
+        <ion-col col-9>
+          <span> rimanente da pagare</span>
+        </ion-col>
+        <ion-col col-3 class="total-value">
+          <div>
+            <b>&#8364; {{rimanente}}</b>
+          </div>
+        </ion-col>
+        <ion-col col-12 class="pay-option">
+          <div>{{booking?.option_pay}}</div>
+        </ion-col>
+      </ion-row>
+
+    </div>
     <ion-row padding>
       <button text-center block outline ion-button color="danger" (click)="cancel()">ANNULLA PRENOTAZIONE</button>
     </ion-row>

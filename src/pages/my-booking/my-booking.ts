@@ -21,6 +21,11 @@ export class MyBookingPage {
   fromModal: boolean = false;
   userBookingEmail: any;
 
+  voucherUseStatus: boolean = false;
+  rimanente: any;
+  voucherCode: any;
+  voucherPrice: any;
+
   constructor(
     public platform: Platform,
     private _calendar: Calendar,
@@ -37,13 +42,21 @@ export class MyBookingPage {
     this.optionPay = this.navParams.get('optionPay');
     this.fromModal = this.navParams.get('status');
 
+    if (this.dataBooking['booking']['voucher_id'] !== undefined) {
+      this.voucherUseStatus = true;
+      this.voucherCode = this.dataBooking['voucher_code'];
+      this.voucherPrice = this.dataBooking['booking']['voucher_credit_used'];
+      this.rimanente = parseFloat(this.treatmentParam.price) - parseFloat(this.voucherPrice);
+    }
+
+
     if (this.optionPay === 'Paga in salone') {
       this.optionPay = 'Pagherai in salone'
     }
 
     if (this._authServiceProvider.userSignedIn) {
       this.userBookingEmail = this._authServiceProvider.currentAuthData.uid
-     
+
     } else {
       this.userBookingEmail = this.dataBooking['visitor_email'];
     }

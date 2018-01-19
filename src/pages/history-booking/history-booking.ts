@@ -4,6 +4,7 @@ import { IonicPage, ModalController, NavParams, NavController, Platform, Events 
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { LoaderService } from '../../providers/shared-service/loader-service';
 import { AlertService } from '../../providers/shared-service/alert-service';
+import { ToastService } from '../../providers/shared-service/toast-service';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 import { PayPalPayment, PayPal, PayPalConfiguration } from '@ionic-native/paypal';
@@ -20,6 +21,7 @@ export class HistoryBookingPage {
 
   fromModal: boolean = false;
   entryForm: FormGroup;
+  voucherCode: any;
   treatmentParam: any;
   operatorParam: any;
   dataBookingParam: any;
@@ -29,6 +31,10 @@ export class HistoryBookingPage {
   salon: any;
   showFormEmail: boolean;
   showError: boolean = false;
+
+  voucherUseStatus: boolean = false;
+  voucherUse = { code: '', price: '' };
+  confirmVoucheredPrice: any;
 
   bookingVisitor;
 
@@ -51,6 +57,7 @@ export class HistoryBookingPage {
     public _alertService: AlertService,
     public _authServiceProvider: AuthServiceProvider,
     public _events: Events,
+    public _toastService: ToastService,
     public _restapiServiceProvider: RestapiServiceProvider) {
 
     this.treatmentParam = this._navParams.get('treatment');
@@ -68,7 +75,8 @@ export class HistoryBookingPage {
 
     this.payOptions = [
       { 'id': '1', 'option': 'Paga in salone', 'image': 'assets/icon/shop_icon/shop_icon-AppStore.png', 'disable': false },
-      { 'id': '2', 'option': 'Paga con carta di credito', 'image': 'assets/icon/card_icon/card-disable_icon-AppStore.png', 'disable': true }]
+      { 'id': '2', 'option': 'Paga con carta di credito', 'image': 'assets/icon/card_icon/card-disable_icon-AppStore.png',
+      'disable': true }]
 
 
     this.payment = new PayPalPayment(this.treatmentParam.price, 'EUR', this.treatmentParam.des_treatment, '');
@@ -117,7 +125,7 @@ export class HistoryBookingPage {
 
   list(ev) {
     this.scrollStatus = 'no-scroll';
-    const listModal = this._modalCtrl.create('ListPage', {'fromPage': 'HistoryBookingPage'})
+    const listModal = this._modalCtrl.create('ListPage', { 'fromPage': 'HistoryBookingPage' })
     listModal.present();
 
     // condition when user login, then page reload
@@ -136,6 +144,42 @@ export class HistoryBookingPage {
 
   backToCalendar() {
     this._navController.pop();
+  }
+
+  verifyVoucher() {
+    if (this.voucherUse.code !== this.voucherCode) {
+      this._loaderCtrl.showLoader();
+      if (this.confirmVoucheredPrice > 0) {
+        var currentPrice = this.confirmVoucheredPrice
+      } else {
+        var currentPrice = this.treatmentParam.price
+      }
+      this._restapiServiceProvider.postVoucherVerify({ code: this.voucherCode, treatment_price: currentPrice }).subscribe(response => {
+        this._loaderCtrl.hideLoader();
+        console.log(response);
+        if (response.result == 'success') {
+          this.voucherUseStatus = true;
+          this.voucherUse.code = this.voucherCode;
+          this.voucherUse.price = response.confirm_voucher_credit_used_to_show;
+          this.confirmVoucheredPrice = response.confirm_vouchered_price_to_show;
+
+          this.dataBooking['booking']['voucher_id'] = response.voucher_id;
+          this.dataBooking['booking']['vouchered_price'] = response.confirm_vouchered_price;
+          this.dataBooking['booking']['voucher_credit_used'] = response.confirm_voucher_credit_used;
+          this.dataBooking['booking']['voucher_value'] = response.voucher_price;
+          this.dataBooking['voucher_code'] = this.voucherCode;
+
+          this.voucherCode = '';
+        } else {
+          this._toastService.errorToast(response.message);
+        }
+      }, (error) => {
+        this._loaderCtrl.hideLoader();
+        this._alertService.failedSubmit(error);
+      })
+    } else {
+      this._toastService.errorToast('buono in uso');
+    }
   }
 
   onSave() {
@@ -213,7 +257,7 @@ export class HistoryBookingPage {
       }, (error) => {
         console.log(error);
         this._loaderCtrl.hideLoader();
-        this._alertService.failedSubmit();
+        this._alertService.failedSubmit(error);
       })
     });
   }
@@ -234,7 +278,7 @@ export class HistoryBookingPage {
         }
       }, (error) => {
         this._loaderCtrl.hideLoader();
-        this._alertService.failedSubmit();
+        this._alertService.failedSubmit(error);
       })
     })
   }

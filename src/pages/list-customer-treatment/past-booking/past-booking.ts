@@ -17,9 +17,13 @@ export class PastBookingPage {
   review_entry: any;
   rating = { environment: 0, service: 0, staff: 0, quality: 0, review: '' };
 
+  voucherUseStatus: boolean = false;
+  rimanente: any;
+  voucherPrice: any;
+
   constructor(
     public platform: Platform,
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public _loader: LoaderService,
     private _toastCtrl: ToastService,
@@ -61,7 +65,11 @@ export class PastBookingPage {
     this._restapiServiceProvider.getDetailBooking(bookingParam.booking_id)
       .subscribe(data => {
         this.booking = data;
-
+        if (this.booking.voucher_id !== 0) {
+          this.voucherUseStatus = true;
+          this.rimanente = this.booking.vouchered_price;
+          this.voucherPrice = this.booking.voucher_credit_used;
+        }
         this._restapiServiceProvider.getDetailTreatment(bookingParam.s_treatment_id).subscribe(res => {
           this.treatment = res;
 
@@ -71,21 +79,21 @@ export class PastBookingPage {
           }, (error) => {
             this._loader.hideLoader();
             this._viewController.dismiss();
-            this._alertService.errorConnectionAlert();
-            this._toastCtrl.presentToast('non è riuscito a ottenere dati');
+            this._alertService.errorConnectionAlert(error);
+            this._toastCtrl.presentToast('Attenzione! Questa app necessita di una connessione internet per funzionare');
           });
 
         }, (error) => {
           this._loader.hideLoader();
           this._viewController.dismiss();
-          this._alertService.errorConnectionAlert();
-          this._toastCtrl.presentToast('non è riuscito a ottenere dati');
+          this._alertService.errorConnectionAlert(error);
+          this._toastCtrl.presentToast('Attenzione! Questa app necessita di una connessione internet per funzionare');
         });
       }, (error) => {
         this._loader.hideLoader();
         this._viewController.dismiss();
-        this._alertService.errorConnectionAlert();
-        this._toastCtrl.presentToast('non è riuscito a ottenere dati');
+        this._alertService.errorConnectionAlert(error);
+        this._toastCtrl.presentToast('Attenzione! Questa app necessita di una connessione internet per funzionare');
       });
   }
 

@@ -47,7 +47,16 @@
     <div class="total-style">
       <div padding>
         <span class="total-label"> totale</span>
-        <span class="total-value">&#8364; {{treatmentParam.price}}</span>
+        <span [class.total-value-discount]="voucherUseStatus" [class.total-value]="!voucherUseStatus">&#8364; {{treatmentParam.price}}</span>
+      </div>
+      <div padding *ngIf="voucherUseStatus">
+        <span class="total-label"> pagato con {{voucherUse.code}}</span>
+        <span class="total-value-discount">&#8364; {{voucherUse.price}}</span>
+      </div>
+
+      <div padding *ngIf="voucherUseStatus">
+        <span class="total-label"> rimanente da pagare</span>
+        <span class="total-value">&#8364; {{confirmVoucheredPrice}}</span>
       </div>
     </div>
     <ion-grid padding>
@@ -64,12 +73,23 @@
       </ion-row>
     </ion-grid>
 
+    <div padding>
+      <ion-col>
+        <div class="label-gifcard">Hai una
+          <span style="font-family:'Open Sans Semibold';">GIFT CARD</span>?</div>
+        <ion-input type="text" [(ngModel)]="voucherCode" class="giftcard-border-input"></ion-input>
+      </ion-col>
+      <ion-col>
+        <button tappable text-center ion-button block class="bold btn-validation-giftcard" (click)="verifyVoucher()">VALIDA</button>
+      </ion-col>
+    </div>
+
     <div *ngIf="!showFormEmail">
       <form [formGroup]="entryForm">
         <div class="email-form-style" padding>Per completare la prenotazione ci servono alcuni dati. In questo modo potremo contattarti in caso di necessità e
           il salone avrà i tuoi riferimenti per eventuali comunicazioni.
         </div>
-        <div padding >
+        <div padding>
           <div>
             <div class="label-registrasi">Sei già registrato?</div>
             <div class="btn-text-register">
@@ -77,7 +97,7 @@
             </div>
             <div class="label-registrasi">Non sei registrato?</div>
             <div class="text-reservation">
-                Inserisci i tuoi dati per completare la prenotazione
+              Inserisci i tuoi dati per completare la prenotazione
             </div>
           </div>
           <ion-col>
@@ -109,6 +129,9 @@
 
   <hr style="height:1px; margin: 20px 0;background-color: rgba(0, 0, 0, 0.12)">
   <div padding-bottom text-center class="creata-footer">
-    App Creata da <b><a onclick="window.open('https://www.salonist.it/digital', '_system', 'location=yes'); return false;">Salonist</a></b>
+    App Creata da
+    <b>
+      <a onclick="window.open('https://www.salonist.it/digital', '_system', 'location=yes'); return false;">Salonist</a>
+    </b>
   </div>
 </ion-content>

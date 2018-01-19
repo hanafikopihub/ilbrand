@@ -35,24 +35,54 @@
 
   <div>
 
-    <ion-row padding class="total-style">
-      <ion-col col-3>
-        <span> totale</span>
-      </ion-col>
-      <ion-col col-9 class="total-value">
-          <div><b>&#8364; {{treatmentParam.price}}</b></div>
-      </ion-col>
-      <ion-col col-12 class="pay-option">
-        <div>{{optionPay}}</div>
-      </ion-col>
-    </ion-row>
+    <div padding class="total-style">
+      <ion-row>
+        <ion-col col-3>
+          <span> totale</span>
+        </ion-col>
+         <ion-col [class.total-value-voucher]="voucherUseStatus" [class.total-value]="!voucherUseStatus" col-9>
+          <div>
+            <b>&#8364; {{treatmentParam.price}}</b>
+          </div>
+        </ion-col>
+        <ion-col col-12 class="pay-option" *ngIf="!voucherUseStatus">
+          <div>{{optionPay}}</div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="voucherUseStatus">
+        <ion-col col-9>
+          <span> pagato con {{voucherCode}}</span>
+        </ion-col>
+        <ion-col col-3 class="total-value-voucher">
+          <div>
+            <b>&#8364; {{voucherPrice}}</b>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="voucherUseStatus">
+        <ion-col col-9>
+          <span> rimanente da pagare</span>
+        </ion-col>
+        <ion-col col-3 class="total-value">
+          <div>
+            <b>&#8364; {{rimanente}}</b>
+          </div>
+        </ion-col>
+        <ion-col col-12 class="pay-option">
+          <div>{{optionPay}}</div>
+        </ion-col>
+      </ion-row>
+
+    </div>
 
     <ion-grid padding>
       <div class="content-page">
         <p>Riceverai una conferma via email all'indirizzo con cui ti sei registrato ({{userBookingEmail}}).</p>
         <p>Si prega di prenotare in modo responsabile. E' molto grave per i saloni quando non ti presenti ad un appuntamento.
-          Certo, possono capitare degli imprevisti urgenti, quindi se sei Impossibilitato ad andare all'appuntamento sii cortese
-          e annullalo dalla sezione 'prenotazioni' del tuo profilo.</p>
+          Certo, possono capitare degli imprevisti urgenti, quindi se sei Impossibilitato ad andare all'appuntamento sii
+          cortese e annullalo dalla sezione 'prenotazioni' del tuo profilo.</p>
       </div>
     </ion-grid>
     <ion-row padding>

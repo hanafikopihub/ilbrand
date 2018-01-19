@@ -5,7 +5,10 @@ import { AlertController } from 'ionic-angular';
 export class AlertService {
   constructor(public _alertCtrl: AlertController) { }
 
-  errorConnectionAlert() {
+  errorConnectionAlert(data) {
+    if (data.status === 0) {
+      data = 'Attenzione! Questa app necessita di una connessione internet per funzionare';
+    }
     const alert = this._alertCtrl.create({
       title: 'Informazioni',
       subTitle: 'la connessione non è riuscita',
@@ -23,7 +26,10 @@ export class AlertService {
     alert.present();
   }
 
-  failedSubmit() {
+  failedSubmit(data) {
+    if (data.status === 0) {
+      data = 'Attenzione! Questa app necessita di una connessione internet per funzionare';
+    }
     const alert = this._alertCtrl.create({
       title: 'Informazioni',
       subTitle: 'non è riuscito ad ordinare',
@@ -33,6 +39,9 @@ export class AlertService {
   }
 
   failedError(data) {
+    if (data.status === 0) {
+      data = 'Attenzione! Questa app necessita di una connessione internet per funzionare';
+    }
     const alert = this._alertCtrl.create({
       title: 'Informazioni',
       subTitle: data,
@@ -42,6 +51,9 @@ export class AlertService {
   }
 
   error(data) {
+    if (data.status === 0) {
+      data = 'Attenzione! Questa app necessita di una connessione internet per funzionare';
+    }
     const alert = this._alertCtrl.create({
       title: 'Informazioni',
       subTitle: data,
