@@ -9,69 +9,74 @@
 
 <ion-content class="{{scrollStatus}}" style="background: #fff">
   
-    <!-- Description User -->
-    <div padding>
-      <ion-row class="title">{{this.name}}</ion-row>
-      <div name="form">
-        <div class="email-content">
-          <div class="label">LA TUA MAIL</div>
-          <hr style="height:1px;">
-          <div class="value-input">{{this.email}}</div>
-        </div>
-        <div class="phone-content">
-          <div class="label">IL TUA NUMERO</div>
-          <hr style="height:1px">
-          <div class="value-input">{{this.number}}</div>
-        </div>
+  <!-- Description User -->
+  <div padding>
+    <ion-row class="title">{{this.name}}</ion-row>
+    <div name="form">
+      <div class="email-content">
+        <div class="label">LA TUA MAIL</div>
+        <hr style="height:1px;">
+        <div class="value-input">{{this.email}}</div>
+      </div>
+      <div class="phone-content">
+        <div class="label">IL TUA NUMERO</div>
+        <hr style="height:1px">
+        <div class="value-input">{{this.number}}</div>
       </div>
     </div>
+  </div>
   
-    <!-- Form Change Password -->
-    <div class="form" *ngIf="showPasswordForm">
-      <div text-right class="close" style="background-color:#F5F5F0; width:97%">
-        <div icon-only (click)="showPasswordForm=false" style="background-color:#F5F5F0;">
-          <ion-icon name="custom-x" class="close-icon"></ion-icon>
-        </div>
+  <!-- Form Change Password -->
+  <div class="form" *ngIf="showPasswordForm">
+    <div text-right class="close" style="background-color:#F5F5F0; width:97%">
+      <div icon-only (click)="showPasswordForm=false" style="background-color:#F5F5F0;">
+        <ion-icon name="custom-x" class="close-icon"></ion-icon>
       </div>
-      <ion-row class="form-change-password">
-        <ion-item class="password-input" style="background-color:#F5F5F0">
-          <ion-input type="password" [(ngModel)]="passwordData.password" placeholder="Scrivi qui la password attuale"></ion-input>
-        </ion-item>
-        <ion-item style="background-color:#F5F5F0" class="password-input">
-          <ion-input style="background-color:#F5F5F0" type="password" [(ngModel)]="passwordData.passwordConfirmation" placeholder="Scrivi qui la nouva password"></ion-input>
-        </ion-item>
-      </ion-row>
-      <ion-row padding>
-        <button tappable text-center ion-button color="danger" (click)="updatePassword()" class="red-bg trova-button-home">MODIFICA PASSWORD</button>
-      </ion-row>
     </div>
+    <ion-row class="form-change-password">
+      <ion-item class="password-input" style="background-color:#F5F5F0">
+        <ion-input type="password" [(ngModel)]="passwordData.password" placeholder="Scrivi qui la password attuale"></ion-input>
+      </ion-item>
+      <ion-item style="background-color:#F5F5F0" class="password-input">
+        <ion-input style="background-color:#F5F5F0" type="password" [(ngModel)]="passwordData.passwordConfirmation" placeholder="Scrivi qui la nouva password"></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row padding>
+      <button tappable text-center ion-button color="danger" (click)="updatePassword()" class="red-bg trova-button-home">MODIFICA PASSWORD</button>
+    </ion-row>
+  </div>
   
-    <!-- Button Change Password -->
-    <div padding class="btn-custom-style">
-      <button tappable style="width:100%" text-center ion-button color="danger" *ngIf="!showPasswordForm" (click)="changePassword();"
-        class="red-bg trova-button-home">MODIFICA PASSWORD</button>
-    </div>
+  <!-- Button Change Password -->
+  <div padding class="btn-custom-style">
+    <button tappable style="width:100%" text-center ion-button color="danger" *ngIf="!showPasswordForm" (click)="changePassword();"
+    class="red-bg trova-button-home">MODIFICA PASSWORD</button>
+  </div>
   
-    <!-- Form Change Phone Number -->
-    <div class="form" *ngIf="showPhoneForm">
-      <div text-right class="close" style="background-color:#F5F5F0; width:97%">
-        <div tappable icon-only (click)="showPhoneForm=false" style="background-color:#F5F5F0;">
-          <ion-icon name="custom-x" class="close-icon"></ion-icon>
-        </div>
+  <!-- Form Change Phone Number -->
+  <div class="form" *ngIf="showPhoneForm">
+    <div text-right class="close" style="background-color:#F5F5F0; width:97%">
+      <div tappable icon-only (click)="showPhoneForm=false" style="background-color:#F5F5F0;">
+        <ion-icon name="custom-x" class="close-icon"></ion-icon>
       </div>
-      <ion-row class="form-change-phone">
-        <ion-item class="password-input" style="background-color:#F5F5F0">
-          <ion-input type="text" [(ngModel)]="phoneNumber" placeholder="Scrivi qui il nuovo numero di telefono"></ion-input>
-        </ion-item>
-      </ion-row>
-      <ion-row padding>
-        <button tappable text-center ion-button color="danger" class="red-bg trova-button-home" style="background-color:#6A6A69 !important;" (click)="updateCell()">MODIFICA NUMERO DI TELEFONO </button>
-      </ion-row>
     </div>
+    <ion-row class="form-change-phone">
+      <ion-item class="password-input" style="background-color:#F5F5F0">
+        <ion-input type="text" [(ngModel)]="phoneNumber" placeholder="Scrivi qui il nuovo numero di telefono"></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row padding>
+      <button tappable text-center ion-button color="danger" class="red-bg trova-button-home" style="background-color:#6A6A69 !important;" (click)="updateCell()">MODIFICA NUMERO DI TELEFONO </button>
+    </ion-row>
+  </div>
   
-    <!-- Button Change Phone Number -->
-    <div padding class="btn-custom-style">
-      <button tappable *ngIf="!showPhoneForm" text-center ion-button class="btn-modif-telephone" (click)="changePhone()">MODIFICA NUMERO DI TELEFONO</button>
-    </div>
+  <!-- Button Change Phone Number -->
+  <div padding class="btn-custom-style">
+    <button tappable *ngIf="!showPhoneForm" text-center ion-button class="btn-modif-telephone" (click)="changePhone()">MODIFICA NUMERO DI TELEFONO</button>
+  </div>
+
+  <hr style="height:1px; margin: 20px 0;background-color: rgba(0, 0, 0, 0.12)">
+  <div text-center padding-bottom class="creata-footer">
+    App Creata da <b><a onclick="window.open('https://www.salonist.it/digital', '_system', 'location=yes'); return false;">Salonist</a></b>
+  </div>
   
-  </ion-content>
+</ion-content>

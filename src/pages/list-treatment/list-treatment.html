@@ -13,30 +13,30 @@
 </ion-header>
 
 <ion-content class="{{scrollStatus}}" style="background: #fff;">
-    <div style="margin-bottom: 15px"></div>
-    <ion-grid *ngFor="let treatment of treatments" class="content-style">
-        <ion-row class="content-style-margin" >
-          <ion-col col-9>
-            <div class="treatment-info-title">{{treatment.des_treatment}}</div>
-            <div class="treatment-info">
-              <span class="treatment-detail-label">Durata:</span> {{treatment.duration_in_minute}} min.
-            </div>
-            <div *ngIf="treatment.price !== 0"  class="treatment-info">
-              <span class="treatment-detail-label">Prezzo:</span> &#8364; {{treatment.price}}
-            </div>
-          </ion-col>
-          <ion-col col-3 class="treatment-action">
-            <ion-icon tappable *ngIf="treatment.price !== 0" name="custom-add" (click)="addTreatment(treatment)"></ion-icon>
-            <ion-icon tappable *ngIf="treatment.price === 0" name="custom-tel" (click)="showPhone()"></ion-icon>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col style="padding-left: 6%;padding-right: 6%;">
-            <hr style="background-color: rgba(0, 0, 0, 0.12); height: 1px;">
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-      
+  <div style="margin-bottom: 15px"></div>
+  <ion-grid *ngFor="let treatment of treatments" class="content-style">
+    <ion-row class="content-style-margin" >
+      <ion-col col-9>
+        <div class="treatment-info-title">{{treatment.des_treatment}}</div>
+        <div class="treatment-info">
+          <span class="treatment-detail-label">Durata:</span> {{treatment.duration_in_minute}} min.
+        </div>
+        <div *ngIf="treatment.price !== 0"  class="treatment-info">
+          <span class="treatment-detail-label">Prezzo:</span> &#8364; {{treatment.price}}
+        </div>
+      </ion-col>
+      <ion-col col-3 class="treatment-action">
+        <ion-icon tappable *ngIf="treatment.price !== 0" name="custom-add" (click)="addTreatment(treatment)"></ion-icon>
+        <ion-icon tappable *ngIf="treatment.price === 0" name="custom-tel" (click)="showPhone()"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="padding-left: 6%;padding-right: 6%;">
+        <hr style="background-color: rgba(0, 0, 0, 0.12); height: 1px;">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
   <div style="text-align: center;">
     <img src="assets/icon/logo.png" class="icon-image-bottom" onclick="window.open('https://www.ilbrandtradate.it')">
   </div>
@@ -53,5 +53,10 @@
         </p>
       </div>
     </div>
-</ion-grid>
+  </ion-grid>
+
+  <hr style="height:1px; margin: 20px 0;background-color: rgba(0, 0, 0, 0.12)">
+  <div padding-bottom text-center class="creata-footer">
+    App Creata da <b><a onclick="window.open('https://www.salonist.it/digital', '_system', 'location=yes'); return false;">Salonist</a></b>
+  </div>
 </ion-content>
