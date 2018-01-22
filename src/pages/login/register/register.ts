@@ -70,7 +70,7 @@ export class RegisterPage {
               }).subscribe(
                 response => {
                   this._loader.hideLoader();
-                  this._toastService.successToast('Bevenuto!');
+                  this._toastService.successToast('Benvenuto in Salonist!');
                   setTimeout(() => {
                     this._navCtrl.push('HomePage', { 'status': true });
                   }, 2000)
