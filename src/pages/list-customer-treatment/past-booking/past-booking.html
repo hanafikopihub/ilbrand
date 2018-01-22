@@ -32,34 +32,34 @@
     </div>
   </div>
 
-    <div padding class="total-style">
-        <ion-row>
-          <ion-col col-3>
-            <span class="gray-text"> totale</span>
-          </ion-col>
-          <ion-col col-9>
-            <div class="total-value">&#8364; {{booking?.price}}</div>
-          </ion-col>
-        </ion-row>
+  <div padding class="total-style">
+    <ion-row>
+      <ion-col col-3>
+        <span class="gray-text"> totale</span>
+      </ion-col>
+      <ion-col col-9>
+        <div class="total-value">&#8364; {{booking?.price}}</div>
+      </ion-col>
+    </ion-row>
     
-        <ion-row *ngIf="voucherUseStatus">
-          <ion-col col-9>
-            <span> pagato con GIFT CARD</span>
-          </ion-col>
-          <ion-col col-3 class="total-value-voucher">
-            <div><b>&#8364; {{voucherPrice}}</b></div>
-          </ion-col>
-        </ion-row>
+    <ion-row *ngIf="voucherUseStatus">
+      <ion-col col-9>
+        <span class="gray-text"> pagato con GIFT CARD</span>
+      </ion-col>
+      <ion-col col-3 class="total-value" style="padding-left: 5%">
+        <div><b>&#8364; {{voucherPrice}}</b></div>
+      </ion-col>
+    </ion-row>
     
-        <ion-row *ngIf="voucherUseStatus">
-          <ion-col col-9>
-            <span> rimanente da pagare</span>
-          </ion-col>
-          <ion-col col-3 class="total-value-voucher">
-            <div><b>&#8364; {{rimanente}}</b></div>
-          </ion-col>
-        </ion-row>
-      </div>
+    <ion-row *ngIf="voucherUseStatus">
+      <ion-col col-9>
+        <span class="gray-text"> rimanente da pagare</span>
+      </ion-col>
+      <ion-col col-3 class="total-value" style="padding-left: 5%">
+        <div><b>&#8364; {{rimanente}}</b></div>
+      </ion-col>
+    </ion-row>
+  </div>
 
   <ion-row padding>
     <button tappable text-center block ion-button color="danger" class="bold riprenota" (click)="rebooking()">RIPRENOTA</button>
