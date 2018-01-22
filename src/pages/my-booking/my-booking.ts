@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, Platform, IonicPage } from 'ionic-angular';
+import { Events, NavController, NavParams, Platform, IonicPage, ModalController } from 'ionic-angular';
 
 import { Calendar } from '@ionic-native/calendar';
 import { ToastService } from '../../providers/shared-service/toast-service';
@@ -21,18 +21,27 @@ export class MyBookingPage {
   fromModal: boolean = false;
   userBookingEmail: any;
 
+  scrollStatus: string;
   voucherUseStatus: boolean = false;
   rimanente: any;
   voucherCode: any;
   voucherPrice: any;
 
   constructor(
+    public _events: Events,
     public platform: Platform,
     private _calendar: Calendar,
     public navCtrl: NavController,
+    public _modalCtrl: ModalController,
     public _authServiceProvider: AuthServiceProvider,
     public _toastService: ToastService,
     public navParams: NavParams) {
+
+    _events.subscribe('page:scroll', (data) => {
+      this.scrollStatus = data;
+    });
+
+    this.scrollStatus = 'can-scroll';
 
     this.treatmentParam = this.navParams.get('treatment');
     this.operatorParam = this.navParams.get('operators');
@@ -83,5 +92,11 @@ export class MyBookingPage {
       (error) => {
         this._toastService.errorToast('Qualcosa non va, per favore riprova più tardi!')
       })
+  }
+
+  list(ev) {
+    this.scrollStatus = 'no-scroll';
+    const listModal = this._modalCtrl.create('ListPage')
+    listModal.present();
   }
 }
