@@ -47,7 +47,7 @@
     <div class="total-style">
       <div padding>
         <span class="total-label"> totale</span>
-        <span [class.total-value-discount]="voucherUseStatus" [class.total-value]="!voucherUseStatus">&#8364; {{treatmentParam.price}}</span>
+        <span [class.total-value-discount]="voucherUseStatus" [class.total-value]="!voucherUseStatus">&#8364; {{treatmentParam.price | number : '1.2-2'}}</span>
       </div>
       <div padding *ngIf="voucherUseStatus">
         <span class="total-label"> pagato con {{voucherUse.code}}</span>

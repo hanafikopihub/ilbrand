@@ -52,6 +52,8 @@ export class HomePage {
         .subscribe(data => {
           this._loaderCtrl.hideLoader();
           this.salon = data;
+          localStorage.setItem('salon_object', JSON.stringify({name: data.name, 
+            address: data.address, city: data.city, phone: data.phone, piva: data.piva}));
         }, (error) => {
           this._alertCtrl.failedError(error);
           this._loaderCtrl.hideLoader();

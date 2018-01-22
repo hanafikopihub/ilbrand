@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-navbar #navbar class="custome-navbar">
-    <ion-title class="default-title">
+  <ion-navbar class="default-navbar custome-navbar">
+    <ion-title class="default-title custome-title">
       <div id="title-salon">Il Brand</div>
       <div id="sub-title-salon">Dettaglio Preno</div>
     </ion-title>
@@ -38,7 +38,7 @@
         <span class="gray-text"> totale</span>
       </ion-col>
       <ion-col col-9>
-        <div class="total-value">&#8364; {{booking?.price}}</div>
+        <div class="total-value">&#8364; {{booking?.price}}.00</div>
       </ion-col>
     </ion-row>
     
@@ -46,8 +46,8 @@
       <ion-col col-9>
         <span class="gray-text"> pagato con GIFT CARD</span>
       </ion-col>
-      <ion-col col-3 class="total-value" style="padding-left: 5%">
-        <div><b>&#8364; {{voucherPrice}}</b></div>
+      <ion-col col-3 class="total-value" style="padding-left: 1%">
+        <div class="total-value" style="padding-left: 0">&#8364; {{voucherPrice | number : '1.2-2'}}</div>
       </ion-col>
     </ion-row>
     
@@ -55,8 +55,8 @@
       <ion-col col-9>
         <span class="gray-text"> rimanente da pagare</span>
       </ion-col>
-      <ion-col col-3 class="total-value" style="padding-left: 5%">
-        <div><b>&#8364; {{rimanente}}</b></div>
+      <ion-col col-3 class="total-value" style="padding-left: 1%">
+        <div class="total-value" style="padding-left: 0">&#8364; {{rimanente | number : '1.2-2'}}</div>
       </ion-col>
     </ion-row>
   </div>

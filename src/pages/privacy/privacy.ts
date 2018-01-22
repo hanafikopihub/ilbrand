@@ -10,6 +10,7 @@ import { LoaderService } from '../../providers/shared-service/loader-service';
 export class PrivacyPage {
 
   scrollStatus: string;
+  salon: object = null;
 
   constructor(
     public _platform: Platform,
@@ -17,6 +18,7 @@ export class PrivacyPage {
     public _events: Events,
     public _modalCtrl: ModalController,
     public _navController: NavController) {
+    this.salon = JSON.parse(localStorage.getItem('salon_object'));
     this.scrollStatus = 'can-scroll';
     _events.subscribe('page:scroll', (data) => {
       this.scrollStatus = data;

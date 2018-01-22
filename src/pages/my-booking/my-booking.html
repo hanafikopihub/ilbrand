@@ -42,7 +42,7 @@
         </ion-col>
          <ion-col [class.total-value-voucher]="voucherUseStatus" [class.total-value]="!voucherUseStatus" col-9>
           <div>
-            <b>&#8364; {{treatmentParam.price}}</b>
+            <b>&#8364; {{treatmentParam.price | number : '1.2-2'}}</b>
           </div>
         </ion-col>
         <ion-col col-12 class="pay-option" *ngIf="!voucherUseStatus">
@@ -56,7 +56,7 @@
         </ion-col>
         <ion-col col-3 class="total-value-voucher">
           <div>
-            <b>&#8364; {{voucherPrice}}</b>
+            <b>&#8364; {{voucherPrice | number : '1.2-2'}}</b>
           </div>
         </ion-col>
       </ion-row>
@@ -67,7 +67,7 @@
         </ion-col>
         <ion-col col-3 class="total-value">
           <div>
-            <b>&#8364; {{rimanente}}</b>
+            <b>&#8364; {{rimanente | number : '1.2-2'}}</b>
           </div>
         </ion-col>
         <ion-col col-12 class="pay-option">

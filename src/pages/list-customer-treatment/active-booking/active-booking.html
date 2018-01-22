@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-navbar #navbar class="custome-navbar">
-    <ion-title class="default-title">
+  <ion-navbar class="default-navbar custome-navbar">
+    <ion-title class="default-title custome-title">
       <div id="title-salon">Il Brand</div>
       <div id="sub-title-salon">Dettaglio Preno</div>
     </ion-title>
@@ -38,7 +38,7 @@
           <span class="totale-price"> totale</span>
         </ion-col>
         <ion-col [class.total-value-voucher]="voucherUseStatus" [class.total-value]="!voucherUseStatus" col-9>
-          <div>&#8364; {{booking?.price}}</div>
+          <div>&#8364; {{booking?.price}}.00</div>
         </ion-col>
         <ion-col col-12 class="pay-option" *ngIf="!voucherUseStatus">
           <div>{{booking?.option_pay}}</div>
@@ -51,7 +51,7 @@
         </ion-col>
         <ion-col col-4 class="total-value-voucher">
           <div>
-            <b>&#8364; {{voucherPrice}}</b>
+            <b>&#8364; {{voucherPrice | number : '1.2-2'}}</b>
           </div>
         </ion-col>
       </ion-row>
@@ -62,7 +62,7 @@
         </ion-col>
         <ion-col col-3 class="total-value">
           <div>
-            <b>&#8364; {{rimanente}}</b>
+            <b>&#8364; {{rimanente | number : '1.2-2'}}</b>
           </div>
         </ion-col>
         <ion-col col-12 class="pay-option">

@@ -156,7 +156,6 @@ export class HistoryBookingPage {
       }
       this._restapiServiceProvider.postVoucherVerify({ code: this.voucherCode, treatment_price: currentPrice }).subscribe(response => {
         this._loaderCtrl.hideLoader();
-        console.log(response);
         if (response.result == 'success') {
           this.voucherUseStatus = true;
           this.voucherUse.code = this.voucherCode;

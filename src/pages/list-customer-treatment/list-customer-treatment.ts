@@ -15,6 +15,7 @@ export class ListCustomerTreatment {
   pastTreatment: Array<any>;
   treatment_count: number;
   name: string;
+  salon: object = null;
   isSignedIn: boolean;
   user_id: any;
   @ViewChild('navbar') navBar: Navbar;
@@ -29,7 +30,7 @@ export class ListCustomerTreatment {
     public _restapiServiceProvider: RestapiServiceProvider,
     public loading: LoadingController) {
     this.isSignedIn = this._authServiceProvider.userSignedIn;
-
+    this.salon = JSON.parse(localStorage.getItem('salon_object'));
   }
 
   ionViewDidEnter() {

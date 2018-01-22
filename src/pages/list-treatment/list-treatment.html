@@ -22,7 +22,7 @@
           <span class="treatment-detail-label">Durata:</span> {{treatment.duration_in_minute}} min.
         </div>
         <div *ngIf="treatment.price !== 0"  class="treatment-info">
-          <span class="treatment-detail-label">Prezzo:</span> &#8364; {{treatment.price}}
+          <span class="treatment-detail-label">Prezzo:</span> &#8364; {{treatment.price | number : '1.2-2'}}
         </div>
       </ion-col>
       <ion-col col-3 class="treatment-action">

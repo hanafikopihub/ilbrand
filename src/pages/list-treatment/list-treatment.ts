@@ -31,9 +31,7 @@ export class ListTreatmentPage {
     });
 
     this.scrollStatus = 'can-scroll';
-
     this.salon_id = JSON.parse(localStorage.getItem('salon_id'));
-
     this.fromModal = this._navParams.get('status');
     this.loadData();
   }
@@ -61,19 +59,16 @@ export class ListTreatmentPage {
 
   addTreatment(treatment) {
     this.addTreatments = this.addTreatments.concat(treatment)
-
     this._navCtrl.push('BookingPage', { treatment: treatment, salon: this.salon, status: this.fromModal });
   }
 
   addToCart() {
     const treatmentls = JSON.parse(localStorage.getItem('treatments'));
     if (treatmentls != null) {
-
       this.addTreatments = this.addTreatments.concat(treatmentls);
     }
     localStorage.setItem('treatments', JSON.stringify(this.addTreatments))
     this.addTreatments = [];
-    // this._navCtrl.setRoot
     this._navCtrl.push('BookingPage');
   }
 

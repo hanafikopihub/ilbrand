@@ -22,6 +22,7 @@ export class ProfilePage {
   email: string;
   number: string;
   name: string;
+  salon: object = null;
 
   scrollStatus: string;
 
@@ -48,6 +49,7 @@ export class ProfilePage {
       this.scrollStatus = data;
     });
 
+    this.salon = JSON.parse(localStorage.getItem('salon_object'));
     this.scrollStatus = 'can-scroll';
   }
 

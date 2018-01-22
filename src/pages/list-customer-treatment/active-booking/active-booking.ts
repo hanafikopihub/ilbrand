@@ -76,7 +76,6 @@ export class ActiveBookingPage {
         this.navCtrl.push('ListCustomerTreatment');
         this._toastCtrl.presentToast('Prenotazione annullata!');
       }, (error) => {
-        console.log(error);
         this._loader.hideLoader();
         this._viewController.dismiss();
         this._alertService.errorConnectionAlert(error);
