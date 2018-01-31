@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar class="default-navbar custome-navbar">
     <ion-title class="custome-title">
-      <div id="title-salon">Il Brand</div>
+      <div id="title-salon">{{salon_header_name}}</div>
       <div id="sub-title-salon">Profilo</div>
     </ion-title>
   </ion-navbar>
@@ -76,7 +76,7 @@
 
   <hr style="height:1px; margin: 20px 0;background-color: rgba(0, 0, 0, 0.12)">
   <div style="text-align: center;">
-    <img src="assets/icon/logo.png" class="icon-image-bottom" onclick="window.open('https://www.ilbrandtradate.it')">
+    <div class="icon-image-bottom" *ngIf="salon?.logo_image" (click)="openWebpage(salon?.website)" [style.background-image]="'url(' + salon?.logo_image + ')'"></div>
   </div>
   <div>
     <div id="title-city">

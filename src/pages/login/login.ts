@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, IonicPage, ViewController, NavParams, NavController, ToastController, LoadingController, ModalController } from 'ionic-angular';
+import { Events, Platform, IonicPage, ViewController, NavParams, NavController, ToastController, LoadingController, ModalController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 import { Angular2TokenService } from 'angular2-token';
@@ -13,6 +13,7 @@ import { ToastService } from '../../providers/shared-service/toast-service';
   templateUrl: 'login.html',
 })
 export class LoginPage {
+  salon_header_name: string;
 
   loginData = { email: '', password: '' };
   data: any;
@@ -23,9 +24,16 @@ export class LoginPage {
   constructor(
 
     public _toastService: ToastService,
-    public navParams: NavParams, public navCtrl: NavController, public viewCtrl: ViewController, private toastCtrl: ToastController,
-    private loadingCtrl: LoadingController, public modalCtrl: ModalController,
-    public _authServiceProvider: AuthServiceProvider, private _tokenService: Angular2TokenService) {
+    public navParams: NavParams, 
+    public navCtrl: NavController, 
+    public viewCtrl: ViewController, 
+    private toastCtrl: ToastController,
+    private loadingCtrl: LoadingController, 
+    public modalCtrl: ModalController,
+    public events: Events,
+    public _authServiceProvider: AuthServiceProvider, 
+    private _tokenService: Angular2TokenService) {
+    this.salon_header_name = AppApi.SALON_NAME_HEADER;
     this._tokenService.init({
       apiBase: AppApi.BASE_API_URL,
       apiPath: '/api/v1'
@@ -50,7 +58,7 @@ export class LoginPage {
   ionViewDidEnter() {
     const client = localStorage.getItem('client');
     if (client) {
-      this.navCtrl.push(''+this.fromPage+'')
+      this.navCtrl.push('' + this.fromPage + '')
     }
   }
   submitLogin() {
@@ -70,6 +78,7 @@ export class LoginPage {
       res => {
         this.loading.dismiss();
         this.viewCtrl.dismiss();
+        this.events.publish('page:logged', true);
       },
       error => {
         this.loading.dismiss();

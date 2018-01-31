@@ -18,6 +18,8 @@ import { AlertService } from '../../providers/shared-service/alert-service';
 import { ToastService } from '../../providers/shared-service/toast-service';
 import { LoaderService } from '../../providers/shared-service/loader-service';
 
+import { AppApi } from '../../app.api';
+
 @IonicPage()
 @Component({
   selector: 'page-booking',
@@ -25,7 +27,8 @@ import { LoaderService } from '../../providers/shared-service/loader-service';
 })
 
 export class BookingPage {
-
+  salon_header_name: string;
+  
   // status user login or logout
   public isSignedIn: boolean;
 
@@ -82,6 +85,7 @@ export class BookingPage {
     public _restapiServiceProvider: RestapiServiceProvider,
     public plt: Platform
   ) {
+    this.salon_header_name = AppApi.SALON_NAME_HEADER;
 
     this.showheader = false;
     this.hideheader = true;

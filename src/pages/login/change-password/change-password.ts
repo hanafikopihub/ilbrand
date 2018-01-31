@@ -6,12 +6,15 @@ import { Angular2TokenService } from 'angular2-token';
 import { LoaderService } from '../../../providers/shared-service/loader-service';
 import { ToastService } from '../../../providers/shared-service/toast-service';
 
+import { AppApi } from '../../../app.api';
+
 @IonicPage()
 @Component({
   selector: 'change-password',
   templateUrl: 'change-password.html',
 })
 export class ChangePasswordPage {
+  salon_header_name: string;
 
   resetData = { email: '' };
 
@@ -23,6 +26,7 @@ export class ChangePasswordPage {
     public _modalCtrl: ModalController,
     public _toastService: ToastService,
     private _tokenService: Angular2TokenService) {
+      this.salon_header_name = AppApi.SALON_NAME_HEADER;
   }
 
   doRequestResetPassword() {

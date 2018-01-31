@@ -21,6 +21,7 @@ import { LoaderService } from '../../../providers/shared-service/loader-service'
 })
 export class RegisterPage {
 
+  salon_header_name: string;
   registerData: FormGroup;
 
   constructor(
@@ -32,6 +33,7 @@ export class RegisterPage {
     public _modalCtrl: ModalController,
     public _toastService: ToastService,
     private _tokenService: Angular2TokenService) {
+      this.salon_header_name = AppApi.SALON_NAME_HEADER;
   }
 
   ngOnInit() {

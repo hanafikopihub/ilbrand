@@ -5,6 +5,8 @@ import { Calendar } from '@ionic-native/calendar';
 import { ToastService } from '../../providers/shared-service/toast-service';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
+import { AppApi } from '../../app.api';
+
 @IonicPage()
 @Component({
   selector: 'page-my-booking',
@@ -12,6 +14,7 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 })
 export class MyBookingPage {
 
+  salon_header_name: string;
   treatmentParam: any;
   operatorParam: any;
   dataBooking: any;
@@ -36,6 +39,7 @@ export class MyBookingPage {
     public _authServiceProvider: AuthServiceProvider,
     public _toastService: ToastService,
     public navParams: NavParams) {
+    this.salon_header_name = AppApi.SALON_NAME_HEADER;
 
     _events.subscribe('page:scroll', (data) => {
       this.scrollStatus = data;

@@ -11,6 +11,8 @@ import { PayPalPayment, PayPal, PayPalConfiguration } from '@ionic-native/paypal
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 
+import { AppApi } from '../../app.api';
+
 @IonicPage()
 @Component({
   selector: 'page-history-booking',
@@ -18,6 +20,8 @@ import { CustomValidators } from 'ng2-validation';
 })
 
 export class HistoryBookingPage {
+
+  salon_header_name: string;
 
   fromModal: boolean = false;
   entryForm: FormGroup;
@@ -59,6 +63,8 @@ export class HistoryBookingPage {
     public _events: Events,
     public _toastService: ToastService,
     public _restapiServiceProvider: RestapiServiceProvider) {
+
+    this.salon_header_name = AppApi.SALON_NAME_HEADER;
 
     this.treatmentParam = this._navParams.get('treatment');
     this.operatorParam = this._navParams.get('operators');

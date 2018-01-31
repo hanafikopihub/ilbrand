@@ -5,12 +5,15 @@ import { ToastService } from '../../../providers/shared-service/toast-service';
 import { LoaderService } from '../../../providers/shared-service/loader-service';
 import { AlertService } from '../../../providers/shared-service/alert-service';
 
+import { AppApi } from '../../../app.api';
+
 @IonicPage()
 @Component({
   selector: 'page-past-booking',
   templateUrl: 'past-booking.html',
 })
 export class PastBookingPage {
+  salon_header_name: string;
   booking: any;
   treatment: any;
   salon: any;
@@ -30,6 +33,7 @@ export class PastBookingPage {
     public _alertService: AlertService,
     public _restapiServiceProvider: RestapiServiceProvider,
     public _viewController: ViewController) {
+      this.salon_header_name = AppApi.SALON_NAME_HEADER;
   }
 
   ionViewDidLoad() {

@@ -6,12 +6,15 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { Angular2TokenService } from 'angular2-token';
 import { IonicPage } from 'ionic-angular/navigation/ionic-page';
 
+import { AppApi } from '../../app.api';
+
 @IonicPage()
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
 })
 export class ListPage {
+  salon_header_name: string;
 
   loading: any;
   LoginPage = LoginPage;
@@ -29,7 +32,8 @@ export class ListPage {
     private toastCtrl: ToastController,
     public events: Events,
     public _authServiceProvider: AuthServiceProvider) {
-    //  this.isSignedIn = this._authServiceProvider.userSignedIn
+
+      this.salon_header_name = AppApi.SALON_NAME_HEADER;
 
   }
 
@@ -73,6 +77,7 @@ export class ListPage {
       res => {
         this.loading.dismiss();
         this._viewController.dismiss();
+        this.events.publish('page:logged', false);
       },
       error => {
         this.loading.dismiss();
@@ -110,7 +115,7 @@ export class ListPage {
   }
 
   closeModal() {
-    this.events.publish('page:scroll', 'can-scroll')
+    this.events.publish('page:scroll', 'can-scroll');
 
     // condition when user login in history page, then page reload ( cause problem 2 must step back)
     if (this.isHistoryPage) {

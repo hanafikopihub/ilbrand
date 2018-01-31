@@ -8,6 +8,7 @@ import { ToastService } from '../../providers/shared-service/toast-service';
 import { LoaderService } from '../../providers/shared-service/loader-service';
 import { AppApi } from '../../app.api';
 import { IonicPage } from 'ionic-angular/navigation/ionic-page';
+import { InAppBrowser, InAppBrowserOptions } from "@ionic-native/in-app-browser";
 
 @IonicPage()
 @Component({
@@ -16,6 +17,7 @@ import { IonicPage } from 'ionic-angular/navigation/ionic-page';
 })
 export class ProfilePage {
 
+  salon_header_name: string;
   passwordData = { password: '', passwordConfirmation: '' };
   phoneNumber: any;
   loading: any;
@@ -37,9 +39,13 @@ export class ProfilePage {
     public _authServiceProvider: AuthServiceProvider,
     public _restapiServiceProvider: RestapiServiceProvider,
     private _toastCtrl: ToastService,
+    private inAppBrowser: InAppBrowser,
     public _loaderCtrl: LoaderService,
     public _events: Events,
     private _tokenService: Angular2TokenService) {
+
+    this.salon_header_name = AppApi.SALON_NAME_HEADER;
+
     this._tokenService.init({
       apiBase: AppApi.BASE_API_URL,
       apiPath: '/api/v1'
@@ -136,6 +142,14 @@ export class ProfilePage {
   closeModal() {
     this.viewCtrl.dismiss();
     this.navCtrl.setRoot('HomePage');
+  }
+
+  openWebpage(website){
+    const options: InAppBrowserOptions = {
+      zoom: 'no',
+      location: 'yes'
+    }
+    this.inAppBrowser.create(website, '_self', options);
   }
 
 }

@@ -121,6 +121,12 @@ export class RestapiServiceProvider {
       .map(res => res.json())
   }
 
+  getListOperator(salon_id){
+    const url = this.apiUrl + 'operators/by_salon/' + salon_id;
+    const request = this.http.get(url).map(res => res.json());
+    return this.cache.loadFromObservable(url, request);
+  }  
+
   postBooking(data) {
     return this._authServiceProvider.request({
       method: RequestMethod.Post,
@@ -133,7 +139,6 @@ export class RestapiServiceProvider {
     return this.http.post(this.apiUrl + 'bookings/paypal_confirm', data)
       .map(res => res.json())
   }
-
 
   postSalonReview(data) {
     return this._authServiceProvider.request({

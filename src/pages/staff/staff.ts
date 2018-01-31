@@ -5,6 +5,8 @@ import { AlertService } from '../../providers/shared-service/alert-service';
 import { LoaderService } from '../../providers/shared-service/loader-service';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { IonicPage } from 'ionic-angular/navigation/ionic-page';
+import { InAppBrowser, InAppBrowserOptions } from "@ionic-native/in-app-browser";
+import { AppApi } from '../../app.api';
 
 @IonicPage()
 @Component({
@@ -13,12 +15,15 @@ import { IonicPage } from 'ionic-angular/navigation/ionic-page';
 })
 export class StaffPage {
 
+  salon_header_name: string;
   salon_id: string;
   staff: object;
   staffs: Array<any>;
   scrollStatus: string;
+  salon: object = null;
 
   constructor(
+    private inAppBrowser: InAppBrowser,
     public _loaderCtrl: LoaderService,
     public navCtrl: NavController,
     public _alertCtrl: AlertService,
@@ -27,35 +32,14 @@ export class StaffPage {
     public _events: Events,
     public _viewController: ViewController) {
 
+    this.salon_header_name = AppApi.SALON_NAME_HEADER;
     _events.subscribe('page:scroll', (data) => {
       this.scrollStatus = data;
     });
 
     this.scrollStatus = 'can-scroll';
-    
     this.salon_id = JSON.parse(localStorage.getItem('salon_id'));
-    this.staffs = [
-      {
-        'name': 'GIORDANO',
-        'about': 'La passione è il punto di forza che caratterizza il lavoro di Giordano. <br> Un professionista sempre alla ricerca di nuove ispirazioni per suggerire look personalizzati.<br> Hair stylist e Formatore z-oneconcept education.',
-        'image': 'https://staging.salonist.it/mobile_app/ilbrand/giordano.jpg',
-      },
-      {
-        'name': 'LORENA',
-        'about': 'Dicono che abbia mani di fata! Rimarrete inebriati dalla sua dolcezza e dai suoi massaggi durante ogni trattamento.<br> A questo si aggiunge la grande cura nei dettagli dedicata a ciascun servizio offerto.',
-        'image': 'https://staging.salonist.it/mobile_app/ilbrand/lorena.jpg'
-      },
-      {
-        'name': 'ANNA',
-        'about': 'Se desiderate una consulenza di immagine per un nuovo look o per esaltare il vostro taglio attuale, Anna è la persona giusta! <br> La sua abilità sta nel saper esaudire i desideri delle donne.',
-        'image': 'https://staging.salonist.it/mobile_app/ilbrand/anna.jpg'
-      },
-      {
-        'name': 'SARA',
-        'about': 'Sara è una new entry nel nostro staff e si definisce CREATIVA! <br> Sempre a vostra disposizione con il sorriso, saprà offrirvi una consulenza personalizzata e coccolarvi con servizi per la cura e la bellezza dei capelli. <br> È specializzata, inoltre, nella cura della barba ed è in grado di rendere ogni uomo impeccabile.',
-        'image': 'https://staging.salonist.it/mobile_app/ilbrand/sara.jpg'
-      }
-    ]
+    this.salon = JSON.parse(localStorage.getItem('salon_object'));
   }
   ionViewDidLoad() {
     this.getDataSalon();
@@ -63,10 +47,10 @@ export class StaffPage {
 
   getDataSalon() {
     this._loaderCtrl.showLoader().then(res => {
-      this._restapiServiceProvider.getSalon(this.salon_id)
+      this._restapiServiceProvider.getListOperator(this.salon_id)
         .subscribe(data => {
           this._loaderCtrl.hideLoader();
-          this.staff = data;
+          this.staffs = data.operators;
         }, (error) => {
           this._loaderCtrl.hideLoader();
           this._alertCtrl.failedError(error);
@@ -78,6 +62,14 @@ export class StaffPage {
     this.scrollStatus = 'no-scroll';
     const listModal = this._modalCtrl.create('ListPage')
     listModal.present();
+  }
+
+  openWebpage(website){
+    const options: InAppBrowserOptions = {
+      zoom: 'no',
+      location: 'yes'
+    }
+    this.inAppBrowser.create(website, '_self', options);
   }
 
 }

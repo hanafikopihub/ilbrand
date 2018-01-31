@@ -4,6 +4,8 @@ import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-
 import { LoaderService } from '../../providers/shared-service/loader-service';
 import { AlertService } from '../../providers/shared-service/alert-service';
 import { IonicPage } from 'ionic-angular/navigation/ionic-page';
+import { InAppBrowser, InAppBrowserOptions } from "@ionic-native/in-app-browser";
+import { AppApi } from '../../app.api';
 
 @IonicPage()
 @Component({
@@ -11,6 +13,7 @@ import { IonicPage } from 'ionic-angular/navigation/ionic-page';
   templateUrl: 'list-treatment.html'
 })
 export class ListTreatmentPage {
+  salon_header_name: string;
   salon: any;
   salon_id: string;
   fromModal: boolean = false;
@@ -18,6 +21,7 @@ export class ListTreatmentPage {
   treatments: Array<any>
   addTreatments: Array<any> = [];
   constructor(
+    private inAppBrowser: InAppBrowser,
     public _alertCtrl: AlertService,
     public _loaderCtrl: LoaderService,
     public _navCtrl: NavController,
@@ -25,6 +29,8 @@ export class ListTreatmentPage {
     public _events: Events,
     public _modalCtrl: ModalController,
     public _restapiServiceProvider: RestapiServiceProvider) {
+
+      this.salon_header_name = AppApi.SALON_NAME_HEADER;
 
     _events.subscribe('page:scroll', (data) => {
       this.scrollStatus = data;
@@ -55,6 +61,15 @@ export class ListTreatmentPage {
           this._loaderCtrl.hideLoader();
         });
     })
+  }
+
+  openWebpage(website){
+    const options: InAppBrowserOptions = {
+      zoom: 'no',
+      location: 'yes'
+    }
+
+    this.inAppBrowser.create(website, '_self', options);
   }
 
   addTreatment(treatment) {

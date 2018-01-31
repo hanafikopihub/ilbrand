@@ -4,6 +4,8 @@ import { NavController, ViewController, ModalController, Events } from 'ionic-an
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { AlertService } from '../../providers/shared-service/alert-service';
 import { IonicPage } from 'ionic-angular/navigation/ionic-page';
+import { InAppBrowser, InAppBrowserOptions } from "@ionic-native/in-app-browser";
+import { AppApi } from '../../app.api';
 
 declare var google;
 
@@ -15,12 +17,15 @@ declare var google;
 export class ContactPage {
 
   @ViewChild('map') mapElement: ElementRef;
+  salon_header_name: string;
   map: any;
   salon_id: string;
+  salon: object = null;
   contact: object;
   scrollStatus: string;
 
   constructor(
+    private inAppBrowser: InAppBrowser,
     public _loaderCtrl: LoaderService,
     public navCtrl: NavController,
     public _viewController: ViewController,
@@ -28,7 +33,10 @@ export class ContactPage {
     public _events: Events,
     public _restapiServiceProvider: RestapiServiceProvider,
     public _modalCtrl: ModalController) {
+    this.salon_header_name = AppApi.SALON_NAME_HEADER;
+
     this.salon_id = JSON.parse(localStorage.getItem('salon_id'));
+    this.salon = JSON.parse(localStorage.getItem('salon_object'));
     this.scrollStatus = 'can-scroll';
     _events.subscribe('page:scroll', (data) => {
       this.scrollStatus = data;
@@ -74,6 +82,15 @@ export class ContactPage {
     this.scrollStatus = 'no-scroll';
     const listModal = this._modalCtrl.create('ListPage')
     listModal.present();
+  }
+
+  openWebpage(website){
+    const options: InAppBrowserOptions = {
+      zoom: 'no',
+      location: 'yes'
+    }
+
+    this.inAppBrowser.create(website, '_self', options);
   }
 
 }

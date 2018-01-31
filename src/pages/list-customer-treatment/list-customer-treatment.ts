@@ -3,6 +3,9 @@ import { Platform, IonicPage, NavParams, Navbar, NavController, LoadingControlle
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { LoaderService } from '../../providers/shared-service/loader-service';
+import { InAppBrowser, InAppBrowserOptions } from "@ionic-native/in-app-browser";
+
+import { AppApi } from '../../app.api';
 
 @IonicPage()
 @Component({
@@ -10,6 +13,7 @@ import { LoaderService } from '../../providers/shared-service/loader-service';
   templateUrl: 'list-customer-treatment.html'
 })
 export class ListCustomerTreatment {
+  salon_header_name: string;
   treatments: Array<any>;
   activeTreatment: Array<any>;
   pastTreatment: Array<any>;
@@ -21,6 +25,7 @@ export class ListCustomerTreatment {
   @ViewChild('navbar') navBar: Navbar;
 
   constructor(
+    private inAppBrowser: InAppBrowser,
     public _platform: Platform,
     public navParams: NavParams,
     public navCtrl: NavController,
@@ -29,6 +34,7 @@ export class ListCustomerTreatment {
     public _loaderCtrl: LoaderService,
     public _restapiServiceProvider: RestapiServiceProvider,
     public loading: LoadingController) {
+    this.salon_header_name = AppApi.SALON_NAME_HEADER;
     this.isSignedIn = this._authServiceProvider.userSignedIn;
     this.salon = JSON.parse(localStorage.getItem('salon_object'));
   }
@@ -76,6 +82,15 @@ export class ListCustomerTreatment {
 
   detailTreatment(treatment) {
 
+  }
+
+  openWebpage(website){
+    const options: InAppBrowserOptions = {
+      zoom: 'no',
+      location: 'yes'
+    }
+
+    this.inAppBrowser.create(website, '_self', options);
   }
 
   presentLogin(fromPage) {

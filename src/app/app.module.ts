@@ -19,6 +19,7 @@ import { ToastService } from '../providers/shared-service/toast-service';
 import { LoaderService } from '../providers/shared-service/loader-service';
 
 import { CacheModule } from 'ionic-cache';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { CacheModule } from 'ionic-cache';
   ],
   providers: [
     StatusBar,
+    InAppBrowser,
     SplashScreen,
     Angular2TokenService,
     AuthServiceProvider,

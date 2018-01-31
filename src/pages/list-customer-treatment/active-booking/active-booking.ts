@@ -5,12 +5,15 @@ import { ToastService } from '../../../providers/shared-service/toast-service';
 import { LoaderService } from '../../../providers/shared-service/loader-service';
 import { AlertService } from '../../../providers/shared-service/alert-service';
 
+import { AppApi } from '../../../app.api';
+
 @IonicPage()
 @Component({
   selector: 'page-active-booking',
   templateUrl: 'active-booking.html',
 })
 export class ActiveBookingPage {
+  salon_header_name: string;
   booking: any;
   voucherUseStatus: boolean = false;
   rimanente: any;
@@ -25,6 +28,7 @@ export class ActiveBookingPage {
     public _alertService: AlertService,
     public _restapiServiceProvider: RestapiServiceProvider,
     public _viewController: ViewController) {
+      this.salon_header_name = AppApi.SALON_NAME_HEADER;
   }
 
   ionViewDidLoad() {

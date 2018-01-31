@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar class="default-navbar custome-navbar" text-center hideBackButton="true">
     <ion-title class="default-title custome-title" text-center>
-      <div text-center id="title-salon">Il Brand</div>
+      <div text-center id="title-salon">{{salon_header_name}}</div>
       <div id="sub-title-salon">Benvenuto!</div>
     </ion-title>
     <ion-buttons right class="bar-button-custom">
@@ -23,25 +23,36 @@
   <img *ngIf="salon?.salon_image_gallery?.length === 1" src="{{salon? salon.cover_image : 'assets/images/image-empty.png'}}"
     width="100%" height="235px">
   <ion-grid padding>
-    <ion-row id="title">{{salon?.short_des}}</ion-row>
-    <ion-row id="content">
-      <p>
-        Ti suggeriremo i trattamenti più adatti, ti aiuteremo a cambiare look o semplicemente a sentirti meglio con te stessa!
-        <br> Dai trattamenti taglio e colore più tradizionali, alle tecniche più innovative... Fino alle maschere di bellezza
-        curativi ristrutturanti e age renew. Affidati ai nostri esperti hairstylist!
-      </p>
-    </ion-row>
-    <ion-row>
+
+    <div style="text-align: center;">
+      <div class="icon-image-bottom" *ngIf="salon?.logo_image" (click)="openWebpage(salon?.website)" [style.background-image]="'url(' + salon?.logo_image + ')'"></div>
+    </div>
+
+    <ion-row padding-bottom>
       <button tappable text-center ion-button color="danger" class="btn-nuova" style="width: 100%" (click)="goListTreatmentPage()">
         <b>NUOVA PRENOTAZIONE</b>
       </button>
     </ion-row>
 
+    <ion-row padding-top *ngIf="isSignedIn">
+      <button tappable text-center block outline ion-button class="register-btn" style="border: 2px solid #4A4A4A;  border-radius: 5px;" (click)="goMyBookingPage()">
+        LE TUE PRENOTAZIONI
+      </button>
+    </ion-row>
+    <ion-row style="padding-top: 13px">
+      <button tappable text-center block outline ion-button class="register-btn" style="border: 2px solid #4A4A4A;  border-radius: 5px;" (click)="goContactPage()">
+        CONTATTI & ORARI
+      </button>
+    </ion-row>
+
     <hr style="height:1px; margin: 20px 0;background-color: rgba(0, 0, 0, 0.12)">
 
-    <div style="text-align: center;">
-      <img src="assets/icon/logo.png" class="icon-image-bottom" onclick="window.open('https://www.ilbrandtradate.it')">
-    </div>
+    <ion-row id="title">{{salon?.short_des}}</ion-row>
+    <ion-row id="content">
+      <p align="justify">Rivendiamo al dettaglio prodotti professionali per capelli ed estetica, in particolare tutto ciò che riguarda il trattamento delle unghie. Forniamo inoltre servizio di applicazione smalto semipermanente.</p>
+    </ion-row>
+
+    <hr style="height:1px; margin: 20px 0;background-color: rgba(0, 0, 0, 0.12); margin-top:5px !important">
 
     <div>
       <div id="title-city">
@@ -57,7 +68,7 @@
       </div>
     </div>
 
-    <hr style="height:1px; margin: 20px 0;background-color: rgba(0, 0, 0, 0.12)">
+    <hr style="height:1px; margin: 20px 0;background-color: rgba(0, 0, 0, 0.12);margin-top:5px !important">
     <div padding-bottom text-center class="creata-footer">
       App Creata da <b><a onclick="window.open('https://www.salonist.it/digital', '_system', 'location=yes'); return false;">Salonist</a></b>
     </div>

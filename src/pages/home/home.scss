@@ -24,4 +24,14 @@ page-home {
         border-radius: 5px;
         background-color: #F65C5C;
     }
+
+    .register-btn {
+        .button-inner {
+            color: #4A4A4A;
+            font-size: 16px;
+            font-weight: 400 !important;
+            line-height: 22px;
+            font-family: 'Open Sans Semibold';
+        }
+    }
 }

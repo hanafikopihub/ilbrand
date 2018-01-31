@@ -4,4 +4,5 @@
 export const AppApi = Object.freeze({
   SALON_ID: '858',
   BASE_API_URL: 'https://www.salonist.it',
+  SALON_NAME_HEADER: 'Il Brand'
 });

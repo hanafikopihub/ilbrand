@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar text-center>
     <ion-title style="text-align: center">
-      <div id="title-salon">Il Brand</div>
+      <div id="title-salon">{{salon_header_name}}</div>
       <div id="sub-title-salon">Benvenuto!</div>
     </ion-title>
     <ion-buttons right (click)="closeModal()">
@@ -44,7 +44,7 @@
                 <a tappable (click)="toChangePassword($event)" class="text-forgot-password">Ho dimenticato la password</a>
               </p>
               <p *ngIf="fromPageString !== 'HistoryBookingPage'" text-center style="margin-top:12%;">
-                <button tappable (click)="toRegister($event)" text-center block outline ion-button color="light" class="register-btn" style="border: 2px solid #9B9B9B;  border-radius: 5px;">
+                <button tappable (click)="toRegister($event)" text-center block outline ion-button color="light" class="register-btn" style="border: 2px solid #000;  border-radius: 5px;">
                   REGISTRATI
                 </button>
               </p>

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar class="default-navbar custome-navbar">
     <ion-title class="custome-title">
-      <div id="title-salon">Il Brand</div>
+      <div id="title-salon">{{salon_header_name}}</div>
       <div id="sub-title-salon">Lo staff</div>
     </ion-title>
     <ion-buttons right class="bar-button-custom">
@@ -16,14 +16,14 @@
   <ion-grid no-padding>
     <span *ngFor="let staff of staffs">
       <ion-row no-padding>
-        <div class="image-staff" [style.background-image]="'url(' + staff.image + ')'"></div>
+        <div class="image-staff" [style.background-image]="'url(' + staff.image_url + ')'"></div>
       </ion-row>
       <ion-row padding>
         <div class="title-content">
-          <b>{{staff.name}}</b>
+          <b>{{staff.operator_name}}</b>
         </div>
-        <p [innerHtml]=staff?.about>
-        </p>
+        <p *ngIf="staff.description" [innerHtml]=staff.description></p>
+        <p *ngIf="!staff.description">bio</p>
       </ion-row>
     </span>
   </ion-grid>
@@ -31,17 +31,19 @@
   <hr style="height:1px; margin: 20px 0;background-color: rgba(0, 0, 0, 0.12)">
 
   <div style="text-align: center;">
-    <img src="assets/icon/logo.png" class="icon-image-bottom" onclick="window.open('https://www.ilbrandtradate.it')">
+    <div class="icon-image-bottom" *ngIf="salon?.logo_image" (click)="openWebpage(salon?.website)" [style.background-image]="'url(' + salon?.logo_image + ')'"></div>
   </div>
 
   <div>
     <div id="title-city">
-      <b>{{staff?.name}}</b>
+      <b>{{salon?.name}}</b>
     </div>
     <div id="content-address">
-      <p style="margin-top:3px;">{{staff?.address}} {{staff?.city}} 
-        <br>{{staff?.phone}}
-        <br><div *ngIf="staff !== null">P.IVA {{staff?.piva}}</div>
+      <p style="margin-top:3px;">
+        {{salon?.address}} {{salon?.city}}
+        <br>{{salon?.phone}}
+        <br>
+        <span *ngIf="salon !== null">P.IVA {{salon?.piva}}</span>
       </p>
     </div>
   </div>
