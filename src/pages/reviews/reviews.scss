@@ -1,0 +1,52 @@
+page-reviews
+ {
+    .reviewer-name{
+        color: rgba(77,76,76,0.82); 
+        font-size: 14px;    
+        font-weight: bold;  
+        line-height: 19px;
+        padding-left: 0;
+        padding-top: 17px;
+        text-transform: uppercase;
+    }
+
+    .salon-review-container .name-with-review .row .col>.reviewer-name:first-child {
+        padding-top: 0;
+    }
+
+    .salon-review-container .name-with-review .row .col rating>ul.rating:first-child {
+        margin-top: 0;
+    }
+
+    .review-border-bottom{
+        height: 2px;
+        border-bottom: 0.5px solid #D8D8D8;
+    }
+
+    .review-content{
+        p{
+            color: #4A4A4A;
+            font-size: 13px;
+            line-height: 18px;            
+        }
+
+    }
+
+    ul {
+        padding: 0px;
+        margin-bottom: 0;
+        &.rating li {
+        padding: 0 !important;
+        background: none;
+        color: #ffb400;
+        ion-icon {
+            font-size: 25px;
+            color: #FDD06F;
+        }
+    }
+}
+
+.toolbar-title-md {
+    margin-left: 30px;
+  }
+}

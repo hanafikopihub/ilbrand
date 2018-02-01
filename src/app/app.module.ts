@@ -5,8 +5,6 @@ import { MyApp } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-// Import ionic2-rating module
-import { Ionic2RatingModule } from 'ionic2-rating';
 
 import { HttpModule } from '@angular/http';
 import { Angular2TokenService } from 'angular2-token';
@@ -32,8 +30,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
       backButtonIcon: 'custom-back',
       backButtonText: ''
     }),
-    CacheModule.forRoot(),
-    Ionic2RatingModule
+    CacheModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

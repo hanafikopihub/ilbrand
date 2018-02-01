@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar class="default-navbar custome-navbar">
+    <ion-title class="default-title custome-title">
+      <div id="title-salon">{{salon_header_name}}</div>
+      <div id="sub-title-salon">Recensioni</div>
+    </ion-title>
+    <ion-buttons right (click)="closeModal()">
+      <button tappable ion-button icon-only>
+        <ion-icon item-right name="custom-x" style="margin-right:5px;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list class="list-show-autocomplate">
+    <div class="salon-review-container" *ngFor="let item of salonReview">
+      <div class="name-with-review">
+        <ion-row>
+          <ion-col col-6 style="padding-left: 0 !important">
+            <div class="reviewer-name">{{item.reviewer_name.substring(0, 18)}}</div>
+          </ion-col>
+          <ion-col col-6>
+            <rating [(ngModel)]="item.rating" readOnly="true" float-right emptyStarIconName="custom-star-empty" halfStarIconName="custom-star-half" starIconName="custom-star-full"></rating>
+          </ion-col>
+        </ion-row>
+        <div class="review-border-bottom"></div>
+      </div>
+      <div class="review-content">
+        <p>{{item.review}}</p>
+      </div>
+    </div>
+  </ion-list>
+</ion-content>

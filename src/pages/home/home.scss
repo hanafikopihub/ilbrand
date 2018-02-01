@@ -1,4 +1,22 @@
 page-home {
+    ul {
+        padding: 0px;
+        margin-bottom: 0 !important;
+        &.rating li {
+            padding: 3px 0px !important;
+            background: none;
+            color: #ffb400;
+            ion-icon {
+                font-size: 25px;
+                color: #FDD06F;
+            }
+        }
+    }
+    .button-outline-ios.activated{
+        color: #4A4A4A;
+        background-color: #fff;
+        opacity: 1;
+    }
     #container {
         width: 300px;
         margin-top: 25px;
@@ -32,6 +50,12 @@ page-home {
             font-weight: 400 !important;
             line-height: 22px;
             font-family: 'Open Sans Semibold';
+        }
+    }
+
+    .recensioni-total{
+        a{
+            color: #4A4A4A;
         }
     }
 }

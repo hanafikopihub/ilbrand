@@ -28,6 +28,14 @@
       <div class="icon-image-bottom" *ngIf="salon?.logo_image" (click)="openWebpage(salon?.website)" [style.background-image]="'url(' + salon?.logo_image + ')'"></div>
     </div>
 
+    <div *ngIf="salon?.count_rating !== 0" text-center style="padding-bottom:25px">
+      <rating [(ngModel)]="avg_rating" readOnly="true" emptyStarIconName="custom-star-empty" halfStarIconName="custom-star-half"
+        starIconName="custom-star-full"></rating>
+      <span tappable class="recensioni-total">
+        <a class="underline-link" (click)="openAllRating($event)">{{salon?.count_rating}} recensioni</a>
+      </span>
+    </div>
+
     <ion-row padding-bottom>
       <button tappable text-center ion-button color="danger" class="btn-nuova" style="width: 100%" (click)="goListTreatmentPage()">
         <b>NUOVA PRENOTAZIONE</b>
@@ -49,7 +57,7 @@
 
     <ion-row id="title">{{salon?.short_des}}</ion-row>
     <ion-row id="content">
-      <p align="justify">Rivendiamo al dettaglio prodotti professionali per capelli ed estetica, in particolare tutto ciò che riguarda il trattamento delle unghie. Forniamo inoltre servizio di applicazione smalto semipermanente.</p>
+      <p style="white-space: pre-line !important;" align="justify" [innerHtml]=salon?.description_mobileapp></p>
     </ion-row>
 
     <hr style="height:1px; margin: 20px 0;background-color: rgba(0, 0, 0, 0.12); margin-top:5px !important">

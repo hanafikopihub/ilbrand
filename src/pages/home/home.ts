@@ -20,6 +20,8 @@ export class HomePage {
   salon: object = null;
   fromModal: boolean = false;
   salon_header_name: string;
+  avg_rating: any;
+  salonReviews: any;
   isSignedIn: boolean;
 
   scrollStatus: string;
@@ -72,7 +74,10 @@ export class HomePage {
       this._restapiServiceProvider.getSalon(this.salon_id)
         .subscribe(data => {
           this._loaderCtrl.hideLoader();
+          console.log(data);
           this.salon = data;
+          this.avg_rating = data.avg_rating;
+          this.salonReviews = data.salon_reviews;
           localStorage.setItem('salon_object', JSON.stringify({name: data.name, 
             address: data.address, city: data.city, phone: data.phone, piva: data.piva, logo_image: data.logo_image, website: data.website}));
         }, (error) => {
@@ -80,6 +85,12 @@ export class HomePage {
           this._loaderCtrl.hideLoader();
         });
     })
+  }
+
+  openAllRating(ev) {
+    const allRating = this._modalCtrl.create('ReviewsPage',
+      { 'data': this.salonReviews, 'salon_name': this.salon_header_name })
+    allRating.present();
   }
 
   openWebpage(website){
