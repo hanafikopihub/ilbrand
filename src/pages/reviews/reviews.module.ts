@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { Ionic2RatingModule } from "ionic2-rating";
+import { Ionic2RatingModule } from "../../components/ionic2-rating/ionic2-rating.module";
 import { ReviewsPage } from './reviews';
 
 @NgModule({

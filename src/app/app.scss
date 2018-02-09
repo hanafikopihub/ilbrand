@@ -254,19 +254,6 @@
     font-weight: 700;
 }
 
-ul {
-    padding: 0px;
-    &.rating li {
-        padding: 5px 0px !important;
-        background: none;
-        color: #ffb400;
-        ion-icon {
-            font-size: 25px;
-            color: #FDD06F;
-        }
-    }
-}
-
 .salon-detail-title {
     font-size: 20px;
 }
@@ -383,44 +370,30 @@ ion-icon {
     &[class*="custom-add"] {
         mask-image: url(../assets/icon/add_icon/add_icon-AppStore.png);
         content: url(../assets/icon/add_icon/add_icon-AppStore.png);
-        width: 43px;
-        height: 43px;
-        mask-size: contain;
-        mask-position: 50% 50%;
-        mask-repeat: no-repeat;
-        background: currentColor;
+        width: 2.5em;
+        mask-size: cover;
     }
     &[class*="custom-tel"] {
         mask-image: url(../assets/icon/tel_icon/tel_icon-AppStore.png);
         content: url(../assets/icon/tel_icon/tel_icon-AppStore.png);
-        width: 50px;
-        height: 50px;
-        mask-size: contain;
-        mask-position: 50% 50%;
-        mask-repeat: no-repeat;
-        background: currentColor;
+        width: 2.5em;
+        mask-size: cover;
     }
     &[class*="custom-star-empty"] {
-        width: 21px;
-        height: 21px;
-        mask-size: contain;
-        background: currentColor;
+        width: 1.3em;
+        mask-size: cover;
         mask-image: url(../assets/icon/star_empty/star_empty-AppStore@2x.png);
         content: url(../assets/icon/star_empty/star_empty-AppStore@2x.png);
     }
     &[class*="custom-star-full"] {
-        width: 21px;
-        height: 21px;
-        mask-size: contain;
-        background: currentColor;
+        width: 1.3em;
+        mask-size: cover;
         mask-image: url(../assets/icon/star_full/star_full-AppStore@2x.png);
         content: url(../assets/icon/star_full/star_full-AppStore@2x.png);
     }
     &[class*="custom-star-half"] {
-        width: 21px;
-        height: 21px;
-        mask-size: contain;
-        background: currentColor;
+        width: 1.3em;
+        mask-size: cover;
         mask-image: url(../assets/icon/star_half/star_half.png);
         content: url(../assets/icon/star_half/star_half.png);
     }

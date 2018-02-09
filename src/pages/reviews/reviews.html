@@ -19,7 +19,7 @@
       <div class="name-with-review">
         <ion-row>
           <ion-col col-6 style="padding-left: 0 !important">
-            <div class="reviewer-name">{{item.reviewer_name.substring(0, 18)}}</div>
+            <div class="reviewer-name">{{item.reviewer_name ? item.reviewer_name.substring(0, 20) : 'Unknown'}}</div>
           </ion-col>
           <ion-col col-6>
             <rating [(ngModel)]="item.rating" readOnly="true" float-right emptyStarIconName="custom-star-empty" halfStarIconName="custom-star-half" starIconName="custom-star-full"></rating>

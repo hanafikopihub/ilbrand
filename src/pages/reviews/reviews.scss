@@ -1,5 +1,26 @@
 page-reviews
  {
+
+    ion-icon {
+        &[class*="custom-star-empty"] {
+            width: 0.8em;
+            mask-size: cover;
+            mask-image: url(../assets/icon/star_empty/star_empty-AppStore@2x.png);
+            content: url(../assets/icon/star_empty/star_empty-AppStore@2x.png);
+        }
+        &[class*="custom-star-full"] {
+            width: 0.8em;
+            mask-size: cover;
+            mask-image: url(../assets/icon/star_full/star_full-AppStore@2x.png);
+            content: url(../assets/icon/star_full/star_full-AppStore@2x.png);
+        }
+        &[class*="custom-star-half"] {
+            width: 0.8em;
+            mask-size: cover;
+            mask-image: url(../assets/icon/star_half/star_half.png);
+            content: url(../assets/icon/star_half/star_half.png);
+        }
+    }
     .reviewer-name{
         color: rgba(77,76,76,0.82); 
         font-size: 14px;    
