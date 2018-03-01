@@ -43,7 +43,6 @@ export class HomePage {
     });
 
     _events.subscribe('page:logged', (data) => {
-      console.log(data);
       this.isSignedIn = data;
     });
 
@@ -74,7 +73,6 @@ export class HomePage {
       this._restapiServiceProvider.getSalon(this.salon_id)
         .subscribe(data => {
           this._loaderCtrl.hideLoader();
-          console.log(data);
           this.salon = data;
           this.avg_rating = data.avg_rating;
           this.salonReviews = data.salon_reviews;

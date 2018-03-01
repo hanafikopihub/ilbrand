@@ -1,5 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { Push } from '@ionic-native/push';
 import { MyApp } from './app.component';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -37,6 +38,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     MyApp
   ],
   providers: [
+    Push,
     StatusBar,
     InAppBrowser,
     SplashScreen,
