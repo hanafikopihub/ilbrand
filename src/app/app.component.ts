@@ -21,8 +21,6 @@ export class MyApp {
     public _restapiServiceProvider: RestapiServiceProvider,
     public _alertCtrl: AlertController) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
 
       if(platform.is('android') || platform.is('tablet')){
@@ -46,9 +44,7 @@ export class MyApp {
       var deviceToken = '';
 
       pushObject.on('registration').subscribe((data: any) => {
-        console.log('device token -> ' + data.registrationId);
         deviceToken = data.registrationId;
-        //TODO - send device token to server
 
         if (platform.is('ios')) {
           deviceOs = 'customappios'
@@ -60,42 +56,47 @@ export class MyApp {
           console.log(response);
         },
         (error) => {
-          // handle error
           console.log(error);
           return;
         });
-        // localStorage.setItem('device_token', {device_token: deviceToken, device_os: deviceOs});
+        localStorage.setItem('device_token', deviceToken);
       },
        (error) => {
-        // handle error
         console.log(error);
         return;
       });
 
       pushObject.on('notification').subscribe((data: any) => {
-        console.log('message -> ' + data.message);
-        // if user using app and push notification comes
+        const additionalData = JSON.parse(JSON.stringify(data.additionalData));
+        const treatment = {s_treatment_id: additionalData.s_treatment_id, 
+          price: additionalData.treatment_price, 
+          duration: additionalData.treatment_duration,
+          des_treatment: additionalData.treatment_name
+        };
+        const salon = {salon_id: additionalData.salon_id, 
+          city: additionalData.salon_city, 
+          address: additionalData.salon_address
+        };
         if (data.additionalData.foreground) {
-          // if application open, show popup
           let confirmAlert = this._alertCtrl.create({
             title: 'New Notification',
             message: data.message,
-            buttons: [{
+            buttons: [
+            {
               text: 'Ignore',
               role: 'cancel'
-            }, {
+            }, 
+            {
               text: 'View',
               handler: () => {
                 console.log('Push notification clicked');
-                // this.nav.push('BookingPage', { treatment: treatment, salon: this.salon, status: this.fromModal });
+                this.nav.push('BookingPage', { treatment: treatment, salon: salon, status: false });
               }
             }]
           });
           confirmAlert.present();
         }else {
-          // if user NOT using app and push notification comes
-          // this.nav.push('BookingPage', { treatment: treatment, salon: this.salon, status: this.fromModal });
-          console.log('Push notification clicked');
+          this.nav.push('BookingPage', { treatment: treatment, salon: salon, status: false });
         }
       });
 

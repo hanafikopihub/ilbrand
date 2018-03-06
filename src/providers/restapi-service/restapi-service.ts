@@ -46,6 +46,12 @@ export class RestapiServiceProvider {
     return this.cache.loadFromObservable(url, request);
   }
 
+  setupDeviceToken(token, device_os, user_id, salon_id) {
+    const data = { token: token, device_os: device_os, user_id: user_id, salon_id: salon_id}
+    return this.http.post(this.apiUrl + 'accounts/setup_device_token', data)
+      .map(res => res.json())
+  }
+
   getMonths() {
     const data = { year: '', 'month': '' }
     return this.http.post(this.apiUrl + 'finds/month_calendar', data)

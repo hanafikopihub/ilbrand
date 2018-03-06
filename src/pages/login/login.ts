@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Events, Platform, IonicPage, ViewController, NavParams, NavController, ToastController, LoadingController, ModalController } from 'ionic-angular';
-import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 
 import { Angular2TokenService } from 'angular2-token';
 import { RequestMethod } from '@angular/http';
@@ -15,7 +15,7 @@ import { ToastService } from '../../providers/shared-service/toast-service';
 export class LoginPage {
   salon_header_name: string;
 
-  loginData = { email: '', password: '' };
+  loginData = { email: '', password: '', device_token: '', salon_id: AppApi.SALON_ID};
   data: any;
   loading: any;
 
@@ -31,7 +31,7 @@ export class LoginPage {
     private loadingCtrl: LoadingController, 
     public modalCtrl: ModalController,
     public events: Events,
-    public _authServiceProvider: AuthServiceProvider, 
+    public _restapiServiceProvider: RestapiServiceProvider, 
     private _tokenService: Angular2TokenService) {
     this.salon_header_name = AppApi.SALON_NAME_HEADER;
     this._tokenService.init({
@@ -70,12 +70,13 @@ export class LoginPage {
   }
   doLogin() {
     this.showLoader();
+    this.loginData.device_token = localStorage.getItem("device_token");
     this._tokenService.request({
       method: RequestMethod.Post,
       url: AppApi.BASE_API_URL + '/api/v1/auth/sign_in',
       body: this.loginData
     }).subscribe(
-      res => {
+      res => {        
         this.loading.dismiss();
         this.viewCtrl.dismiss();
         this.events.publish('page:logged', true);
