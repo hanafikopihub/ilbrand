@@ -1,4 +1,10 @@
 page-home {
+    .image-slide {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 35vh !important;
+    }
     .button-outline-ios.activated{
         color: #4A4A4A;
         background-color: #fff;

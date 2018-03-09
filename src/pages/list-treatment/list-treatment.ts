@@ -7,6 +7,8 @@ import { IonicPage } from 'ionic-angular/navigation/ionic-page';
 import { InAppBrowser, InAppBrowserOptions } from "@ionic-native/in-app-browser";
 import { AppApi } from '../../app.api';
 
+import groupArray from 'group-array';
+
 @IonicPage()
 @Component({
   selector: 'page-list-treatment',
@@ -18,6 +20,7 @@ export class ListTreatmentPage {
   salon_id: string;
   fromModal: boolean = false;
   scrollStatus: string;
+  categoryTreatments: String[];
   treatments: Array<any>
   addTreatments: Array<any> = [];
   constructor(
@@ -53,9 +56,12 @@ export class ListTreatmentPage {
       this._restapiServiceProvider.getSalon(this.salon_id)
         .subscribe(data => {
           this._loaderCtrl.hideLoader();
-          this.salon = data
-          localStorage.setItem('salon', JSON.stringify(data))
-          this.treatments = data.treatments;
+          this.salon = data;
+
+          this.treatments = groupArray(data.treatments, 'service_name');
+          this.categoryTreatments = Object.keys(this.treatments);
+
+          localStorage.setItem('salon', JSON.stringify(data));
         }, (error) => {
           this._alertCtrl.failedError(error);
           this._loaderCtrl.hideLoader();

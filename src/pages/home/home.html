@@ -16,7 +16,7 @@
   <ion-row>
     <ion-slides [hidden]="salon?.salon_image_gallery?.length === 1" *ngIf="true" pager="true">
       <ion-slide *ngFor="let salon of salon?.salon_image_gallery">
-        <img src="{{salon? salon : 'assets/images/image-empty.png'}}" width="100%">
+        <div class="image-slide" [style.background-image]="'url(' + salon + ')'"></div>
       </ion-slide>
     </ion-slides>
   </ion-row>

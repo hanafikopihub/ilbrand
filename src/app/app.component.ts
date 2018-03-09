@@ -77,26 +77,48 @@ export class MyApp {
           city: additionalData.salon_city, 
           address: additionalData.salon_address
         };
+
         if (data.additionalData.foreground) {
-          let confirmAlert = this._alertCtrl.create({
-            title: 'New Notification',
-            message: data.message,
-            buttons: [
-            {
-              text: 'Ignore',
-              role: 'cancel'
-            }, 
-            {
-              text: 'View',
-              handler: () => {
-                console.log('Push notification clicked');
-                this.nav.push('BookingPage', { treatment: treatment, salon: salon, status: false });
+          if(treatment.s_treatment_id != null){
+            var buttonsData = [
+              {
+                text: 'Ignora',
+                role: 'cancel'
+              }, 
+              {
+                text: 'Scopri',
+                handler: () => {
+                  this.nav.push('BookingPage', { treatment: treatment, salon: salon, status: false });
+                }
               }
-            }]
+            ];
+          }else{
+            var buttonsData = [
+              {
+                text: 'Ignora',
+                role: 'cancel'
+              }, 
+              {
+                text: 'Scopri',
+                handler: () => {
+                  this.nav.push('HomePage');
+                }
+              }
+            ];
+          }
+
+          let confirmAlert = this._alertCtrl.create({
+            title: data.title,
+            message: data.message,
+            buttons: buttonsData
           });
           confirmAlert.present();
         }else {
-          this.nav.push('BookingPage', { treatment: treatment, salon: salon, status: false });
+          if(treatment.s_treatment_id == null){
+            this.nav.push('HomePage');
+          }else{
+            this.nav.push('BookingPage', { treatment: treatment, salon: salon, status: false });
+          }
         }
       });
 

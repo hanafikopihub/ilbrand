@@ -13,29 +13,36 @@
 </ion-header>
 
 <ion-content class="{{scrollStatus}}" style="background: #fff;">
-  <div style="margin-bottom: 15px"></div>
-  <ion-grid *ngFor="let treatment of treatments" class="content-style">
-    <ion-row class="content-style-margin" >
-      <ion-col col-9>
-        <div class="treatment-info-title">{{treatment.des_treatment}}</div>
-        <div class="treatment-info">
-          <span class="treatment-detail-label">Durata:</span> {{treatment.duration_in_minute}} min.
-        </div>
-        <div *ngIf="treatment.price !== 0"  class="treatment-info">
-          <span class="treatment-detail-label">Prezzo:</span> &#8364; {{treatment.price | number : '1.2-2'}}
-        </div>
-      </ion-col>
-      <ion-col col-3 class="treatment-action">
-        <ion-icon tappable *ngIf="treatment.price !== 0" name="custom-add" (click)="addTreatment(treatment)"></ion-icon>
-        <ion-icon tappable *ngIf="treatment.price === 0" name="custom-tel" (click)="showPhone()"></ion-icon>
+  <div *ngFor="let category of categoryTreatments">
+    <ion-row class="row-cast" class="treatment-per-category-wrapper">
+      <ion-col col-12 class="treatment-wrapper">
+        <h4 class="treatment-category-info">{{category}}</h4>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col style="padding-left: 6%;padding-right: 6%;">
-        <hr style="background-color: rgba(0, 0, 0, 0.12); height: 1px;">
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+
+    <ion-grid *ngFor="let treatment of treatments[category] | orderBy:'des_treatment'" class="content-style">
+      <ion-row class="content-style-margin" >
+        <ion-col col-9>
+          <div class="treatment-info-title">{{treatment.des_treatment}}</div>
+          <div class="treatment-info">
+            <span class="treatment-detail-label">Durata:</span> {{treatment.duration_in_minute}} min.
+          </div>
+          <div *ngIf="treatment.price !== 0"  class="treatment-info">
+            <span class="treatment-detail-label">Prezzo:</span> &#8364; {{treatment.price | number : '1.2-2'}}
+          </div>
+        </ion-col>
+        <ion-col col-3 class="treatment-action">
+          <ion-icon tappable *ngIf="treatment.price !== 0" name="custom-add" (click)="addTreatment(treatment)"></ion-icon>
+          <ion-icon tappable *ngIf="treatment.price === 0" name="custom-tel" (click)="showPhone()"></ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col style="padding-left: 6%;padding-right: 6%;">
+          <hr style="background-color: rgba(0, 0, 0, 0.12); height: 1px;">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 
   <div style="text-align: center;">
     <div class="icon-image-bottom" *ngIf="salon?.logo_image" (click)="openWebpage(salon?.website)" [style.background-image]="'url(' + salon?.logo_image + ')'"></div>
