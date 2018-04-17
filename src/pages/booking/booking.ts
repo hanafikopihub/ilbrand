@@ -28,7 +28,6 @@ import { AppApi } from '../../app.api';
 
 export class BookingPage {
   salon_header_name: string;
-  
   // status user login or logout
   public isSignedIn: boolean;
 
@@ -302,6 +301,13 @@ export class BookingPage {
     if (this.operators == null || this.timeId === undefined || this.dateId === undefined) {
       return this._toastCtrl.presentToast('Nessuna disponibilita per il giorno selezionato')
     } else {
+
+      if(this.plt.is('ios')){
+        var from_where = 'custom_app_ios'
+      }else{
+        var from_where = 'custom_app_android'
+      }
+
       const dataBooking = {
         booking: {
           'time_id': this.timeId,
@@ -309,7 +315,7 @@ export class BookingPage {
           'month_id': this.monthId,
           'year_id': this.yearId,
           'length': this.treatmentParam.duration,
-          'from_where': 'android',
+          'from_where': from_where,
           'salon_id': this.salonParam.salon_id,
           'price': this.treatmentParam.price,
           'discount_price': this.treatmentParam.price,
