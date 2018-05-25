@@ -26,7 +26,7 @@ export class RestapiServiceProvider {
     private _toastCtrl: ToastController,
     public _authServiceProvider: Angular2TokenService,
     private cache: CacheService) {
-    cache.setDefaultTTL(60 * 60);
+    cache.setDefaultTTL(1 * 60);
   }
 
   presentToast(msg) {
