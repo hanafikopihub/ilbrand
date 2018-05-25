@@ -57,8 +57,15 @@ export class ListTreatmentPage {
         .subscribe(data => {
           this._loaderCtrl.hideLoader();
           this.salon = data;
+          this.treatments = data.treatments;
 
-          this.treatments = groupArray(data.treatments, 'service_name');
+          var groupByPreferred = groupArray(this.treatments, 'preferred_status');
+          this.treatments = groupArray(groupByPreferred.nonFavorite, 'service_name');
+
+          if(groupByPreferred.favorite !== undefined){
+            this.treatments = Object.assign({'I Più Prenotati': groupByPreferred.favorite}, this.treatments);
+          }
+
           this.categoryTreatments = Object.keys(this.treatments);
 
           localStorage.setItem('salon', JSON.stringify(data));

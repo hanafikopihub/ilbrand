@@ -83,10 +83,12 @@ export class MyBookingPage {
     if (this.dataOther.month.length < 2) {
       this.dataOther.month = `0${this.dataOther.month}`;
     }
-    const dateString = this.dataOther.year + '-' + this.dataOther.month + '-' + this.dataOther.date + 'T' + this.dataOther.time + ':00'
+    const dateString = this.dataOther.year + '-' + this.dataOther.month + '-' + this.dataOther.date;
     const title = this.treatmentParam.des_treatment + ' (' + (this.treatmentParam.duration / 60) + ' min)';
     const location = this.salon.address + ', ' + this.salon.city;
     const startDate = new Date(dateString);
+    var timeObj = this.dataOther.time.split(':');
+    startDate.setHours(parseInt(timeObj[0]), parseInt(timeObj[1]))
     const notes = this.treatmentParam.des_treatment + ' (' + (this.treatmentParam.duration / 60) + 'min) da ' + location;
     const endDate = new Date(startDate.getTime() + this.treatmentParam.duration * 1000);
     this._calendar.createEvent(title, location, notes, startDate, endDate)
