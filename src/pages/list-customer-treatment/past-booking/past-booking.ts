@@ -23,6 +23,7 @@ export class PastBookingPage {
   voucherUseStatus: boolean = false;
   rimanente: any;
   voucherPrice: any;
+  priceDisplay: any;
 
   constructor(
     public platform: Platform,
@@ -69,6 +70,13 @@ export class PastBookingPage {
     this._restapiServiceProvider.getDetailBooking(bookingParam.booking_id)
       .subscribe(data => {
         this.booking = data;
+
+        if (this.booking.price !== this.booking.discount_price){
+          this.priceDisplay = this.booking.discount_price
+        }else{
+          this.priceDisplay = this.booking.price
+        }
+
         if (this.booking.voucher_id !== 0) {
           this.voucherUseStatus = true;
           this.rimanente = this.booking.vouchered_price;

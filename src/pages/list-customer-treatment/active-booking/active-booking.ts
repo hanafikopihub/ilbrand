@@ -18,6 +18,7 @@ export class ActiveBookingPage {
   voucherUseStatus: boolean = false;
   rimanente: any;
   voucherPrice: any;
+  priceDisplay: any;
 
   constructor(
     public platform: Platform,
@@ -55,6 +56,13 @@ export class ActiveBookingPage {
       .subscribe(data => {
         this._loader.hideLoader();
         this.booking = data;
+
+        if (this.booking.price !== this.booking.discount_price){
+          this.priceDisplay = this.booking.discount_price
+        }else{
+          this.priceDisplay = this.booking.price
+        }
+
         if (this.booking.voucher_id !== 0) {
           this.voucherUseStatus = true;
           this.rimanente = this.booking.vouchered_price;

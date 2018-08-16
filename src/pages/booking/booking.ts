@@ -308,39 +308,50 @@ export class BookingPage {
         var from_where = 'custom_app_android'
       }
 
-      const dataBooking = {
-        booking: {
-          'time_id': this.timeId,
-          'date_id': this.dateId,
-          'month_id': this.monthId,
-          'year_id': this.yearId,
-          'length': this.treatmentParam.duration,
-          'from_where': from_where,
-          'salon_id': this.salonParam.salon_id,
-          'price': this.treatmentParam.price,
-          'discount_price': this.treatmentParam.price,
-          'operator_id': this.operators.operator_id,
-          's_treatment_id': this.treatmentParam.s_treatment_id
+      this._loaderCtrl.showLoader();
+
+      const when = this.dateId + '/' + this.monthId + '/' + this.yearId
+
+      this._restapiServiceProvider.postPriceTreatment(this.treatmentParam.s_treatment_id, when).subscribe(response => {
+        const dataBooking = {
+          booking: {
+            'time_id': this.timeId,
+            'date_id': this.dateId,
+            'month_id': this.monthId,
+            'year_id': this.yearId,
+            'length': this.treatmentParam.duration,
+            'from_where': from_where,
+            'salon_id': this.salonParam.salon_id,
+            'price': this.treatmentParam.price,
+            'discount_price': response.discount_price,
+            'operator_id': this.operators.operator_id,
+            's_treatment_id': this.treatmentParam.s_treatment_id
+          }
         }
-      }
 
-      const dataOther = {
-        'dayName': this.dayName,
-        'monthName': this.monthName,
-        'month': this.monthId,
-        'date': this.dateId,
-        'time': this.timeId,
-        'year': this.yearId
-      }
+        const dataOther = {
+          'dayName': this.dayName,
+          'monthName': this.monthName,
+          'month': this.monthId,
+          'date': this.dateId,
+          'time': this.timeId,
+          'year': this.yearId
+        }
 
-      this._navController.push(
-        'HistoryBookingPage',
-        {
-          salon: this.salonParam,
-          dataBooking: dataBooking,
-          treatment: this.treatmentParam,
-          operators: this.operators, dataOther: dataOther
-        })
+        this._loaderCtrl.hideLoader();
+
+        this._navController.push(
+          'HistoryBookingPage',
+          {
+            salon: this.salonParam,
+            dataBooking: dataBooking,
+            treatment: this.treatmentParam,
+            operators: this.operators, dataOther: dataOther
+          })
+      }, (error) => {
+        this._loaderCtrl.hideLoader();
+        return this._toastCtrl.presentToast('Attenzione! Questa app necessita di una connessione internet per funzionare');
+      })
     }
   }
 

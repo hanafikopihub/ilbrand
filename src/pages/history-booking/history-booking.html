@@ -47,10 +47,10 @@
     <div class="total-style">
       <div padding>
         <span class="total-label"> totale</span>
-        <span [class.total-value-discount]="voucherUseStatus" [class.total-value]="!voucherUseStatus">&#8364; {{treatmentParam.price | number : '1.2-2'}}</span>
+        <span [class.total-value-discount]="voucherUseStatus" [class.total-value]="!voucherUseStatus">&#8364; {{priceDisplay | number : '1.2-2'}}</span>
       </div>
       <div padding *ngIf="voucherUseStatus">
-        <span class="total-label"> pagato con {{voucherUse.code}}</span>
+        <span class="total-label"> pagato con </span><span class="voucher-code">{{voucherUse.code}}</span>
         <span class="total-value-discount">&#8364; {{voucherUse.price}}</span>
       </div>
 
@@ -75,9 +75,11 @@
 
     <div padding>
       <ion-col>
-        <div class="label-gifcard">Hai una
-          <span style="font-family:'Open Sans Semibold';">GIFT CARD</span>?</div>
-        <ion-input type="text" [(ngModel)]="voucherCode" class="giftcard-border-input"></ion-input>
+        <ion-item no-padding>
+          <div class="label-gifcard">Hai una
+            <span style="font-family:'Open Sans Semibold';">GIFT CARD</span>?</div>
+          <ion-input type="text" [(ngModel)]="voucherCode" class="giftcard-border-input"></ion-input>
+        </ion-item>
       </ion-col>
       <ion-col>
         <button tappable text-center ion-button block class="bold btn-validation-giftcard" (click)="verifyVoucher()">VALIDA</button>
@@ -101,21 +103,27 @@
             </div>
           </div>
           <ion-col>
-            <ion-label style="margin-top:0 !important; padding-top:0 !important;" class="label-form" stacked>Il tuo nome</ion-label>
-            <ion-input type="text" class="email-border-input" required formControlName="name"></ion-input>
+            <ion-item no-padding>
+              <ion-label style="margin-top:0 !important; padding-top:0 !important;" class="label-form" stacked>Il tuo nome</ion-label>
+              <ion-input type="text" class="email-border-input" required formControlName="name"></ion-input>
+            </ion-item>
             <div *ngIf="showError && entryForm.controls.name.value === '' " style="color:red; font-size: 12px;">*Questo campo è richiesto</div>
           </ion-col>
 
           <ion-col>
-            <ion-label class="label-form" stacked>Il tuo indirizzo email</ion-label>
-            <ion-input class="email-border-input" type="email" required formControlName="email"></ion-input>
+            <ion-item no-padding>
+              <ion-label class="label-form" stacked>Il tuo indirizzo email</ion-label>
+              <ion-input class="email-border-input" type="email" required formControlName="email"></ion-input>
+            </ion-item>
             <div *ngIf="showError && entryForm.controls.email.value === '' " style="color:red; font-size: 12px;">*Questo campo è richiesto</div>
             <div *ngIf="entryForm.controls.email.errors?.email " style="color:red; font-size: 12px;">*Formato email non corretto</div>
           </ion-col>
 
           <ion-col>
-            <ion-label class="label-form" stacked>Il tuo numero di telefono</ion-label>
-            <ion-input class="email-border-input" type="tel" required formControlName="phone"></ion-input>
+            <ion-item no-padding>
+              <ion-label class="label-form" stacked>Il tuo numero di telefono</ion-label>
+              <ion-input class="email-border-input" type="tel" required formControlName="phone"></ion-input>
+            </ion-item>
             <div *ngIf="showError && entryForm.controls.phone.value === '' " style="color:red; font-size: 12px;">*Questo campo è richiesto</div>
           </ion-col>
         </div>

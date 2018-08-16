@@ -38,7 +38,7 @@
           <span class="totale-price"> totale</span>
         </ion-col>
         <ion-col [class.total-value-voucher]="voucherUseStatus" [class.total-value]="!voucherUseStatus" col-9>
-          <div>&#8364; {{booking?.price}}.00</div>
+          <div>&#8364; {{priceDisplay}}.00</div>
         </ion-col>
         <ion-col col-12 class="pay-option" *ngIf="!voucherUseStatus">
           <div>{{booking?.option_pay}}</div>

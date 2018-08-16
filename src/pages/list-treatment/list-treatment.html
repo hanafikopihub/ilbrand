@@ -28,7 +28,12 @@
             <span class="treatment-detail-label">Durata:</span> {{treatment.duration_in_minute}} min.
           </div>
           <div *ngIf="treatment.price !== 0"  class="treatment-info">
-            <span class="treatment-detail-label">Prezzo:</span> &#8364; {{treatment.price | number : '1.2-2'}}
+            <div *ngIf="treatment.price === treatment.price_today">
+              <span class="treatment-detail-label">Prezzo:</span> &#8364; {{treatment.price | number : '1.2-2'}}
+            </div>
+            <div *ngIf="treatment.price !== treatment.price_today">
+              <span class="treatment-detail-label">Prezzo:</span> <span style="text-decoration: line-through;"> &#8364; {{treatment.price | number : '1.2-2'}}</span> <span style="color: #fe6523;"> &#8364; {{treatment.price_today | number : '1.2-2'}} </span>
+            </div>
           </div>
         </ion-col>
         <ion-col col-3 class="treatment-action">

@@ -69,6 +69,12 @@ export class RestapiServiceProvider {
       .map(res => res.json())
   }
 
+  postPriceTreatment(id, when){
+   const treatment_data = { 'id': id, 'when': when }
+    return this.http.post(this.apiUrl + 'treatments/price', treatment_data)
+      .map(res => res.json())
+  }
+
   getProfile(email) {
     const url = this.apiUrl + 'finds/profile';
     const cacheKey = url;

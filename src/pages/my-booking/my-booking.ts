@@ -29,6 +29,7 @@ export class MyBookingPage {
   rimanente: any;
   voucherCode: any;
   voucherPrice: any;
+  priceDisplay: any;
 
   constructor(
     public _events: Events,
@@ -55,11 +56,17 @@ export class MyBookingPage {
     this.optionPay = this.navParams.get('optionPay');
     this.fromModal = this.navParams.get('status');
 
+    if (this.dataBooking.booking.price === this.dataBooking.booking.discount_price){
+      this.priceDisplay = this.dataBooking.booking.price
+    }else{
+      this.priceDisplay = this.dataBooking.booking.discount_price
+    }
+
     if (this.dataBooking['booking']['voucher_id'] !== undefined) {
       this.voucherUseStatus = true;
       this.voucherCode = this.dataBooking['voucher_code'];
       this.voucherPrice = this.dataBooking['booking']['voucher_credit_used'];
-      this.rimanente = parseFloat(this.treatmentParam.price) - parseFloat(this.voucherPrice);
+      this.rimanente = parseFloat(this.priceDisplay) - parseFloat(this.voucherPrice);
     }
 
 

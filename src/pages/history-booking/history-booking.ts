@@ -46,9 +46,10 @@ export class HistoryBookingPage {
   scrollStatus: string;
   payoptionModel: any;
 
-  treatment: any
-  optionPay: any
-  payment: PayPalPayment
+  treatment: any;
+  optionPay: any;
+  priceDisplay: any;
+  payment: PayPalPayment;
   payPalEnvironment: string = 'payPalEnvironmentSandbox';
 
   constructor(
@@ -121,6 +122,13 @@ export class HistoryBookingPage {
         'visitor_phone': ''
       }
     }
+
+    if (this.dataBookingParam.booking.price === this.dataBookingParam.booking.discount_price){
+      this.priceDisplay = this.dataBookingParam.booking.price
+    }else{
+      this.priceDisplay = this.dataBookingParam.booking.discount_price
+    }
+
     if (this._authServiceProvider.userSignedIn) {
       this.showFormEmail = true;
       this.dataBooking['user_email'] = this._authServiceProvider.currentAuthData.uid;
@@ -158,7 +166,7 @@ export class HistoryBookingPage {
       if (this.confirmVoucheredPrice > 0) {
         var currentPrice = this.confirmVoucheredPrice
       } else {
-        var currentPrice = this.treatmentParam.price
+        var currentPrice = this.priceDisplay
       }
       this._restapiServiceProvider.postVoucherVerify({ code: this.voucherCode, treatment_price: currentPrice }).subscribe(response => {
         this._loaderCtrl.hideLoader();

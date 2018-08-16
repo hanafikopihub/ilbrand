@@ -24,28 +24,39 @@
 
     <ion-list padding-left padding-right>
       <ion-col>
-        <ion-label stacked style="margin-top:0 !important; padding-top:0 !important;">Il tuo nome</ion-label>
-        <ion-input type="text" class="login-border-input" formControlName="name" required></ion-input>
+        <ion-item no-padding>
+          <ion-label stacked style="margin-top:0 !important; padding-top:0 !important;">Il tuo nome</ion-label>
+          <ion-input type="text" formControlName="name" required></ion-input>
+        </ion-item>
       </ion-col>
 
       <ion-col>
-        <ion-label stacked>Il tuo indirizzo email</ion-label>
-        <ion-input type="text" class="login-border-input" formControlName="email" required></ion-input>
+        <ion-item no-padding>
+          <ion-label stacked>Il tuo indirizzo email</ion-label>
+          <ion-input type="text" formControlName="email" required></ion-input>
+        </ion-item>
+      </ion-col>
+
+
+      <ion-col>
+        <ion-item no-padding>
+          <ion-label stacked>Il tuo numero di telefono</ion-label>
+          <ion-input type="number" formControlName="cell" required></ion-input>
+        </ion-item>
       </ion-col>
 
       <ion-col>
-        <ion-label stacked>Il tuo numero di telefono</ion-label>
-        <ion-input type="number" class="login-border-input" formControlName="cell" required></ion-input>
+        <ion-item no-padding>
+          <ion-label stacked>La tua password</ion-label>
+          <ion-input type="password" formControlName="password" required></ion-input>
+        </ion-item>
       </ion-col>
 
       <ion-col>
-        <ion-label stacked>La tua password</ion-label>
-        <ion-input class="login-border-input" type="password" formControlName="password" required></ion-input>
-      </ion-col>
-
-      <ion-col>
-        <ion-label stacked>Conferma la password</ion-label>
-        <ion-input class="login-border-input" type="password" formControlName="password_confirmation" required></ion-input>
+        <ion-item no-padding>
+          <ion-label stacked>Conferma la password</ion-label>
+          <ion-input type="password" formControlName="password_confirmation" required></ion-input>
+        </ion-item>
       </ion-col>
     </ion-list>
 
