@@ -75,14 +75,13 @@
 
     <div padding>
       <ion-col>
+        <div class="label-gifcard">Hai una <span style="font-family:'Open Sans Semibold';">GIFT CARD</span>?</div>
         <ion-item no-padding>
-          <div class="label-gifcard">Hai una
-            <span style="font-family:'Open Sans Semibold';">GIFT CARD</span>?</div>
           <ion-input type="text" [(ngModel)]="voucherCode" class="giftcard-border-input"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col>
-        <button tappable text-center ion-button block class="bold btn-validation-giftcard" (click)="verifyVoucher()">VALIDA</button>
+        <button tappable text-center ion-button block class="bold btn-validation-giftcard" (click)="verifyVoucher()">VALIDA GIFT CARD</button>
       </ion-col>
     </div>
 
