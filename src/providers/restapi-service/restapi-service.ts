@@ -137,6 +137,12 @@ export class RestapiServiceProvider {
     const url = this.apiUrl + 'operators/by_salon/' + salon_id;
     const request = this.http.get(url).map(res => res.json());
     return this.cache.loadFromObservable(url, request);
+  }
+
+  getSalonSetting(salon_id){
+    const url = this.apiUrl + 'salon_settings/' + salon_id;
+    const request = this.http.get(url).map(res => res.json());
+    return this.cache.loadFromObservable(url, request);
   }  
 
   postBooking(data) {

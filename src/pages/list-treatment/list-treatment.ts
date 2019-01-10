@@ -59,6 +59,8 @@ export class ListTreatmentPage {
           this.salon = data;
           this.treatments = data.treatments;
 
+          console.log(this.treatments);
+
           var groupByPreferred = groupArray(this.treatments, 'preferred_status');
           this.treatments = groupArray(groupByPreferred.nonFavorite, 'service_name');
 

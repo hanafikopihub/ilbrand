@@ -303,9 +303,9 @@ export class BookingPage {
     } else {
 
       if(this.plt.is('ios')){
-        var from_where = 'custom_app_ios'
+        var from_where = 'app_ios'
       }else{
-        var from_where = 'custom_app_android'
+        var from_where = 'ap_android'
       }
 
       this._loaderCtrl.showLoader();

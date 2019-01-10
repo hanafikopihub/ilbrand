@@ -50,7 +50,8 @@ export class HistoryBookingPage {
   optionPay: any;
   priceDisplay: any;
   payment: PayPalPayment;
-  payPalEnvironment: string = 'payPalEnvironmentSandbox';
+  payPalEnvironment: string = 'PayPalEnvironmentProduction';
+  paypalClientId: string;
 
   constructor(
     private _payPal: PayPal,
@@ -79,15 +80,6 @@ export class HistoryBookingPage {
     });
 
     this.scrollStatus = 'can-scroll';
-
-    this.payOptions = [
-      { 'id': '1', 'option': 'Paga in salone', 'image': 'assets/icon/shop_icon/shop_icon-AppStore.png', 'disable': false },
-      { 'id': '2', 'option': 'Paga con carta di credito', 'image': 'assets/icon/card_icon/card-disable_icon-AppStore.png',
-      'disable': true }]
-
-
-    this.payment = new PayPalPayment(this.treatmentParam.price, 'EUR', this.treatmentParam.des_treatment, '');
-
   }
 
   buildForm() {
@@ -102,7 +94,32 @@ export class HistoryBookingPage {
     this.buildForm();
   }
 
+  b64DecodeUnicode(str) {
+    return decodeURIComponent(atob(str).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+  }
+
   ionViewDidEnter() {
+
+    this._loaderCtrl.showLoader();
+    this._restapiServiceProvider.getSalonSetting(this.dataBookingParam.booking.salon_id).subscribe(data => {
+      const paypalPayment = data.accept_paypal ? false : true 
+      const paypalPaymentLogo = data.accept_paypal ? 'card_icon-AppStore.png' : 'card-disable_icon-AppStore.png'
+      this.paypalClientId = this.b64DecodeUnicode(data.pcid)
+      this.payOptions = [
+        { 'id': '1', 'option': 'Paga in salone', 'image': 'assets/icon/shop_icon/shop_icon-AppStore.png', 'disable': false },
+        { 'id': '2', 'option': 'Paga con carta di credito', 'image': 'assets/icon/card_icon/'+paypalPaymentLogo+'', 'disable': paypalPayment }
+      ]
+      this._loaderCtrl.hideLoader();
+    }, (error) => {
+      this._loaderCtrl.hideLoader();
+        this.payOptions = [
+          { 'id': '1', 'option': 'Paga in salone', 'image': 'assets/icon/shop_icon/shop_icon-AppStore.png', 'disable': false },
+          { 'id': '2', 'option': 'Paga con carta di credito', 'image': 'assets/icon/card_icon/card-disable_icon-AppStore.png', 'disable': true }
+        ]
+    })
+
     this.dataBooking = {
       booking: {
         'time_id': this.dataBookingParam.booking.time_id,
@@ -110,7 +127,7 @@ export class HistoryBookingPage {
         'month_id': this.dataBookingParam.booking.month_id,
         'year_id': this.dataBookingParam.booking.year_id,
         'length': this.dataBookingParam.booking.length,
-        'from_where': 'android',
+        'from_where': this.dataBookingParam.booking.from_where,
         'salon_id': this.dataBookingParam.booking.salon_id,
         'price': this.dataBookingParam.booking.price,
         'discount_price': this.dataBookingParam.booking.discount_price,
@@ -128,6 +145,10 @@ export class HistoryBookingPage {
     }else{
       this.priceDisplay = this.dataBookingParam.booking.discount_price
     }
+
+    console.log(this.priceDisplay);
+
+    this.payment = new PayPalPayment(String(this.priceDisplay), 'EUR', this.treatmentParam.des_treatment, '');
 
     if (this._authServiceProvider.userSignedIn) {
       this.showFormEmail = true;
@@ -298,8 +319,8 @@ export class HistoryBookingPage {
 
   getPayPal(response) {
     this._payPal.init({
-      PayPalEnvironmentProduction: '',
-      PayPalEnvironmentSandbox: 'AXg409-ZD7lFcgk2JdHkLkggX8u7LnT7cfkGL2AG0y7bx5OAvOmErpKKz5D68kzXRxbfe_KRlFf681rk'
+      PayPalEnvironmentProduction: this.paypalClientId,
+      PayPalEnvironmentSandbox: this.paypalClientId
     }).then(() => {
       this._payPal.prepareToRender(this.payPalEnvironment, new PayPalConfiguration({})).then(() => {
         this._payPal.renderSinglePaymentUI(this.payment).then((res) => {
@@ -308,8 +329,6 @@ export class HistoryBookingPage {
           this._loaderCtrl.hideLoader();
           this.saveToApi(booking_id, paypal_id);
         }, () => {
-          this._alertService.failedError('Error or render dialog closed without being successful');
-
           this._loaderCtrl.hideLoader();
         });
       }, () => {

@@ -26,7 +26,6 @@ export class MyApp {
       if(platform.is('android') || platform.is('tablet')){
         statusBar.overlaysWebView(false);  
       }
-      splashScreen.hide();
 
       if (!platform.is('cordova')) {
         console.warn('Push notifications not initialized. Cordova is not available - Run in physical device');

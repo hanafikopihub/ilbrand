@@ -65,7 +65,6 @@ export class ContactPage {
     const latLng = new google.maps.LatLng(lat, lng);
 
     const mapOptions = {
-      draggable: false,
       center: latLng,
       zoom: 17,
       mapTypeId: google.maps.MapTypeId.ROADMAP

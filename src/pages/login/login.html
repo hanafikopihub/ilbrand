@@ -23,18 +23,14 @@
             <ion-col>
               <ion-list>
                 <ion-col>
-                  <ion-item no-padding>
-                    <ion-label stacked style="margin-top:0 !important; padding-top:0 !important;">La tua e-mail</ion-label>
-                    <ion-input type="text" name="email" [(ngModel)]="loginData.email" required></ion-input>
-                  </ion-item>
+                  <ion-label stacked style="margin-top:0 !important; padding-top:0 !important;">La tua e-mail</ion-label>
+                  <ion-input type="text" class="login-border-input" name="email" [(ngModel)]="loginData.email" required></ion-input>
                 </ion-col>
   
                 <ion-col>
-                  <ion-item no-padding>
-                    <ion-label stacked>La tua password</ion-label>
-                    <ion-input type="password" name="password" [(ngModel)]="loginData.password" required></ion-input>
-                  </ion-item>
-                  </ion-col>
+                  <ion-label stacked>La tua password</ion-label>
+                  <ion-input class="login-border-input" type="password" name="password" [(ngModel)]="loginData.password" required></ion-input>
+                </ion-col>
   
               </ion-list>
             </ion-col>
